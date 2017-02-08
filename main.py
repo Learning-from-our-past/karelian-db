@@ -1,5 +1,5 @@
 import json
-from models.db_models import *
+from models.db_siirtokarjalaistentie_models import *
 from populate import populate_person
 
 database.connect()

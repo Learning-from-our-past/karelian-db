@@ -1,1 +1,1 @@
-.\kareliandb_venv\Scripts\activate.bat
+..\kareliandb_venv\Scripts\activate.bat

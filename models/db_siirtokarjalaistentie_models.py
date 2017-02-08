@@ -17,6 +17,7 @@ class UnknownField(object):
 class BaseModel(Model):
     class Meta:
         database = database
+        schema = 'siirtokarjalaisten_tie'
 
 class Place(BaseModel):
     latitude = TextField()

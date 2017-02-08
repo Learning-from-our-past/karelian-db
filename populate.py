@@ -1,4 +1,4 @@
-from models.db_models import *
+from models.db_siirtokarjalaistentie_models import *
 
 def _transform_sex(orig):
     if orig == 'Male':
