@@ -2,7 +2,7 @@
 CREATE TABLE siirtokarjalaisten_tie.Place(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
-  location GEOMETRY(POINT, 4326), -- WGS 84
+  location public.GEOMETRY(POINT, 4326), -- WGS 84
   latitude TEXT NOT NULL,
   longitude TEXT NOT NULL,
   region TEXT NOT NULL,
