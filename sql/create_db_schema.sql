@@ -1,4 +1,5 @@
---create schema siirtokarjalaisten_tie;
+create schema siirtokarjalaisten_tie;
+CREATE EXTENSION postgis;
 CREATE TABLE siirtokarjalaisten_tie.Place(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
@@ -120,12 +121,3 @@ CREATE TABLE siirtokarjalaisten_tie.LivingRecord(
   movedin INTEGER,
   movedout INTEGER
 );
-
--- Enable PostGIS (includes raster)
-CREATE EXTENSION postgis;
--- Enable Topology
-CREATE EXTENSION postgis_topology;
--- Enable PostGIS Advanced 3D
--- and other geoprocessing algorithms
--- sfcgal not available with all distributions
-CREATE EXTENSION postgis_sfcgal;
