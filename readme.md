@@ -17,3 +17,8 @@ DB_NAME
 DB_PASSWORD
 DB_USER
 ```
+
+## Postgres and Access
+To make postgres and Access work better together, at least boolean values require some setup. Refer
+Refer to [this](http://www.postgresonline.com/journal/archives/24-Using-MS-Access-with-PostgreSQL.html) and [this](http://bahut.alma.ch/2006/04/access-odbc-postgresql-boolean-mess.html) for instructions
+how to setup ODBC driver (booleans as char: false, True is -1 to true) and Access ui-setup to show boolean fields as checkboxes.
