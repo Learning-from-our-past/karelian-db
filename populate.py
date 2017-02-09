@@ -146,7 +146,7 @@ def _populate_migration_history(region, places, personModel):
             p['movedOut'] = None
 
 
-        return _populate_migration_record({
+        _populate_migration_record({
             'person': personModel,
             'place': placeModel,
             'movedin':  p['movedIn'],
