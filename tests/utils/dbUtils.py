@@ -2,6 +2,7 @@ import os
 import json
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+import models.db_connection as db_connection
 
 """
 Provides basic services to manage database during tests such as functions to create, drop and truncate

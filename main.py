@@ -1,8 +1,6 @@
 import json
-from models.db_siirtokarjalaistentie_models import *
+from models.db_connection import db_connection
 from populate import populate_person
-
-database.connect()
 
 def load_json(path):
     with open(path, encoding='utf8') as data_file:
@@ -21,6 +19,10 @@ def populate_db(data):
 
 
 if __name__ == "__main__":
+    db_connection.init_database()
+    db_connection.connect()
+    database = db_connection.get_database()
+
     data = load_json("./json/testset.json")
     populate_db(data)
 

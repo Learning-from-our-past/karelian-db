@@ -1,7 +1,7 @@
 from peewee import *
-import os
+from models.db_connection import db_connection
 
-database = PostgresqlDatabase(os.environ['DB_NAME'], **{'password': os.environ['DB_PASSWORD'], 'user': os.environ['DB_USER']})
+database = db_connection.get_database()
 
 class PointField(Field):
     db_field = 'point'
