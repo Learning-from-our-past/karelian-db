@@ -3,7 +3,6 @@ import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 class DBUtils:
-    _DROP_ALWAYS = False
 
     def __init__(self):
         self.master_connection = psycopg2.connect(dbname='postgres', user=os.environ['DB_USER'], host='localhost',
@@ -17,9 +16,9 @@ class DBUtils:
         return psycopg2.connect(dbname='testdb', user=os.environ['DB_USER'], host='localhost',
                                                 password=os.environ['DB_PASSWORD'])
 
-    def create_test_db(self):
-        if self._DROP_ALWAYS:
-            self._drop_and_create()
+    def create_test_db(self, drop):
+        if drop:
+            self.drop_and_create()
 
             self.test_connection = self._get_test_connection()
             self.create_db_schema()
