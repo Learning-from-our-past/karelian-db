@@ -5,7 +5,7 @@ from tests.utils.dbUtils import DBUtils
 
 class TestDB(unittest.TestCase):
     def setUp(self):
-        DBUtils.create_test_db(False)
+        DBUtils.init_test_db()
         pass
 
     def test_foo(self):
