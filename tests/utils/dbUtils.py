@@ -2,7 +2,6 @@ import os
 import json
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-import models.db_connection as db_connection
 
 """
 Provides basic services to manage database during tests such as functions to create, drop and truncate
@@ -15,7 +14,7 @@ class DBUtils:
         with open('./tests/test-config.json', encoding='utf8') as config_file:
             self.config = json.load(config_file)
 
-        self.master_connection = psycopg2.connect(dbname=os.environ['DB_NAME'], user=os.environ['DB_USER'],
+        self.master_connection = psycopg2.connect(dbname=os.environ['DB_MASTER_NAME'], user=os.environ['DB_USER'],
                                                   host='localhost', password=os.environ['DB_PASSWORD'])
 
         self.master_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
