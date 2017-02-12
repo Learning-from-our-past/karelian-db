@@ -17,7 +17,7 @@ def pytest_collection_modifyitems(session, config, items):
             items.append(item)
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="session", autouse=True)
 def database():
     DBUtils.init_test_db()
     db_connection.init_database()
