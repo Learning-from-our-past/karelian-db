@@ -1,0 +1,106 @@
+[{
+    "KarelianLocations": [
+        {
+            "movedIn": "",
+            "KarelianLocation": "Hiitola",
+            "KarelianCoordinates": {
+                "latitude": "61.23531",
+                "longitude": "29.68842"
+            },
+            "movedOut": ""
+        },
+        {
+            "movedIn": "",
+            "KarelianLocation": "Kilpola",
+            "KarelianCoordinates": {
+                "latitude": "61.20312",
+                "longitude": "29.93952"
+            },
+            "movedOut": "40"
+        },
+        {
+            "movedIn": "42",
+            "KarelianLocation": "Kilpola",
+            "KarelianCoordinates": {
+                "latitude": "",
+                "longitude": ""
+            },
+            "movedOut": "44"
+        }
+    ],
+    "OriginalFamily": "",
+    "BirthDay": "28",
+    "originalText": "original text redacted",
+    "FirstNames": "FIRST NAMES",
+    "boyCount": 1,
+    "Spouse": {
+        "SpouseOriginalFamily": "Original family name",
+        "HasSpouse": true,
+        "WeddingYear": "1944",
+        "SpouseBirthData": {
+            "BirthYear": "1919",
+            "BirthDay": "30",
+            "BirthMonth": "6",
+            "BirthLocation": "Hiitolassa"
+        },
+        "SpouseProfession": "emäntä",
+        "spouseDeathYear": "",
+        "SpouseName": "Spouse first name"
+    },
+    "girlCount": 0,
+    "BirthMonth": "11",
+    "Gender": "Male",
+    "Profession/Status": "maanviljelijä",
+    "Children": [
+        {
+            "childCoordinates": {
+                "latitude": "63.44991",
+                "longitude": "22.45042"
+            },
+            "birthYear": "1946",
+            "gender": "Male",
+            "name": "Male child name",
+            "locationName": "Munsala"
+        }
+    ],
+    "BirthYear": "1909",
+    "Surname": "LAST NAME",
+    "ApproximatePageNumber": "0-2",
+    "OtherLocations": [
+        {
+            "movedIn": "40",
+            "movedOut": "42",
+            "OtherCoordinates": {
+                "latitude": "62.01667",
+                "longitude": "23.01667"
+            },
+            "OtherLocation": "Parkano"
+        },
+        {
+            "movedIn": "44",
+            "movedOut": "47",
+            "OtherCoordinates": {
+                "latitude": "63.44991",
+                "longitude": "22.45042"
+            },
+            "OtherLocation": "Munsala"
+        },
+        {
+            "movedIn": "",
+            "movedOut": "47",
+            "OtherCoordinates": {
+                "latitude": "61.67538",
+                "longitude": "21.62092"
+            },
+            "OtherLocation": "Ahlainen"
+        }
+    ],
+    "ReturnedToKarelia": true,
+    "Omakotitalo": false,
+    "OtherLocationCount": 3,
+    "MaybePreviousMarriages": false,
+    "BirthLocation": "Hiitolassa",
+    "KarelianLocationCount": 3,
+    "ChildCount": 1,
+    "ImagePath": ""
+}]
