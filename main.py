@@ -11,7 +11,7 @@ def populate_db(data):
 
     for idx, person in enumerate(data):
         populate_person(person)
-        print("Added ", person["FirstNames"], person["Surname"], idx+1, '/', len(data))
+        print("Added ", person["firstNames"], person["surname"], idx+1, '/', len(data))
 
     database.commit()
     database.close()
