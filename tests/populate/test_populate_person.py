@@ -46,9 +46,9 @@ class TestPersonPopulate:
         assert page.pagenumber == person_data['approximatePageNumber']
 
     def test_living_records_were_populated_correctly(self, person, person_data):
-        records = Livingrecord.select().join(Place).where(Livingrecord.person == person.id)
+        records = sorted(Livingrecord.select().join(Place).where(Livingrecord.person == person.id), key = lambda x: (x.movedin is None, x.movedin))
 
-        expected_records = person_data['locations']
+        expected_records = sorted(person_data['locations'], key = lambda x: (x['movedIn'] is None, x['movedIn']))
         assert len(records) == len(expected_records)
 
         for i, r in enumerate(records):
@@ -59,7 +59,6 @@ class TestPersonPopulate:
             assert r.place.latitude == expected_records[i]['coordinates']['latitude']
             assert r.place.longitude == expected_records[i]['coordinates']['longitude']
             assert r.place.region == expected_records[i]['region']
-
 
     def test_children_were_populated_correctly(self, person, person_data):
         child = (Child.select()

@@ -154,4 +154,5 @@ ENV/
 # End of https://www.gitignore.io/api/venv,intellij,python
 
 kareliandb_venv/
+*venv/
 db/
