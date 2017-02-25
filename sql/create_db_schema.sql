@@ -4,6 +4,8 @@ create schema extensions;
 CREATE EXTENSION postgis SCHEMA extensions;
 ALTER DATABASE "learning-from-our-past" SET search_path=extensions, public;
 
+CREATE EXTENSION fuzzystrmatch SCHEMA extensions;
+
 CREATE TABLE siirtokarjalaisten_tie.Place(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
