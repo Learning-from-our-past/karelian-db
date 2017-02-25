@@ -16,6 +16,7 @@ Before use, add following environment variables for database connection:
 DB_NAME
 DB_PASSWORD
 DB_USER
+DB_MASTER_NAME (required by unit tests)
 ```
 
 ## Postgres and Access

@@ -1,9 +1,13 @@
+--create database "learning-from-our-past"
 create schema siirtokarjalaisten_tie;
-CREATE EXTENSION postgis;
+create schema extensions;
+CREATE EXTENSION postgis SCHEMA extensions;
+ALTER DATABASE "learning-from-our-past" SET search_path=extensions, public;
+
 CREATE TABLE siirtokarjalaisten_tie.Place(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
-  location public.GEOMETRY(POINT, 4326), -- WGS 84
+  location extensions.GEOMETRY(POINT, 4326), -- WGS 84
   latitude TEXT NOT NULL,
   longitude TEXT NOT NULL,
   region TEXT NOT NULL,
