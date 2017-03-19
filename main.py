@@ -8,12 +8,19 @@ def load_json(path):
     return data
 
 def populate_db(data):
+    database.set_autocommit(False)
+    database.begin()
+    try:
+        for idx, person in enumerate(data):
+            populate_person(person)
+            print("Added ", person['name']['results']["firstNames"], person['name']['results']["surname"], idx+1, '/', len(data))
 
-    for idx, person in enumerate(data):
-        populate_person(person)
-        print("Added ", person["firstNames"], person["surname"], idx+1, '/', len(data))
+        database.commit()
+    except Exception:
+        print('rollback')
+        database.rollback()
 
-    database.commit()
+    database.set_autocommit(True)
     database.close()
 
 
@@ -23,7 +30,7 @@ if __name__ == "__main__":
     db_connection.connect()
     database = db_connection.get_database()
 
-    data = load_json("./json/testset.json")
+    data = load_json("./json/siirtokarjalaisetI.json")
     populate_db(data)
 
 
