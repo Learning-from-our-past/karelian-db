@@ -1,11 +1,11 @@
-CREATE OR REPLACE FUNCTION truncate_tables(username IN VARCHAR) RETURNS void AS $$
+CREATE OR REPLACE FUNCTION truncate_tables(username IN VARCHAR, targetschema IN VARCHAR) RETURNS void AS $$
 DECLARE
     statements CURSOR FOR
-        SELECT tablename FROM pg_tables
-        WHERE tableowner = username AND schemaname = 'siirtokarjalaisten_tie';
+        SELECT tablename, schemaname FROM pg_tables
+        WHERE tableowner = username AND schemaname = targetschema;
 BEGIN
     FOR stmt IN statements LOOP
-        EXECUTE 'TRUNCATE TABLE ' || quote_ident(stmt.tablename) || ' CASCADE;';
+         EXECUTE 'TRUNCATE TABLE ' || quote_ident(stmt.schemaname) || '.' || quote_ident(stmt.tablename) || ' CASCADE;';
     END LOOP;
 END;
 $$ LANGUAGE plpgsql;

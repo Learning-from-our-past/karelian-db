@@ -1,4 +1,5 @@
 from models.db_siirtokarjalaistentie_models import *
+from config import CONFIG
 
 def _transform_sex(orig):
     if orig == 'Male':
@@ -17,7 +18,52 @@ def _invert_gender(orig):
         return ''
 
 def _populate_place(place):
-    return Place.get_or_create(**place)
+    """
+    When populating new Place to the database, try to figure out if place already exists there either as directly or
+    one with slightly different name. Use Postgres Levenshtein search to find group of similar named places and
+    then try to use one of the existing if there is either coordinate match or region match. Otherwise create a new
+    record.
+    :param place:
+    :return:
+    """
+
+    if CONFIG['place_levenshtein']:
+        existing_places = Place.raw("select * "
+                                    "from siirtokarjalaisten_tie.place "
+                                    "where levenshtein(place.name, %s, 1, 2, 3) <= 3 "
+                                    "order by levenshtein(place.name, %s)", place['name'], place['name'])
+
+        coordinates_available = place['latitude'] and place['longitude']
+
+        if coordinates_available:
+            places_with_same_coordinates = [p for p in existing_places if p.latitude == place['latitude'] and p.longitude == place['longitude']]
+
+            if len(places_with_same_coordinates) > 0:
+                # Place with same coordinates should be same place -> use it
+                existing_place = places_with_same_coordinates[0]
+                # Fill in missing region if there is not one in db
+                if existing_place.region == '' and place['region'] != '':
+                    existing_place.region = place['region']
+
+                existing_place.save()
+                return existing_place
+
+        # Check if there is place with same region
+        places_with_same_region = [p for p in existing_places
+                                   if p.region != ''
+                                   and p.region == place['region']]
+
+        if len(places_with_same_region) > 0:
+            existing_place = places_with_same_region[0]
+
+            # Fill in the coordinates to existing record if they are missing
+            if existing_place.latitude == '' and existing_place.longitude == '' and coordinates_available:
+                existing_place.latitude = place['latitude']
+                existing_place.longitude = place['longitude']
+                existing_place.save()
+            return existing_place
+
+    return Place.get_or_create(**place)[0]
 
 def _populate_page(page):
     return Page.get_or_create(**page)
@@ -42,7 +88,7 @@ def _populate_spouse(spouse, personModel, person):
         'longitude': 0,
         'region': '',
         'location': None
-    })[0]
+    })
 
     profession = _populate_profession({
         'name': spouse['profession']
@@ -95,7 +141,7 @@ def _populate_child(child, personModel, person):
         'longitude': child['coordinates']['longitude'] or 0,
         'location': location,
         'region': ''
-    })[0]
+    })
 
     childData = {
         'firstname': child['name'],
@@ -123,7 +169,7 @@ def _populate_migration_history(places, personModel):
             'longitude': p['coordinates']['longitude'] or 0,
             'region': p['region'] or '',
             'location': location
-        })[0]
+        })
 
         if not p['movedIn']:
             p['movedIn'] = None
@@ -145,7 +191,7 @@ def populate_person(person):
         'longitude': 0,
         'region': '',
         'location': None
-    })[0]
+    })
 
     page = _populate_page({
         'pagenumber': person['approximatePageNumber']
