@@ -10,9 +10,9 @@ CREATE TABLE siirtokarjalaisten_tie.Place(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   location extensions.GEOMETRY(POINT, 4326), -- WGS 84
-  latitude TEXT NOT NULL,
-  longitude TEXT NOT NULL,
-  region TEXT NOT NULL,
+  latitude TEXT,
+  longitude TEXT,
+  region TEXT,
 
   unique(name, region, latitude, longitude)
 );
