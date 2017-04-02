@@ -52,20 +52,20 @@ CREATE TABLE siirtokarjalaisten_tie.Person(
   lastname TEXT NOT NULL,
   prevlastname TEXT,
   sex TEXT NOT NULL CHECK(sex = 'm' OR sex = 'f' OR sex = ''),
-  birthdate INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id)
+  birthdateId INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  birthplace INTEGER REFERENCES siirtokarjalaisten_tie.Place(id)
+  birthplaceId INTEGER REFERENCES siirtokarjalaisten_tie.Place(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  deathdate INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id) -- at the moment useless attrubte for Person since in the book main people don't have death data
+  deathdateId INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id) -- at the moment useless attrubte for Person since in the book main people don't have death data
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  deathplace INTEGER REFERENCES siirtokarjalaisten_tie.Place(id)
+  deathplaceId INTEGER REFERENCES siirtokarjalaisten_tie.Place(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
   ownhouse BOOLEAN,
-  profession INTEGER REFERENCES siirtokarjalaisten_tie.Profession(id)
+  professionId INTEGER REFERENCES siirtokarjalaisten_tie.Profession(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
   returnedkarelia BOOLEAN,
@@ -81,13 +81,13 @@ CREATE TABLE siirtokarjalaisten_tie.Child(
   firstname TEXT NOT NULL,
   lastname TEXT NOT NULL,
   sex TEXT NOT NULL CHECK(sex = 'm' OR sex = 'f' OR sex = ''),
-  birthdate INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id)
+  birthdateId INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  birthplace INTEGER REFERENCES siirtokarjalaisten_tie.Place(id)
+  birthplaceId INTEGER REFERENCES siirtokarjalaisten_tie.Place(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  parent INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie.Person(id)
+  parentPersonId INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie.Person(id)
       ON UPDATE CASCADE
       ON DELETE CASCADE
 );
@@ -96,21 +96,21 @@ CREATE TABLE siirtokarjalaisten_tie.Spouse(
   id SERIAL PRIMARY KEY,
   firstname TEXT NOT NULL,
   lastname TEXT NOT NULL,
-  prevlastname TEXT,
+  maidenname TEXT,
   sex TEXT NOT NULL CHECK(sex = 'm' OR sex = 'f' OR sex = ''),
-  birthdate INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id)
+  birthdateId INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  birthplace INTEGER REFERENCES siirtokarjalaisten_tie.Place(id)
+  birthplaceId INTEGER REFERENCES siirtokarjalaisten_tie.Place(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  deathdate INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id)
+  deathdateId INTEGER REFERENCES siirtokarjalaisten_tie.PersonDate(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  profession INTEGER REFERENCES siirtokarjalaisten_tie.Profession(id)
+  professionId INTEGER REFERENCES siirtokarjalaisten_tie.Profession(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  spouse INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie.Person
+  personId INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie.Person
       ON UPDATE CASCADE
       ON DELETE CASCADE,
   marriageyear INTEGER
@@ -118,10 +118,10 @@ CREATE TABLE siirtokarjalaisten_tie.Spouse(
 
 CREATE TABLE siirtokarjalaisten_tie.LivingRecord(
   id SERIAL PRIMARY KEY,
-  person INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie.Person(id)
+  personId INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie.Person(id)
       ON UPDATE CASCADE
       ON DELETE CASCADE,
-  place INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie.Place(id)
+  placeId INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie.Place(id)
       ON UPDATE CASCADE
       ON DELETE NO ACTION,
   movedin INTEGER,

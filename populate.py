@@ -117,13 +117,13 @@ def _populate_spouse(spouse, personModel, person):
     spouseData = {
         'firstname': spouse['spouseName'],
         'lastname': person['name']['results']['surname'],
-        'prevlastname': spouse['originalFamily']['results'],
+        'maidenname': spouse['originalFamily']['results'],
         'sex': _invert_gender(person['name']['results']['gender']),
-        'birthdate': birth_date,
-        'birthplace': birth_place,
-        'deathdate': death_date,
-        'profession': profession,
-        'spouse': personModel,
+        'birthdateId': birth_date,
+        'birthplaceId': birth_place,
+        'deathdateId': death_date,
+        'professionId': profession,
+        'personId': personModel,
         'marriageyear': spouse['weddingYear']['results'] or None
     }
 
@@ -152,9 +152,9 @@ def _populate_child(child, personModel, person):
         'firstname': child['name'],
         'lastname': person['name']['results']['surname'],
         'sex':  _transform_sex(child['gender']),
-        'birthdate': birth_date,
-        'birthplace': birth_place,
-        'parent': personModel
+        'birthdateId': birth_date,
+        'birthplaceId': birth_place,
+        'parentPersonId': personModel
     }
 
     return Child.create_or_get(**childData)
@@ -177,8 +177,8 @@ def _populate_migration_history(places, personModel):
         })
 
         _populate_migration_record({
-            'person': personModel,
-            'place': placeModel,
+            'personId': personModel,
+            'placeId': placeModel,
             'movedin':  p['movedIn'],
             'movedout': p['movedOut']
         })[0]
@@ -214,12 +214,12 @@ def populate_person(person):
         'lastname': person['name']['results']['surname'],
         'prevlastname': person['originalFamily']['results'],
         'sex': _transform_sex(person['name']['results']['gender']),
-        'birthdate': birth_date,
-        'birthplace': birth_place,
-        'deathdate': death_date,
-        'deathplace': death_place,
+        'birthdateId': birth_date,
+        'birthplaceId': birth_place,
+        'deathdateId': death_date,
+        'deathplaceId': death_place,
         'ownhouse': person['ownHouse']['results'],
-        'profession': profession,
+        'professionId': profession,
         'returnedkarelia': person['migrationHistory']['results']['returnedToKarelia'],
         'previousmarriages': None,  # FIXME: This is missing from new data set.
         'pagenumber': page,

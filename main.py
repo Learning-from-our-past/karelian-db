@@ -30,7 +30,7 @@ if __name__ == "__main__":
     db_connection.connect()
     database = db_connection.get_database()
 
-    data = load_json("./json/siirtokarjalaisetI.json")
+    data = load_json("./json/testset.json")
     populate_db(data)
 
 

@@ -53,10 +53,10 @@ class Profession(BaseModel):
         db_table = 'profession'
 
 class Person(BaseModel):
-    birthdate = ForeignKeyField(db_column='birthdate', null=True, rel_model=Persondate, to_field='id')
-    birthplace = ForeignKeyField(db_column='birthplace', null=True, rel_model=Place, to_field='id')
-    deathdate = ForeignKeyField(db_column='deathdate', null=True, rel_model=Persondate, related_name='persondate_deathdate_set', to_field='id')
-    deathplace = ForeignKeyField(db_column='deathplace', null=True, rel_model=Place, related_name='place_deathplace_set', to_field='id')
+    birthdateId = ForeignKeyField(db_column='birthdateid', null=True, rel_model=Persondate, to_field='id')
+    birthplaceId = ForeignKeyField(db_column='birthplaceid', null=True, rel_model=Place, to_field='id')
+    deathdateId = ForeignKeyField(db_column='deathdateid', null=True, rel_model=Persondate, related_name='persondate_deathdate_set', to_field='id')
+    deathplaceId = ForeignKeyField(db_column='deathplaceid', null=True, rel_model=Place, related_name='place_deathplace_set', to_field='id')
     firstname = TextField()
     lastname = TextField()
     origtext = TextField()
@@ -64,7 +64,7 @@ class Person(BaseModel):
     pagenumber = ForeignKeyField(db_column='pagenumber', rel_model=Page, to_field='pagenumber')
     previousmarriages = BooleanField(null=True)
     prevlastname = TextField(null=True)
-    profession = ForeignKeyField(db_column='profession', null=True, rel_model=Profession, to_field='id')
+    professionId = ForeignKeyField(db_column='professionid', null=True, rel_model=Profession, to_field='id')
     returnedkarelia = BooleanField(null=True)
     sex = TextField()
 
@@ -72,11 +72,11 @@ class Person(BaseModel):
         db_table = 'person'
 
 class Child(BaseModel):
-    birthdate = ForeignKeyField(db_column='birthdate', null=True, rel_model=Persondate, to_field='id')
-    birthplace = ForeignKeyField(db_column='birthplace', null=True, rel_model=Place, to_field='id')
+    birthdateId = ForeignKeyField(db_column='birthdateid', null=True, rel_model=Persondate, to_field='id')
+    birthplaceId = ForeignKeyField(db_column='birthplaceid', null=True, rel_model=Place, to_field='id')
     firstname = TextField()
     lastname = TextField()
-    parent = ForeignKeyField(db_column='parent', rel_model=Person, to_field='id')
+    parentPersonId = ForeignKeyField(db_column='parentpersonid', rel_model=Person, to_field='id')
     sex = TextField()
 
     class Meta:
@@ -85,23 +85,23 @@ class Child(BaseModel):
 class Livingrecord(BaseModel):
     movedin = IntegerField(null=True)
     movedout = IntegerField(null=True)
-    person = ForeignKeyField(db_column='person', rel_model=Person, to_field='id')
-    place = ForeignKeyField(db_column='place', rel_model=Place, to_field='id')
+    personId = ForeignKeyField(db_column='personid', rel_model=Person, to_field='id')
+    placeId = ForeignKeyField(db_column='placeid', rel_model=Place, to_field='id')
 
     class Meta:
         db_table = 'livingrecord'
 
 class Spouse(BaseModel):
-    birthdate = ForeignKeyField(db_column='birthdate', null=True, rel_model=Persondate, to_field='id')
-    birthplace = ForeignKeyField(db_column='birthplace', null=True, rel_model=Place, to_field='id')
-    deathdate = ForeignKeyField(db_column='deathdate', null=True, rel_model=Persondate, related_name='persondate_spouse_deathdate_set', to_field='id')
+    birthdateId = ForeignKeyField(db_column='birthdateid', null=True, rel_model=Persondate, to_field='id')
+    birthplaceId = ForeignKeyField(db_column='birthplaceid', null=True, rel_model=Place, to_field='id')
+    deathdateId = ForeignKeyField(db_column='deathdateid', null=True, rel_model=Persondate, related_name='persondate_spouse_deathdate_set', to_field='id')
     firstname = TextField()
     lastname = TextField()
     marriageyear = IntegerField(null=True)
-    prevlastname = TextField(null=True)
-    profession = ForeignKeyField(db_column='profession', null=True, rel_model=Profession, to_field='id')
+    maidenname = TextField(null=True)
+    professionId = ForeignKeyField(db_column='professionid', null=True, rel_model=Profession, to_field='id')
     sex = TextField()
-    spouse = ForeignKeyField(db_column='spouse', rel_model=Person, to_field='id')
+    personId = ForeignKeyField(db_column='personid', rel_model=Person, to_field='id')
 
     class Meta:
         db_table = 'spouse'
