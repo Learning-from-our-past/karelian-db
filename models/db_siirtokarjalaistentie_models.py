@@ -23,6 +23,8 @@ class Place(BaseModel):
     latitude = TextField()
     longitude = TextField()
     name = TextField()
+    stemname = TextField()
+    extractedname = TextField()
     region = TextField()
     location = PointField()
 

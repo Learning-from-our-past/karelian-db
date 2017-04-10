@@ -1,5 +1,7 @@
 from models.db_siirtokarjalaistentie_models import *
 from config import CONFIG
+import nltk.stem.snowball as snowball
+stemmer = snowball.SnowballStemmer('finnish')
 
 def _transform_sex(orig):
     if orig == 'Male':
@@ -44,11 +46,11 @@ def _populate_place(place):
     if place['name'] is None or place['name'] == '':
         return None
 
-    if CONFIG['place_levenshtein']:
-        existing_places = Place.raw("select * "
-                                    'from siirtokarjalaisten_tie."Place" '
-                                    'where levenshtein("Place".name, %s, 1, 2, 3) <= 3 '
-                                    'order by levenshtein("Place".name, %s)', place['name'], place['name'])
+    place['stemname'] = stemmer.stem(place['name'])
+
+    if CONFIG['place_snowball_stem']:
+        existing_places = (Place.select()
+                           .where(Place.stemname == place['stemname']))
 
         coordinates_available = place['latitude'] and place['longitude']
 
@@ -67,7 +69,7 @@ def _populate_place(place):
 
         # Check if there is place with same region
         places_with_same_region = [p for p in existing_places
-                                   if p.region != ''
+                                   if p.region is not None
                                    and p.region == place['region']]
 
         if len(places_with_same_region) > 0:

@@ -13,6 +13,8 @@ CREATE TABLE siirtokarjalaisten_tie."Place"(
   latitude TEXT,
   longitude TEXT,
   region TEXT,
+  stemname TEXT,
+  extractedname TEXT,
 
   unique(name, region, latitude, longitude)
 );
