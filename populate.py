@@ -52,20 +52,20 @@ def _populate_place(place):
         existing_places = (Place.select()
                            .where(Place.stemname == place['stemname']))
 
-        coordinates_available = place['latitude'] and place['longitude']
-
-        if coordinates_available:
-            places_with_same_coordinates = [p for p in existing_places if p.latitude == place['latitude'] and p.longitude == place['longitude']]
-
-            if len(places_with_same_coordinates) > 0:
-                # Place with same coordinates should be same place -> use it
-                existing_place = places_with_same_coordinates[0]
-                # Fill in missing region if there is not one in db
-                if existing_place.region == '' and place['region'] != '':
-                    existing_place.region = place['region']
-
-                existing_place.save()
-                return existing_place
+        # coordinates_available = place['latitude'] and place['longitude']
+        #
+        # if coordinates_available:
+        #     places_with_same_coordinates = [p for p in existing_places if p.latitude == place['latitude'] and p.longitude == place['longitude']]
+        #
+        #     if len(places_with_same_coordinates) > 0:
+        #         # Place with same coordinates should be same place -> use it
+        #         existing_place = places_with_same_coordinates[0]
+        #         # Fill in missing region if there is not one in db
+        #         if existing_place.region == '' and place['region'] != '':
+        #             existing_place.region = place['region']
+        #
+        #         existing_place.save()
+        #         return existing_place
 
         # Check if there is place with same region
         places_with_same_region = [p for p in existing_places
@@ -76,10 +76,10 @@ def _populate_place(place):
             existing_place = places_with_same_region[0]
 
             # Fill in the coordinates to existing record if they are missing
-            if existing_place.latitude == '' and existing_place.longitude == '' and coordinates_available:
-                existing_place.latitude = place['latitude']
-                existing_place.longitude = place['longitude']
-                existing_place.save()
+            # if not existing_place.latitude and not existing_place.longitude and coordinates_available:
+            #     existing_place.latitude = place['latitude']
+            #     existing_place.longitude = place['longitude']
+            #     existing_place.save()
             return existing_place
 
     return Place.get_or_create(**place)[0]
@@ -159,8 +159,8 @@ def _populate_child(child, personModel, spouseModel, person):
 
     birth_place = _populate_place({
         'name': child['location'],
-        'latitude': child['coordinates']['latitude'] or 0,
-        'longitude': child['coordinates']['longitude'] or 0,
+        'latitude': child['coordinates']['latitude'] or None,
+        'longitude': child['coordinates']['longitude'] or None,
         'location': location,
         'region': None
     })
