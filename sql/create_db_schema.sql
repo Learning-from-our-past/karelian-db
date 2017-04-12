@@ -15,6 +15,9 @@ CREATE TABLE siirtokarjalaisten_tie."Place"(
   location extensions.GEOMETRY(POINT, 4326), -- WGS 84
   latitude TEXT,
   longitude TEXT,
+  region TEXT,
+  stemname TEXT,
+  extractedname TEXT,
 
   unique(name, region, stemname, extractedname, latitude, longitude)
 );
