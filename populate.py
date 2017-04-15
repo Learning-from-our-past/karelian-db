@@ -32,9 +32,9 @@ def _populate_place(place):
 
     if CONFIG['place_levenshtein']:
         existing_places = Place.raw("select * "
-                                    "from siirtokarjalaisten_tie.place "
-                                    "where levenshtein(place.name, %s, 1, 2, 3) <= 3 "
-                                    "order by levenshtein(place.name, %s)", place['name'], place['name'])
+                                    'from siirtokarjalaisten_tie."Place" '
+                                    'where levenshtein("Place".name, %s, 1, 2, 3) <= 3 '
+                                    'order by levenshtein("Place".name, %s)', place['name'], place['name'])
 
         coordinates_available = place['latitude'] and place['longitude']
 
@@ -83,7 +83,7 @@ def _populate_person_date(date):
 
     # If there is date violating date checks, ignore it
     try:
-        return Persondate.get_or_create(**date)[0]
+        return PersonDate.get_or_create(**date)[0]
     except IntegrityError:
         return None
 
@@ -115,16 +115,16 @@ def _populate_spouse(spouse, personModel, person):
         death_date = None
 
     spouseData = {
-        'firstname': spouse['spouseName'],
-        'lastname': person['name']['results']['surname'],
-        'maidenname': spouse['originalFamily']['results'],
+        'firstName': spouse['spouseName'],
+        'lastName': person['name']['results']['surname'],
+        'maidenName': spouse['originalFamily']['results'],
         'sex': _invert_gender(person['name']['results']['gender']),
-        'birthdateId': birth_date,
-        'birthplaceId': birth_place,
-        'deathdateId': death_date,
+        'birthDateId': birth_date,
+        'birthPlaceId': birth_place,
+        'deathDateId': death_date,
         'professionId': profession,
         'personId': personModel,
-        'marriageyear': spouse['weddingYear']['results'] or None
+        'marriageYear': spouse['weddingYear']['results'] or None
     }
 
     return Spouse.create_or_get(**spouseData)
@@ -149,11 +149,11 @@ def _populate_child(child, personModel, person):
     })
 
     childData = {
-        'firstname': child['name'],
-        'lastname': person['name']['results']['surname'],
+        'firstName': child['name'],
+        'lastName': person['name']['results']['surname'],
         'sex':  _transform_sex(child['gender']),
-        'birthdateId': birth_date,
-        'birthplaceId': birth_place,
+        'birthDateId': birth_date,
+        'birthPlaceId': birth_place,
         'parentPersonId': personModel
     }
 
@@ -193,7 +193,7 @@ def populate_person(person):
     })
 
     page = _populate_page({
-        'pagenumber': person['personMetadata']['results']['approximatePageNumber']
+        'pageNumber': person['personMetadata']['results']['approximatePageNumber']
     })[0]
 
     profession = _populate_profession({
@@ -210,20 +210,20 @@ def populate_person(person):
     death_place = None
 
     personData = {
-        'firstname': person['name']['results']['firstNames'],
-        'lastname': person['name']['results']['surname'],
-        'prevlastname': person['originalFamily']['results'],
+        'firstName': person['name']['results']['firstNames'],
+        'lastName': person['name']['results']['surname'],
+        'prevLastName': person['originalFamily']['results'],
         'sex': _transform_sex(person['name']['results']['gender']),
-        'birthdateId': birth_date,
-        'birthplaceId': birth_place,
-        'deathdateId': death_date,
-        'deathplaceId': death_place,
-        'ownhouse': person['ownHouse']['results'],
+        'birthDateId': birth_date,
+        'birthPlaceId': birth_place,
+        'deathDateId': death_date,
+        'deathPlaceId': death_place,
+        'ownHouse': person['ownHouse']['results'],
         'professionId': profession,
-        'returnedkarelia': person['migrationHistory']['results']['returnedToKarelia'],
-        'previousmarriages': None,  # FIXME: This is missing from new data set.
-        'pagenumber': page,
-        'origtext': person['personMetadata']['results']['originalText']
+        'returnedKarelia': person['migrationHistory']['results']['returnedToKarelia'],
+        'previousMarriages': None,  # FIXME: This is missing from new data set.
+        'pageNumber': page,
+        'originalText': person['personMetadata']['results']['originalText']
     }
 
     personModel = Person.create_or_get(**personData)[0]
