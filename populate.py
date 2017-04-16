@@ -17,6 +17,20 @@ def _invert_gender(orig):
     else:
         return ''
 
+
+def _figure_gender_of_couple(person1, person2):
+    if person1.sex == 'm':
+        male = person1
+        female = person2
+    elif person1.sex == 'f':
+        male = person2
+        female = person1
+    else:
+        raise SexMissingException
+
+    return {'male': male, 'female': female}
+
+
 def _populate_place(place):
     """
     When populating new Place to the database, try to figure out if place already exists there either as directly or
@@ -32,9 +46,9 @@ def _populate_place(place):
 
     if CONFIG['place_levenshtein']:
         existing_places = Place.raw("select * "
-                                    "from siirtokarjalaisten_tie.place "
-                                    "where levenshtein(place.name, %s, 1, 2, 3) <= 3 "
-                                    "order by levenshtein(place.name, %s)", place['name'], place['name'])
+                                    'from siirtokarjalaisten_tie."Place" '
+                                    'where levenshtein("Place".name, %s, 1, 2, 3) <= 3 '
+                                    'order by levenshtein("Place".name, %s)', place['name'], place['name'])
 
         coordinates_available = place['latitude'] and place['longitude']
 
@@ -77,65 +91,66 @@ def _populate_profession(profession):
     else:
         return Profession.get_or_create(**profession)
 
-def _populate_person_date(date):
-    if not date['day'] and not date['month'] and not date['year']:
-        return None
-
-    # If there is date violating date checks, ignore it
-    try:
-        return Persondate.get_or_create(**date)[0]
-    except IntegrityError:
-        return None
 
 def _populate_spouse(spouse, personModel, person):
     birth_place = _populate_place({
         'name': spouse['birthData']['birthLocation']['results'],
         'latitude': None,
         'longitude': None,
-        'region': None,
+        'region': None,     # TODO: Fill this once location name resolving is done
         'location': None
     })
     profession = _populate_profession({
         'name': spouse['profession']['results']
     })[0]
 
-    birth_date = _populate_person_date({
-        'day': spouse['birthData']['results']['birthDay'],
-        'month':  spouse['birthData']['results']['birthMonth'],
-        'year':  spouse['birthData']['results']['birthYear']
-    })
-
-    if spouse['deathYear'] is not None:
-        death_date = _populate_person_date({
-            'day': None,
-            'month':  None,
-            'year': spouse['deathYear']['results']
-        })
-    else:
-        death_date = None
-
     spouseData = {
-        'firstname': spouse['spouseName'],
-        'lastname': person['name']['results']['surname'],
-        'prevlastname': spouse['originalFamily']['results'],
+        'firstName': spouse['spouseName'],
+        'lastName': person['name']['results']['surname'],
+        'prevLastName': spouse['originalFamily']['results'],
         'sex': _invert_gender(person['name']['results']['gender']),
-        'birthdate': birth_date,
-        'birthplace': birth_place,
-        'deathdate': death_date,
-        'profession': profession,
-        'spouse': personModel,
-        'marriageyear': spouse['weddingYear']['results'] or None
+        'birthDay': spouse['birthData']['results']['birthDay'],
+        'birthMonth': spouse['birthData']['results']['birthMonth'],
+        'birthYear': spouse['birthData']['results']['birthYear'],
+        'birthPlaceId': birth_place,
+        'professionId': profession,
+        'deathDay': None,
+        'deathMonth': None,
+        'deathYear': spouse['deathYear']['results'],
+        'deathPlaceId': None,
+        'ownHouse': None,
+        'returnedKarelia': None,    # TODO: Fill in once Spouse data contains information about their personal migration route
+        'previousMarriages': None,  # FIXME: This is missing from new data set.
+        'pageNumber': personModel.pageNumber,
+        'originalText': personModel.originalText
     }
 
-    return Spouse.create_or_get(**spouseData)
+    return Person.create_or_get(**spouseData)
 
-def _populate_child(child, personModel, person):
-    birth_date = _populate_person_date({
-        'day': None,
-        'month': None,
-        'year': child['birthYear']
-    })
+def _populate_marriage(person_model, spouse_model, spouse_entry):
+    male = None
+    female = None
 
+    if person_model.sex == 'm':
+        male = person_model
+        female = spouse_model
+    elif person_model.sex == 'f':
+        male = spouse_model
+        female = person_model
+
+    wedding_year = spouse_entry['weddingYear']['results'] or None
+
+
+    if male and female:
+        return Marriage.create(
+            manId=male.id,
+            womanId=female.id,
+            weddingYear=wedding_year)
+    else:
+        return None
+
+
+def _populate_child(child, personModel, spouseModel, person):
     location = None
     if child['coordinates']['latitude'] and child['coordinates']['longitude']:
         location = pft(child['coordinates']['latitude'], child['coordinates']['longitude'])
@@ -145,16 +160,33 @@ def _populate_child(child, personModel, person):
         'latitude': child['coordinates']['latitude'] or 0,
         'longitude': child['coordinates']['longitude'] or 0,
         'location': location,
-        'region': ''
+        'region': None
     })
 
+    try:
+        parents = _figure_gender_of_couple(personModel, spouseModel)
+    except SexMissingException:
+        # If parent gender could not be assigned, assume that Person is male.
+        parents = {'male': personModel, 'female': None}
+
+    father_id = None
+    mother_id = None
+
+    if parents['male']:
+        father_id = parents['male'].id
+
+    if parents['female']:
+        mother_id = parents['female'].id
+
     childData = {
-        'firstname': child['name'],
-        'lastname': person['name']['results']['surname'],
-        'sex':  _transform_sex(child['gender']),
-        'birthdate': birth_date,
-        'birthplace': birth_place,
-        'parent': personModel
+        'firstName': child['name'],
+        'lastName': person['name']['results']['surname'],
+        'birthYear': child['birthYear'],
+        'sex': _transform_sex(child['gender']),
+        'birthPlaceId': birth_place,
+        'parentPersonId': personModel,
+        'fatherId': father_id,
+        'motherId': mother_id
     }
 
     return Child.create_or_get(**childData)
@@ -177,10 +209,10 @@ def _populate_migration_history(places, personModel):
         })
 
         _populate_migration_record({
-            'person': personModel,
-            'place': placeModel,
-            'movedin':  p['movedIn'],
-            'movedout': p['movedOut']
+            'personId': personModel,
+            'placeId': placeModel,
+            'movedIn':  p['movedIn'],
+            'movedOut': p['movedOut']
         })[0]
 
 def populate_person(person):
@@ -193,48 +225,47 @@ def populate_person(person):
     })
 
     page = _populate_page({
-        'pagenumber': person['personMetadata']['results']['approximatePageNumber']
+        'pageNumber': person['personMetadata']['results']['approximatePageNumber']
     })[0]
 
     profession = _populate_profession({
         'name': person['profession']['results']
     })[0]
 
-    birth_date = _populate_person_date({
-        'day': person['birthday']['results']['birthDay'],
-        'month': person['birthday']['results']['birthMonth'],
-        'year': person['birthday']['results']['birthYear'],
-    })
-
-    death_date = None
-    death_place = None
-
     personData = {
-        'firstname': person['name']['results']['firstNames'],
-        'lastname': person['name']['results']['surname'],
-        'prevlastname': person['originalFamily']['results'],
+        'firstName': person['name']['results']['firstNames'],
+        'lastName': person['name']['results']['surname'],
+        'prevLastName': person['originalFamily']['results'],
         'sex': _transform_sex(person['name']['results']['gender']),
-        'birthdate': birth_date,
-        'birthplace': birth_place,
-        'deathdate': death_date,
-        'deathplace': death_place,
-        'ownhouse': person['ownHouse']['results'],
-        'profession': profession,
-        'returnedkarelia': person['migrationHistory']['results']['returnedToKarelia'],
-        'previousmarriages': None,  # FIXME: This is missing from new data set.
-        'pagenumber': page,
-        'origtext': person['personMetadata']['results']['originalText']
+        'birthDay': person['birthday']['results']['birthDay'],
+        'birthMonth': person['birthday']['results']['birthMonth'],
+        'birthYear': person['birthday']['results']['birthYear'],
+        'birthPlaceId': birth_place,
+        'deathDay': None,
+        'deathMonth': None,
+        'deathYear': None,
+        'deathPlaceId': None,
+        'ownHouse': person['ownHouse']['results'],
+        'professionId': profession,
+        'returnedKarelia': person['migrationHistory']['results']['returnedToKarelia'],
+        'previousMarriages': None,  # FIXME: This is missing from new data set.
+        'pageNumber': page,
+        'originalText': person['personMetadata']['results']['originalText']
     }
 
     personModel = Person.create_or_get(**personData)[0]
 
+    spouseModel = None
     if person['spouse'] is not None and person['spouse']['results']['hasSpouse'] is True:
         spouseModel = _populate_spouse(person['spouse']['results'], personModel, person)[0]
+        marriage = _populate_marriage(personModel, spouseModel, person['spouse']['results'])
+
 
     for child in person['children']['results']['children']:
-        childModel = _populate_child(child, personModel, person)[0]
+        childModel = _populate_child(child, personModel, spouseModel, person)[0]
 
     _populate_migration_history(person['migrationHistory']['results']['locations'], personModel)
 
 
-
+class SexMissingException(Exception):
+    pass
