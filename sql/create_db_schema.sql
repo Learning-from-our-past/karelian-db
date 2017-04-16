@@ -32,35 +32,21 @@ CREATE TABLE siirtokarjalaisten_tie."Profession"(
   unique(name)
 );
 
-CREATE TABLE siirtokarjalaisten_tie."PersonDate"(
-  id SERIAL PRIMARY KEY,
-  day INTEGER DEFAULT 0 CHECK(day >= 0 AND day <= 31),
-  month INTEGER  DEFAULT 0 CHECK(month >= 0 AND month <= 12),
-  year INTEGER DEFAULT 0 CHECK(year >= 0 AND year <= 2000),
-
-  unique(day, month, year)
-);
-
--- Required to make unique constraint to take in account NULL fields
-CREATE UNIQUE INDEX Unique_index_PersonDate_day_month_year
-  ON siirtokarjalaisten_tie."PersonDate"
-  (coalesce(day, 0), coalesce(month, 0), coalesce(year, 0));
-
 CREATE TABLE siirtokarjalaisten_tie."Person"(
   id SERIAL PRIMARY KEY,
   "firstName" TEXT NOT NULL,
   "lastName" TEXT NOT NULL,
   "prevLastName" TEXT,
   sex TEXT NOT NULL CHECK(sex = 'm' OR sex = 'f' OR sex = ''),
-  "birthDateId" INTEGER REFERENCES siirtokarjalaisten_tie."PersonDate"(id)
-      ON UPDATE CASCADE
-      ON DELETE SET NULL,
+  "birthDay" INTEGER,
+  "birthMonth" INTEGER,
+  "birthYear" INTEGER,
   "birthPlaceId" INTEGER REFERENCES siirtokarjalaisten_tie."Place"(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  "deathDateId" INTEGER REFERENCES siirtokarjalaisten_tie."PersonDate"(id) -- at the moment useless attrubte for Person since in the book main people don't have death data
-      ON UPDATE CASCADE
-      ON DELETE SET NULL,
+  "deathDay" INTEGER,
+  "deathMonth" INTEGER,
+  "deathYear" INTEGER,
   "deathPlaceId" INTEGER REFERENCES siirtokarjalaisten_tie."Place"(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
@@ -81,9 +67,7 @@ CREATE TABLE siirtokarjalaisten_tie."Child"(
   "firstName" TEXT NOT NULL,
   "lastName" TEXT NOT NULL,
   sex TEXT NOT NULL CHECK(sex = 'm' OR sex = 'f' OR sex = ''),
-  "birthDateId" INTEGER REFERENCES siirtokarjalaisten_tie."PersonDate"(id)
-      ON UPDATE CASCADE
-      ON DELETE SET NULL,
+  "birthYear" INTEGER,
   "birthPlaceId" INTEGER REFERENCES siirtokarjalaisten_tie."Place"(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,

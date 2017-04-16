@@ -29,16 +29,6 @@ class Place(BaseModel):
     class Meta:
         db_table = 'Place'
 
-class PersonDate(BaseModel):
-    day = IntegerField(null=True)
-    month = IntegerField(null=True)
-    year = IntegerField(null=True)
-
-    class Meta:
-        db_table = 'PersonDate'
-        indexes = (
-            (('day', 'month', 'year'), True),
-        )
 
 class Page(BaseModel):
     pageNumber = TextField(primary_key=True)
@@ -53,9 +43,13 @@ class Profession(BaseModel):
         db_table = 'Profession'
 
 class Person(BaseModel):
-    birthDateId = ForeignKeyField(db_column='birthDateId', null=True, rel_model=PersonDate, to_field='id')
+    birthDay = IntegerField()
+    birthMonth = IntegerField()
+    birthYear = IntegerField()
     birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
-    deathDateId = ForeignKeyField(db_column='deathDateId', null=True, rel_model=PersonDate, related_name='PersonDate_deathDate_set', to_field='id')
+    deathDay = IntegerField()
+    deathMonth = IntegerField()
+    deathYear = IntegerField()
     deathPlaceId = ForeignKeyField(db_column='deathPlaceId', null=True, rel_model=Place, related_name='Place_deathPlace_set', to_field='id')
     firstName = TextField()
     lastName = TextField()
@@ -72,7 +66,7 @@ class Person(BaseModel):
         db_table = 'Person'
 
 class Child(BaseModel):
-    birthDateId = ForeignKeyField(db_column='birthDateId', null=True, rel_model=PersonDate, to_field='id')
+    birthYear = IntegerField()
     birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
     firstName = TextField()
     lastName = TextField()

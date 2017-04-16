@@ -91,52 +91,32 @@ def _populate_profession(profession):
     else:
         return Profession.get_or_create(**profession)
 
-def _populate_person_date(date):
-    if not date['day'] and not date['month'] and not date['year']:
-        return None
-
-    # If there is date violating date checks, ignore it
-    try:
-        return PersonDate.get_or_create(**date)[0]
-    except IntegrityError:
-        return None
 
 def _populate_spouse(spouse, personModel, person):
     birth_place = _populate_place({
         'name': spouse['birthData']['birthLocation']['results'],
         'latitude': None,
         'longitude': None,
-        'region': None,
+        'region': None,     # TODO: Fill this once location name resolving is done
         'location': None
     })
     profession = _populate_profession({
         'name': spouse['profession']['results']
     })[0]
 
-    birth_date = _populate_person_date({
-        'day': spouse['birthData']['results']['birthDay'],
-        'month':  spouse['birthData']['results']['birthMonth'],
-        'year':  spouse['birthData']['results']['birthYear']
-    })
-
-    if spouse['deathYear'] is not None:
-        death_date = _populate_person_date({
-            'day': None,
-            'month':  None,
-            'year': spouse['deathYear']['results']
-        })
-    else:
-        death_date = None
-
     spouseData = {
         'firstName': spouse['spouseName'],
         'lastName': person['name']['results']['surname'],
         'prevLastName': spouse['originalFamily']['results'],
         'sex': _invert_gender(person['name']['results']['gender']),
-        'birthDateId': birth_date,
+        'birthDay': spouse['birthData']['results']['birthDay'],
+        'birthMonth': spouse['birthData']['results']['birthMonth'],
+        'birthYear': spouse['birthData']['results']['birthYear'],
         'birthPlaceId': birth_place,
-        'deathDateId': death_date,
         'professionId': profession,
+        'deathDay': None,
+        'deathMonth': None,
+        'deathYear': spouse['deathYear']['results'],
         'deathPlaceId': None,
         'ownHouse': None,
         'returnedKarelia': None,    # TODO: Fill in once Spouse data contains information about their personal migration route
@@ -171,12 +151,6 @@ def _populate_marriage(person_model, spouse_model, spouse_entry):
 
 
 def _populate_child(child, personModel, spouseModel, person):
-    birth_date = _populate_person_date({
-        'day': None,
-        'month': None,
-        'year': child['birthYear']
-    })
-
     location = None
     if child['coordinates']['latitude'] and child['coordinates']['longitude']:
         location = pft(child['coordinates']['latitude'], child['coordinates']['longitude'])
@@ -207,8 +181,8 @@ def _populate_child(child, personModel, spouseModel, person):
     childData = {
         'firstName': child['name'],
         'lastName': person['name']['results']['surname'],
+        'birthYear': child['birthYear'],
         'sex': _transform_sex(child['gender']),
-        'birthDateId': birth_date,
         'birthPlaceId': birth_place,
         'parentPersonId': personModel,
         'fatherId': father_id,
@@ -258,24 +232,19 @@ def populate_person(person):
         'name': person['profession']['results']
     })[0]
 
-    birth_date = _populate_person_date({
-        'day': person['birthday']['results']['birthDay'],
-        'month': person['birthday']['results']['birthMonth'],
-        'year': person['birthday']['results']['birthYear'],
-    })
-
-    death_date = None
-    death_place = None
-
     personData = {
         'firstName': person['name']['results']['firstNames'],
         'lastName': person['name']['results']['surname'],
         'prevLastName': person['originalFamily']['results'],
         'sex': _transform_sex(person['name']['results']['gender']),
-        'birthDateId': birth_date,
+        'birthDay': person['birthday']['results']['birthDay'],
+        'birthMonth': person['birthday']['results']['birthMonth'],
+        'birthYear': person['birthday']['results']['birthYear'],
         'birthPlaceId': birth_place,
-        'deathDateId': death_date,
-        'deathPlaceId': death_place,
+        'deathDay': None,
+        'deathMonth': None,
+        'deathYear': None,
+        'deathPlaceId': None,
         'ownHouse': person['ownHouse']['results'],
         'professionId': profession,
         'returnedKarelia': person['migrationHistory']['results']['returnedToKarelia'],
