@@ -160,7 +160,7 @@ def _populate_child(child, personModel, spouseModel, person):
         'latitude': child['coordinates']['latitude'] or 0,
         'longitude': child['coordinates']['longitude'] or 0,
         'location': location,
-        'region': ''
+        'region': None
     })
 
     try:
@@ -211,8 +211,8 @@ def _populate_migration_history(places, personModel):
         _populate_migration_record({
             'personId': personModel,
             'placeId': placeModel,
-            'movedin':  p['movedIn'],
-            'movedout': p['movedOut']
+            'movedIn':  p['movedIn'],
+            'movedOut': p['movedOut']
         })[0]
 
 def populate_person(person):
