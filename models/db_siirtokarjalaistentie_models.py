@@ -76,7 +76,8 @@ class Child(BaseModel):
     birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
     firstName = TextField()
     lastName = TextField()
-    parentPersonId = ForeignKeyField(db_column='parentPersonId', rel_model=Person, to_field='id')
+    fatherId = ForeignKeyField(db_column='fatherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_fatherId_set')
+    motherId = ForeignKeyField(db_column='motherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_motherId_set')
     sex = TextField()
 
     class Meta:
@@ -91,18 +92,10 @@ class Livingrecord(BaseModel):
     class Meta:
         db_table = 'LivingRecord'
 
-class Spouse(BaseModel):
-    birthDateId = ForeignKeyField(db_column='birthDateId', null=True, rel_model=PersonDate, to_field='id')
-    birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
-    deathDateId = ForeignKeyField(db_column='deathDateId', null=True, rel_model=PersonDate, related_name='PersonDate_Spouse_deathDate_set', to_field='id')
-    firstName = TextField()
-    lastName = TextField()
-    marriageYear = IntegerField(null=True)
-    maidenName = TextField(null=True)
-    professionId = ForeignKeyField(db_column='professionId', null=True, rel_model=Profession, to_field='id')
-    sex = TextField()
-    personId = ForeignKeyField(db_column='personId', rel_model=Person, to_field='id')
+class Marriage(BaseModel):
+    manId = ForeignKeyField(db_column='manId', rel_model=Person, to_field='id', related_name='marriage_Person_manId_set')
+    womanId = ForeignKeyField(db_column='womanId', rel_model=Person, to_field='id', related_name='marriage_Person_womanId_set')
+    weddingYear = IntegerField(null=True)
 
     class Meta:
-        db_table = 'Spouse'
-
+        db_table = 'Marriage'

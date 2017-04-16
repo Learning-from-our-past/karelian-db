@@ -17,6 +17,20 @@ def _invert_gender(orig):
     else:
         return ''
 
+
+def _figure_gender_of_couple(person1, person2):
+    if person1.sex == 'm':
+        male = person1
+        female = person2
+    elif person1.sex == 'f':
+        male = person2
+        female = person1
+    else:
+        raise SexMissingException
+
+    return {'male': male, 'female': female}
+
+
 def _populate_place(place):
     """
     When populating new Place to the database, try to figure out if place already exists there either as directly or
@@ -117,19 +131,46 @@ def _populate_spouse(spouse, personModel, person):
     spouseData = {
         'firstName': spouse['spouseName'],
         'lastName': person['name']['results']['surname'],
-        'maidenName': spouse['originalFamily']['results'],
+        'prevLastName': spouse['originalFamily']['results'],
         'sex': _invert_gender(person['name']['results']['gender']),
         'birthDateId': birth_date,
         'birthPlaceId': birth_place,
         'deathDateId': death_date,
         'professionId': profession,
-        'personId': personModel,
-        'marriageYear': spouse['weddingYear']['results'] or None
+        'deathPlaceId': None,
+        'ownHouse': None,
+        'returnedKarelia': None,    # TODO: Fill in once Spouse data contains information about their personal migration route
+        'previousMarriages': None,  # FIXME: This is missing from new data set.
+        'pageNumber': personModel.pageNumber,
+        'originalText': personModel.originalText
     }
 
-    return Spouse.create_or_get(**spouseData)
+    return Person.create_or_get(**spouseData)
 
-def _populate_child(child, personModel, person):
+def _populate_marriage(person_model, spouse_model, spouse_entry):
+    male = None
+    female = None
+
+    if person_model.sex == 'm':
+        male = person_model
+        female = spouse_model
+    elif person_model.sex == 'f':
+        male = spouse_model
+        female = person_model
+
+    wedding_year = spouse_entry['weddingYear']['results'] or None
+
+
+    if male and female:
+        return Marriage.create(
+            manId=male.id,
+            womanId=female.id,
+            weddingYear=wedding_year)
+    else:
+        return None
+
+
+def _populate_child(child, personModel, spouseModel, person):
     birth_date = _populate_person_date({
         'day': None,
         'month': None,
@@ -148,13 +189,30 @@ def _populate_child(child, personModel, person):
         'region': ''
     })
 
+    try:
+        parents = _figure_gender_of_couple(personModel, spouseModel)
+    except SexMissingException:
+        # If parent gender could not be assigned, assume that Person is male.
+        parents = {'male': personModel, 'female': None}
+
+    father_id = None
+    mother_id = None
+
+    if parents['male']:
+        father_id = parents['male'].id
+
+    if parents['female']:
+        mother_id = parents['female'].id
+
     childData = {
         'firstName': child['name'],
         'lastName': person['name']['results']['surname'],
-        'sex':  _transform_sex(child['gender']),
+        'sex': _transform_sex(child['gender']),
         'birthDateId': birth_date,
         'birthPlaceId': birth_place,
-        'parentPersonId': personModel
+        'parentPersonId': personModel,
+        'fatherId': father_id,
+        'motherId': mother_id
     }
 
     return Child.create_or_get(**childData)
@@ -228,13 +286,17 @@ def populate_person(person):
 
     personModel = Person.create_or_get(**personData)[0]
 
+    spouseModel = None
     if person['spouse'] is not None and person['spouse']['results']['hasSpouse'] is True:
         spouseModel = _populate_spouse(person['spouse']['results'], personModel, person)[0]
+        marriage = _populate_marriage(personModel, spouseModel, person['spouse']['results'])
+
 
     for child in person['children']['results']['children']:
-        childModel = _populate_child(child, personModel, person)[0]
+        childModel = _populate_child(child, personModel, spouseModel, person)[0]
 
     _populate_migration_history(person['migrationHistory']['results']['locations'], personModel)
 
 
-
+class SexMissingException(Exception):
+    pass

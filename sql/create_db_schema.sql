@@ -87,33 +87,23 @@ CREATE TABLE siirtokarjalaisten_tie."Child"(
   "birthPlaceId" INTEGER REFERENCES siirtokarjalaisten_tie."Place"(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  "parentPersonId" INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie."Person"(id)
+  "fatherId" INTEGER REFERENCES siirtokarjalaisten_tie."Person"(id)
+      ON UPDATE CASCADE
+      ON DELETE CASCADE,
+  "motherId" INTEGER REFERENCES siirtokarjalaisten_tie."Person"(id)
       ON UPDATE CASCADE
       ON DELETE CASCADE
 );
 
-CREATE TABLE siirtokarjalaisten_tie."Spouse"(
+CREATE TABLE siirtokarjalaisten_tie."Marriage"(
   id SERIAL PRIMARY KEY,
-  "firstName" TEXT NOT NULL,
-  "lastName" TEXT NOT NULL,
-  "maidenName" TEXT,
-  sex TEXT NOT NULL CHECK(sex = 'm' OR sex = 'f' OR sex = ''),
-  "birthDateId" INTEGER REFERENCES siirtokarjalaisten_tie."PersonDate"(id)
-      ON UPDATE CASCADE
-      ON DELETE SET NULL,
-  "birthPlaceId" INTEGER REFERENCES siirtokarjalaisten_tie."Place"(id)
-      ON UPDATE CASCADE
-      ON DELETE SET NULL,
-  "deathDateId" INTEGER REFERENCES siirtokarjalaisten_tie."PersonDate"(id)
-      ON UPDATE CASCADE
-      ON DELETE SET NULL,
-  "professionId" INTEGER REFERENCES siirtokarjalaisten_tie."Profession"(id)
-      ON UPDATE CASCADE
-      ON DELETE SET NULL,
-  "personId" INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie."Person"
+  "manId" INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie."Person"(id)
       ON UPDATE CASCADE
       ON DELETE CASCADE,
-  "marriageYear" INTEGER
+  "womanId" INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie."Person"(id)
+      ON UPDATE CASCADE
+      ON DELETE CASCADE,
+  "weddingYear" INTEGER
 );
 
 CREATE TABLE siirtokarjalaisten_tie."LivingRecord"(
