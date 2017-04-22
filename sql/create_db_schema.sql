@@ -10,12 +10,12 @@ CREATE TABLE siirtokarjalaisten_tie."Place"(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   region TEXT,
-  stemname TEXT,
-  extractedname TEXT,
+  "stemmedName" TEXT,
+  "extractedName" TEXT,
   location extensions.GEOMETRY(POINT, 4326), -- WGS 84
   latitude TEXT,
   longitude TEXT,
-  unique(name, region, stemname, extractedname, latitude, longitude)
+  unique(name, region, "stemmedName", "extractedName", latitude, longitude)
 );
 
 
