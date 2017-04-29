@@ -76,11 +76,11 @@ def _populate_profession(profession):
 
 def _populate_spouse(spouse, personModel, person):
     birth_place = _populate_place({
-        'name': spouse['birthData']['birthLocation']['results'],
-        'extractedName': spouse['birthData']['birthLocation']['results'],
+        'name': spouse['birthData']['birthLocation']['results']['locationName'],
+        'extractedName': spouse['birthData']['birthLocation']['results']['locationName'],
         'latitude': None,
         'longitude': None,
-        'region': None,     # TODO: Fill this once location name resolving is done
+        'region':  spouse['birthData']['birthLocation']['results']['region'],
         'location': None
     })
     profession = _populate_profession({
@@ -135,16 +135,16 @@ def _populate_marriage(person_model, spouse_model, spouse_entry):
 
 def _populate_child(child, personModel, spouseModel, person):
     location = None
-    if child['coordinates']['latitude'] and child['coordinates']['longitude']:
-        location = pft(child['coordinates']['latitude'], child['coordinates']['longitude'])
+    if child['location']['coordinates']['latitude'] and child['location']['coordinates']['longitude']:
+        location = pft(child['location']['coordinates']['latitude'], child['location']['coordinates']['longitude'])
 
     birth_place = _populate_place({
-        'name': child['location'],
-        'extractedName': child['location'],
-        'latitude': child['coordinates']['latitude'] or None,
-        'longitude': child['coordinates']['longitude'] or None,
+        'name': child['location']['locationName'],
+        'extractedName': child['location']['locationName'],
+        'latitude': child['location']['coordinates']['latitude'] or None,
+        'longitude': child['location']['coordinates']['longitude'] or None,
         'location': location,
-        'region': None
+        'region': child['location']['region']
     })
 
     try:
@@ -203,11 +203,11 @@ def _populate_migration_history(places, personModel):
 
 def populate_person(person):
     birth_place = _populate_place({
-        'name': person['birthLocation']['results'],
+        'name': person['birthLocation']['results']['locationName'],
         'extractedName': person['birthLocation']['results'],
         'latitude': None,
         'longitude': None,
-        'region': None,
+        'region': person['birthLocation']['results']['region'],
         'location': None
     })
 
