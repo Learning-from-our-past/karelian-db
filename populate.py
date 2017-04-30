@@ -204,7 +204,7 @@ def _populate_migration_history(places, personModel):
 def populate_person(person):
     birth_place = _populate_place({
         'name': person['birthLocation']['results']['locationName'],
-        'extractedName': person['birthLocation']['results'],
+        'extractedName': person['birthLocation']['results']['locationName'],
         'latitude': None,
         'longitude': None,
         'region': person['birthLocation']['results']['region'],
