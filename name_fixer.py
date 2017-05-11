@@ -1,5 +1,4 @@
 from models.db_siirtokarjalaistentie_models import *
-import nltk.stem.snowball as snowball
 """
 Try to fill in region and correct name for Places based on their stemmed names.
 
@@ -20,28 +19,30 @@ q = (Place.select()
      .order_by(Place.name))
 
 count = len(q)
+duplicates = []
 for place_entry in q:
-    existing_places_with_region = Place.select().where(Place.stemname == place_entry.stemname).where(Place.region != None)
-
+    existing_places_with_region = Place.select().where(Place.stemmedName == place_entry.stemmedName).where(Place.region != None)
     if len(existing_places_with_region) > 0:
         existing_place = None
         if len(existing_places_with_region) == 1:
             existing_place = existing_places_with_region[0]
 
-            place_entry.extractedname = place_entry.name
             place_entry.name = existing_place.name
 
             place_entry.region = existing_place.region
             place_entry.save()
         else:
             # All of the places contain same region, so it is safe to get their region info to current place
-            regions = (p.region for p in existing_places_with_region)
+            regions = list((p.region for p in existing_places_with_region))
+            names = list((p.stemmedName for p in existing_places_with_region))
 
+            duplicates.append(place_entry.stemmedName)
             if len(set(regions)) == 1:
                 existing_place = existing_places_with_region[0]
-
-                place_entry.extractedname = place_entry.name
                 place_entry.name = existing_place.name
-
                 place_entry.region = existing_place.region
+                print('combine')
                 place_entry.save()
+
+print(list(set(duplicates)))
+database.commit()
