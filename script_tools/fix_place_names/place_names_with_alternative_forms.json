@@ -1,0 +1,9118 @@
+{
+  "haukivuor": {
+    "fixed_name": "Haukivuori",
+    "alternative_stemmed_names": [
+      "hauki-vuor",
+      "haukuvuor"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hämeenlin": {
+    "fixed_name": "Hämeenlinna",
+    "alternative_stemmed_names": [
+      "hä meenlin",
+      "hä meenlino",
+      "hä-meenlin",
+      "hä-meentin",
+      "hämeen lin",
+      "hämeenlin",
+      "hämeenlin",
+      "hämeenlinnas",
+      "hämeonlin"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "myslowitz": {
+    "fixed_name": "Myslowitz",
+    "alternative_stemmed_names": [
+      "myslovvitz"
+    ],
+    "region": "other",
+    "country": "poland"
+  },
+  "kuonan": {
+    "fixed_name": "Kuonane",
+    "alternative_stemmed_names": [
+      "kuonan"
+    ],
+    "region": null,
+    "country": null
+  },
+  "berl": {
+    "fixed_name": "Berliini",
+    "alternative_stemmed_names": [
+      "berliin"
+    ],
+    "region": "other",
+    "country": "germany"
+  },
+  "vestanfjärd ": {
+    "fixed_name": "Vestanfjärd",
+    "alternative_stemmed_names": [
+      "ves-tanfjärd",
+      "vestanfjäro",
+      "vvestanfjärd",
+      "westanfjärd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuusamo": {
+    "fixed_name": "Kuusamo",
+    "alternative_stemmed_names": [
+      "kuusamo",
+      "kuusamos"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vuokkiniem": {
+    "fixed_name": "Vuokkiniemi",
+    "alternative_stemmed_names": [
+      "vuokkiniem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kautu": {
+    "fixed_name": "Kauttua",
+    "alternative_stemmed_names": [
+      "kaut-tu",
+      "kautua"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "suvilaht": {
+    "fixed_name": "Suvilahti",
+    "alternative_stemmed_names": [
+      "suvi-lahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kannus": {
+    "fixed_name": "Kannus",
+    "alternative_stemmed_names": [
+      "kannuks",
+      "kannus"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ruokolaht": {
+    "fixed_name": "Ruokolahti",
+    "alternative_stemmed_names": [
+      "kuokolaht",
+      "ruo kolaht",
+      "ruo-kolaht",
+      "ruoko laht",
+      "ruoko-laht",
+      "ruokofahd",
+      "ruokoiahd",
+      "ruokolafvd",
+      "ruokolah",
+      "ruokolah t",
+      "ruokolahdeil",
+      "ruokolahdej",
+      "ruokolahdel",
+      "ruokolahd",
+      "ruokolahdo",
+      "ruokolaht",
+      "ruokolahti rouvan ensimmäisestä avioliito",
+      "tuoko-laht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kankaanpää ": {
+    "fixed_name": "Kankaanpää",
+    "alternative_stemmed_names": [
+      "kahkaan-p"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kiiskil": {
+    "fixed_name": "Kiiskilä",
+    "alternative_stemmed_names": [
+      "kiiskil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vaalijok": {
+    "fixed_name": "Vaalijoki",
+    "alternative_stemmed_names": [
+      "vaalijoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "itä-karjal": {
+    "fixed_name": "Itä-Karjala",
+    "alternative_stemmed_names": [
+      "itä-karjal"
+    ],
+    "region": null,
+    "country": null
+  },
+  "alavetel": {
+    "fixed_name": "Alaveteli",
+    "alternative_stemmed_names": [
+      "ala vetel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ii": {
+    "fixed_name": "Ii",
+    "alternative_stemmed_names": [
+      "iis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "jurvalankyl": {
+    "fixed_name": "Jurvalankylä",
+    "alternative_stemmed_names": [
+      "jurvalankyl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hämeenlinnan mlk": {
+    "fixed_name": "Hämeenlinnan mlk",
+    "alternative_stemmed_names": [
+      "hämeenlinnan mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "siestarinjok": {
+    "fixed_name": "Siestarinjoki",
+    "alternative_stemmed_names": [
+      "siestarinjoeil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pihkov": {
+    "fixed_name": "Pihkova",
+    "alternative_stemmed_names": [
+      "pihkov"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "tiuk": {
+    "fixed_name": "Tiukka",
+    "alternative_stemmed_names": [
+      "tiuka"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kerijok": {
+    "fixed_name": "Kerijoki",
+    "alternative_stemmed_names": [
+      "kerijok"
+    ],
+    "region": null,
+    "country": null
+  },
+  "seesjärv": {
+    "fixed_name": "Seesjärvi",
+    "alternative_stemmed_names": [
+      "seesjärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ilomant": {
+    "fixed_name": "Ilomantsi",
+    "alternative_stemmed_names": [
+      "ilom",
+      "ilomant",
+      "ilomants"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuhmoniem": {
+    "fixed_name": "Kuhmoniemi",
+    "alternative_stemmed_names": [
+      "kuhmoniem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pohjois pirkkal": {
+    "fixed_name": "Pohjois Pirkkala",
+    "alternative_stemmed_names": [
+      "pohjoispirkkal",
+      "pohjoispirkkalas",
+      "pohjoispirkkalps"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "shermigof": {
+    "fixed_name": "Shermigof",
+    "alternative_stemmed_names": [
+      "shermigof"
+    ],
+    "region": null,
+    "country": null
+  },
+  "porin mlk": {
+    "fixed_name": "Porin mlk",
+    "alternative_stemmed_names": [
+      "porin mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "haapamäk": {
+    "fixed_name": "Haapamäki",
+    "alternative_stemmed_names": [
+      "haapa-mäk",
+      "haapamäe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "joutas": {
+    "fixed_name": "Joutasa",
+    "alternative_stemmed_names": [
+      "jouts"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "alastaro": {
+    "fixed_name": "Alastaro",
+    "alternative_stemmed_names": [
+      "alas taro"
+    ],
+    "region": null,
+    "country": null
+  },
+  "viekijärv": {
+    "fixed_name": "Viekijärvi",
+    "alternative_stemmed_names": [
+      "viekin-järv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "säresniem": {
+    "fixed_name": "Säresniemi",
+    "alternative_stemmed_names": [
+      "säresmemeil",
+      "säresnie-m"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ihantal": {
+    "fixed_name": "Ihantala",
+    "alternative_stemmed_names": [
+      "ihan-tal",
+      "ihantal"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "grängesberg": {
+    "fixed_name": "Grängesberg",
+    "alternative_stemmed_names": [
+      "grängesberg"
+    ],
+    "region": null,
+    "country": null
+  },
+  "jäppil": {
+    "fixed_name": "Jäppilä",
+    "alternative_stemmed_names": [
+      "jäp",
+      "jappil",
+      "jäppil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "jyväskylän mlk": {
+    "fixed_name": "Jyväskylän mlk",
+    "alternative_stemmed_names": [
+      "jy väskylän mlk",
+      "jyväskylä mlk",
+      "jyväskylän mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "koski h": {
+    "fixed_name": "Koski HI",
+    "alternative_stemmed_names": [
+      "koski hl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ohio": {
+    "fixed_name": "Ohio",
+    "alternative_stemmed_names": [
+      "ohio"
+    ],
+    "region": "other",
+    "country": "USA"
+  },
+  "kopr": {
+    "fixed_name": "Koprina",
+    "alternative_stemmed_names": [
+      "koprin"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kauvats": {
+    "fixed_name": "Kauvatsa",
+    "alternative_stemmed_names": [
+      "kau vats",
+      "kau-vats"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kokkol": {
+    "fixed_name": "Kokkola",
+    "alternative_stemmed_names": [
+      "kok kol",
+      "kokkof",
+      "kokkol",
+      "kokkols"
+    ],
+    "region": null,
+    "country": null
+  },
+  "poikelus": {
+    "fixed_name": "Poikelus",
+    "alternative_stemmed_names": [
+      "poikeluks"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "oravikosk": {
+    "fixed_name": "Oravikoski",
+    "alternative_stemmed_names": [
+      "oravikosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "eurajok": {
+    "fixed_name": "Eurajoki",
+    "alternative_stemmed_names": [
+      "eu rajok",
+      "eurajoe",
+      "eurajok",
+      "eurajoki k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pylkönmäe": {
+    "fixed_name": "Pylkönmäellä",
+    "alternative_stemmed_names": [
+      "pylkönmäe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "huittin": {
+    "fixed_name": "Huittinen",
+    "alternative_stemmed_names": [
+      "huittinen k",
+      "huittis",
+      "huittist"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ruusjärv": {
+    "fixed_name": "Ruusjärvi",
+    "alternative_stemmed_names": [
+      "ruusjärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rist": {
+    "fixed_name": "Ristiina",
+    "alternative_stemmed_names": [
+      "rist",
+      "ristiin"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lismajärv": {
+    "fixed_name": "Lismajärvi",
+    "alternative_stemmed_names": [
+      "lismajärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "simpel": {
+    "fixed_name": "Simpele",
+    "alternative_stemmed_names": [
+      "simpelae",
+      "simpel",
+      "simpele k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "molensk": {
+    "fixed_name": "Molensk",
+    "alternative_stemmed_names": [
+      "molensk"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "valasniek": {
+    "fixed_name": "Valasniekalla",
+    "alternative_stemmed_names": [
+      "valasniek"
+    ],
+    "region": "other",
+    "country": "Russia (Inkeri)"
+  },
+  "saloin": {
+    "fixed_name": "Saloinen",
+    "alternative_stemmed_names": [
+      "saloisil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tammisuo": {
+    "fixed_name": "Tammisuo",
+    "alternative_stemmed_names": [
+      "tammisuo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "peräseinäjok": {
+    "fixed_name": "Peräseinäjoki",
+    "alternative_stemmed_names": [
+      "perä seinäjok",
+      "peräs",
+      "peräseinäjoel",
+      "peräseinäjoe",
+      "peräseinäjok",
+      "pesäseinäjoe",
+      "poräseinäjoe",
+      "poräseinöjoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ruskeal": {
+    "fixed_name": "Ruskeala",
+    "alternative_stemmed_names": [
+      "rus keal",
+      "ruskeala k",
+      "ruskeal",
+      "ruskealas",
+      "ruskealaso",
+      "ruskealo",
+      "ruskeat",
+      "ruskel",
+      "ruskoal"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kivijärv": {
+    "fixed_name": "Kivijärvi",
+    "alternative_stemmed_names": [
+      "kivijärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suomussalm": {
+    "fixed_name": "Suomussalmi",
+    "alternative_stemmed_names": [
+      "suomussal m",
+      "suomussalmel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "teikarsaar": {
+    "fixed_name": "Teikarsaari",
+    "alternative_stemmed_names": [
+      "teikarsaar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "yläm": {
+    "fixed_name": "Ylämaa",
+    "alternative_stemmed_names": [
+      "ylöm"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hämekosk": {
+    "fixed_name": "Hämekoski",
+    "alternative_stemmed_names": [
+      "hämekosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuruv": {
+    "fixed_name": "Kuruvesi",
+    "alternative_stemmed_names": [
+      "kuruved"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kärs-til": {
+    "fixed_name": "Kärs-tilä",
+    "alternative_stemmed_names": [
+      "kärs-til"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "pyhäjärvi vl": {
+    "fixed_name": "Pyhäjärvi VL",
+    "alternative_stemmed_names": [
+      "pyhäjärvi vl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "leivonmäk": {
+    "fixed_name": "Leivonmäki",
+    "alternative_stemmed_names": [
+      "leivonmäej",
+      "leivonmäe",
+      "leivonmäki pauli sirenin sisko"
+    ],
+    "region": null,
+    "country": null
+  },
+  "urjal": {
+    "fixed_name": "Urjala",
+    "alternative_stemmed_names": [
+      "ur jal",
+      "ur-jal",
+      "urja l",
+      "urjala asuip",
+      "urjala k",
+      "urjalas"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kyyröl": {
+    "fixed_name": "Kyyrölä",
+    "alternative_stemmed_names": [
+      "kyyröl",
+      "kyyrölässä ja vasili synt"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "juustjärv": {
+    "fixed_name": "Juustjärvi",
+    "alternative_stemmed_names": [
+      "juustjärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "korvenkyl": {
+    "fixed_name": "Korvenkylä",
+    "alternative_stemmed_names": [
+      "korvenkyl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lokalaht": {
+    "fixed_name": "Lokalahti",
+    "alternative_stemmed_names": [
+      "lokalahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "matkaselk": {
+    "fixed_name": "Matkaselkä",
+    "alternative_stemmed_names": [
+      "matkaselk",
+      "matkoselk"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "härköiä": {
+    "fixed_name": "HärköIä",
+    "alternative_stemmed_names": [
+      "härköiä"
+    ],
+    "region": null,
+    "country": null
+  },
+  "michig": {
+    "fixed_name": "Michigan",
+    "alternative_stemmed_names": [
+      "michiganisau"
+    ],
+    "region": null,
+    "country": "usa"
+  },
+  "alajärv": {
+    "fixed_name": "Alajärvi",
+    "alternative_stemmed_names": [
+      "alajärvel",
+      "alajarv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ahlain": {
+    "fixed_name": "Ahlainen",
+    "alternative_stemmed_names": [
+      "ah lain",
+      "ahlaino",
+      "ahlais",
+      "alhais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pärtsil": {
+    "fixed_name": "Pärtsilä",
+    "alternative_stemmed_names": [
+      "pärtsil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ollikkal": {
+    "fixed_name": "Ollikkala",
+    "alternative_stemmed_names": [
+      "ollikkal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tervajok": {
+    "fixed_name": "Tervajoki",
+    "alternative_stemmed_names": [
+      "terva-jok",
+      "tervajoe",
+      "tervajok"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "muuruv": {
+    "fixed_name": "Muuruvesi",
+    "alternative_stemmed_names": [
+      "muuru-v",
+      "muuruved",
+      "muuruvedelläpuol",
+      "muuruvod"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "metsäkyl": {
+    "fixed_name": "Metsäkylä",
+    "alternative_stemmed_names": [
+      "metsäkyl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "valkeasaar": {
+    "fixed_name": "Valkeasaari",
+    "alternative_stemmed_names": [
+      "vai keasaar",
+      "vaikeasaar",
+      "valkeasaar",
+      "valkeasaares"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "värtsil": {
+    "fixed_name": "Värtsilä",
+    "alternative_stemmed_names": [
+      "väflsil",
+      "värtil",
+      "värtsil",
+      "värtsilä k",
+      "vartsil"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kuivaniem": {
+    "fixed_name": "Kuivaniemi",
+    "alternative_stemmed_names": [
+      "kuiva-niem",
+      "kuivaniem"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "myrskylä ": {
+    "fixed_name": "Myrskylä",
+    "alternative_stemmed_names": [
+      "myrskylä k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mausjärv": {
+    "fixed_name": "Mausjärvi",
+    "alternative_stemmed_names": [
+      "mausjörv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kärköl": {
+    "fixed_name": "Kärkölä",
+    "alternative_stemmed_names": [
+      "kärköl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ylistaro ": {
+    "fixed_name": "Ylistaro",
+    "alternative_stemmed_names": [
+      "ylis taro"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "evijärv": {
+    "fixed_name": "Evijärvi",
+    "alternative_stemmed_names": [
+      "evi-järv",
+      "evi-larv",
+      "evijar v",
+      "evijär v",
+      "evijärvo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "jokioinen ": {
+    "fixed_name": "Jokioinen",
+    "alternative_stemmed_names": [
+      "jo kioin",
+      "jokioi s"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "harstad": {
+    "fixed_name": "Harstad",
+    "alternative_stemmed_names": [
+      "harstad"
+    ],
+    "region": null,
+    "country": "norway"
+  },
+  "lievi": {
+    "fixed_name": "Lievi",
+    "alternative_stemmed_names": [
+      "liev"
+    ],
+    "region": null,
+    "country": null
+  },
+  "leppävir": {
+    "fixed_name": "Leppävirta",
+    "alternative_stemmed_names": [
+      "leppävir",
+      "leppävirral"
+    ],
+    "region": null,
+    "country": null
+  },
+  "velkua ": {
+    "fixed_name": "Velkua",
+    "alternative_stemmed_names": [
+      "velkua"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ralsäl": {
+    "fixed_name": "Ralsälässä",
+    "alternative_stemmed_names": [
+      "ralsäl"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "leningrad": {
+    "fixed_name": "Leningrad",
+    "alternative_stemmed_names": [
+      "leningrad"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "jääskel": {
+    "fixed_name": "Jääskelä",
+    "alternative_stemmed_names": [
+      "jääskel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "englant": {
+    "fixed_name": "Englanti",
+    "alternative_stemmed_names": [
+      "englan"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sumiain": {
+    "fixed_name": "Sumiainen",
+    "alternative_stemmed_names": [
+      "sumiais"
+    ],
+    "region": null,
+    "country": null
+  },
+  "töysä": {
+    "fixed_name": "Töysä",
+    "alternative_stemmed_names": [
+      "töy-s"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ylitornio": {
+    "fixed_name": "Ylitornio",
+    "alternative_stemmed_names": [
+      "ylätornio",
+      "yli-tor-nio",
+      "ylitornio"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "porajärv": {
+    "fixed_name": "Porajärvi",
+    "alternative_stemmed_names": [
+      "porajärv",
+      "porjärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kangasl": {
+    "fixed_name": "Kangaslampi",
+    "alternative_stemmed_names": [
+      "kangasiammel",
+      "kangaslammel",
+      "kangaslam",
+      "kangaslammil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vanaj": {
+    "fixed_name": "Vanaja",
+    "alternative_stemmed_names": [
+      "va naj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "herso": {
+    "fixed_name": "Herson",
+    "alternative_stemmed_names": [
+      "herson"
+    ],
+    "region": null,
+    "country": null
+  },
+  "johannes": {
+    "fixed_name": "Johannes",
+    "alternative_stemmed_names": [
+      "jahanneks",
+      "jo hannes",
+      "jo-hannes",
+      "johan nes",
+      "johan-nes",
+      "johannek",
+      "johannekeses",
+      "johannekscs",
+      "johannekses",
+      "johanneks",
+      "johanneksessaasu",
+      "johanneksessapuo",
+      "johannes",
+      "johannes k",
+      "johannoks",
+      "johannokso",
+      "johnneks",
+      "jotiannes"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "joroin": {
+    "fixed_name": "Joroinen",
+    "alternative_stemmed_names": [
+      "joroi n",
+      "jorois",
+      "joroisis"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hirvensalm": {
+    "fixed_name": "Hirvensalmi",
+    "alternative_stemmed_names": [
+      "hir vensalm",
+      "hirvensal",
+      "hirvensalmel",
+      "hirvensalm",
+      "kirvensalm"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rääpyv": {
+    "fixed_name": "Rääpyvä",
+    "alternative_stemmed_names": [
+      "rääpyä"
+    ],
+    "region": "other",
+    "country": "Russia Inkeri"
+  },
+  "perniö": {
+    "fixed_name": "Perniö",
+    "alternative_stemmed_names": [
+      "per niö",
+      "per-niö",
+      "periö",
+      "perntö",
+      "perrniö",
+      "pomiö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vahvial": {
+    "fixed_name": "Vahviala",
+    "alternative_stemmed_names": [
+      "synty neet vahvial",
+      "vabvial",
+      "vah vial",
+      "vah-vial",
+      "vahvel",
+      "vahv",
+      "vahvia-l",
+      "vahvial",
+      "vahviala rouvan aikaisemmasta avioliito",
+      "vahviäl",
+      "vahvialassapuol",
+      "vahvialaso",
+      "vahvialas",
+      "vahviatas"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "sunil": {
+    "fixed_name": "Sunila",
+    "alternative_stemmed_names": [
+      "sunil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "nakkil": {
+    "fixed_name": "Nakkila",
+    "alternative_stemmed_names": [
+      "nak kil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "marttil": {
+    "fixed_name": "Marttila",
+    "alternative_stemmed_names": [
+      "marttil",
+      "marttila tl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "koivisto": {
+    "fixed_name": "Koivisto",
+    "alternative_stemmed_names": [
+      "koi visio",
+      "koi visto",
+      "koivis",
+      "koivis to",
+      "koivisio",
+      "koivisto arvo marjasen edellisestä avioliito",
+      "koivisto k",
+      "koivistol",
+      "koivisto",
+      "koivistolla ja sisko",
+      "koivistollaasu",
+      "koivistollaasuinp",
+      "koivistollapuol",
+      "koivistos"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kalel": {
+    "fixed_name": "Kalela",
+    "alternative_stemmed_names": [
+      "kalel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "toksov": {
+    "fixed_name": "Toksova",
+    "alternative_stemmed_names": [
+      "toksev"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "pielisensu": {
+    "fixed_name": "Pielisensuu",
+    "alternative_stemmed_names": [
+      "pieli-sensu",
+      "pielisen-su"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "polvijärv": {
+    "fixed_name": "Polvijärvi",
+    "alternative_stemmed_names": [
+      "polvijarv",
+      "polvijärvells",
+      "polvijärv",
+      "polvijärvo",
+      "polvljärvollf"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "bergö": {
+    "fixed_name": "Bergö",
+    "alternative_stemmed_names": [
+      "bergö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ilmajok": {
+    "fixed_name": "Ilmajoki",
+    "alternative_stemmed_names": [
+      "ilma-jok",
+      "ilmaj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "asikkal": {
+    "fixed_name": "Asikkala",
+    "alternative_stemmed_names": [
+      "asik kal",
+      "asikkalass"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lumivaar": {
+    "fixed_name": "Lumivaara",
+    "alternative_stemmed_names": [
+      "laumivaar",
+      "lu mivaar",
+      "lu-mivaar",
+      "lumiv",
+      "lumivaaras",
+      "lumivaar"
+    ],
+    "region": null,
+    "country": null
+  },
+  "paattin": {
+    "fixed_name": "Paattinen",
+    "alternative_stemmed_names": [
+      "paat-tin",
+      "paatti n",
+      "paattis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "karisalm": {
+    "fixed_name": "Karisalmi",
+    "alternative_stemmed_names": [
+      "karisalm"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uukiniem": {
+    "fixed_name": "Uukiniemi",
+    "alternative_stemmed_names": [
+      "uu kuniem"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "heinäjok": {
+    "fixed_name": "Heinäjoki",
+    "alternative_stemmed_names": [
+      "heinä-jok",
+      "heinäjoe",
+      "heinäjok",
+      "heinäjoki k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "paltamo": {
+    "fixed_name": "Paltamo",
+    "alternative_stemmed_names": [
+      "paltamo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rauma": {
+    "fixed_name": "Rauma",
+    "alternative_stemmed_names": [
+      "raun"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uukuniem": {
+    "fixed_name": "Uukuniemi",
+    "alternative_stemmed_names": [
+      "synty neet uukuniem",
+      "uuku",
+      "uukunie",
+      "uukuniemeil",
+      "uukuniemelaarn",
+      "uukuniemel",
+      "uukuniem",
+      "uukuniemo",
+      "uukunienie",
+      "uukuniern",
+      "uukuniom"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kalvol": {
+    "fixed_name": "Kalvola",
+    "alternative_stemmed_names": [
+      "kalvol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lisalm": {
+    "fixed_name": "lisalmi",
+    "alternative_stemmed_names": [
+      "li salm",
+      "lisal m",
+      "lisälm"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "porvoon mlk": {
+    "fixed_name": "Porvoon mlk",
+    "alternative_stemmed_names": [
+      "porvoon mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tammel": {
+    "fixed_name": "Tammela",
+    "alternative_stemmed_names": [
+      "tamme-l",
+      "tammelas"
+    ],
+    "region": null,
+    "country": null
+  },
+  "eest": {
+    "fixed_name": "Eesti",
+    "alternative_stemmed_names": [
+      "eest"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kaksker": {
+    "fixed_name": "Kakskerta",
+    "alternative_stemmed_names": [
+      "kakskerta k",
+      "kakskör"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uura": {
+    "fixed_name": "Uuraa",
+    "alternative_stemmed_names": [
+      "uu r",
+      "uu-r"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kalaselk": {
+    "fixed_name": "Kalaselkä",
+    "alternative_stemmed_names": [
+      "kalasel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "paimio": {
+    "fixed_name": "Paimio",
+    "alternative_stemmed_names": [
+      "pai mio",
+      "paimi",
+      "paimios",
+      "paimiossa tapaturman uhr"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lounais-afrik": {
+    "fixed_name": "Lounais-Afrikka",
+    "alternative_stemmed_names": [
+      "lounais-afrik-k",
+      "lounaisafrikas"
+    ],
+    "region": "other",
+    "country": "africa"
+  },
+  "karjal": {
+    "fixed_name": "Karjala",
+    "alternative_stemmed_names": [
+      "karjal",
+      "karjala tl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kaskin": {
+    "fixed_name": "Kaskinen",
+    "alternative_stemmed_names": [
+      "kaskin",
+      "kaskis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "bressburg": {
+    "fixed_name": "Bressburg",
+    "alternative_stemmed_names": [
+      "bressburg"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mellil": {
+    "fixed_name": "Mellilä",
+    "alternative_stemmed_names": [
+      "melli-l"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kahilain": {
+    "fixed_name": "Kahilainen",
+    "alternative_stemmed_names": [
+      "kahilais"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pertunm": {
+    "fixed_name": "Pertunmaa",
+    "alternative_stemmed_names": [
+      "pcrtunm"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nurmisaar": {
+    "fixed_name": "Nurmisaari",
+    "alternative_stemmed_names": [
+      "nurmi-saar"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sälöin": {
+    "fixed_name": "Sälöinen",
+    "alternative_stemmed_names": [
+      "sälöis"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ähtäv": {
+    "fixed_name": "Ähtävä",
+    "alternative_stemmed_names": [
+      "ähtä-vö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lapinlaht": {
+    "fixed_name": "Lapinlahti",
+    "alternative_stemmed_names": [
+      "lapiniahd",
+      "lapinlahd",
+      "lapinlaht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "salm": {
+    "fixed_name": "Salmi",
+    "alternative_stemmed_names": [
+      "sai m",
+      "saimissapuol",
+      "salh",
+      "salmis",
+      "salmissa ja sisko",
+      "salmissapuol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "krivi": {
+    "fixed_name": "Krivi",
+    "alternative_stemmed_names": [
+      "kriv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "ukr": {
+    "fixed_name": "Ukraina",
+    "alternative_stemmed_names": [
+      "ukr",
+      "ukrain"
+    ],
+    "region": "Other",
+    "country": "Ukraine"
+  },
+  "porvoo ": {
+    "fixed_name": "Porvoo",
+    "alternative_stemmed_names": [
+      "por vo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pirttijärv": {
+    "fixed_name": "Pirttijärvi",
+    "alternative_stemmed_names": [
+      "pirttijärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pelkosenniem": {
+    "fixed_name": "Pelkosenniemi",
+    "alternative_stemmed_names": [
+      "peikosenniem",
+      "pelkosennie-r"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "karhul": {
+    "fixed_name": "Karhula",
+    "alternative_stemmed_names": [
+      "harhul",
+      "kahul",
+      "kar hul",
+      "karhul"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "veikkol": {
+    "fixed_name": "Veikkola",
+    "alternative_stemmed_names": [
+      "veikkol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "villähd": {
+    "fixed_name": "Villähde",
+    "alternative_stemmed_names": [
+      "villäht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lohjan mlk": {
+    "fixed_name": "Lohjan mlk",
+    "alternative_stemmed_names": [
+      "loh jän mlk",
+      "lohja mlk",
+      "lohjan mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hämeenky": {
+    "fixed_name": "Hämeenky",
+    "alternative_stemmed_names": [
+      "hämeenky"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ylä-uuksu": {
+    "fixed_name": "Ylä-Uuksu",
+    "alternative_stemmed_names": [
+      "ylä-uuksu"
+    ],
+    "region": "karjala",
+    "country": null
+  },
+  "muuram": {
+    "fixed_name": "Muurame",
+    "alternative_stemmed_names": [
+      "muuraim"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kemin mlk": {
+    "fixed_name": "Kemin mlk",
+    "alternative_stemmed_names": [
+      "kemin mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "oulu": {
+    "fixed_name": "Oulu",
+    "alternative_stemmed_names": [
+      "oulu mu",
+      "qulu"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pietar": {
+    "fixed_name": "Pietari",
+    "alternative_stemmed_names": [
+      "piatar",
+      "pietar"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "li": {
+    "fixed_name": "li",
+    "alternative_stemmed_names": [
+      "li"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kiimink": {
+    "fixed_name": "Kiiminki",
+    "alternative_stemmed_names": [
+      "kiiming"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nival": {
+    "fixed_name": "Nivala",
+    "alternative_stemmed_names": [
+      "nival"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vuohenran": {
+    "fixed_name": "Vuohenranta",
+    "alternative_stemmed_names": [
+      "vuohenran"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hannover": {
+    "fixed_name": "Hannover",
+    "alternative_stemmed_names": [
+      "hannover"
+    ],
+    "region": "other",
+    "country": "germany"
+  },
+  "saldvig": {
+    "fixed_name": "Saldvig",
+    "alternative_stemmed_names": [
+      "saldvig"
+    ],
+    "region": null,
+    "country": null
+  },
+  "jaakkim": {
+    "fixed_name": "Jaakkima",
+    "alternative_stemmed_names": [
+      "jaak kim",
+      "jaakki m",
+      "jaakki-m",
+      "jaakkima k",
+      "jaakkimas",
+      "jaakkim",
+      "jaakkimassa kuuluu myös perh",
+      "jaakkimassaas",
+      "jaakkimassaasui",
+      "jaakkimassapuol",
+      "jaakkimgps",
+      "jaakklmassapuoi",
+      "synty neet jaakkim"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "vehkalaht": {
+    "fixed_name": "Vehkalahti",
+    "alternative_stemmed_names": [
+      "vahkalahd",
+      "vehkalah",
+      "vehkalahdel",
+      "vehkalahd",
+      "vehkalaht",
+      "vphkalahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pitkäran": {
+    "fixed_name": "Pitkäranta",
+    "alternative_stemmed_names": [
+      "pitkäran",
+      "pitkäran",
+      "pitkässäran-n",
+      "pitkässäran",
+      "pltkäran"
+    ],
+    "region": "Karelia",
+    "country": null
+  },
+  "mälkköl": {
+    "fixed_name": "Mälkkölä",
+    "alternative_stemmed_names": [
+      "mälkköl"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "mäntyharju": {
+    "fixed_name": "Mäntyharju",
+    "alternative_stemmed_names": [
+      "mänty-harju",
+      "mäntyhar",
+      "mäntyharjul",
+      "mäntyharju",
+      "mäntyhbrju"
+    ],
+    "region": null,
+    "country": null
+  },
+  "humppil": {
+    "fixed_name": "Humppila",
+    "alternative_stemmed_names": [
+      "humppila lapset ovat bernhard jääskeläisen aikaisemmasta avioliito"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "suomenniem": {
+    "fixed_name": "Suomenniemi",
+    "alternative_stemmed_names": [
+      "suomenniemel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ylämaa ": {
+    "fixed_name": "Ylämaa",
+    "alternative_stemmed_names": [
+      "ylämaal",
+      "yläm"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ayräp": {
+    "fixed_name": "Ayräpää",
+    "alternative_stemmed_names": [
+      "avräp"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "mietol": {
+    "fixed_name": "Mietola",
+    "alternative_stemmed_names": [
+      "mieto-l"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hiittin": {
+    "fixed_name": "Hiittinen",
+    "alternative_stemmed_names": [
+      "hiittis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kiuruv": {
+    "fixed_name": "Kiuruvesi",
+    "alternative_stemmed_names": [
+      "kiuruvedel",
+      "kiuruved",
+      "kiuruvesi lapset ovat kasvat"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tervajärv": {
+    "fixed_name": "Tervajärvi",
+    "alternative_stemmed_names": [
+      "tervajärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kieli": {
+    "fixed_name": "Kieli",
+    "alternative_stemmed_names": [
+      "kiel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "itäv": {
+    "fixed_name": "Itävalta",
+    "alternative_stemmed_names": [
+      "itäval"
+    ],
+    "region": null,
+    "country": "Austria"
+  },
+  "voijärv": {
+    "fixed_name": "Voijärvi",
+    "alternative_stemmed_names": [
+      "voijärv"
+    ],
+    "region": "karjala",
+    "country": null
+  },
+  "valkjärv": {
+    "fixed_name": "Valkjärvi",
+    "alternative_stemmed_names": [
+      "synty neet valkjärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "mynämäk": {
+    "fixed_name": "Mynämäki",
+    "alternative_stemmed_names": [
+      "my nämäk",
+      "mynä mäk",
+      "mynämäe",
+      "mynämäo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "korpiselk": {
+    "fixed_name": "Korpiselkä",
+    "alternative_stemmed_names": [
+      "korpi-selk",
+      "korpisel-k",
+      "korpiselail",
+      "korpiseläl",
+      "korpisel",
+      "körpisel",
+      "korpiselk",
+      "korpis",
+      "korpisofk"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "joutseno": {
+    "fixed_name": "Joutseno",
+    "alternative_stemmed_names": [
+      "jotseno",
+      "joulseno",
+      "jout seno",
+      "jout-seno",
+      "joutse no",
+      "joutse-no",
+      "joutseno k",
+      "joutsenos",
+      "joutseno",
+      "joutsenossaavioi"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kaukol": {
+    "fixed_name": "Kaukola",
+    "alternative_stemmed_names": [
+      "kau kol",
+      "kaukoa",
+      "kaukol",
+      "kaukola k",
+      "kaukolas",
+      "käukolas",
+      "kaukolassapuo",
+      "koukol"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "järvenpää ": {
+    "fixed_name": "Järvenpää",
+    "alternative_stemmed_names": [
+      "jär venp"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "siikajok": {
+    "fixed_name": "Siikajoki",
+    "alternative_stemmed_names": [
+      "siikajoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "anbom": {
+    "fixed_name": "Anbomaa",
+    "alternative_stemmed_names": [
+      "anbom"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pistajärv": {
+    "fixed_name": "Pistajärvi",
+    "alternative_stemmed_names": [
+      "pistajärv"
+    ],
+    "region": "Karelia",
+    "country": null
+  },
+  "oulujok": {
+    "fixed_name": "Oulujoki",
+    "alternative_stemmed_names": [
+      "oulujoe",
+      "oulunjoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mikkel": {
+    "fixed_name": "Mikkeli",
+    "alternative_stemmed_names": [
+      "ivfikkel",
+      "mik-kel",
+      "mikkelis",
+      "mikköl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "udelaja ": {
+    "fixed_name": "Udelaja",
+    "alternative_stemmed_names": [
+      "udelaj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kivimäk": {
+    "fixed_name": "Kivimäki",
+    "alternative_stemmed_names": [
+      "kivimäe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "han": {
+    "fixed_name": "Hanko",
+    "alternative_stemmed_names": [
+      "hango",
+      "hanko kuolu",
+      "hanko"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kitk": {
+    "fixed_name": "Kitka",
+    "alternative_stemmed_names": [
+      "kitk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuittin": {
+    "fixed_name": "Kuittinen",
+    "alternative_stemmed_names": [
+      "kuittis"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "saransk": {
+    "fixed_name": "Saransk",
+    "alternative_stemmed_names": [
+      "saransk"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "vähäkyrö": {
+    "fixed_name": "Vähäkyrö",
+    "alternative_stemmed_names": [
+      "vähä kyrö",
+      "vähäky rö",
+      "vähäs",
+      "vähässäkyrö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "itä-preus": {
+    "fixed_name": "Itä-Preussi",
+    "alternative_stemmed_names": [
+      "itä-preus"
+    ],
+    "region": null,
+    "country": "Germany"
+  },
+  "tyrvää  ": {
+    "fixed_name": "Tyrvää",
+    "alternative_stemmed_names": [
+      "tvrvää",
+      "tyr-v",
+      "tyrvää k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kannas": {
+    "fixed_name": "Kannas",
+    "alternative_stemmed_names": [
+      "kannaks",
+      "kannas"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kodisjok": {
+    "fixed_name": "Kodisjoki",
+    "alternative_stemmed_names": [
+      "kodisjoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hyrynsalm": {
+    "fixed_name": "Hyrynsalmi",
+    "alternative_stemmed_names": [
+      "hy rynsalm"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "toijal": {
+    "fixed_name": "Toijala",
+    "alternative_stemmed_names": [
+      "toi jal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kellomäk": {
+    "fixed_name": "Kellomäki",
+    "alternative_stemmed_names": [
+      "kellomäe",
+      "kellomäk"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kirkkonu": {
+    "fixed_name": "Kirkkonummi",
+    "alternative_stemmed_names": [
+      "kirkkonummel",
+      "kirkkonum"
+    ],
+    "region": null,
+    "country": null
+  },
+  "miehikkäl": {
+    "fixed_name": "Miehikkälä",
+    "alternative_stemmed_names": [
+      "mie hikkäl",
+      "mie-hikkäl",
+      "miehik käl",
+      "miehik-käl",
+      "miehikkäl",
+      "miehikkäläs",
+      "miehikkil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "taalintehdas": {
+    "fixed_name": "Taalintehdas",
+    "alternative_stemmed_names": [
+      "taa-lintehdas",
+      "taalinteht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pyhäselk": {
+    "fixed_name": "Pyhäselkä",
+    "alternative_stemmed_names": [
+      "pyhä-selk",
+      "pyhäseläh",
+      "pyhäsel"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kaarlel": {
+    "fixed_name": "Kaarlela",
+    "alternative_stemmed_names": [
+      "kaar-lel",
+      "kaarle l",
+      "kaarle-l"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hats": {
+    "fixed_name": "Hatsina",
+    "alternative_stemmed_names": [
+      "hatsin"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "joharines": {
+    "fixed_name": "Joharines",
+    "alternative_stemmed_names": [
+      "joharines"
+    ],
+    "region": null,
+    "country": null
+  },
+  "haukipuhdas": {
+    "fixed_name": "Haukipuhdas",
+    "alternative_stemmed_names": [
+      "hauki-puhdas"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rauman mlk": {
+    "fixed_name": "Rauman mlk",
+    "alternative_stemmed_names": [
+      "rauma mlk",
+      "rauman mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "askain": {
+    "fixed_name": "Askainen",
+    "alternative_stemmed_names": [
+      "askai-n",
+      "askais",
+      "äskeis"
+    ],
+    "region": null,
+    "country": null
+  },
+  "immol": {
+    "fixed_name": "Immola",
+    "alternative_stemmed_names": [
+      "immol",
+      "irnmol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "härnösand": {
+    "fixed_name": "Härnösand",
+    "alternative_stemmed_names": [
+      "här-nösand"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pattijok": {
+    "fixed_name": "Pattijoki",
+    "alternative_stemmed_names": [
+      "pattijoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "heinolan mlk": {
+    "fixed_name": "Heinolan mlk",
+    "alternative_stemmed_names": [
+      "heinolan mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lapu": {
+    "fixed_name": "Lapua",
+    "alternative_stemmed_names": [
+      "la pu",
+      "lapua"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "houtskär": {
+    "fixed_name": "Houtskär",
+    "alternative_stemmed_names": [
+      "houtskär",
+      "houtskäv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "haapajärv": {
+    "fixed_name": "Haapajärvi",
+    "alternative_stemmed_names": [
+      "haapaj",
+      "haapajarv",
+      "haapajärv",
+      "haapajärvi k",
+      "haapajärvi oi",
+      "itaapajärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "orimattil": {
+    "fixed_name": "Orimattila",
+    "alternative_stemmed_names": [
+      "ori mattil",
+      "orim",
+      "orimat til",
+      "orimat",
+      "orimattila ensimmäisestä avioliito",
+      "orimattil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "maavehm": {
+    "fixed_name": "Maavehmaa",
+    "alternative_stemmed_names": [
+      "maa vehm"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pölkjärv": {
+    "fixed_name": "Pölkjärvi",
+    "alternative_stemmed_names": [
+      "pölkjärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ural": {
+    "fixed_name": "Urali",
+    "alternative_stemmed_names": [
+      "ural"
+    ],
+    "region": null,
+    "country": "Venäjä"
+  },
+  "volosovo": {
+    "fixed_name": "Volosovo",
+    "alternative_stemmed_names": [
+      "volosov"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "haapakangas": {
+    "fixed_name": "Haapakangas",
+    "alternative_stemmed_names": [
+      "haapak"
+    ],
+    "region": null,
+    "country": null
+  },
+  "liper": {
+    "fixed_name": "Liperi",
+    "alternative_stemmed_names": [
+      "liper"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rahkasaar": {
+    "fixed_name": "Rahkasaari",
+    "alternative_stemmed_names": [
+      "rahka-saar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kaipaankyl": {
+    "fixed_name": "Kaipaankylä",
+    "alternative_stemmed_names": [
+      "kaipaankyl"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "enonkosk": {
+    "fixed_name": "Enonkoski",
+    "alternative_stemmed_names": [
+      "enonkosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "espo": {
+    "fixed_name": "Espoo",
+    "alternative_stemmed_names": [
+      "es po"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tyrväntö": {
+    "fixed_name": "Tyrväntö",
+    "alternative_stemmed_names": [
+      "tyr-väntö",
+      "tyrvänö",
+      "tyrvanö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lappeenran": {
+    "fixed_name": "Lappeenranta",
+    "alternative_stemmed_names": [
+      "laappeenran",
+      "lap peenran",
+      "lap poanran",
+      "lappaanran",
+      "lappeen ran",
+      "lappeenran",
+      "lappeenrannas",
+      "lappeenran",
+      "lappeenrannassap",
+      "lappeenranta k",
+      "lappeenranta lapset ovat erkki vesan edellisestä avioliito",
+      "lappeenranta rouvan edellisestä avioliito",
+      "lappenran-",
+      "lapppeenran",
+      "syn tyneet lappeenran"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pukkil": {
+    "fixed_name": "Pukkila",
+    "alternative_stemmed_names": [
+      "pukkilas"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "somero": {
+    "fixed_name": "Somero",
+    "alternative_stemmed_names": [
+      "so mero",
+      "some-ro",
+      "somero",
+      "somero rouvah edellisestä avioliito",
+      "somerol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "maanink": {
+    "fixed_name": "Maaninka",
+    "alternative_stemmed_names": [
+      "maaning",
+      "maanink"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "konginkangas": {
+    "fixed_name": "Konginkangas",
+    "alternative_stemmed_names": [
+      "konginkankaal",
+      "konginkank"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ulasoor": {
+    "fixed_name": "Ulasoori",
+    "alternative_stemmed_names": [
+      "ulasoor"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kupio": {
+    "fixed_name": "Kuppio",
+    "alternative_stemmed_names": [
+      "kupio"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kortesjärv": {
+    "fixed_name": "Kortesjärvi",
+    "alternative_stemmed_names": [
+      "kortesjär-v",
+      "kortesjärvel",
+      "kortesjärvell"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rengossaavioi": {
+    "fixed_name": "RengossaAvioit",
+    "alternative_stemmed_names": [
+      "rengossaavioi"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kurkijok": {
+    "fixed_name": "Kurkijoki",
+    "alternative_stemmed_names": [
+      "kur kijok",
+      "kurki jok",
+      "kurkiiok",
+      "kurkijeo",
+      "kurkijg",
+      "kurkijo k",
+      "kurkijoej",
+      "kurkijoel",
+      "kurkijoe",
+      "kurkijoellaasu",
+      "kurkijoellaasuinp",
+      "kurkijoellaavioi",
+      "kurkijoellapuol",
+      "kurkijok",
+      "kurkijoki k",
+      "kurkij",
+      "kurklj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "myllykosk": {
+    "fixed_name": "Myllykoski",
+    "alternative_stemmed_names": [
+      "myllykosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "maxmo": {
+    "fixed_name": "Maxmo",
+    "alternative_stemmed_names": [
+      "maxmo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sodankyl": {
+    "fixed_name": "Sodankylä",
+    "alternative_stemmed_names": [
+      "sodan kyl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uusikaupunk": {
+    "fixed_name": "Uusikaupunki",
+    "alternative_stemmed_names": [
+      "uu-sikäupunk",
+      "uudessakau",
+      "uudessakaupu",
+      "uudessakaupungis",
+      "uudessakaupung",
+      "uusi-kaupunk",
+      "uusi-kaupunki rouvan aikaisemmasta avioliito",
+      "uusikaupunk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "närväjok": {
+    "fixed_name": "Närväjoki",
+    "alternative_stemmed_names": [
+      "närväjok"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pohjois karjal": {
+    "fixed_name": "Pohjois Karjala",
+    "alternative_stemmed_names": [
+      "pohjoiskarjal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "juuka": {
+    "fixed_name": "Juuka",
+    "alternative_stemmed_names": [
+      "juual",
+      "juuas",
+      "juuka",
+      "juukä"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kapr": {
+    "fixed_name": "Kaprina",
+    "alternative_stemmed_names": [
+      "kaprin"
+    ],
+    "region": null,
+    "country": null
+  },
+  "päällin": {
+    "fixed_name": "Päällinen",
+    "alternative_stemmed_names": [
+      "päällis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tuula ": {
+    "fixed_name": "Tuula",
+    "alternative_stemmed_names": [
+      "tuula"
+    ],
+    "region": null,
+    "country": null
+  },
+  "alask": {
+    "fixed_name": "Alaska",
+    "alternative_stemmed_names": [
+      "alask"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "säynätsalo": {
+    "fixed_name": "Säynätsalo",
+    "alternative_stemmed_names": [
+      "säynetsalo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "antr": {
+    "fixed_name": "Antrea",
+    "alternative_stemmed_names": [
+      "amrea",
+      "anirea",
+      "anireass",
+      "anlrea",
+      "ant r",
+      "ant-r",
+      "ant-rea",
+      "antea",
+      "anteea",
+      "anter",
+      "anterea",
+      "antr",
+      "antrc",
+      "antrea k",
+      "antreas",
+      "äntrea",
+      "antreassapuol",
+      "antreasö",
+      "antreassp",
+      "antrel",
+      "antroa",
+      "atrea"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "sauro": {
+    "fixed_name": "Sauro",
+    "alternative_stemmed_names": [
+      "sauro"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ikaalin": {
+    "fixed_name": "Ikaalinen",
+    "alternative_stemmed_names": [
+      "ikaalisis",
+      "ikaalis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "uskila ": {
+    "fixed_name": "Uskila",
+    "alternative_stemmed_names": [
+      "uskil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuopio": {
+    "fixed_name": "Kuopio",
+    "alternative_stemmed_names": [
+      "kuo-pio",
+      "kuopio"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kiimasjärv": {
+    "fixed_name": "Kiimasjärvi",
+    "alternative_stemmed_names": [
+      "kiimasjärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "maar": {
+    "fixed_name": "Maaria",
+    "alternative_stemmed_names": [
+      "maaria"
+    ],
+    "region": null,
+    "country": null
+  },
+  "jämsänkosk": {
+    "fixed_name": "Jämsänkoski",
+    "alternative_stemmed_names": [
+      "jämsänkosk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mälkyl": {
+    "fixed_name": "Mälkylä",
+    "alternative_stemmed_names": [
+      "mälkyl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tuulal": {
+    "fixed_name": "Tuulalääni",
+    "alternative_stemmed_names": [
+      "tuulalään"
+    ],
+    "region": null,
+    "country": null
+  },
+  "säämäjärv": {
+    "fixed_name": "Säämäjärvi",
+    "alternative_stemmed_names": [
+      "saämajärv",
+      "säämäjärvo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tiuruniem": {
+    "fixed_name": "Tiuruniemi",
+    "alternative_stemmed_names": [
+      "tiuruniem"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "harjav": {
+    "fixed_name": "Harjavalta",
+    "alternative_stemmed_names": [
+      "harjaval"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tuulos ": {
+    "fixed_name": "Tuulos",
+    "alternative_stemmed_names": [
+      "tuu los"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tuulos  ": {
+    "fixed_name": "Tuulos",
+    "alternative_stemmed_names": [
+      "tuuloks"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tainionkosk": {
+    "fixed_name": "Tainionkoski",
+    "alternative_stemmed_names": [
+      "tai-nionkosk",
+      "tainion-kosk",
+      "tainionkosk",
+      "tainionkosketl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kittil": {
+    "fixed_name": "Kittilä",
+    "alternative_stemmed_names": [
+      "kitti l",
+      "kittil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kul": {
+    "fixed_name": "Kullaa",
+    "alternative_stemmed_names": [
+      "kul-l",
+      "kullaalj"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "järvisaar": {
+    "fixed_name": "Järvisaari",
+    "alternative_stemmed_names": [
+      "järvisaar"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "kirvu": {
+    "fixed_name": "Kirvu",
+    "alternative_stemmed_names": [
+      "kir vu",
+      "kiruv",
+      "kirv",
+      "kirvq",
+      "kirvu",
+      "kirvu k",
+      "kirvu miehen ensimmäisestä avioliito",
+      "kirvu rouvan edellisestä avioliito",
+      "kirvus",
+      "kirvussa ja pentti lehikoinen synt",
+      "kirvussaasuinp",
+      "kirvussapuol",
+      "kirvussd"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "mäntyluoto": {
+    "fixed_name": "Mäntyluoto",
+    "alternative_stemmed_names": [
+      "mäntyluodo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "valkeakosk": {
+    "fixed_name": "Valkeakoski",
+    "alternative_stemmed_names": [
+      "vai keakosk",
+      "val-keakosk",
+      "valkea kosk",
+      "valkea-kosk",
+      "valkeakos",
+      "valkeäkosk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hiivaniem": {
+    "fixed_name": "Hiivaniemi",
+    "alternative_stemmed_names": [
+      "hilvaniem"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "piippol": {
+    "fixed_name": "Piippola",
+    "alternative_stemmed_names": [
+      "piippol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hämeenkosk": {
+    "fixed_name": "Hämeenkoski",
+    "alternative_stemmed_names": [
+      "hämeenkosk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "piiskajok": {
+    "fixed_name": "Piiskajoki",
+    "alternative_stemmed_names": [
+      "piiskaj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "viljakkal": {
+    "fixed_name": "Viljakkala",
+    "alternative_stemmed_names": [
+      "viljakaia"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pöyty": {
+    "fixed_name": "Pöytyä",
+    "alternative_stemmed_names": [
+      "pöy",
+      "pöy-ty",
+      "pöylyä",
+      "pöyty",
+      "pöytyä äsuinp",
+      "pöytyä",
+      "pöytyätl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nurmeksen mlk": {
+    "fixed_name": "Nurmeksen mlk",
+    "alternative_stemmed_names": [
+      "nurmeksen mlk",
+      "nurmes mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ruotsin pyht": {
+    "fixed_name": "Ruotsin pyhtää",
+    "alternative_stemmed_names": [
+      "ruotsin pyht"
+    ],
+    "region": null,
+    "country": null
+  },
+  "liljendahl": {
+    "fixed_name": "Liljendahl",
+    "alternative_stemmed_names": [
+      "lil-jendahl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "raulal": {
+    "fixed_name": "Raulalampi",
+    "alternative_stemmed_names": [
+      "raulalam"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rautalaht": {
+    "fixed_name": "Rautalahti",
+    "alternative_stemmed_names": [
+      "rautalahd",
+      "rautalaht"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "katku": {
+    "fixed_name": "Katku",
+    "alternative_stemmed_names": [
+      "katku"
+    ],
+    "region": null,
+    "country": null
+  },
+  "siby": {
+    "fixed_name": "Siby",
+    "alternative_stemmed_names": [
+      "slby"
+    ],
+    "region": null,
+    "country": null
+  },
+  "koijärv": {
+    "fixed_name": "Koijärvi",
+    "alternative_stemmed_names": [
+      "koi-järv",
+      "koijär v",
+      "koijäryi",
+      "koijäv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "oranienbaum": {
+    "fixed_name": "Oranienbaum",
+    "alternative_stemmed_names": [
+      "oranienbau"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "kokoin": {
+    "fixed_name": "Kokoinen",
+    "alternative_stemmed_names": [
+      "kokois"
+    ],
+    "region": null,
+    "country": null
+  },
+  "luopioin": {
+    "fixed_name": "Luopioinen",
+    "alternative_stemmed_names": [
+      "luopiois"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pyhäjärv": {
+    "fixed_name": "Pyhäjärvi",
+    "alternative_stemmed_names": [
+      "pvhäjärv",
+      "py häjarv",
+      "py häjärv",
+      "pyhä järv",
+      "pyhä-järv",
+      "pyhäj",
+      "pyhäjär",
+      "pyhäjär-vi oi",
+      "pyhäjärveil",
+      "pyhäjärvej",
+      "pyhäjärvel",
+      "pyhajärv",
+      "pyhäjärvelläpuol",
+      "pyhäjärvell",
+      "pyhäjärv",
+      "pyhäjärvi k",
+      "pyhäjärvo",
+      "pyhäjäv",
+      "pyhjärv",
+      "synty neet pyhäjärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "num": {
+    "fixed_name": "Nummi",
+    "alternative_stemmed_names": [
+      "num m"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ahlajärv": {
+    "fixed_name": "Ahlajärvi",
+    "alternative_stemmed_names": [
+      "ahlajärv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tenal": {
+    "fixed_name": "Tenala",
+    "alternative_stemmed_names": [
+      "tenal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "haliko": {
+    "fixed_name": "Halikko",
+    "alternative_stemmed_names": [
+      "ha liko",
+      "halik-ko",
+      "halikko k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "anjal": {
+    "fixed_name": "Anjala",
+    "alternative_stemmed_names": [
+      "anajal",
+      "anjal"
+    ],
+    "region": null,
+    "country": null
+  },
+  "parkano": {
+    "fixed_name": "Parkano",
+    "alternative_stemmed_names": [
+      "par kano",
+      "parkano",
+      "parkanos",
+      "porkano"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "new york": {
+    "fixed_name": "New York",
+    "alternative_stemmed_names": [
+      "new",
+      "new york"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "piispansaar": {
+    "fixed_name": "Piispansaari",
+    "alternative_stemmed_names": [
+      "piispansaares"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "puls": {
+    "fixed_name": "Pulsa",
+    "alternative_stemmed_names": [
+      "puls"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuurinsaar": {
+    "fixed_name": "Kuurinsaari",
+    "alternative_stemmed_names": [
+      "kuurin-saar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "isojok": {
+    "fixed_name": "Isojoki",
+    "alternative_stemmed_names": [
+      "iso-jok",
+      "isoiok",
+      "isojoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kupanits": {
+    "fixed_name": "Kupanitsa",
+    "alternative_stemmed_names": [
+      "kupavits"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "reisjärv": {
+    "fixed_name": "Reisjärvi",
+    "alternative_stemmed_names": [
+      "reisjäiv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suursaar": {
+    "fixed_name": "Suursaari",
+    "alternative_stemmed_names": [
+      "suur-saar",
+      "suurs",
+      "suursaar",
+      "suursaaressaasui",
+      "suursaaressapuol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hiitol": {
+    "fixed_name": "Hiitola",
+    "alternative_stemmed_names": [
+      "hfltola",
+      "hii-tol",
+      "hiit",
+      "hiitö",
+      "hiito-l",
+      "hiitola nykyisestä avioliito",
+      "hiitolas",
+      "hiitol",
+      "hiitöl",
+      "hiitolassa ja marja hannukain",
+      "hiitolassaavioi",
+      "hiitolassapuol",
+      "hiitolaso",
+      "hiitolass",
+      "hiitolb",
+      "hiitols",
+      "hiitorikhard",
+      "hiitot",
+      "hijtol",
+      "hillol",
+      "hlilol",
+      "hlltoias",
+      "hntoias"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "pyhäran": {
+    "fixed_name": "Pyhäranta",
+    "alternative_stemmed_names": [
+      "py itäran",
+      "pyhä-ran",
+      "pyhär"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "parikkal": {
+    "fixed_name": "Parikkala",
+    "alternative_stemmed_names": [
+      "parik kal",
+      "parikkal",
+      "parikkalas",
+      "parkal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sulkav": {
+    "fixed_name": "Sulkava",
+    "alternative_stemmed_names": [
+      "sulk",
+      "sulka v",
+      "sulkava tois"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rantasalm": {
+    "fixed_name": "Rantasalmi",
+    "alternative_stemmed_names": [
+      "ranlasalm",
+      "ranta salm",
+      "ranta-salm",
+      "rantasal m",
+      "rantasalmel",
+      "rantasalm",
+      "rantasalmo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "inkeroin": {
+    "fixed_name": "Inkeroinen",
+    "alternative_stemmed_names": [
+      "inkeroin"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "honkilaht": {
+    "fixed_name": "Honkilahti",
+    "alternative_stemmed_names": [
+      "hon-kilaht",
+      "honkilahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hälsingborg": {
+    "fixed_name": "Hälsingborg",
+    "alternative_stemmed_names": [
+      "häl-singborg"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "neuvostoliito": {
+    "fixed_name": "Neuvostoliitto",
+    "alternative_stemmed_names": [
+      "neuvo",
+      "neuvostoliito"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "for": {
+    "fixed_name": "Forssa",
+    "alternative_stemmed_names": [
+      "fors"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rautal": {
+    "fixed_name": "Rautalammi",
+    "alternative_stemmed_names": [
+      "rau-tal",
+      "rauta l",
+      "rautaiam",
+      "rautalam-m",
+      "rautalarnm"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vaasa": {
+    "fixed_name": "Vaasa",
+    "alternative_stemmed_names": [
+      "vaa s",
+      "vaas",
+      "vaasa",
+      "vaasa k",
+      "vanha vaas"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kerav": {
+    "fixed_name": "Kerava",
+    "alternative_stemmed_names": [
+      "ke-rav"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uuras": {
+    "fixed_name": "Uuras",
+    "alternative_stemmed_names": [
+      "uu-raks",
+      "uuraks",
+      "uuras"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "pohjaslaht": {
+    "fixed_name": "Pohjaslahti",
+    "alternative_stemmed_names": [
+      "pohjaslahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "paakkol": {
+    "fixed_name": "Paakkola",
+    "alternative_stemmed_names": [
+      "paakkol"
+    ],
+    "region": "Karelia",
+    "country": null
+  },
+  "saaroin": {
+    "fixed_name": "Saaroinen",
+    "alternative_stemmed_names": [
+      "saarois"
+    ],
+    "region": null,
+    "country": null
+  },
+  "karijok": {
+    "fixed_name": "Karijoki",
+    "alternative_stemmed_names": [
+      "kari-jok",
+      "karijoe",
+      "karijok"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "luv": {
+    "fixed_name": "Luvia",
+    "alternative_stemmed_names": [
+      "luvia"
+    ],
+    "region": null,
+    "country": null
+  },
+  "noormarku": {
+    "fixed_name": "Noormarkku",
+    "alternative_stemmed_names": [
+      "noor marku"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "alavus": {
+    "fixed_name": "Alavus",
+    "alternative_stemmed_names": [
+      "ala vus",
+      "alavudel",
+      "alavud",
+      "alavus",
+      "alavus k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hailuoto": {
+    "fixed_name": "Hailuoto",
+    "alternative_stemmed_names": [
+      "hailuodo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vuoksel": {
+    "fixed_name": "Vuoksela",
+    "alternative_stemmed_names": [
+      "vuok-sel",
+      "vuok-sol",
+      "vuokse l",
+      "vuokse-l",
+      "vuoksef",
+      "vuokselas",
+      "vuoksel",
+      "vuokseld",
+      "vuokselo"
+    ],
+    "region": "karjala",
+    "country": null
+  },
+  "sakkol": {
+    "fixed_name": "Sakkola",
+    "alternative_stemmed_names": [
+      "sak kol",
+      "sak-kol",
+      "sako",
+      "sakko l",
+      "sakko-l",
+      "sakkof",
+      "sakoiä",
+      "sakkola k",
+      "sakkola nykyisestä avioliito",
+      "sakkolaasaasuinp",
+      "sakkolas",
+      "sakkolasd",
+      "sakkolassaasu",
+      "sakkolassaasuinp",
+      "sakkolassapuol",
+      "sakkolaso",
+      "sakkolo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "oterm": {
+    "fixed_name": "Oterma",
+    "alternative_stemmed_names": [
+      "oterm"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sahalaht": {
+    "fixed_name": "Sahalahti",
+    "alternative_stemmed_names": [
+      "sahalahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kokemäk": {
+    "fixed_name": "Kokemäki",
+    "alternative_stemmed_names": [
+      "kgkemäk",
+      "ko kemäk",
+      "koke mäk",
+      "kokem",
+      "kokema k",
+      "kokemäe",
+      "kokemäki k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tolvajärv": {
+    "fixed_name": "Tolvajärvi",
+    "alternative_stemmed_names": [
+      "tolvajärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "ylikiimink": {
+    "fixed_name": "Ylikiiminki",
+    "alternative_stemmed_names": [
+      "ylikiiming"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pitkäkosk": {
+    "fixed_name": "Pitkäkoski",
+    "alternative_stemmed_names": [
+      "pitkäkosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vologot": {
+    "fixed_name": "Vologoti",
+    "alternative_stemmed_names": [
+      "vologot"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "patamo": {
+    "fixed_name": "Patamo",
+    "alternative_stemmed_names": [
+      "patamo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sideby": {
+    "fixed_name": "Sideby",
+    "alternative_stemmed_names": [
+      "sideby"
+    ],
+    "region": null,
+    "country": null
+  },
+  "nuijam": {
+    "fixed_name": "Nuijamaa",
+    "alternative_stemmed_names": [
+      "nuij",
+      "nuija",
+      "nuija-m",
+      "nuijamaa k",
+      "nuijamaal",
+      "nuijamaalj",
+      "nuijam",
+      "nuijanm",
+      "nuijm"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "övermark": {
+    "fixed_name": "Övermark",
+    "alternative_stemmed_names": [
+      "över-mark"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vääräkosk": {
+    "fixed_name": "Vääräkoski",
+    "alternative_stemmed_names": [
+      "väärä"
+    ],
+    "region": "other",
+    "country": "Russia (Vienan karjala)"
+  },
+  "kaukaas": {
+    "fixed_name": "Kaukaasia",
+    "alternative_stemmed_names": [
+      "kaukaasia"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sampaanal": {
+    "fixed_name": "Sampaanala",
+    "alternative_stemmed_names": [
+      "sampaanal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "uudenkaupungin mlk": {
+    "fixed_name": "Uudenkaupungin mlk",
+    "alternative_stemmed_names": [
+      "uudenkaupung"
+    ],
+    "region": null,
+    "country": null
+  },
+  "särniö": {
+    "fixed_name": "Särniö",
+    "alternative_stemmed_names": [
+      "särniö"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuori": {
+    "fixed_name": "Kuorit",
+    "alternative_stemmed_names": [
+      "kuori"
+    ],
+    "region": null,
+    "country": null
+  },
+  "petsamo": {
+    "fixed_name": "Petsamo",
+    "alternative_stemmed_names": [
+      "petsamo"
+    ],
+    "region": "other",
+    "country": "Petsamo"
+  },
+  "kanneljok": {
+    "fixed_name": "Kanneljoki",
+    "alternative_stemmed_names": [
+      "kanneljoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vainikkal": {
+    "fixed_name": "Vainikkala",
+    "alternative_stemmed_names": [
+      "vainikkal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pyhän": {
+    "fixed_name": "Pyhäntä",
+    "alternative_stemmed_names": [
+      "pyhänö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "auverberg": {
+    "fixed_name": "Auverberg",
+    "alternative_stemmed_names": [
+      "auverberg"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suodenniem": {
+    "fixed_name": "Suodenniemi",
+    "alternative_stemmed_names": [
+      "suo denniem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ollil": {
+    "fixed_name": "Ollila",
+    "alternative_stemmed_names": [
+      "ollil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vienankarjal": {
+    "fixed_name": "Vienankarjala",
+    "alternative_stemmed_names": [
+      "vienankarjal"
+    ],
+    "region": "other",
+    "country": "Russia (vienankarjala)"
+  },
+  "loimol": {
+    "fixed_name": "Loimola",
+    "alternative_stemmed_names": [
+      "loimol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "elimäk": {
+    "fixed_name": "Elimäki",
+    "alternative_stemmed_names": [
+      "eiimäk",
+      "eli mäk",
+      "elimäe",
+      "elirrväk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kaivol": {
+    "fixed_name": "Kaivola",
+    "alternative_stemmed_names": [
+      "kaivol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kumling": {
+    "fixed_name": "Kumlinge",
+    "alternative_stemmed_names": [
+      "kumling"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kreik": {
+    "fixed_name": "Kreikka",
+    "alternative_stemmed_names": [
+      "kreika"
+    ],
+    "region": "other",
+    "country": "greek"
+  },
+  "tulomajok": {
+    "fixed_name": "Tulomajoki",
+    "alternative_stemmed_names": [
+      "tulomajoel-l"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "helyl": {
+    "fixed_name": "Helylä",
+    "alternative_stemmed_names": [
+      "hely-l",
+      "helyl"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "tambov": {
+    "fixed_name": "Tambov",
+    "alternative_stemmed_names": [
+      "stambov"
+    ],
+    "region": "other",
+    "country": "russia"
+  },
+  "laatok": {
+    "fixed_name": "Laatokka",
+    "alternative_stemmed_names": [
+      "laatokan koillispuol"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "leimu": {
+    "fixed_name": "Leimu",
+    "alternative_stemmed_names": [
+      "leimu"
+    ],
+    "region": null,
+    "country": null
+  },
+  "enköping": {
+    "fixed_name": "Enköping",
+    "alternative_stemmed_names": [
+      "enköping"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "porkkal": {
+    "fixed_name": "Porkkala",
+    "alternative_stemmed_names": [
+      "porkkal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "halsu": {
+    "fixed_name": "Halsua",
+    "alternative_stemmed_names": [
+      "halsua"
+    ],
+    "region": null,
+    "country": null
+  },
+  "häme": {
+    "fixed_name": "Häme",
+    "alternative_stemmed_names": [
+      "häme"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tuusula  ": {
+    "fixed_name": "Tuusula",
+    "alternative_stemmed_names": [
+      "tuu sul",
+      "tuusula syntynyt rouvan ensimmäisestä avioliito"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "amerik": {
+    "fixed_name": "Amerikka",
+    "alternative_stemmed_names": [
+      "amerik"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "turku": {
+    "fixed_name": "Turku",
+    "alternative_stemmed_names": [
+      "tur ku",
+      "turg",
+      "turku",
+      "turku k",
+      "turku rouvan aikaisemmasta avioliito",
+      "turku rouvan ensimmäisestä avioliito",
+      "turus",
+      "turv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ähtär": {
+    "fixed_name": "Ähtäri",
+    "alternative_stemmed_names": [
+      "äh tär"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "loimul": {
+    "fixed_name": "Loimula",
+    "alternative_stemmed_names": [
+      "loimu-l"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kokomäk": {
+    "fixed_name": "Kokomäki",
+    "alternative_stemmed_names": [
+      "koko mäk",
+      "kokomäe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tytärsaar": {
+    "fixed_name": "Tytärsaari",
+    "alternative_stemmed_names": [
+      "tytär-saar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "janakkal": {
+    "fixed_name": "Janakkala",
+    "alternative_stemmed_names": [
+      "janak kal",
+      "janak-kal",
+      "janakkala k",
+      "janakkal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "korpilaht": {
+    "fixed_name": "Korpilahti",
+    "alternative_stemmed_names": [
+      "korpi laht",
+      "korpilahdel",
+      "korpilahdellaav",
+      "korpilahd",
+      "korpilaht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hietamäk": {
+    "fixed_name": "Hietamäki",
+    "alternative_stemmed_names": [
+      "hieta-mäk",
+      "hietamäe",
+      "hietamäk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuusjärv": {
+    "fixed_name": "Kuusjärvi",
+    "alternative_stemmed_names": [
+      "kuusjär",
+      "kuusjärvel",
+      "kuusjärv",
+      "kuusjärvi rouva toikke-lin sisar emma rautio o",
+      "kuusjärvo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kaipiain": {
+    "fixed_name": "Kaipiainen",
+    "alternative_stemmed_names": [
+      "kaipiais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vampula ": {
+    "fixed_name": "Vampula",
+    "alternative_stemmed_names": [
+      "vam pul"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kaipaa ": {
+    "fixed_name": "Kaipaa",
+    "alternative_stemmed_names": [
+      "kai-p"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "mietoin": {
+    "fixed_name": "Mietoinen",
+    "alternative_stemmed_names": [
+      "mietois",
+      "mietoisl",
+      "mietols",
+      "miotois",
+      "mletois"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pyikönmäe": {
+    "fixed_name": "Pyikönmäellä",
+    "alternative_stemmed_names": [
+      "pyikönmäe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pusal": {
+    "fixed_name": "Pusala",
+    "alternative_stemmed_names": [
+      "pusal"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuhmoin": {
+    "fixed_name": "Kuhmoinen",
+    "alternative_stemmed_names": [
+      "kuh moin",
+      "kuhmois",
+      "kuhmos"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suolaht": {
+    "fixed_name": "Suolahti",
+    "alternative_stemmed_names": [
+      "suolahd",
+      "suolaht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kiik": {
+    "fixed_name": "Kiikka",
+    "alternative_stemmed_names": [
+      "kiik-k",
+      "kiik"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kruunupyy": {
+    "fixed_name": "Kruunupyy",
+    "alternative_stemmed_names": [
+      "kruunupyys"
+    ],
+    "region": null,
+    "country": null
+  },
+  "leppäselk": {
+    "fixed_name": "Leppäselkä",
+    "alternative_stemmed_names": [
+      "leppäsel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sippol": {
+    "fixed_name": "Sippola",
+    "alternative_stemmed_names": [
+      "sippolas",
+      "sippol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "perkjärv": {
+    "fixed_name": "Perkjärvi",
+    "alternative_stemmed_names": [
+      "perk",
+      "perk järv",
+      "perk-järv",
+      "perkjär-v",
+      "perkjärv",
+      "perkjärvi rouvan ensimmäisestä avioliito"
+    ],
+    "region": null,
+    "country": null
+  },
+  "halk": {
+    "fixed_name": "Halkia",
+    "alternative_stemmed_names": [
+      "halkia"
+    ],
+    "region": null,
+    "country": null
+  },
+  "helsink": {
+    "fixed_name": "Helsinki",
+    "alternative_stemmed_names": [
+      "hdlsink",
+      "hei sink",
+      "hei-sink",
+      "heisin k",
+      "heising",
+      "hel-sink",
+      "hels",
+      "helsingis",
+      "helsinkf",
+      "helsink",
+      "helsinki herran aikaisemmasta avio liito",
+      "helsinki k",
+      "helsinki rouvan aikaisemmasta avioliito",
+      "helsinki rouvan edellisestä avioliito",
+      "helsinki rouvan ensimmäisestä avioliito",
+      "helsinki toisesta avioliito",
+      "heslink",
+      "hlesin-k",
+      "hölsink"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uusikyl": {
+    "fixed_name": "Uusikylä",
+    "alternative_stemmed_names": [
+      "uudessakyläs",
+      "uudessakyl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "käsnäselk": {
+    "fixed_name": "Käsnäselkä",
+    "alternative_stemmed_names": [
+      "käsnäsel"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "tikkakosk": {
+    "fixed_name": "Tikkakoski",
+    "alternative_stemmed_names": [
+      "tikkakoski k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "turkist": {
+    "fixed_name": "Turkistan",
+    "alternative_stemmed_names": [
+      "turkistan"
+    ],
+    "region": "other",
+    "country": "Turkistan"
+  },
+  "kontiol": {
+    "fixed_name": "Kontiola",
+    "alternative_stemmed_names": [
+      "kontiolalkie",
+      "kontiol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "halil": {
+    "fixed_name": "Halila",
+    "alternative_stemmed_names": [
+      "halil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "himank": {
+    "fixed_name": "Himanka",
+    "alternative_stemmed_names": [
+      "himang"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ambom": {
+    "fixed_name": "Ambomaa",
+    "alternative_stemmed_names": [
+      "ambom"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "heinäv": {
+    "fixed_name": "Heinävesi",
+    "alternative_stemmed_names": [
+      "hei näv",
+      "heinäved",
+      "heinäv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "luhank": {
+    "fixed_name": "Luhanka",
+    "alternative_stemmed_names": [
+      "luhang"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kajaani ": {
+    "fixed_name": "Kajaani",
+    "alternative_stemmed_names": [
+      "kajaan"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mant": {
+    "fixed_name": "Mantsi",
+    "alternative_stemmed_names": [
+      "mant-",
+      "mant",
+      "mants"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "vilppul": {
+    "fixed_name": "Vilppula",
+    "alternative_stemmed_names": [
+      "vilppul"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tamper": {
+    "fixed_name": "Tampere",
+    "alternative_stemmed_names": [
+      "syntynuet tamper",
+      "tam per",
+      "tamder",
+      "tamp",
+      "tampe r",
+      "tampe-r",
+      "tampere edellisestä avioliito",
+      "tampere rouvan ensimmäisestä avioliito",
+      "tampereel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rääkkylä ": {
+    "fixed_name": "Rääkkylä",
+    "alternative_stemmed_names": [
+      "rääkky-l",
+      "raakkyl",
+      "rääkkyl",
+      "rääkkyt"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lohj": {
+    "fixed_name": "Lohja",
+    "alternative_stemmed_names": [
+      "lohta ja rouvan ensimmäisestä avioliito"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lailil": {
+    "fixed_name": "Lailila",
+    "alternative_stemmed_names": [
+      "lailil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tolkkin": {
+    "fixed_name": "Tolkkinen",
+    "alternative_stemmed_names": [
+      "tolkkis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mikol": {
+    "fixed_name": "Mikola",
+    "alternative_stemmed_names": [
+      "mikol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "punkalaidu": {
+    "fixed_name": "Punkalaidun",
+    "alternative_stemmed_names": [
+      "pun kalaidu",
+      "punka laidu",
+      "punkalai du",
+      "punkalaitu",
+      "punkalaitumel",
+      "punkalaitum"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rapattil": {
+    "fixed_name": "Rapattila",
+    "alternative_stemmed_names": [
+      "rapattil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lap": {
+    "fixed_name": "Lappee",
+    "alternative_stemmed_names": [
+      "lap p",
+      "lapj",
+      "lapea",
+      "lap"
+    ],
+    "region": null,
+    "country": null
+  },
+  "porvo": {
+    "fixed_name": "Porvoo",
+    "alternative_stemmed_names": [
+      "porvdo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "äyräp": {
+    "fixed_name": "Äyräpää",
+    "alternative_stemmed_names": [
+      "äy räp",
+      "ay-rap",
+      "ay-räp",
+      "äy-räp",
+      "äyr",
+      "ayrä",
+      "äyrä p",
+      "ayrä-p",
+      "äyrä-p",
+      "äyräp",
+      "äyräpää k",
+      "äyrapääs",
+      "äyräpääs",
+      "ayräpäa",
+      "äyräpaä",
+      "äyräpääso",
+      "äyräpääsö",
+      "äyräpäfl",
+      "ayräpäo",
+      "äyräpäo",
+      "äyrapo",
+      "äyrapö"
+    ],
+    "region": null,
+    "country": null
+  },
+  "nurmilaht": {
+    "fixed_name": "Nurmilahti",
+    "alternative_stemmed_names": [
+      "nurmilahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "viitasaari ": {
+    "fixed_name": "Viitasaari",
+    "alternative_stemmed_names": [
+      "viitasaa r",
+      "viitasaar"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "muola": {
+    "fixed_name": "Muolaa",
+    "alternative_stemmed_names": [
+      "m uola",
+      "muo l",
+      "muo-l",
+      "muofa",
+      "muoiaas",
+      "muola",
+      "muolaa k",
+      "muolaa rouvan ensimmäisestä avioliito",
+      "muolaaas",
+      "muolaas",
+      "muolaä",
+      "muöla",
+      "muolaassa ja aarno juh",
+      "muolaassaasui",
+      "muolaassaasuinp",
+      "muolaassapuol",
+      "muolaaso",
+      "muolae",
+      "muolan",
+      "muolas",
+      "muolg",
+      "muoloas",
+      "muoloa",
+      "muona",
+      "muota"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "aitolaht": {
+    "fixed_name": "Aitolahti",
+    "alternative_stemmed_names": [
+      "aitolahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lapträsk": {
+    "fixed_name": "Lapträsk",
+    "alternative_stemmed_names": [
+      "lapträsk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "snappertu": {
+    "fixed_name": "Snappertuna",
+    "alternative_stemmed_names": [
+      "snabbertun",
+      "snappertun"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ruskolaht": {
+    "fixed_name": "Ruskolahti",
+    "alternative_stemmed_names": [
+      "ruskolaht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hammerfest": {
+    "fixed_name": "Hammerfest",
+    "alternative_stemmed_names": [
+      "hammerfest"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lahdenpohj": {
+    "fixed_name": "Lahdenpohja",
+    "alternative_stemmed_names": [
+      "lah-denpohj",
+      "lahdcnpohj",
+      "lahden-pohj",
+      "lahdenpbhj",
+      "lahdenpohj",
+      "lahdenpohjas",
+      "lahdenpötij"
+    ],
+    "region": null,
+    "country": null
+  },
+  "soanlaht": {
+    "fixed_name": "Soanlahti",
+    "alternative_stemmed_names": [
+      "soan",
+      "soan-laht",
+      "soaniahd",
+      "soanlah",
+      "soanlah-t",
+      "soanlahdefl",
+      "soanlahdel",
+      "soanlahd",
+      "soanlahdem",
+      "soanlaht",
+      "soanlahtl",
+      "soantahd",
+      "sodanlahd"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "jänisjärv": {
+    "fixed_name": "Jänisjärvi",
+    "alternative_stemmed_names": [
+      "jänis-järv",
+      "jänisjärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "juupajok": {
+    "fixed_name": "Juupajoki",
+    "alternative_stemmed_names": [
+      "juupajoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rasijärv": {
+    "fixed_name": "Rasijärvi",
+    "alternative_stemmed_names": [
+      "rasijärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sortavalan mlk": {
+    "fixed_name": "Sortavalan mlk",
+    "alternative_stemmed_names": [
+      "sorta valan mlk",
+      "sorta-valan mlk",
+      "sortava lan mlk",
+      "sortavala mlk",
+      "sortavalan mlk",
+      "sortavalan mlk rouvan ensimmäisestä avioliito",
+      "sortavlan mlk",
+      "sprtavalan mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "merijärv": {
+    "fixed_name": "Merijärvi",
+    "alternative_stemmed_names": [
+      "merijarvelj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pihlajav": {
+    "fixed_name": "Pihlajavesi",
+    "alternative_stemmed_names": [
+      "pihlajaved"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kristiinankaupunk": {
+    "fixed_name": "Kristiinankaupunki",
+    "alternative_stemmed_names": [
+      "kristiinankaupu",
+      "kristiinankaupung",
+      "kristiinankaupungis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tuupovaar": {
+    "fixed_name": "Tuupovaara",
+    "alternative_stemmed_names": [
+      "tuupov",
+      "tuupovaar"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lissabo": {
+    "fixed_name": "Lissabon",
+    "alternative_stemmed_names": [
+      "lissabo"
+    ],
+    "region": "other",
+    "country": "portugal"
+  },
+  "tulemajärv": {
+    "fixed_name": "Tulemajärvi",
+    "alternative_stemmed_names": [
+      "tulemajärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "soini": {
+    "fixed_name": "Soini",
+    "alternative_stemmed_names": [
+      "soin"
+    ],
+    "region": null,
+    "country": null
+  },
+  "holbaek": {
+    "fixed_name": "Holbaek",
+    "alternative_stemmed_names": [
+      "holbaek"
+    ],
+    "region": "other",
+    "country": "denmark"
+  },
+  "parain": {
+    "fixed_name": "Parainen",
+    "alternative_stemmed_names": [
+      "parai",
+      "paraisil",
+      "parais"
+    ],
+    "region": null,
+    "country": null
+  },
+  "anttil": {
+    "fixed_name": "Anttila",
+    "alternative_stemmed_names": [
+      "antil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pudasjärv": {
+    "fixed_name": "Pudasjärvi",
+    "alternative_stemmed_names": [
+      "pudasjärv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "liitol": {
+    "fixed_name": "Liitola",
+    "alternative_stemmed_names": [
+      "liito-l"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kaar": {
+    "fixed_name": "Kaarina",
+    "alternative_stemmed_names": [
+      "kaari",
+      "kaar",
+      "kaarin",
+      "syntynyt kaarin"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "edmonto": {
+    "fixed_name": "Edmonton",
+    "alternative_stemmed_names": [
+      "edmonto"
+    ],
+    "region": "other",
+    "country": "Canada"
+  },
+  "punkaharju": {
+    "fixed_name": "Punkaharju",
+    "alternative_stemmed_names": [
+      "punkahar ju"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "satoin": {
+    "fixed_name": "Satoinen",
+    "alternative_stemmed_names": [
+      "satois"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lauka": {
+    "fixed_name": "Laukaa",
+    "alternative_stemmed_names": [
+      "lauka"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nartu": {
+    "fixed_name": "Narttu",
+    "alternative_stemmed_names": [
+      "nartu"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tuusniem": {
+    "fixed_name": "Tuusniemi",
+    "alternative_stemmed_names": [
+      "tuus",
+      "tuusniem"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vladivostok": {
+    "fixed_name": "Vladivostok",
+    "alternative_stemmed_names": [
+      "vladivostok"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "rautjärv": {
+    "fixed_name": "Rautjärvi",
+    "alternative_stemmed_names": [
+      "raut-järv",
+      "rautjäivel",
+      "rautjäiv",
+      "rautjär-v",
+      "rautjärv",
+      "rautjärvellapuol",
+      "rautjärvi k",
+      "rautjärviilm",
+      "rautjärvo",
+      "rautjörv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vesilaht": {
+    "fixed_name": "Vesilahti",
+    "alternative_stemmed_names": [
+      "vesilahdel",
+      "vesilahd",
+      "vesilähd",
+      "vesilahdo",
+      "vesjlahd",
+      "vesllahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vammelsu": {
+    "fixed_name": "Vammelsuu",
+    "alternative_stemmed_names": [
+      "vammelsu"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "pieksämäki  ": {
+    "fixed_name": "Pieksämäki",
+    "alternative_stemmed_names": [
+      "pieksä mäk",
+      "pieksämäe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mustamäk": {
+    "fixed_name": "Mustamäki",
+    "alternative_stemmed_names": [
+      "mustamäe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rajamäk": {
+    "fixed_name": "Rajamäki",
+    "alternative_stemmed_names": [
+      "rajamäe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "puolank": {
+    "fixed_name": "Puolanka",
+    "alternative_stemmed_names": [
+      "puolang"
+    ],
+    "region": null,
+    "country": null
+  },
+  "joensu": {
+    "fixed_name": "Joensuu",
+    "alternative_stemmed_names": [
+      "joen su",
+      "joensuu nykyisestä avioliito",
+      "joensu"
+    ],
+    "region": null,
+    "country": null
+  },
+  "paris": {
+    "fixed_name": "Paris",
+    "alternative_stemmed_names": [
+      "pariis"
+    ],
+    "region": "other",
+    "country": "France"
+  },
+  "saalahdt": {
+    "fixed_name": "Saalahdti",
+    "alternative_stemmed_names": [
+      "saalahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "metsäm": {
+    "fixed_name": "Metsämaa",
+    "alternative_stemmed_names": [
+      "metsä m",
+      "metsä-m"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuolemajärv": {
+    "fixed_name": "Kuolemajärvi",
+    "alternative_stemmed_names": [
+      "kuo lemajarv",
+      "kuo lemajärv",
+      "kuo-lemajärv",
+      "kuoemajärv",
+      "kuoiemajärval",
+      "kuojema-järv",
+      "kuole",
+      "kuole majärv",
+      "kuole rnajärv",
+      "kuole-majarv",
+      "kuole-majärv",
+      "kuole-msjärv",
+      "kuolem",
+      "kuolema-järv",
+      "kuolema-järvl",
+      "kuolemaiärveil",
+      "kuolemajäiye",
+      "kuolemajar",
+      "kuolemajär",
+      "kuolemajär v",
+      "kuolemajär-v",
+      "kuolemajär-vt",
+      "kuolemajärväl",
+      "kuolemajärvefl",
+      "kuolemajärveil",
+      "kuolemajarvel",
+      "kuolemajärveliäpuo",
+      "kuolemajärvel",
+      "kuolemajärvelläp",
+      "kuolemajärvelläpuo",
+      "kuolemajärvelö",
+      "kuolemajärvetl",
+      "kuolemajärvi hän on niklas rusin edellisestä avioliito",
+      "kuolemajärvi k",
+      "kuolemajärvoi",
+      "kuolemajärvo",
+      "kuolemajbrv",
+      "kuolemajirv",
+      "kuolemajör",
+      "kuolemejäfv",
+      "kuolemo-järv",
+      "kuolemojärv",
+      "kuolemojörv",
+      "kuoleruajärv",
+      "kuolomajär-v",
+      "kuolomajärvo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vuole": {
+    "fixed_name": "Vuole",
+    "alternative_stemmed_names": [
+      "vuoleel"
+    ],
+    "region": "other",
+    "country": "Russia (Pohjois Inkeri)"
+  },
+  "limink": {
+    "fixed_name": "Liminka",
+    "alternative_stemmed_names": [
+      "liming"
+    ],
+    "region": null,
+    "country": null
+  },
+  "haapasaar": {
+    "fixed_name": "Haapasaari",
+    "alternative_stemmed_names": [
+      "haapasaar"
+    ],
+    "region": null,
+    "country": null
+  },
+  "strel": {
+    "fixed_name": "Strelna",
+    "alternative_stemmed_names": [
+      "streln"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "aka": {
+    "fixed_name": "Akaa",
+    "alternative_stemmed_names": [
+      "äka"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lyök": {
+    "fixed_name": "Lyökki",
+    "alternative_stemmed_names": [
+      "lyök"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "savitaipal": {
+    "fixed_name": "Savitaipale",
+    "alternative_stemmed_names": [
+      "savitai",
+      "savitaipa l",
+      "savitaipal",
+      "savitaipaleel",
+      "savitaipaleellap"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vehmersalm": {
+    "fixed_name": "Vehmersalmi",
+    "alternative_stemmed_names": [
+      "vehmersalmi herra vakkilaisen edellisestä avioliito"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tammisaaren mlk": {
+    "fixed_name": "Tammisaaren mlk",
+    "alternative_stemmed_names": [
+      "tammisaaren mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "jyväskyl": {
+    "fixed_name": "Jyväskylä",
+    "alternative_stemmed_names": [
+      "jyväs kyl",
+      "jyväsky l",
+      "jyväsky-l",
+      "jyväskyl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tsekkoslovak": {
+    "fixed_name": "Tsekkoslovakia",
+    "alternative_stemmed_names": [
+      "tsekkoslovakia"
+    ],
+    "region": "other",
+    "country": "Czechoslovakia"
+  },
+  "ulvila ": {
+    "fixed_name": "Ulvila",
+    "alternative_stemmed_names": [
+      "ui vil",
+      "ulvilas"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "talvikosk": {
+    "fixed_name": "Talvikoski",
+    "alternative_stemmed_names": [
+      "talvikosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "petäjäv": {
+    "fixed_name": "Petäjävesi",
+    "alternative_stemmed_names": [
+      "petäjä-v",
+      "petäjäved"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kangasal": {
+    "fixed_name": "Kangasala",
+    "alternative_stemmed_names": [
+      "kanga sal",
+      "kangasa l"
+    ],
+    "region": null,
+    "country": null
+  },
+  "keiky": {
+    "fixed_name": "Keikyä",
+    "alternative_stemmed_names": [
+      "keikyä",
+      "koiky",
+      "koikyä"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "koski hl": {
+    "fixed_name": "Koski Hl",
+    "alternative_stemmed_names": [
+      "koskihl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rankki ": {
+    "fixed_name": "Rankki",
+    "alternative_stemmed_names": [
+      "rankinsaar"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "etelä-pirkkal": {
+    "fixed_name": "Etelä-Pirkkala",
+    "alternative_stemmed_names": [
+      "eteläpirkkal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vilajoki ": {
+    "fixed_name": "Vilajoki",
+    "alternative_stemmed_names": [
+      "vilajoe"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "lavol": {
+    "fixed_name": "Lavola",
+    "alternative_stemmed_names": [
+      "lavol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuhmalaht": {
+    "fixed_name": "Kuhmalahti",
+    "alternative_stemmed_names": [
+      "kuhmalahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suoniem": {
+    "fixed_name": "Suoniemi",
+    "alternative_stemmed_names": [
+      "suo-niem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "elisenvaar": {
+    "fixed_name": "Elisenvaara",
+    "alternative_stemmed_names": [
+      "elisen-vaar",
+      "elisenivaar",
+      "elisenvaar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "vaalim": {
+    "fixed_name": "Vaalimaa",
+    "alternative_stemmed_names": [
+      "vaalim"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "jämsä ": {
+    "fixed_name": "Jämsä",
+    "alternative_stemmed_names": [
+      "jäm s"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "harlu": {
+    "fixed_name": "Harlu",
+    "alternative_stemmed_names": [
+      "har lu",
+      "har-lu",
+      "harfu",
+      "harlus",
+      "harlu",
+      "haru"
+    ],
+    "region": null,
+    "country": null
+  },
+  "venäj": {
+    "fixed_name": "Venäjä",
+    "alternative_stemmed_names": [
+      "venäj"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "krist": {
+    "fixed_name": "Kristiina",
+    "alternative_stemmed_names": [
+      "kristiin"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kaustin": {
+    "fixed_name": "Kaustinen",
+    "alternative_stemmed_names": [
+      "kaustis",
+      "kausts"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "metsäpirt": {
+    "fixed_name": "Metsäpirtti",
+    "alternative_stemmed_names": [
+      "melsäpirt",
+      "met säpirt",
+      "metäspirt",
+      "metsä pirt",
+      "metsäpir",
+      "metsäpirt t",
+      "metsäpirtil",
+      "metsäpirtilläasu",
+      "metsäpirtilläk",
+      "metsäpirtilläpuol",
+      "metsäpirtti k"
+    ],
+    "region": null,
+    "country": null
+  },
+  "makslaht": {
+    "fixed_name": "Makslahti",
+    "alternative_stemmed_names": [
+      "makslahd",
+      "makslaht"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "baku": {
+    "fixed_name": "Baku",
+    "alternative_stemmed_names": [
+      "baku"
+    ],
+    "region": null,
+    "country": "Azerbaijan"
+  },
+  "kauhajok": {
+    "fixed_name": "Kauhajoki",
+    "alternative_stemmed_names": [
+      "kauhajo k"
+    ],
+    "region": null,
+    "country": null
+  },
+  "niemiskosk": {
+    "fixed_name": "Niemiskoski",
+    "alternative_stemmed_names": [
+      "nie-miskosk"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "karu": {
+    "fixed_name": "Karuna",
+    "alternative_stemmed_names": [
+      "karun"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pälkän": {
+    "fixed_name": "Pälkäne",
+    "alternative_stemmed_names": [
+      "pälkä n",
+      "pälkä-n"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vihant": {
+    "fixed_name": "Vihanti",
+    "alternative_stemmed_names": [
+      "vihan"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pori": {
+    "fixed_name": "Pori",
+    "alternative_stemmed_names": [
+      "po r",
+      "pori",
+      "pori k",
+      "pori rouvan ensimmäisestä avioliito",
+      "por"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sveit": {
+    "fixed_name": "Sveitsi",
+    "alternative_stemmed_names": [
+      "sveits"
+    ],
+    "region": null,
+    "country": "switzerland"
+  },
+  "hirsil": {
+    "fixed_name": "Hirsilä",
+    "alternative_stemmed_names": [
+      "hirsil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kotol": {
+    "fixed_name": "Kotola",
+    "alternative_stemmed_names": [
+      "kotol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "valkjärvi  ": {
+    "fixed_name": "Valkjärvi",
+    "alternative_stemmed_names": [
+      "valjärv",
+      "valk-järv",
+      "valkj",
+      "valkjar",
+      "valkjär",
+      "valkjärvei",
+      "valkjärvel",
+      "valkjärvelf",
+      "valkjärv",
+      "valkjärvelläpuol",
+      "valkjärvi k",
+      "valkjärvö",
+      "valkjäv",
+      "varkjärv",
+      "vnlkjärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "jääsk": {
+    "fixed_name": "Jääski",
+    "alternative_stemmed_names": [
+      "jääs k",
+      "jääskes",
+      "jaask",
+      "jaäsk",
+      "jääskessäasui",
+      "jääskessäpuol",
+      "jääskesö",
+      "jääsk",
+      "jääski k",
+      "jääskis",
+      "jäask",
+      "jääsko",
+      "jäöskesö",
+      "jeäsk",
+      "jöäsk"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kalant": {
+    "fixed_name": "Kalanti",
+    "alternative_stemmed_names": [
+      "kalan",
+      "kalannis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kauhajokl": {
+    "fixed_name": "Kauhajokl",
+    "alternative_stemmed_names": [
+      "kau-hajokl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "toivol": {
+    "fixed_name": "Toivola",
+    "alternative_stemmed_names": [
+      "toivol"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "angelniem": {
+    "fixed_name": "Angelniemi",
+    "alternative_stemmed_names": [
+      "angalniem",
+      "angel-niem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "haukilaht": {
+    "fixed_name": "Haukilahti",
+    "alternative_stemmed_names": [
+      "haukilahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lapväärt": {
+    "fixed_name": "Lapväärtti",
+    "alternative_stemmed_names": [
+      "lap-väärt",
+      "lapväärt-t"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "simo": {
+    "fixed_name": "Simo",
+    "alternative_stemmed_names": [
+      "simo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kööpenham": {
+    "fixed_name": "Kööpenhamina",
+    "alternative_stemmed_names": [
+      "kööpenhamin"
+    ],
+    "region": null,
+    "country": "denmark"
+  },
+  "köl": {
+    "fixed_name": "Köln",
+    "alternative_stemmed_names": [
+      "köln"
+    ],
+    "region": "other",
+    "country": "germany"
+  },
+  "varkaus": {
+    "fixed_name": "Varkaus",
+    "alternative_stemmed_names": [
+      "varkaud",
+      "varkaus"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "outokumpu ": {
+    "fixed_name": "Outokumpu",
+    "alternative_stemmed_names": [
+      "outo kumpu",
+      "outokumu"
+    ],
+    "region": null,
+    "country": null
+  },
+  "karhumäki ": {
+    "fixed_name": "Karhumäki",
+    "alternative_stemmed_names": [
+      "karhumäe",
+      "karhumäen suun"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "savol": {
+    "fixed_name": "Savola",
+    "alternative_stemmed_names": [
+      "savol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kontiolaht": {
+    "fixed_name": "Kontiolahti",
+    "alternative_stemmed_names": [
+      "kontioiahdel",
+      "kontiolah",
+      "kontiolahdel",
+      "kontiolahd",
+      "kontiolaht",
+      "kontiolahti k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "seiskar": {
+    "fixed_name": "Seiskari",
+    "alternative_stemmed_names": [
+      "seis",
+      "seiskarfs",
+      "seiskar",
+      "seiskari k",
+      "seiskaris",
+      "seiskarissakar",
+      "seiskariso",
+      "selskar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "pyhäjok": {
+    "fixed_name": "Pyhäjoki",
+    "alternative_stemmed_names": [
+      "pyhäjoe",
+      "pyhäjok"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pyhäjärvi v": {
+    "fixed_name": "Pyhäjärvi VI",
+    "alternative_stemmed_names": [
+      "pyhäjärvi v"
+    ],
+    "region": null,
+    "country": null
+  },
+  "honkaniem": {
+    "fixed_name": "Honkaniemi",
+    "alternative_stemmed_names": [
+      "honkaniem",
+      "honko-niem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "maarianham": {
+    "fixed_name": "Maarianhamina",
+    "alternative_stemmed_names": [
+      "maarianhamin"
+    ],
+    "region": null,
+    "country": null
+  },
+  "finspång": {
+    "fixed_name": "Finspång",
+    "alternative_stemmed_names": [
+      "finspäng"
+    ],
+    "region": null,
+    "country": "sweden"
+  },
+  "kerimäk": {
+    "fixed_name": "Kerimäki",
+    "alternative_stemmed_names": [
+      "kerimäe",
+      "kerimäk",
+      "kerimäo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "akanlaht": {
+    "fixed_name": "Akanlahti",
+    "alternative_stemmed_names": [
+      "akanlahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "imatr": {
+    "fixed_name": "Imatra",
+    "alternative_stemmed_names": [
+      "imat r",
+      "imat-r",
+      "imatr",
+      "imatral",
+      "imatrp"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kiihtelysvaar": {
+    "fixed_name": "Kiihtelysvaara",
+    "alternative_stemmed_names": [
+      "kiihtelysv",
+      "kiihtelysvaar",
+      "kiihtelysvaaral",
+      "kiihtelysvaaras",
+      "kiihtelyvaar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "naantali ": {
+    "fixed_name": "Naantali",
+    "alternative_stemmed_names": [
+      "naant"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "irkutsk": {
+    "fixed_name": "Irkutsk",
+    "alternative_stemmed_names": [
+      "irkutks"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "perttel": {
+    "fixed_name": "Pertteli",
+    "alternative_stemmed_names": [
+      "pertte-l",
+      "perttej"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hyrsyl": {
+    "fixed_name": "Hyrsylä",
+    "alternative_stemmed_names": [
+      "hyrsyl"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "teerijärv": {
+    "fixed_name": "Teerijärvi",
+    "alternative_stemmed_names": [
+      "teerijärvel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kustin": {
+    "fixed_name": "Kustinen",
+    "alternative_stemmed_names": [
+      "kustis"
+    ],
+    "region": null,
+    "country": null
+  },
+  "luonetjärv": {
+    "fixed_name": "Luonetjärvi",
+    "alternative_stemmed_names": [
+      "luonet-järv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hollol": {
+    "fixed_name": "Hollola",
+    "alternative_stemmed_names": [
+      "holjol",
+      "holo",
+      "hollola rouva seppälän velj",
+      "hollolassa ja jooseppi s"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sievi": {
+    "fixed_name": "Sievi",
+    "alternative_stemmed_names": [
+      "sievi",
+      "siev"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "karku": {
+    "fixed_name": "Karkku",
+    "alternative_stemmed_names": [
+      "karkus"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ruoholaht": {
+    "fixed_name": "Ruoholahti",
+    "alternative_stemmed_names": [
+      "ruoholahd",
+      "ruoholaht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vammal": {
+    "fixed_name": "Vammala",
+    "alternative_stemmed_names": [
+      "vam-mal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "artol": {
+    "fixed_name": "Artola",
+    "alternative_stemmed_names": [
+      "artol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lapinjärv": {
+    "fixed_name": "Lapinjärvi",
+    "alternative_stemmed_names": [
+      "lapinjärvel"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pietarsaaren mlk": {
+    "fixed_name": "Pietarsaaren mlk",
+    "alternative_stemmed_names": [
+      "pietarsaaren mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "heinlaht": {
+    "fixed_name": "Heinlahti",
+    "alternative_stemmed_names": [
+      "heinlaht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kivio": {
+    "fixed_name": "Kivioja",
+    "alternative_stemmed_names": [
+      "kivio"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sundeo": {
+    "fixed_name": "Sundeo",
+    "alternative_stemmed_names": [
+      "sundeo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "räisäl": {
+    "fixed_name": "Räisälä",
+    "alternative_stemmed_names": [
+      "rai säl",
+      "räi säl",
+      "rai sälö",
+      "räi-säl",
+      "raisa",
+      "raisa l",
+      "räisä l",
+      "räisä-l",
+      "räisäf",
+      "raisaiä",
+      "räisäl",
+      "räisälä k",
+      "räisälär",
+      "räisäläs",
+      "räisälässä k",
+      "räisälässäpuol",
+      "raisälassl",
+      "räisäläsö",
+      "räisätäs",
+      "räisät",
+      "syn tyneet raisäl"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "sysm": {
+    "fixed_name": "Sysmä",
+    "alternative_stemmed_names": [
+      "sysmäsö",
+      "sysmö",
+      "sysrn"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kesälaht": {
+    "fixed_name": "Kesälahti",
+    "alternative_stemmed_names": [
+      "kesäiahdel",
+      "kesälahdelf",
+      "kesätahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sitikkal": {
+    "fixed_name": "Sitikkala",
+    "alternative_stemmed_names": [
+      "sitikkal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pornainen  ": {
+    "fixed_name": "Pornainen",
+    "alternative_stemmed_names": [
+      "pornai",
+      "pornainen lapset ovat rouvan ensimmäisestä avioliito",
+      "pornaisis",
+      "pornais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "enso": {
+    "fixed_name": "Enso",
+    "alternative_stemmed_names": [
+      "enso"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "jepua ": {
+    "fixed_name": "Jepua",
+    "alternative_stemmed_names": [
+      "je-pu",
+      "jepua"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "merijok": {
+    "fixed_name": "Merijoki",
+    "alternative_stemmed_names": [
+      "merijoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "teekerpyy": {
+    "fixed_name": "Teekerpyy",
+    "alternative_stemmed_names": [
+      "tee-kerpyy"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lanskaj": {
+    "fixed_name": "Lanskaja",
+    "alternative_stemmed_names": [
+      "lanskaj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lempääl": {
+    "fixed_name": "Lempäälä",
+    "alternative_stemmed_names": [
+      "lem pääiä",
+      "lem pääl",
+      "lempääl",
+      "lempaalassaas",
+      "lempal",
+      "lompääl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "saari": {
+    "fixed_name": "Saari",
+    "alternative_stemmed_names": [
+      "saar",
+      "saare",
+      "saari"
+    ],
+    "region": null,
+    "country": null
+  },
+  "mäntsäl": {
+    "fixed_name": "Mäntsälä",
+    "alternative_stemmed_names": [
+      "mänt säl",
+      "mänt-säl",
+      "mänts",
+      "mäntsä iä",
+      "mäntsäf",
+      "mäntsäiä",
+      "mantsäl",
+      "mäntsal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tenhol": {
+    "fixed_name": "Tenhola",
+    "alternative_stemmed_names": [
+      "tenhol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "siverskaj": {
+    "fixed_name": "Siverskaja",
+    "alternative_stemmed_names": [
+      "siverskaj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "loimaan mlk": {
+    "fixed_name": "Loimaan mlk",
+    "alternative_stemmed_names": [
+      "loimaan mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vuojok": {
+    "fixed_name": "Vuojoki",
+    "alternative_stemmed_names": [
+      "vuojoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "räsäl": {
+    "fixed_name": "Räsälä",
+    "alternative_stemmed_names": [
+      "räsäl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hauho": {
+    "fixed_name": "Hauho",
+    "alternative_stemmed_names": [
+      "hauho"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "artjärv": {
+    "fixed_name": "Artjärvi",
+    "alternative_stemmed_names": [
+      "artjarv",
+      "artjarvelö"
+    ],
+    "region": null,
+    "country": null
+  },
+  "dragsfjärd": {
+    "fixed_name": "Dragsfjärd",
+    "alternative_stemmed_names": [
+      "drags fjärd",
+      "dragsfjärdis",
+      "dragsjärd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lavansaar": {
+    "fixed_name": "Lavansaari",
+    "alternative_stemmed_names": [
+      "lavan saar",
+      "lavans",
+      "lavansaarel",
+      "lavansaarellapuo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "venjok": {
+    "fixed_name": "Venjoki",
+    "alternative_stemmed_names": [
+      "venjoe"
+    ],
+    "region": "other",
+    "country": "Russia (Inkeri)"
+  },
+  "suurmäk": {
+    "fixed_name": "Suurmäki",
+    "alternative_stemmed_names": [
+      "suurmäe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "köyliö": {
+    "fixed_name": "Köyliö",
+    "alternative_stemmed_names": [
+      "kövliö",
+      "köy-liö"
+    ],
+    "region": null,
+    "country": null
+  },
+  "varpaisjärv": {
+    "fixed_name": "Varpaisjärvi",
+    "alternative_stemmed_names": [
+      "varpaisjärvefl",
+      "varpaisjärvo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lieks": {
+    "fixed_name": "Lieksa",
+    "alternative_stemmed_names": [
+      "lieks"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kangasluom": {
+    "fixed_name": "Kangasluoma",
+    "alternative_stemmed_names": [
+      "kangasluom"
+    ],
+    "region": null,
+    "country": null
+  },
+  "maaselk": {
+    "fixed_name": "Maaselkä",
+    "alternative_stemmed_names": [
+      "maasel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rautu": {
+    "fixed_name": "Rautu",
+    "alternative_stemmed_names": [
+      "raiidu",
+      "rau tu",
+      "raudu",
+      "raudussa asuu nykyisin ruots",
+      "raudussapuol",
+      "raudus",
+      "rautu"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "lit": {
+    "fixed_name": "litti",
+    "alternative_stemmed_names": [
+      "lit t",
+      "littij",
+      "littj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "joensuu ": {
+    "fixed_name": "Joensuu",
+    "alternative_stemmed_names": [
+      "joensuussapuol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "valamo": {
+    "fixed_name": "Valamo",
+    "alternative_stemmed_names": [
+      "valamo"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "hyvink": {
+    "fixed_name": "Hyvinkää",
+    "alternative_stemmed_names": [
+      "hv vink",
+      "hy vink",
+      "hyvin k",
+      "hyvinkääil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kunksjärv": {
+    "fixed_name": "Kunksjärvi",
+    "alternative_stemmed_names": [
+      "kunksjärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hammarland": {
+    "fixed_name": "Hammarland",
+    "alternative_stemmed_names": [
+      "hammarland"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuokkan": {
+    "fixed_name": "Kuokkanen",
+    "alternative_stemmed_names": [
+      "kuokkas"
+    ],
+    "region": null,
+    "country": null
+  },
+  "merikarv": {
+    "fixed_name": "Merikarvia",
+    "alternative_stemmed_names": [
+      "mcrikar v",
+      "merikarvia"
+    ],
+    "region": null,
+    "country": null
+  },
+  "seinäjok": {
+    "fixed_name": "Seinäjoki",
+    "alternative_stemmed_names": [
+      "sei näjok",
+      "seinäj",
+      "seinäjoe",
+      "seinäjok"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "padasjok": {
+    "fixed_name": "Padasjoki",
+    "alternative_stemmed_names": [
+      "pa dasjok",
+      "padasjoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "molax": {
+    "fixed_name": "Molax",
+    "alternative_stemmed_names": [
+      "molax"
+    ],
+    "region": null,
+    "country": null
+  },
+  "arkangel": {
+    "fixed_name": "Arkangeli",
+    "alternative_stemmed_names": [
+      "arkangel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vesanto": {
+    "fixed_name": "Vesanto",
+    "alternative_stemmed_names": [
+      "ve santo",
+      "vesan-to",
+      "vesano"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "viipur": {
+    "fixed_name": "Viipuri",
+    "alternative_stemmed_names": [
+      "vii pur",
+      "vii-pur",
+      "viikaarina uusihakala    robert backman    eino arminenpur",
+      "viiour",
+      "viip",
+      "viipu -r",
+      "viipu r",
+      "viipu rl",
+      "viipu-l",
+      "viipu-r",
+      "viipuns",
+      "viipur",
+      "viipuri asuihp",
+      "viipuri äsuinp",
+      "viipuri eino hännisen ensimmäisestä avioliito",
+      "viipuri ens",
+      "viipuri k",
+      "viipuri lapset ovat herra palosen ensimmäisestä avioliito",
+      "viipuri meeri lahtisen ensimmäisestä avioliito",
+      "viipuri pojat ovat ensimmäisestä avioliito",
+      "viipuri sekä toisesta avioliito",
+      "viipuri tois",
+      "viipuris",
+      "viipurissa ja sisko",
+      "viipurissaasu",
+      "viipurissaasuinp",
+      "viipurissapuol",
+      "viipy",
+      "vupur"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "jännevir": {
+    "fixed_name": "Jännevirta",
+    "alternative_stemmed_names": [
+      "jännevir"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rovaniem": {
+    "fixed_name": "Rovaniemi",
+    "alternative_stemmed_names": [
+      "rovaniemi k",
+      "rovanniem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "karttul": {
+    "fixed_name": "Karttula",
+    "alternative_stemmed_names": [
+      "karttol",
+      "kartue",
+      "kartuiä",
+      "karttul",
+      "kartu"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vologd": {
+    "fixed_name": "Vologda",
+    "alternative_stemmed_names": [
+      "vologdas"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "inkeroinen ": {
+    "fixed_name": "Inkeroinen",
+    "alternative_stemmed_names": [
+      "inkerois"
+    ],
+    "region": null,
+    "country": null
+  },
+  "päättän": {
+    "fixed_name": "Päättänen",
+    "alternative_stemmed_names": [
+      "päättän"
+    ],
+    "region": null,
+    "country": null
+  },
+  "washingto": {
+    "fixed_name": "Washington",
+    "alternative_stemmed_names": [
+      "washingto"
+    ],
+    "region": "other",
+    "country": "USA"
+  },
+  "tohol": {
+    "fixed_name": "Toholampi",
+    "alternative_stemmed_names": [
+      "toholam"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "bosto": {
+    "fixed_name": "Boston",
+    "alternative_stemmed_names": [
+      "boston"
+    ],
+    "region": "other",
+    "country": "usa"
+  },
+  "matarenk": {
+    "fixed_name": "Matarenki",
+    "alternative_stemmed_names": [
+      "matareng"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vuoksennisk": {
+    "fixed_name": "Vuoksenniska",
+    "alternative_stemmed_names": [
+      "vuoksennisk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "savonran": {
+    "fixed_name": "Savonranta",
+    "alternative_stemmed_names": [
+      "savonr",
+      "savonran"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vir": {
+    "fixed_name": "Virrat",
+    "alternative_stemmed_names": [
+      "vir",
+      "virrat k",
+      "viro"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuusankosk": {
+    "fixed_name": "Kuusankoski",
+    "alternative_stemmed_names": [
+      "kuu sankosk",
+      "kuusan kosk",
+      "kuusankos k",
+      "kuuusankosk",
+      "synty neet kuusankosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "harju": {
+    "fixed_name": "Harju",
+    "alternative_stemmed_names": [
+      "harju"
+    ],
+    "region": null,
+    "country": null
+  },
+  "paatio": {
+    "fixed_name": "Paatio",
+    "alternative_stemmed_names": [
+      "paa-tio",
+      "paatio",
+      "paatiosaar"
+    ],
+    "region": "Karelia",
+    "country": null
+  },
+  "kausal": {
+    "fixed_name": "Kausala",
+    "alternative_stemmed_names": [
+      "kausal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "säiniö": {
+    "fixed_name": "Säiniö",
+    "alternative_stemmed_names": [
+      "sainio",
+      "säiniö"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ventspils": {
+    "fixed_name": "Ventspils",
+    "alternative_stemmed_names": [
+      "windau"
+    ],
+    "region": "other",
+    "country": "Latvia"
+  },
+  "siiby": {
+    "fixed_name": "Siiby",
+    "alternative_stemmed_names": [
+      "sii-pyy",
+      "siiby"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vammeljok": {
+    "fixed_name": "Vammeljoki",
+    "alternative_stemmed_names": [
+      "vammeljoe",
+      "vammeljok"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "valkeala ": {
+    "fixed_name": "Valkeala",
+    "alternative_stemmed_names": [
+      "val-keal",
+      "valkea l",
+      "valkeal",
+      "valkeiil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "terijok": {
+    "fixed_name": "Terijoki",
+    "alternative_stemmed_names": [
+      "teiijok",
+      "teri",
+      "teri jok",
+      "terij",
+      "terijo-k",
+      "terijoel",
+      "terijoe",
+      "terijöe",
+      "terijoellapuol",
+      "terijok",
+      "terijoki ensimmäisestä avioliito",
+      "terijoki k",
+      "terijooe",
+      "torijo-k"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "ranu": {
+    "fixed_name": "Ranua",
+    "alternative_stemmed_names": [
+      "ranua"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "karppila ": {
+    "fixed_name": "Karppila",
+    "alternative_stemmed_names": [
+      "karp-pil",
+      "karppil"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "sum": {
+    "fixed_name": "Summa",
+    "alternative_stemmed_names": [
+      "sum"
+    ],
+    "region": null,
+    "country": null
+  },
+  "karstul": {
+    "fixed_name": "Karstula",
+    "alternative_stemmed_names": [
+      "karstula k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kymi": {
+    "fixed_name": "Kymi",
+    "alternative_stemmed_names": [
+      "ky m",
+      "kymi",
+      "kymi as",
+      "kymis"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "salamajärv": {
+    "fixed_name": "Salamajärvi",
+    "alternative_stemmed_names": [
+      "salamajärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "karinain": {
+    "fixed_name": "Karinainen",
+    "alternative_stemmed_names": [
+      "kari-nain",
+      "karinai-n",
+      "karinais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "jokel": {
+    "fixed_name": "Jokela",
+    "alternative_stemmed_names": [
+      "jokel"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mustamer": {
+    "fixed_name": "Mustameri",
+    "alternative_stemmed_names": [
+      "mustallamerel-l"
+    ],
+    "region": "other",
+    "country": "Country on Black Sea"
+  },
+  "rajajok": {
+    "fixed_name": "Rajajoki",
+    "alternative_stemmed_names": [
+      "rajajoe"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "uraal": {
+    "fixed_name": "Uraali",
+    "alternative_stemmed_names": [
+      "uraal"
+    ],
+    "region": null,
+    "country": "Venäjä"
+  },
+  "vampul": {
+    "fixed_name": "Vampula",
+    "alternative_stemmed_names": [
+      "vamp",
+      "vampu",
+      "vampuia",
+      "vampul"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "alatornio": {
+    "fixed_name": "Alatornio",
+    "alternative_stemmed_names": [
+      "ala tornio",
+      "alator-nio",
+      "älatornio"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "riistav": {
+    "fixed_name": "Riistavesi",
+    "alternative_stemmed_names": [
+      "riistaved",
+      "riistav"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "revonkyl": {
+    "fixed_name": "Revonkylä",
+    "alternative_stemmed_names": [
+      "revonkyl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tuprov": {
+    "fixed_name": "Tuprova",
+    "alternative_stemmed_names": [
+      "tuprov"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "hämeenkyl": {
+    "fixed_name": "Hämeenkylä",
+    "alternative_stemmed_names": [
+      "hämeenkyl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kivistö": {
+    "fixed_name": "Kivistö",
+    "alternative_stemmed_names": [
+      "kivistö"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pärksaar": {
+    "fixed_name": "Pärksaari",
+    "alternative_stemmed_names": [
+      "pärksaar"
+    ],
+    "region": null,
+    "country": null
+  },
+  "siper": {
+    "fixed_name": "Siperia",
+    "alternative_stemmed_names": [
+      "siperia"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "säkkijärv": {
+    "fixed_name": "Säkkijärvi",
+    "alternative_stemmed_names": [
+      "säk",
+      "säkki järv",
+      "säkki-järv",
+      "säkkij",
+      "säkkijär",
+      "säkkijär v",
+      "säkkijär-v",
+      "säkkijärvatl",
+      "sakkijärvc",
+      "säkkijärvc",
+      "säkkijärveiiä",
+      "säkkijärveil",
+      "säkkijärvel",
+      "säkkijarvel",
+      "sakkijärvel",
+      "sakkijarv",
+      "sakkijärv",
+      "säkkijarv",
+      "säkkijärv",
+      "säkkijärvelläasu",
+      "säkkijärvelläpuol",
+      "säkkijärvelö",
+      "säkkijärvem",
+      "säkkijärvetl",
+      "säkkijärvi k",
+      "säkkijärvi rouvan ensimmäisestä avioliito",
+      "säkkijärvol",
+      "säkkijärvo",
+      "säkkijäv",
+      "säkkijäyv",
+      "säkkijerv",
+      "säkkijirv",
+      "säkkijörv",
+      "säkkilörv",
+      "säkkirv",
+      "säkkkijärv",
+      "säkkljärv",
+      "sökkijärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kaavil": {
+    "fixed_name": "Kaavila",
+    "alternative_stemmed_names": [
+      "kaavil",
+      "kaav"
+    ],
+    "region": null,
+    "country": null
+  },
+  "loima": {
+    "fixed_name": "Loimaa",
+    "alternative_stemmed_names": [
+      "loi m",
+      "loi-m",
+      "loima"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kyimäkosk": {
+    "fixed_name": "KyImäkoski",
+    "alternative_stemmed_names": [
+      "kyi mäkosk",
+      "kylmä-kosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pätkäjärv": {
+    "fixed_name": "Pätkäjärvi",
+    "alternative_stemmed_names": [
+      "pätkjärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tohmajärv": {
+    "fixed_name": "Tohmajärvi",
+    "alternative_stemmed_names": [
+      "tohajärv",
+      "tohm",
+      "tohmajär",
+      "tohmajärvel",
+      "tohmajärvelj",
+      "tohmajärv",
+      "tohmajärvelö",
+      "tohmajärvo",
+      "tohnnajärv",
+      "tohrnajärv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "spankkov": {
+    "fixed_name": "Spankkova",
+    "alternative_stemmed_names": [
+      "spankov"
+    ],
+    "region": "other",
+    "country": "Russia (inkeri)"
+  },
+  "askol": {
+    "fixed_name": "Askola",
+    "alternative_stemmed_names": [
+      "askol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pielisjärv": {
+    "fixed_name": "Pielisjärvi",
+    "alternative_stemmed_names": [
+      "pieiisjärv",
+      "pielisjär",
+      "pielisjärveil",
+      "pielisjarvel",
+      "pielisjärvelj",
+      "pielisjärv",
+      "pielisjärvo",
+      "piellsjärvl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "belg": {
+    "fixed_name": "Belgia",
+    "alternative_stemmed_names": [
+      "belgia"
+    ],
+    "region": "other",
+    "country": "belgium"
+  },
+  "yksp": {
+    "fixed_name": "Ykspää",
+    "alternative_stemmed_names": [
+      "yksp"
+    ],
+    "region": "karjala",
+    "country": null
+  },
+  "lav": {
+    "fixed_name": "Lavia",
+    "alternative_stemmed_names": [
+      "lavia"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kangaspelto": {
+    "fixed_name": "Kangaspelto",
+    "alternative_stemmed_names": [
+      "kangaspelo"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "hartol": {
+    "fixed_name": "Hartola",
+    "alternative_stemmed_names": [
+      "har tol",
+      "hartol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "purpu": {
+    "fixed_name": "Purpua",
+    "alternative_stemmed_names": [
+      "purpua"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vatnuor": {
+    "fixed_name": "Vatnuori",
+    "alternative_stemmed_names": [
+      "vatnuor"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tervol": {
+    "fixed_name": "Tervola",
+    "alternative_stemmed_names": [
+      "tervol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "puhos": {
+    "fixed_name": "Puhos",
+    "alternative_stemmed_names": [
+      "puhoks"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "eisling": {
+    "fixed_name": "Eislingen",
+    "alternative_stemmed_names": [
+      "eislingen"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "puskil": {
+    "fixed_name": "Puskila",
+    "alternative_stemmed_names": [
+      "puskil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "jurv": {
+    "fixed_name": "Jurva",
+    "alternative_stemmed_names": [
+      "juiva",
+      "jur v",
+      "jur-v",
+      "jurva k",
+      "jurvas"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "riihikosk": {
+    "fixed_name": "Riihikoski",
+    "alternative_stemmed_names": [
+      "riihlkosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kouvol": {
+    "fixed_name": "Kouvola",
+    "alternative_stemmed_names": [
+      "kou vol",
+      "kouv",
+      "kouvo l",
+      "kouvol",
+      "kouvola uuno rautiaisen ensimmäisestä avioliito",
+      "kouvolassa toivo juvosen sisaruks",
+      "kouvolo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pietarsaari ": {
+    "fixed_name": "Pietarsaari",
+    "alternative_stemmed_names": [
+      "pietar saari lapset ovat eino harjun ensimmäisestä avioliito",
+      "pietasaar"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nurmo": {
+    "fixed_name": "Nurmo",
+    "alternative_stemmed_names": [
+      "nurmo",
+      "nurmos"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "oriv": {
+    "fixed_name": "Orivesi",
+    "alternative_stemmed_names": [
+      "ori v",
+      "orived",
+      "oriv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "iisalmi mlk": {
+    "fixed_name": "Iisalmi mlk",
+    "alternative_stemmed_names": [
+      "iisalmen mlk",
+      "iisalmi mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "syvär": {
+    "fixed_name": "Syväri",
+    "alternative_stemmed_names": [
+      "syvär"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "mustilaht": {
+    "fixed_name": "Mustilahti",
+    "alternative_stemmed_names": [
+      "mustinlahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "skotlant": {
+    "fixed_name": "Skotlanti",
+    "alternative_stemmed_names": [
+      "skotlan"
+    ],
+    "region": "other",
+    "country": "uk"
+  },
+  "muhos": {
+    "fixed_name": "Muhos",
+    "alternative_stemmed_names": [
+      "muhoks"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hämeenkyrö": {
+    "fixed_name": "Hämeenkyrö",
+    "alternative_stemmed_names": [
+      "hä meenkyrö",
+      "hämeen kyrö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kohtiolaht": {
+    "fixed_name": "Kohtiolahti",
+    "alternative_stemmed_names": [
+      "kohtiolahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sorsakosk": {
+    "fixed_name": "Sorsakoski",
+    "alternative_stemmed_names": [
+      "sorsakoski toisesta avioliito"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lehtimäk": {
+    "fixed_name": "Lehtimäki",
+    "alternative_stemmed_names": [
+      "lehtimäe",
+      "lehtimäk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nastola  ": {
+    "fixed_name": "Nastola",
+    "alternative_stemmed_names": [
+      "nasto l",
+      "nasto",
+      "nastola rouvan ensimmäisestä avioliito",
+      "nastöl",
+      "nostol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "inker": {
+    "fixed_name": "Inkeri",
+    "alternative_stemmed_names": [
+      "inke rl",
+      "inker",
+      "inkerissäpuol"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "kanad": {
+    "fixed_name": "Kanada",
+    "alternative_stemmed_names": [
+      "kanad"
+    ],
+    "region": null,
+    "country": "Canada"
+  },
+  "lieto": {
+    "fixed_name": "Lieto",
+    "alternative_stemmed_names": [
+      "liedo",
+      "liejo",
+      "lioto"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kajaanin mlk": {
+    "fixed_name": "Kajaanin mlk",
+    "alternative_stemmed_names": [
+      "kajaanin mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hyvinkään mlk": {
+    "fixed_name": "Hyvinkään mlk",
+    "alternative_stemmed_names": [
+      "hyvinkään mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "boe": {
+    "fixed_name": "Boe",
+    "alternative_stemmed_names": [
+      "boes"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "konnev": {
+    "fixed_name": "Konnevesi",
+    "alternative_stemmed_names": [
+      "konneved"
+    ],
+    "region": null,
+    "country": null
+  },
+  "viitasalmi ": {
+    "fixed_name": "Viitasalmi",
+    "alternative_stemmed_names": [
+      "viitasalm"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "liikol": {
+    "fixed_name": "Liikola",
+    "alternative_stemmed_names": [
+      "liikol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tyrä": {
+    "fixed_name": "Tyrä",
+    "alternative_stemmed_names": [
+      "tyrä"
+    ],
+    "region": null,
+    "country": null
+  },
+  "isokyrö": {
+    "fixed_name": "Isokyrö",
+    "alternative_stemmed_names": [
+      "isossakyrö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sotkamo": {
+    "fixed_name": "Sotkamo",
+    "alternative_stemmed_names": [
+      "sotkamo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "karv": {
+    "fixed_name": "Karvia",
+    "alternative_stemmed_names": [
+      "kar v",
+      "karv",
+      "karvial",
+      "karvia"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "maksu": {
+    "fixed_name": "Maksu",
+    "alternative_stemmed_names": [
+      "maksu"
+    ],
+    "region": null,
+    "country": null
+  },
+  "syskyjärv": {
+    "fixed_name": "Syskyjärvi",
+    "alternative_stemmed_names": [
+      "syskyjärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "laitil": {
+    "fixed_name": "Laitila",
+    "alternative_stemmed_names": [
+      "laiti",
+      "laiti-l",
+      "laitil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tallin": {
+    "fixed_name": "Tallinna",
+    "alternative_stemmed_names": [
+      "tallin"
+    ],
+    "region": "other",
+    "country": "estonia"
+  },
+  "ren": {
+    "fixed_name": "Renko",
+    "alternative_stemmed_names": [
+      "rengo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kite": {
+    "fixed_name": "Kitee",
+    "alternative_stemmed_names": [
+      "kite"
+    ],
+    "region": null,
+    "country": null
+  },
+  "rornain": {
+    "fixed_name": "Rornainen",
+    "alternative_stemmed_names": [
+      "rornais"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suojok": {
+    "fixed_name": "Suojoki",
+    "alternative_stemmed_names": [
+      "suojoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vuoksenran": {
+    "fixed_name": "Vuoksenranta",
+    "alternative_stemmed_names": [
+      "vuok senran",
+      "vuok-senran",
+      "vuoksen-ran",
+      "vuoksenr",
+      "vuoksenran-",
+      "vuoksenran-to",
+      "vuoksenrannal",
+      "vuoksenrannas",
+      "vuoksenran",
+      "vuöksenran",
+      "vuoksenrannass",
+      "vuoksenrann",
+      "vuoksenranta k",
+      "vuokserlran",
+      "vuoksonran"
+    ],
+    "region": "karjala",
+    "country": null
+  },
+  "reposaar": {
+    "fixed_name": "Reposaari",
+    "alternative_stemmed_names": [
+      "repo-saar"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vitel": {
+    "fixed_name": "Vitele",
+    "alternative_stemmed_names": [
+      "vitel"
+    ],
+    "region": "karjala",
+    "country": null
+  },
+  "kurikkal": {
+    "fixed_name": "Kurikkala",
+    "alternative_stemmed_names": [
+      "kurikkal"
+    ],
+    "region": null,
+    "country": null
+  },
+  "jalasjärv": {
+    "fixed_name": "Jalasjärvi",
+    "alternative_stemmed_names": [
+      "jalas",
+      "jalasjär v",
+      "jalasjärv",
+      "jalasjärveil",
+      "jalasjärvel"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tammisaar": {
+    "fixed_name": "Tammisaari",
+    "alternative_stemmed_names": [
+      "tam-misaar",
+      "tammisaares"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suojärv": {
+    "fixed_name": "Suojärvi",
+    "alternative_stemmed_names": [
+      "suo järv",
+      "suo-järv",
+      "suojä",
+      "suojanv",
+      "suojär",
+      "suojär-v",
+      "suojärjoonas",
+      "suojärveh",
+      "suojärveil",
+      "suojärvej",
+      "suojärvel",
+      "suojärvelläpuol",
+      "suojärvelö",
+      "suojärv",
+      "suojärvi k",
+      "suojärvo",
+      "suojärvs",
+      "suojärye"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "sortaval": {
+    "fixed_name": "Sortavala",
+    "alternative_stemmed_names": [
+      "sor taval",
+      "sort",
+      "sor",
+      "sortava l",
+      "sortaval",
+      "sortavala k",
+      "sortavala rouvan ensimmäisestä avioliito",
+      "sortavalanmikis",
+      "sortavalanml",
+      "sortavalanmtlcs",
+      "sortavalantulk",
+      "sortavalapuol",
+      "sortavalas",
+      "sortavalassaasui",
+      "sortavalassapuol",
+      "sortavalastoivo",
+      "sortayal",
+      "sortval"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "juva ": {
+    "fixed_name": "Juva",
+    "alternative_stemmed_names": [
+      "juval",
+      "juva"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "käkisalmi mlk": {
+    "fixed_name": "Käkisalmi mlk",
+    "alternative_stemmed_names": [
+      "käkisalmi mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uurain": {
+    "fixed_name": "Uurainen",
+    "alternative_stemmed_names": [
+      "uurain",
+      "uurais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kiviniem": {
+    "fixed_name": "Kiviniemi",
+    "alternative_stemmed_names": [
+      "kiviniem"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kaprio": {
+    "fixed_name": "Kaprio",
+    "alternative_stemmed_names": [
+      "kaprino",
+      "kaprio"
+    ],
+    "region": null,
+    "country": null
+  },
+  "miikkulain": {
+    "fixed_name": "Miikkulainen",
+    "alternative_stemmed_names": [
+      "miikkulais"
+    ],
+    "region": null,
+    "country": null
+  },
+  "riihimäk": {
+    "fixed_name": "Riihimäki",
+    "alternative_stemmed_names": [
+      "rii-himäk",
+      "riihi",
+      "riihi mäk",
+      "riihi-mäe",
+      "riihi-mäk",
+      "riihim",
+      "riihimä k",
+      "riihimäe",
+      "riihimäk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hippol": {
+    "fixed_name": "Hippola",
+    "alternative_stemmed_names": [
+      "hippol"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "impilaht": {
+    "fixed_name": "Impilahti",
+    "alternative_stemmed_names": [
+      "imilahd",
+      "imp",
+      "impi laht",
+      "impiiahd",
+      "impil",
+      "impilah t",
+      "impilahdel",
+      "impilahdellapuol",
+      "impilahdellaty",
+      "impilahd",
+      "impilahht",
+      "impilaht"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "oravain": {
+    "fixed_name": "Oravainen",
+    "alternative_stemmed_names": [
+      "oravai",
+      "oravais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kalato": {
+    "fixed_name": "Kalaton",
+    "alternative_stemmed_names": [
+      "kala-to"
+    ],
+    "region": null,
+    "country": null
+  },
+  "aunus": {
+    "fixed_name": "Aunus",
+    "alternative_stemmed_names": [
+      "aunuks",
+      "aunus"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "heinjok": {
+    "fixed_name": "Heinjoki",
+    "alternative_stemmed_names": [
+      "heinijoe",
+      "heinj",
+      "heinjoejl",
+      "heinjoe",
+      "heinjoellapuol",
+      "heinjoel",
+      "heinjok",
+      "hienjoe",
+      "hpinjoe"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "pähkinälin": {
+    "fixed_name": "Pähkinälinna",
+    "alternative_stemmed_names": [
+      "pähkinälin"
+    ],
+    "region": null,
+    "country": null
+  },
+  "örmark": {
+    "fixed_name": "Örmark",
+    "alternative_stemmed_names": [
+      "örmark"
+    ],
+    "region": null,
+    "country": null
+  },
+  "haapav": {
+    "fixed_name": "Haapavesi",
+    "alternative_stemmed_names": [
+      "haapaved"
+    ],
+    "region": null,
+    "country": null
+  },
+  "mar": {
+    "fixed_name": "Maria",
+    "alternative_stemmed_names": [
+      "maria"
+    ],
+    "region": null,
+    "country": null
+  },
+  "helsingin mlk": {
+    "fixed_name": "Helsingin mlk",
+    "alternative_stemmed_names": [
+      "hei singin mlk",
+      "heisin gin mlk",
+      "helsingin mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pyhäjärvi oi": {
+    "fixed_name": "Pyhäjärvi OI",
+    "alternative_stemmed_names": [
+      "pyhäjärvi oi"
+    ],
+    "region": null,
+    "country": null
+  },
+  "naantal": {
+    "fixed_name": "Naantali",
+    "alternative_stemmed_names": [
+      "naan",
+      "noantal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lemi": {
+    "fixed_name": "Lemi",
+    "alternative_stemmed_names": [
+      "lemi",
+      "lem"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "loviis": {
+    "fixed_name": "Loviisa",
+    "alternative_stemmed_names": [
+      "loviis",
+      "lovijs"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "särkisalo": {
+    "fixed_name": "Särkisalo",
+    "alternative_stemmed_names": [
+      "särkisalo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "narv": {
+    "fixed_name": "Narva",
+    "alternative_stemmed_names": [
+      "narv"
+    ],
+    "region": "other",
+    "country": "Estonia?"
+  },
+  "nurmes": {
+    "fixed_name": "Nurmes",
+    "alternative_stemmed_names": [
+      "nurmoks"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "littoin": {
+    "fixed_name": "Littoinen",
+    "alternative_stemmed_names": [
+      "littois"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "valkekosk": {
+    "fixed_name": "Valkekoski",
+    "alternative_stemmed_names": [
+      "valkekosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "revonlaht": {
+    "fixed_name": "Revonlahti",
+    "alternative_stemmed_names": [
+      "revon-laht",
+      "revoniahd",
+      "revonlahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kälv": {
+    "fixed_name": "Kälviä",
+    "alternative_stemmed_names": [
+      "käl-v",
+      "kälviä",
+      "kälviälö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rymättyl": {
+    "fixed_name": "Rymättylä",
+    "alternative_stemmed_names": [
+      "rymäty",
+      "rymättyläso"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kavantsaar": {
+    "fixed_name": "Kavantsaari",
+    "alternative_stemmed_names": [
+      "kavantsaar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "tarvasjok": {
+    "fixed_name": "Tarvasjoki",
+    "alternative_stemmed_names": [
+      "tarvas",
+      "tarvasjo-k",
+      "tarvosjoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "korsholm": {
+    "fixed_name": "Korsholm",
+    "alternative_stemmed_names": [
+      "korshol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hakkol": {
+    "fixed_name": "Hakkola",
+    "alternative_stemmed_names": [
+      "hakkol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "järvenp": {
+    "fixed_name": "Järvenpää",
+    "alternative_stemmed_names": [
+      "jär-venp",
+      "järvenp",
+      "venp"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kinnul": {
+    "fixed_name": "Kinnula",
+    "alternative_stemmed_names": [
+      "syn tyneot kinnul"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vuolijok": {
+    "fixed_name": "Vuolijoki",
+    "alternative_stemmed_names": [
+      "vuolijoe",
+      "vuoljok"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "äänekosken mlk": {
+    "fixed_name": "Äänekosken mlk",
+    "alternative_stemmed_names": [
+      "äänekosken mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "repol": {
+    "fixed_name": "Repola",
+    "alternative_stemmed_names": [
+      "repol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hahkial": {
+    "fixed_name": "Hahkiala",
+    "alternative_stemmed_names": [
+      "hah-kial"
+    ],
+    "region": null,
+    "country": null
+  },
+  "utsjjok": {
+    "fixed_name": "Utsjjoki",
+    "alternative_stemmed_names": [
+      "utsjoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "juustila ": {
+    "fixed_name": "Juustila",
+    "alternative_stemmed_names": [
+      "juusti-l",
+      "juustil"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "jamijärv": {
+    "fixed_name": "Jamijärvi",
+    "alternative_stemmed_names": [
+      "jamijärv",
+      "jämijarv",
+      "jämijärvo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kangasniem": {
+    "fixed_name": "Kangasniemi",
+    "alternative_stemmed_names": [
+      "kangas-niem",
+      "kangasniemel"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nils": {
+    "fixed_name": "Nilsiä",
+    "alternative_stemmed_names": [
+      "nilsiä"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "leppäs": {
+    "fixed_name": "Leppäsilta",
+    "alternative_stemmed_names": [
+      "leppäsil"
+    ],
+    "region": null,
+    "country": null
+  },
+  "piikiö": {
+    "fixed_name": "Piikkiö",
+    "alternative_stemmed_names": [
+      "piik kiö"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rovaniemen mlk": {
+    "fixed_name": "Rovaniemen mlk",
+    "alternative_stemmed_names": [
+      "rovaniemen mlk",
+      "rovanniemen mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "salakar": {
+    "fixed_name": "Salakari",
+    "alternative_stemmed_names": [
+      "salakar"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suistamo": {
+    "fixed_name": "Suistamo",
+    "alternative_stemmed_names": [
+      "suis tamo",
+      "suis-tamo",
+      "suista-mo",
+      "suistam",
+      "suistamo",
+      "suistamo k",
+      "suistamoil",
+      "suistamol",
+      "suistamollaasuinp",
+      "suistamos",
+      "suistamoso"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kärsämäk": {
+    "fixed_name": "Kärsämäki",
+    "alternative_stemmed_names": [
+      "kär-sämäk",
+      "kärsämä k",
+      "kärsämäe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nousiain": {
+    "fixed_name": "Nousiainen",
+    "alternative_stemmed_names": [
+      "nou siaino",
+      "nousiain",
+      "nousiais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kotk": {
+    "fixed_name": "Kotka",
+    "alternative_stemmed_names": [
+      "kot k",
+      "kot-k",
+      "kotkas",
+      "kotk",
+      "kotkq"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ypäj": {
+    "fixed_name": "Ypäjä",
+    "alternative_stemmed_names": [
+      "vpäjä"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "eura": {
+    "fixed_name": "Eura",
+    "alternative_stemmed_names": [
+      "euras",
+      "eura",
+      "euro"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kiven": {
+    "fixed_name": "Kivennapa",
+    "alternative_stemmed_names": [
+      "ki ven",
+      "kivannav",
+      "kivef",
+      "kiven",
+      "kiven-",
+      "kivenanv",
+      "kivenna p",
+      "kivenna-p",
+      "kiven",
+      "kivennapa k",
+      "kivennapa rouvan ensimmäisestä avioliito",
+      "kivennavail",
+      "kivennavajl",
+      "kivennaval",
+      "kivennavalj",
+      "kivennav",
+      "kivennavalla k",
+      "kivennavallakuol",
+      "kivennavallapuo",
+      "kivennavallapuol",
+      "kivennavalls",
+      "kivennavam",
+      "kivenaya",
+      "kivennov",
+      "kivennv",
+      "kivonnav",
+      "kuvennav"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kuokkal": {
+    "fixed_name": "Kuokkala",
+    "alternative_stemmed_names": [
+      "kuokkal"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sal": {
+    "fixed_name": "Salla",
+    "alternative_stemmed_names": [
+      "sallas"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hammaslaht": {
+    "fixed_name": "Hammaslahti",
+    "alternative_stemmed_names": [
+      "ham-maslahd",
+      "hammaslahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "siikain": {
+    "fixed_name": "Siikainen",
+    "alternative_stemmed_names": [
+      "siikai n",
+      "siikain",
+      "siikais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kaila": {
+    "fixed_name": "Kailaa",
+    "alternative_stemmed_names": [
+      "kaila"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sonkajärv": {
+    "fixed_name": "Sonkajärvi",
+    "alternative_stemmed_names": [
+      "son kajärv",
+      "sonka järv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "multia ": {
+    "fixed_name": "Multia",
+    "alternative_stemmed_names": [
+      "mul-t",
+      "multia"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lestijärv": {
+    "fixed_name": "Lestijärvi",
+    "alternative_stemmed_names": [
+      "lestijärvel",
+      "lestijarv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "taipalsaar": {
+    "fixed_name": "Taipalsaari",
+    "alternative_stemmed_names": [
+      "taipal",
+      "taipals",
+      "taipalsaarel",
+      "taipalsaar"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nurmes  ": {
+    "fixed_name": "Nurmes",
+    "alternative_stemmed_names": [
+      "nurmeks"
+    ],
+    "region": null,
+    "country": null
+  },
+  "leppäkosk": {
+    "fixed_name": "Leppäkoski",
+    "alternative_stemmed_names": [
+      "leppäkosk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "yläjärv": {
+    "fixed_name": "Yläjärvi",
+    "alternative_stemmed_names": [
+      "yläjärv"
+    ],
+    "region": "karjala",
+    "country": "Many possibilities, but appears to be karelian village in Korpiselkä kunta"
+  },
+  "käkisalmen mlk": {
+    "fixed_name": "Käkisalmen mlk",
+    "alternative_stemmed_names": [
+      "käki-salmen mlk",
+      "käkisal-meri mlk",
+      "käkisalmen mlk"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "soikkol": {
+    "fixed_name": "Soikkola",
+    "alternative_stemmed_names": [
+      "soikoia"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pyhäjärvi vpl": {
+    "fixed_name": "Pyhäjärvi Vpl",
+    "alternative_stemmed_names": [
+      "pyhäjärvi vpl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pyht": {
+    "fixed_name": "Pyhtää",
+    "alternative_stemmed_names": [
+      "pyht",
+      "pyhtää herran ensimmäisestä avioliito"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vuokkineim": {
+    "fixed_name": "Vuokkineimi",
+    "alternative_stemmed_names": [
+      "vuokki-niem",
+      "vuokklniem"
+    ],
+    "region": "karjala",
+    "country": null
+  },
+  "vuosalm": {
+    "fixed_name": "Vuosalmi",
+    "alternative_stemmed_names": [
+      "vuosalm"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuusjok": {
+    "fixed_name": "Kuusjoki",
+    "alternative_stemmed_names": [
+      "kuus-jok",
+      "kuusjo k",
+      "kuusjo-k",
+      "kuusjoe",
+      "kuusj"
+    ],
+    "region": null,
+    "country": null
+  },
+  "hirvilaht": {
+    "fixed_name": "Hirvilahti",
+    "alternative_stemmed_names": [
+      "hirvilahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "killinkosk": {
+    "fixed_name": "Killinkoski",
+    "alternative_stemmed_names": [
+      "kil-linkosk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "räisän": {
+    "fixed_name": "Räisänen",
+    "alternative_stemmed_names": [
+      "räisäs"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pälksaar": {
+    "fixed_name": "Pälksaari",
+    "alternative_stemmed_names": [
+      "pälksaar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "säynäin": {
+    "fixed_name": "Säynäinen",
+    "alternative_stemmed_names": [
+      "säynäi-n",
+      "säynäis",
+      "säyneis"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ahtiain": {
+    "fixed_name": "Ahtiainen",
+    "alternative_stemmed_names": [
+      "ahtiais"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuolajärv": {
+    "fixed_name": "Kuolajärvi",
+    "alternative_stemmed_names": [
+      "kuolajärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "teikar": {
+    "fixed_name": "Teikari",
+    "alternative_stemmed_names": [
+      "teikar"
+    ],
+    "region": null,
+    "country": null
+  },
+  "leppäsyrj": {
+    "fixed_name": "Leppäsyrjä",
+    "alternative_stemmed_names": [
+      "leppäsyrj"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "tuutar": {
+    "fixed_name": "Tuutari",
+    "alternative_stemmed_names": [
+      "tuutar"
+    ],
+    "region": "other",
+    "country": "Russia (Inkeri)"
+  },
+  "hirtol": {
+    "fixed_name": "Hirtola",
+    "alternative_stemmed_names": [
+      "hirtol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kalval": {
+    "fixed_name": "Kalvala",
+    "alternative_stemmed_names": [
+      "kal-val"
+    ],
+    "region": null,
+    "country": null
+  },
+  "sääksmäk": {
+    "fixed_name": "Sääksmäki",
+    "alternative_stemmed_names": [
+      "sääksmäe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suonenjok": {
+    "fixed_name": "Suonenjoki",
+    "alternative_stemmed_names": [
+      "suo nanioki rouvan i avioliito",
+      "suo nenjok",
+      "suonen jok",
+      "suonenjo k",
+      "suonenjoe",
+      "suonjoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vuoksenniska ": {
+    "fixed_name": "Vuoksenniska",
+    "alternative_stemmed_names": [
+      "vuoksennis k"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hausjärv": {
+    "fixed_name": "Hausjärvi",
+    "alternative_stemmed_names": [
+      "hatisjärv",
+      "hauojärv",
+      "haus",
+      "haus-järv",
+      "hausj",
+      "hausjär-v",
+      "hausjärveil",
+      "hausjärvel",
+      "hausjärv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kilpeenjok": {
+    "fixed_name": "Kilpeenjoki",
+    "alternative_stemmed_names": [
+      "kilpeenjoel",
+      "kilpeenjoe",
+      "kilpeenjok",
+      "kilpeinjok"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "temmes": {
+    "fixed_name": "Temmes",
+    "alternative_stemmed_names": [
+      "temmeks"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lehmäjok": {
+    "fixed_name": "Lehmäjoki",
+    "alternative_stemmed_names": [
+      "lehmäjoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ahvenjärv": {
+    "fixed_name": "Ahvenjärvi",
+    "alternative_stemmed_names": [
+      "ahvenjär-v"
+    ],
+    "region": null,
+    "country": null
+  },
+  "luumäk": {
+    "fixed_name": "Luumäki",
+    "alternative_stemmed_names": [
+      "luu-mäk",
+      "luumä k",
+      "luumäk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "turenk": {
+    "fixed_name": "Turenki",
+    "alternative_stemmed_names": [
+      "tureng"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tienhaar": {
+    "fixed_name": "Tienhaara",
+    "alternative_stemmed_names": [
+      "tienhaar"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "heinäluoto": {
+    "fixed_name": "Heinäluoto",
+    "alternative_stemmed_names": [
+      "heinäluodo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "karunk": {
+    "fixed_name": "Karunki",
+    "alternative_stemmed_names": [
+      "karun-k",
+      "karung"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "äänekosk": {
+    "fixed_name": "Äänekoski",
+    "alternative_stemmed_names": [
+      "ääne kosk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "heinol": {
+    "fixed_name": "Heinola",
+    "alternative_stemmed_names": [
+      "hei nol",
+      "heinnol",
+      "heino l",
+      "heinola adoptoitu",
+      "heinolas",
+      "heinol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "säräisniem": {
+    "fixed_name": "Säräisniemi",
+    "alternative_stemmed_names": [
+      "säräis-niem",
+      "säräisniemel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lauritsal": {
+    "fixed_name": "Lauritsala",
+    "alternative_stemmed_names": [
+      "lau ritsal",
+      "lau-ritsal",
+      "laurit-sal",
+      "lauritsa l",
+      "lauritsa-l",
+      "lauritsal",
+      "lauritsald"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hattul": {
+    "fixed_name": "Hattula",
+    "alternative_stemmed_names": [
+      "hat tul",
+      "hat-tul",
+      "hattu-l",
+      "hattul"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kemi": {
+    "fixed_name": "Kemi",
+    "alternative_stemmed_names": [
+      "kemi k",
+      "kem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "naantalin mlk": {
+    "fixed_name": "Naantalin mlk",
+    "alternative_stemmed_names": [
+      "naantalin mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "nok": {
+    "fixed_name": "Nokia",
+    "alternative_stemmed_names": [
+      "no k",
+      "nokia pietari kymäläisen ensimmäisestä avioliito",
+      "nokia"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "llmajok": {
+    "fixed_name": "llmajoki",
+    "alternative_stemmed_names": [
+      "llmajo k"
+    ],
+    "region": null,
+    "country": null
+  },
+  "yli-l": {
+    "fixed_name": "Yli-li",
+    "alternative_stemmed_names": [
+      "yli-l"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "martinniem": {
+    "fixed_name": "Martinniemi",
+    "alternative_stemmed_names": [
+      "martinniem"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "virojok": {
+    "fixed_name": "Virojoki",
+    "alternative_stemmed_names": [
+      "vi-rojok",
+      "virojok"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pieksämäen mlk": {
+    "fixed_name": "Pieksämäen mlk",
+    "alternative_stemmed_names": [
+      "pieksämäen mlk",
+      "pieksämäki mlk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "viht": {
+    "fixed_name": "Vihti",
+    "alternative_stemmed_names": [
+      "vihl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lumijok": {
+    "fixed_name": "Lumijoki",
+    "alternative_stemmed_names": [
+      "lumijoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pielav": {
+    "fixed_name": "Pielavesi",
+    "alternative_stemmed_names": [
+      "piela v",
+      "pielaved"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "käkisalm": {
+    "fixed_name": "Käkisalmi",
+    "alternative_stemmed_names": [
+      "ka kisalm",
+      "kä kisalm",
+      "käki-salm",
+      "käki-salmi k",
+      "käkis",
+      "kakisal",
+      "käkisal",
+      "käkisal m",
+      "käkisalmel",
+      "käkisalmellaasuinp",
+      "käkisalmes",
+      "käkisalmessa ja martta tiira synt",
+      "käkisalmessa ja vel",
+      "käkisalm",
+      "käkisalmi isännän ensimmäisestä avioliito",
+      "käkisalmi k",
+      "käkisalmi tois"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "vetel": {
+    "fixed_name": "Veteli",
+    "alternative_stemmed_names": [
+      "votal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "savonlin": {
+    "fixed_name": "Savonlinna",
+    "alternative_stemmed_names": [
+      "sa vonlin",
+      "sa-vonlino",
+      "savon lin",
+      "savonlinnas",
+      "savonlin",
+      "savonlino"
+    ],
+    "region": null,
+    "country": null
+  },
+  "antjärv": {
+    "fixed_name": "Antjärvi",
+    "alternative_stemmed_names": [
+      "antjärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "karonk": {
+    "fixed_name": "Karonki",
+    "alternative_stemmed_names": [
+      "karong"
+    ],
+    "region": null,
+    "country": null
+  },
+  "oulain": {
+    "fixed_name": "Oulainen",
+    "alternative_stemmed_names": [
+      "oulainen rouvan edellisestä avioliito",
+      "oulais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "uskela ": {
+    "fixed_name": "Uskela",
+    "alternative_stemmed_names": [
+      "uskeal",
+      "uskel",
+      "uskels"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kiikoin": {
+    "fixed_name": "Kiikoinen",
+    "alternative_stemmed_names": [
+      "kiikois"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "alahärm": {
+    "fixed_name": "Alahärmä",
+    "alternative_stemmed_names": [
+      "ala härm",
+      "alahärmäs"
+    ],
+    "region": null,
+    "country": null
+  },
+  "usa": {
+    "fixed_name": "USA",
+    "alternative_stemmed_names": [
+      "yhdysvalo"
+    ],
+    "region": "other",
+    "country": "USA"
+  },
+  "simol": {
+    "fixed_name": "Simola",
+    "alternative_stemmed_names": [
+      "simol"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pihkalanjärv": {
+    "fixed_name": "Pihkalanjärvi",
+    "alternative_stemmed_names": [
+      "pihkalanjärv",
+      "pikkaianjärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "pihtipudas": {
+    "fixed_name": "Pihtipudas",
+    "alternative_stemmed_names": [
+      "pihtipu das",
+      "pihtiput"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hakal": {
+    "fixed_name": "Hakala",
+    "alternative_stemmed_names": [
+      "hakal"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pyhäjärvi ul": {
+    "fixed_name": "Pyhäjärvi UL",
+    "alternative_stemmed_names": [
+      "pyhäjärvi ul"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kytäj": {
+    "fixed_name": "Kytäjä",
+    "alternative_stemmed_names": [
+      "kytäjäs"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "matkal": {
+    "fixed_name": "Matkalampi",
+    "alternative_stemmed_names": [
+      "matkalam"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lavijärv": {
+    "fixed_name": "Lavijärvi",
+    "alternative_stemmed_names": [
+      "lavijärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "mikkelin mlk": {
+    "fixed_name": "Mikkelin mlk",
+    "alternative_stemmed_names": [
+      "mikkelin mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pälkääl": {
+    "fixed_name": "Pälkäälä",
+    "alternative_stemmed_names": [
+      "pälkääl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "längelmäk": {
+    "fixed_name": "Längelmäki",
+    "alternative_stemmed_names": [
+      "lägelmäe",
+      "län gelmäk",
+      "längelämäk",
+      "längelmäe",
+      "längelmäk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "äänislin": {
+    "fixed_name": "Äänislinna",
+    "alternative_stemmed_names": [
+      "äänislin"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tikkal": {
+    "fixed_name": "Tikkala",
+    "alternative_stemmed_names": [
+      "tikkal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "vehm": {
+    "fixed_name": "Vehmaa",
+    "alternative_stemmed_names": [
+      "vchmaa",
+      "veh m",
+      "veh-m",
+      "vohm"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pyhäjärvi ui": {
+    "fixed_name": "Pyhäjärvi UI",
+    "alternative_stemmed_names": [
+      "pyhäjärvi ui"
+    ],
+    "region": null,
+    "country": null
+  },
+  "eno": {
+    "fixed_name": "Eno",
+    "alternative_stemmed_names": [
+      "enos"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vihdin mlk": {
+    "fixed_name": "Vihdin mlk",
+    "alternative_stemmed_names": [
+      "vihdin mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "humaljok": {
+    "fixed_name": "Humaljoki",
+    "alternative_stemmed_names": [
+      "humaljoe",
+      "humaljok"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "roukolaht": {
+    "fixed_name": "Roukolahti",
+    "alternative_stemmed_names": [
+      "roukolahd"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuban": {
+    "fixed_name": "Kubane",
+    "alternative_stemmed_names": [
+      "kuban"
+    ],
+    "region": null,
+    "country": null
+  },
+  "tehol": {
+    "fixed_name": "Tehola",
+    "alternative_stemmed_names": [
+      "te-hol",
+      "tehol",
+      "teholam"
+    ],
+    "region": null,
+    "country": null
+  },
+  "orip": {
+    "fixed_name": "Oripää",
+    "alternative_stemmed_names": [
+      "örip",
+      "oripäö",
+      "orlp"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pulkkil": {
+    "fixed_name": "Pulkkila",
+    "alternative_stemmed_names": [
+      "pulk kil"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lop": {
+    "fixed_name": "Loppi",
+    "alternative_stemmed_names": [
+      "lop p",
+      "lopel",
+      "lope"
+    ],
+    "region": null,
+    "country": null
+  },
+  "läppäjärv": {
+    "fixed_name": "Läppäjärvi",
+    "alternative_stemmed_names": [
+      "läppä järv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "uuksu": {
+    "fixed_name": "Uuksu",
+    "alternative_stemmed_names": [
+      "uuk",
+      "uuksu"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "läskel": {
+    "fixed_name": "Läskelä",
+    "alternative_stemmed_names": [
+      "läskel",
+      "laskel"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "porsaskosk": {
+    "fixed_name": "Porsaskoski",
+    "alternative_stemmed_names": [
+      "por-saskosk"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "viekkijärv": {
+    "fixed_name": "Viekkijärvellä",
+    "alternative_stemmed_names": [
+      "viekkijärv"
+    ],
+    "region": "Viekijärvi",
+    "country": null
+  },
+  "tvede": {
+    "fixed_name": "Tveden",
+    "alternative_stemmed_names": [
+      "tvede"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "petroskoi": {
+    "fixed_name": "Petroskoi",
+    "alternative_stemmed_names": [
+      "petroskoi",
+      "petrosko"
+    ],
+    "region": null,
+    "country": "Russia"
+  },
+  "vahto": {
+    "fixed_name": "Vahto",
+    "alternative_stemmed_names": [
+      "vah-to",
+      "vahdo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ruove": {
+    "fixed_name": "Ruovesi",
+    "alternative_stemmed_names": [
+      "ruove",
+      "ruoved"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pollijärv": {
+    "fixed_name": "Pollijärvi",
+    "alternative_stemmed_names": [
+      "pollijärv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "honkajok": {
+    "fixed_name": "Honkajoki",
+    "alternative_stemmed_names": [
+      "honka-jok",
+      "honkajoe"
+    ],
+    "region": null,
+    "country": null
+  },
+  "säämink": {
+    "fixed_name": "Sääminki",
+    "alternative_stemmed_names": [
+      "sää-mink",
+      "sääming",
+      "säämink",
+      "säämirig"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "dresd": {
+    "fixed_name": "Dresden",
+    "alternative_stemmed_names": [
+      "dresd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "alavoin": {
+    "fixed_name": "Alavoinen",
+    "alternative_stemmed_names": [
+      "alavain",
+      "alavois"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kankaanp": {
+    "fixed_name": "Kankaanpää",
+    "alternative_stemmed_names": [
+      "kan-kaanp",
+      "kankaan p",
+      "kankaanpäa",
+      "kapkaanp"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "perho": {
+    "fixed_name": "Perho",
+    "alternative_stemmed_names": [
+      "perhos"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "ham": {
+    "fixed_name": "Hamina",
+    "alternative_stemmed_names": [
+      "ha m",
+      "hamina miehen ensimmäisestä avioliito",
+      "haminas",
+      "hamin"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pistojärv": {
+    "fixed_name": "Pistojärvi",
+    "alternative_stemmed_names": [
+      "pistojärv"
+    ],
+    "region": "other",
+    "country": "Russia (vienan Karjala)"
+  },
+  "uhtu": {
+    "fixed_name": "Uhtua",
+    "alternative_stemmed_names": [
+      "uhtua"
+    ],
+    "region": "other",
+    "country": "Russia Vienan Karjala"
+  },
+  "pölläkkäl": {
+    "fixed_name": "Pölläkkälä",
+    "alternative_stemmed_names": [
+      "pöl-läkkäl",
+      "pölläkkäl"
+    ],
+    "region": "Karelia",
+    "country": null
+  },
+  "vöyri ": {
+    "fixed_name": "Vöyri",
+    "alternative_stemmed_names": [
+      "vöy-r",
+      "voyri",
+      "vöyr"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "koski tl": {
+    "fixed_name": "Koski TL",
+    "alternative_stemmed_names": [
+      "koski tl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mustasaar": {
+    "fixed_name": "Mustasaari",
+    "alternative_stemmed_names": [
+      "musta-saar",
+      "mustasaa r"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "haallol": {
+    "fixed_name": "Haallola",
+    "alternative_stemmed_names": [
+      "haallol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "ylöjärv": {
+    "fixed_name": "Ylöjärvi",
+    "alternative_stemmed_names": [
+      "ylö järv",
+      "ylöjärv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "pusul": {
+    "fixed_name": "Pusula",
+    "alternative_stemmed_names": [
+      "pu sul"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "sauvo": {
+    "fixed_name": "Sauvo",
+    "alternative_stemmed_names": [
+      "sauvds",
+      "sauvos",
+      "säuvo"
+    ],
+    "region": null,
+    "country": null
+  },
+  "laih": {
+    "fixed_name": "Laihia",
+    "alternative_stemmed_names": [
+      "laihia"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mönsälänkyl": {
+    "fixed_name": "Mönsälänkylä",
+    "alternative_stemmed_names": [
+      "mönsälänkyl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "pälkjärv": {
+    "fixed_name": "Pälkjärvi",
+    "alternative_stemmed_names": [
+      "pälärv",
+      "pälkj",
+      "palkjär",
+      "pälkjärvel",
+      "pälkjarvel",
+      "pälkjarv",
+      "pälkjärv",
+      "pälkjärvelö",
+      "pälkjärvr",
+      "synty neet pälkjärv"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "helsingin pitäj": {
+    "fixed_name": "Helsingin pitäjä",
+    "alternative_stemmed_names": [
+      "helsingin pitäj"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "lappi tl": {
+    "fixed_name": "Lappi TL",
+    "alternative_stemmed_names": [
+      "lappi tl"
+    ],
+    "region": null,
+    "country": null
+  },
+  "yläne ": {
+    "fixed_name": "Yläne",
+    "alternative_stemmed_names": [
+      "ylä-n",
+      "yläneetl"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "viiala": {
+    "fixed_name": "Viiala",
+    "alternative_stemmed_names": [
+      "viia",
+      "viia l"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kanneljärv": {
+    "fixed_name": "Kanneljärvi",
+    "alternative_stemmed_names": [
+      "kan neljärv",
+      "kan noljärv",
+      "kan-neljärv",
+      "kannel",
+      "kannel järv",
+      "kannel-järv",
+      "kanneljär",
+      "kanneljär-v",
+      "kanneljärvel",
+      "kanneljärv",
+      "kanneljärvelläkuol",
+      "kanneljärvelläpu",
+      "kanneljärvi k"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "rank": {
+    "fixed_name": "Rankki",
+    "alternative_stemmed_names": [
+      "rank"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kaukal": {
+    "fixed_name": "Kaukala",
+    "alternative_stemmed_names": [
+      "kau-kal"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kurjam": {
+    "fixed_name": "Kurjamaa",
+    "alternative_stemmed_names": [
+      "kurjam"
+    ],
+    "region": null,
+    "country": null
+  },
+  "somerniem": {
+    "fixed_name": "Somerniemi",
+    "alternative_stemmed_names": [
+      "so-merniem",
+      "somer-niem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "salo": {
+    "fixed_name": "Salo",
+    "alternative_stemmed_names": [
+      "sa lo",
+      "salo k",
+      "salos",
+      "salo",
+      "salossb"
+    ],
+    "region": null,
+    "country": null
+  },
+  "karj": {
+    "fixed_name": "Karjaalla",
+    "alternative_stemmed_names": [
+      "karjaail",
+      "karjae"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lupasalm": {
+    "fixed_name": "Lupasalmi",
+    "alternative_stemmed_names": [
+      "lupasalm"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "caracas": {
+    "fixed_name": "Caracas",
+    "alternative_stemmed_names": [
+      "caracas"
+    ],
+    "region": "other",
+    "country": "Venezuela"
+  },
+  "kiestink": {
+    "fixed_name": "Kiestinki",
+    "alternative_stemmed_names": [
+      "kiesting"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "puumala ": {
+    "fixed_name": "Puumala",
+    "alternative_stemmed_names": [
+      "puu mal",
+      "puumal"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "hinnerjok": {
+    "fixed_name": "Hinnerjoki",
+    "alternative_stemmed_names": [
+      "hinner",
+      "hinnerjo-k",
+      "hinnerjoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuokkaniem": {
+    "fixed_name": "Kuokkaniemi",
+    "alternative_stemmed_names": [
+      "kuokkanie-m",
+      "kuokkaniem"
+    ],
+    "region": null,
+    "country": null
+  },
+  "koreholm": {
+    "fixed_name": "Koreholma",
+    "alternative_stemmed_names": [
+      "koreholm"
+    ],
+    "region": null,
+    "country": null
+  },
+  "moskov": {
+    "fixed_name": "Moskova",
+    "alternative_stemmed_names": [
+      "moskov"
+    ],
+    "region": "other",
+    "country": "Russia"
+  },
+  "austral": {
+    "fixed_name": "Australia",
+    "alternative_stemmed_names": [
+      "australia"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "tuulosjoki ": {
+    "fixed_name": "Tuulosjoki",
+    "alternative_stemmed_names": [
+      "tuulosjoe"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kiukain": {
+    "fixed_name": "Kiukainen",
+    "alternative_stemmed_names": [
+      "kiukai",
+      "kiukain",
+      "kiukaino",
+      "kiukais"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "virolaht": {
+    "fixed_name": "Virolahti",
+    "alternative_stemmed_names": [
+      "virolah",
+      "virolahdel",
+      "virolahdellapuol",
+      "virolahd",
+      "virolaht",
+      "virolai",
+      "vironlahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kalajok": {
+    "fixed_name": "Kalajoki",
+    "alternative_stemmed_names": [
+      "kalajoe"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "inko": {
+    "fixed_name": "Inkoo",
+    "alternative_stemmed_names": [
+      "inko"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "rihlav": {
+    "fixed_name": "Rihlava",
+    "alternative_stemmed_names": [
+      "rihlav"
+    ],
+    "region": null,
+    "country": null
+  },
+  "maalaht": {
+    "fixed_name": "Maalahti",
+    "alternative_stemmed_names": [
+      "maalahd"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "suistan": {
+    "fixed_name": "Suistane",
+    "alternative_stemmed_names": [
+      "suistan"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lehmu": {
+    "fixed_name": "Lehmu",
+    "alternative_stemmed_names": [
+      "lehmu"
+    ],
+    "region": null,
+    "country": null
+  },
+  "kuujärv": {
+    "fixed_name": "Kuujärvi",
+    "alternative_stemmed_names": [
+      "kuu-järv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uusikaarlepyy": {
+    "fixed_name": "Uusikaarlepyy",
+    "alternative_stemmed_names": [
+      "uudessakaarlepyys",
+      "uudessakaarlepyy"
+    ],
+    "region": null,
+    "country": null
+  },
+  "valtimo": {
+    "fixed_name": "Valtimo",
+    "alternative_stemmed_names": [
+      "vaiti mo",
+      "valtimo"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "koiviston mlk": {
+    "fixed_name": "Koiviston mlk",
+    "alternative_stemmed_names": [
+      "koiviston mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "mäntyselk": {
+    "fixed_name": "Mäntyselkä",
+    "alternative_stemmed_names": [
+      "mäntysel"
+    ],
+    "region": null,
+    "country": null
+  },
+  "nurmijärv": {
+    "fixed_name": "Nurmijärvi",
+    "alternative_stemmed_names": [
+      "ndrmijärvel",
+      "nurmi järv",
+      "nurmijär",
+      "nurmijärvel",
+      "nurmijäv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "haukiput": {
+    "fixed_name": "Haukiputaa",
+    "alternative_stemmed_names": [
+      "haukiput"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "auva": {
+    "fixed_name": "AuVa",
+    "alternative_stemmed_names": [
+      "auva"
+    ],
+    "region": null,
+    "country": null
+  },
+  "lappajärv": {
+    "fixed_name": "Lappajärvi",
+    "alternative_stemmed_names": [
+      "lappajärvel",
+      "lappajarv"
+    ],
+    "region": null,
+    "country": null
+  },
+  "petolaht": {
+    "fixed_name": "Petolahti",
+    "alternative_stemmed_names": [
+      "petolahd",
+      "petolaht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "parkalav": {
+    "fixed_name": "Parkalava",
+    "alternative_stemmed_names": [
+      "parkalav"
+    ],
+    "region": null,
+    "country": null
+  },
+  "vanaja ": {
+    "fixed_name": "Vanaja",
+    "alternative_stemmed_names": [
+      "vana j"
+    ],
+    "region": null,
+    "country": null
+  },
+  "salminisk": {
+    "fixed_name": "Salminiska",
+    "alternative_stemmed_names": [
+      "salminisk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "raivol": {
+    "fixed_name": "Raivola",
+    "alternative_stemmed_names": [
+      "raivol"
+    ],
+    "region": null,
+    "country": null
+  },
+  "suomusjärv": {
+    "fixed_name": "Suomusjärvi",
+    "alternative_stemmed_names": [
+      "suomusjärvel",
+      "suomusjarv",
+      "suomusjärv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "uumaj": {
+    "fixed_name": "Uumaja",
+    "alternative_stemmed_names": [
+      "uumaj"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "mouhijärv": {
+    "fixed_name": "Mouhijärvi",
+    "alternative_stemmed_names": [
+      "mou hijärv",
+      "mou-hijärv",
+      "mouhijarv",
+      "mouhijätv"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kuopion mlk": {
+    "fixed_name": "Kuopion mlk",
+    "alternative_stemmed_names": [
+      "kuopion mlk"
+    ],
+    "region": null,
+    "country": null
+  },
+  "uusikirko": {
+    "fixed_name": "Uusikirkko",
+    "alternative_stemmed_names": [
+      "uu sikirko",
+      "uu-sikirko",
+      "uu-stkirko",
+      "uudel",
+      "uudeljakirko",
+      "uudellak",
+      "uude",
+      "uudellakir",
+      "uudellakirk",
+      "uudellakirkol",
+      "uudellakirko",
+      "uudellakirkollap",
+      "uudellakirkollapuol",
+      "uudellakirkp",
+      "uudellakirkq",
+      "uudellakitkolo",
+      "uudellsklr",
+      "uudenkirko",
+      "uudetlakirko",
+      "uudetlakirkö",
+      "uudollakir",
+      "uudollakirko",
+      "uudollaklrkoh",
+      "uuöellakirko",
+      "uusfkirko",
+      "uusi kirko",
+      "uusi-kirko",
+      "uusi-ktrko",
+      "uusikirk ko",
+      "uusikirk-ko",
+      "uusikirko",
+      "uusikirkko k",
+      "uusikirkko lapset ovat rouvan ensimmäisestä avioliito",
+      "uuusikirko"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "indones": {
+    "fixed_name": "Indonesia",
+    "alternative_stemmed_names": [
+      "indonesia"
+    ],
+    "region": "other",
+    "country": "indonesia"
+  },
+  "viipurin mlk": {
+    "fixed_name": "Viipurin mlk",
+    "alternative_stemmed_names": [
+      "vii purin mlk",
+      "vii-purin mlk",
+      "viidurin mlk",
+      "viinurin mlk",
+      "viipcirin mlk",
+      "viipu rin mlk",
+      "viipuri mlk",
+      "viipurin mlk",
+      "viipurin mlkr",
+      "viipurinmik",
+      "viipurinmlk",
+      "viipurinmlkr",
+      "viipurinmllc",
+      "viipurirf mlk",
+      "viipuurin mlk",
+      "vippurin mlk",
+      "virpurin mlk",
+      "vjipurin mlk"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "tenkalaht": {
+    "fixed_name": "Tenkalahti",
+    "alternative_stemmed_names": [
+      "tenkalahti k"
+    ],
+    "region": "karelia",
+    "country": null
+  },
+  "kuorev": {
+    "fixed_name": "Kuorevesi",
+    "alternative_stemmed_names": [
+      "kuore-v",
+      "kuoreved",
+      "kuorev"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "länsi-saks": {
+    "fixed_name": "Länsi-Saksa",
+    "alternative_stemmed_names": [
+      "länsi-saks"
+    ],
+    "region": null,
+    "country": "germany"
+  },
+  "laht": {
+    "fixed_name": "Lahti",
+    "alternative_stemmed_names": [
+      "lah d",
+      "lah t",
+      "lahdes",
+      "lahtf",
+      "laht",
+      "lahti äsuinp",
+      "lahti k",
+      "lahti lapset ovat rouvan i avioliito",
+      "lahti nykyisestä avioliitosta edellisestä avioliito",
+      "lahti toisesta avioliito"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "koivulaht": {
+    "fixed_name": "Koivulahti",
+    "alternative_stemmed_names": [
+      "koivulahd",
+      "koivulaht"
+    ],
+    "region": "other",
+    "country": null
+  },
+  "kaasmarku": {
+    "fixed_name": "Kaasmarkku",
+    "alternative_stemmed_names": [
+      "kaas-tnarku"
+    ],
+    "region": null,
+    "country": null
+  }
+}

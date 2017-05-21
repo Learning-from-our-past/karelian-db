@@ -1,5 +1,7 @@
 from models.db_siirtokarjalaistentie_models import *
 from config import CONFIG
+import nltk.stem.snowball as snowball
+stemmer = snowball.SnowballStemmer('finnish')
 
 def _transform_sex(orig):
     if orig == 'Male':
@@ -44,40 +46,20 @@ def _populate_place(place):
     if place['name'] is None or place['name'] == '':
         return None
 
-    if CONFIG['place_levenshtein']:
-        existing_places = Place.raw("select * "
-                                    'from siirtokarjalaisten_tie."Place" '
-                                    'where levenshtein("Place".name, %s, 1, 2, 3) <= 3 '
-                                    'order by levenshtein("Place".name, %s)', place['name'], place['name'])
+    place['stemmedName'] = stemmer.stem(place['name'])
 
-        coordinates_available = place['latitude'] and place['longitude']
-
-        if coordinates_available:
-            places_with_same_coordinates = [p for p in existing_places if p.latitude == place['latitude'] and p.longitude == place['longitude']]
-
-            if len(places_with_same_coordinates) > 0:
-                # Place with same coordinates should be same place -> use it
-                existing_place = places_with_same_coordinates[0]
-                # Fill in missing region if there is not one in db
-                if existing_place.region == '' and place['region'] != '':
-                    existing_place.region = place['region']
-
-                existing_place.save()
-                return existing_place
+    # Combine places which have same stemmed form of the name
+    if CONFIG['place_snowball_stem']:
+        existing_places = (Place.select()
+                           .where(Place.stemmedName == place['stemmedName']))
 
         # Check if there is place with same region
         places_with_same_region = [p for p in existing_places
-                                   if p.region != ''
+                                   if p.region is not None
                                    and p.region == place['region']]
 
         if len(places_with_same_region) > 0:
             existing_place = places_with_same_region[0]
-
-            # Fill in the coordinates to existing record if they are missing
-            if existing_place.latitude == '' and existing_place.longitude == '' and coordinates_available:
-                existing_place.latitude = place['latitude']
-                existing_place.longitude = place['longitude']
-                existing_place.save()
             return existing_place
 
     return Place.get_or_create(**place)[0]
@@ -94,10 +76,11 @@ def _populate_profession(profession):
 
 def _populate_spouse(spouse, personModel, person):
     birth_place = _populate_place({
-        'name': spouse['birthData']['birthLocation']['results'],
+        'name': spouse['birthData']['birthLocation']['results']['locationName'],
+        'extractedName': spouse['birthData']['birthLocation']['results']['locationName'],
         'latitude': None,
         'longitude': None,
-        'region': None,     # TODO: Fill this once location name resolving is done
+        'region':  spouse['birthData']['birthLocation']['results']['region'],
         'location': None
     })
     profession = _populate_profession({
@@ -152,15 +135,16 @@ def _populate_marriage(person_model, spouse_model, spouse_entry):
 
 def _populate_child(child, personModel, spouseModel, person):
     location = None
-    if child['coordinates']['latitude'] and child['coordinates']['longitude']:
-        location = pft(child['coordinates']['latitude'], child['coordinates']['longitude'])
+    if child['location']['coordinates']['latitude'] and child['location']['coordinates']['longitude']:
+        location = pft(child['location']['coordinates']['latitude'], child['location']['coordinates']['longitude'])
 
     birth_place = _populate_place({
-        'name': child['location'],
-        'latitude': child['coordinates']['latitude'] or 0,
-        'longitude': child['coordinates']['longitude'] or 0,
+        'name': child['location']['locationName'],
+        'extractedName': child['location']['locationName'],
+        'latitude': child['location']['coordinates']['latitude'] or None,
+        'longitude': child['location']['coordinates']['longitude'] or None,
         'location': location,
-        'region': None
+        'region': child['location']['region']
     })
 
     try:
@@ -202,6 +186,7 @@ def _populate_migration_history(places, personModel):
 
         placeModel = _populate_place({
             'name': p['locationName'],
+            'extractedName': p['locationName'],
             'latitude': p['coordinates']['latitude'],
             'longitude': p['coordinates']['longitude'],
             'region': p['region'],
@@ -213,14 +198,16 @@ def _populate_migration_history(places, personModel):
             'placeId': placeModel,
             'movedIn':  p['movedIn'],
             'movedOut': p['movedOut']
-        })[0]
+        })
+
 
 def populate_person(person):
     birth_place = _populate_place({
-        'name': person['birthLocation']['results'],
+        'name': person['birthLocation']['results']['locationName'],
+        'extractedName': person['birthLocation']['results']['locationName'],
         'latitude': None,
         'longitude': None,
-        'region': None,
+        'region': person['birthLocation']['results']['region'],
         'location': None
     })
 

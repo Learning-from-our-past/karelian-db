@@ -9,12 +9,13 @@ CREATE EXTENSION fuzzystrmatch SCHEMA extensions;
 CREATE TABLE siirtokarjalaisten_tie."Place"(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
+  region TEXT,
+  "stemmedName" TEXT,
+  "extractedName" TEXT,
   location extensions.GEOMETRY(POINT, 4326), -- WGS 84
   latitude TEXT,
   longitude TEXT,
-  region TEXT,
-
-  unique(name, region, latitude, longitude)
+  unique(name, region, "stemmedName", "extractedName", latitude, longitude)
 );
 
 

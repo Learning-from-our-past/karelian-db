@@ -81,7 +81,13 @@ CREATE VIEW siirtokarjalaisten_tie."PersonAndSpouse" AS
 
 CREATE VIEW siirtokarjalaisten_tie."ChildWithParents" AS
   SELECT
-    "Child".*,
+    "Child".id,
+    "Child"."firstName",
+    "Child"."lastName",
+    "Child"."sex",
+    "Child"."birthYear",
+    "Place"."name" as "birthPlace",
+    "Place"."region" as "birthPlaceRegion",
     "father"."firstName" AS "father.firstName",
     "father"."lastName" AS "father.lastName",
     "father"."prevLastName" AS "father.prevLastName",
@@ -127,6 +133,7 @@ CREATE VIEW siirtokarjalaisten_tie."ChildWithParents" AS
   ON "fatherId" = father.id
   RIGHT JOIN siirtokarjalaisten_tie."PersonExtended" AS mother
   ON "motherId" = mother.id
+  join "Place" on "Child"."birthPlaceId" = "Place".id
 
 -- Living records with location data
 CREATE VIEW siirtokarjalaisten_tie."LivingPlace" AS
