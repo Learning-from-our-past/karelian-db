@@ -15,6 +15,7 @@ CREATE TABLE siirtokarjalaisten_tie."Place"(
   location extensions.GEOMETRY(POINT, 4326), -- WGS 84
   latitude TEXT,
   longitude TEXT,
+  "ambiguousRegion" BOOLEAN DEFAULT FALSE,
   unique(name, region, "stemmedName", "extractedName", latitude, longitude)
 );
 
