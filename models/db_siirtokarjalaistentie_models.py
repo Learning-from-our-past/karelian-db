@@ -27,6 +27,7 @@ class Place(BaseModel):
     extractedName = TextField()
     region = TextField()
     location = PointField()
+    ambiguousRegion = BooleanField(default=False)
 
     class Meta:
         db_table = 'Place'
