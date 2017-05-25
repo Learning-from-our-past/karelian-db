@@ -63,7 +63,7 @@ class Person(BaseModel):
     previousMarriages = BooleanField(null=True)
     prevLastName = TextField(null=True)
     professionId = ForeignKeyField(db_column='professionId', null=True, rel_model=Profession, to_field='id')
-    returnedKarelia = BooleanField(null=True)
+    returnedKarelia = TextField()
     sex = TextField()
 
     class Meta:

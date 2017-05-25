@@ -57,7 +57,7 @@ CREATE TABLE siirtokarjalaisten_tie."Person"(
   "professionId" INTEGER REFERENCES siirtokarjalaisten_tie."Profession"(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-  "returnedKarelia" BOOLEAN,
+  "returnedKarelia" TEXT NOT NULL , -- MS Access can't make difference between NULL and False values of boolean field so we have to use TEXT...
   "previousMarriages" BOOLEAN,
   "pageNumber" TEXT NOT NULL REFERENCES siirtokarjalaisten_tie."Page"("pageNumber")
       ON UPDATE CASCADE
