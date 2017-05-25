@@ -51,6 +51,7 @@ class Person(BaseModel):
     birthYear = IntegerField()
     birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
     deathDay = IntegerField()
+    primaryPerson = BooleanField()
     deathMonth = IntegerField()
     deathYear = IntegerField()
     deathPlaceId = ForeignKeyField(db_column='deathPlaceId', null=True, rel_model=Place, related_name='Place_deathPlace_set', to_field='id')

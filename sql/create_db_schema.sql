@@ -40,6 +40,7 @@ CREATE TABLE siirtokarjalaisten_tie."Person"(
   "lastName" TEXT NOT NULL,
   "prevLastName" TEXT,
   sex TEXT NOT NULL CHECK(sex = 'm' OR sex = 'f' OR sex = ''),
+  "primaryPerson" BOOLEAN NOT NULL,
   "birthDay" INTEGER,
   "birthMonth" INTEGER,
   "birthYear" INTEGER,
