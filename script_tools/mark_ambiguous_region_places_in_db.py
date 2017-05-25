@@ -1,3 +1,4 @@
+import material.settings
 from models.db_siirtokarjalaistentie_models import *
 """
 Minor helper script which tries to find Places which have multiple rows with same name

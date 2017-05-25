@@ -1,4 +1,5 @@
 import json
+import sys
 import material.settings
 from models.db_connection import db_connection
 from populate import populate_person
@@ -28,7 +29,10 @@ if __name__ == "__main__":
     db_connection.connect()
     database = db_connection.get_database()
 
-    data = load_json("./material/siirtokarjalaiset_IV.json")
+    if len(sys.argv) > 1:
+        data = load_json(sys.argv[1])
+    else:
+        data = load_json("./material/siirtokarjalaiset_I.json")
     populate_db(data)
 
 
