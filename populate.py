@@ -95,6 +95,7 @@ def _populate_spouse(spouse, personModel, person):
         'birthDay': spouse['birthData']['results']['birthDay'],
         'birthMonth': spouse['birthData']['results']['birthMonth'],
         'birthYear': spouse['birthData']['results']['birthYear'],
+        'primaryPerson': False,
         'birthPlaceId': birth_place,
         'professionId': profession,
         'deathDay': None,
@@ -102,7 +103,7 @@ def _populate_spouse(spouse, personModel, person):
         'deathYear': spouse['deathYear']['results'],
         'deathPlaceId': None,
         'ownHouse': None,
-        'returnedKarelia': None,    # TODO: Fill in once Spouse data contains information about their personal migration route
+        'returnedKarelia': _convert_returned_to_karelia(None), # TODO: Fill in once Spouse data contains information about their personal migration route
         'previousMarriages': None,  # FIXME: This is missing from new data set.
         'pageNumber': personModel.pageNumber,
         'originalText': personModel.originalText
@@ -200,6 +201,19 @@ def _populate_migration_history(places, personModel):
             'movedOut': p['movedOut']
         })
 
+def _convert_returned_to_karelia(returned):
+    """
+    Convert boolean or None value to string of three different values. Reason being that
+    MS Access can't make difference between NULL and False values of boolean field...
+    :param returned: 
+    :return: 
+    """
+    if returned is None:
+        return 'unknown'
+    elif returned is True:
+        return 'true'
+    else:
+        return 'false'
 
 def populate_person(person):
     birth_place = _populate_place({
@@ -228,13 +242,14 @@ def populate_person(person):
         'birthMonth': person['birthday']['results']['birthMonth'],
         'birthYear': person['birthday']['results']['birthYear'],
         'birthPlaceId': birth_place,
+        'primaryPerson': True,
         'deathDay': None,
         'deathMonth': None,
         'deathYear': None,
         'deathPlaceId': None,
         'ownHouse': person['ownHouse']['results'],
         'professionId': profession,
-        'returnedKarelia': person['migrationHistory']['results']['returnedToKarelia'],
+        'returnedKarelia': _convert_returned_to_karelia(person['migrationHistory']['results']['returnedToKarelia']),
         'previousMarriages': None,  # FIXME: This is missing from new data set.
         'pageNumber': page,
         'originalText': person['personMetadata']['results']['originalText']

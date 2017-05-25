@@ -51,6 +51,7 @@ class Person(BaseModel):
     birthYear = IntegerField()
     birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
     deathDay = IntegerField()
+    primaryPerson = BooleanField()
     deathMonth = IntegerField()
     deathYear = IntegerField()
     deathPlaceId = ForeignKeyField(db_column='deathPlaceId', null=True, rel_model=Place, related_name='Place_deathPlace_set', to_field='id')
@@ -62,7 +63,7 @@ class Person(BaseModel):
     previousMarriages = BooleanField(null=True)
     prevLastName = TextField(null=True)
     professionId = ForeignKeyField(db_column='professionId', null=True, rel_model=Profession, to_field='id')
-    returnedKarelia = BooleanField(null=True)
+    returnedKarelia = TextField()
     sex = TextField()
 
     class Meta:
