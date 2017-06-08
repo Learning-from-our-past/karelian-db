@@ -1733,6 +1733,12 @@
     "region": null,
     "country": null
   },
+  "iit": {
+    "fixed_name": "Iitti",
+    "alternative_stemmed_names": [],
+    "region": "other",
+    "country": null
+  },
   "tervajärv": {
     "fixed_name": "Tervajärvi",
     "alternative_stemmed_names": [
@@ -2515,7 +2521,8 @@
       "antreassp",
       "antrel",
       "antroa",
-      "atrea"
+      "atrea",
+      "antrea"
     ],
     "region": "karelia",
     "country": null
@@ -3638,6 +3645,7 @@
       "turku rouvan aikaisemmasta avioliito",
       "turku rouvan ensimmäisestä avioliito",
       "turus",
+      "turu",
       "turv"
     ],
     "region": "other",
@@ -3858,6 +3866,7 @@
       "hel-sink",
       "hels",
       "helsingis",
+      "helsinlg",
       "helsinkf",
       "helsink",
       "helsinki herran aikaisemmasta avio liito",
@@ -4820,7 +4829,8 @@
   "jämsä ": {
     "fixed_name": "Jämsä",
     "alternative_stemmed_names": [
-      "jäm s"
+      "jäm s",
+      "jäms"
     ],
     "region": "other",
     "country": null
@@ -6093,6 +6103,7 @@
     "fixed_name": "Kymi",
     "alternative_stemmed_names": [
       "ky m",
+      "kym",
       "kymi",
       "kymi as",
       "kymis"
@@ -7787,7 +7798,8 @@
     "alternative_stemmed_names": [
       "luu-mäk",
       "luumä k",
-      "luumäk"
+      "luumäk",
+      "luumäe"
     ],
     "region": "other",
     "country": null
@@ -9087,6 +9099,7 @@
       "lah d",
       "lah t",
       "lahdes",
+      "lahd",
       "lahtf",
       "laht",
       "lahti äsuinp",
