@@ -12,9 +12,10 @@ def load_json(path):
 def populate_db(data):
     database.set_autocommit(False)
     database.begin()
-    for idx, person in enumerate(data):
-        populate_person(person)
-        print("Added ", person['name']['results']["firstNames"], person['name']['results']["surname"], idx+1, '/', len(data))
+    with database.atomic():
+        for idx, person in enumerate(data):
+            populate_person(person)
+            print("Added ", person['name']['results']["firstNames"], person['name']['results']["surname"], idx+1, '/', len(data))
 
     database.commit()
 
