@@ -103,8 +103,8 @@ def _populate_spouse(spouse, personModel, person):
         'deathYear': spouse['deathYear']['results'],
         'deathPlaceId': None,
         'ownHouse': None,
-        'returnedKarelia': _convert_returned_to_karelia(None), # TODO: Fill in once Spouse data contains information about their personal migration route
-        'previousMarriages': None,  # FIXME: This is missing from new data set.
+        'returnedKarelia': _convert_boolean_none(None), # TODO: Fill in once Spouse data contains information about their personal migration route
+        'previousMarriages': _convert_boolean_none(None),  # FIXME: This is missing from new data set.
         'pageNumber': personModel.pageNumber,
         'originalText': personModel.originalText
     }
@@ -201,16 +201,16 @@ def _populate_migration_history(places, personModel):
             'movedOut': p['movedOut']
         })
 
-def _convert_returned_to_karelia(returned):
+def _convert_boolean_none(value):
     """
     Convert boolean or None value to string of three different values. Reason being that
     MS Access can't make difference between NULL and False values of boolean field...
-    :param returned: 
+    :param value: 
     :return: 
     """
-    if returned is None:
+    if value is None:
         return 'unknown'
-    elif returned is True:
+    elif value is True:
         return 'true'
     else:
         return 'false'
@@ -249,8 +249,8 @@ def populate_person(person):
         'deathPlaceId': None,
         'ownHouse': person['ownHouse']['results'],
         'professionId': profession,
-        'returnedKarelia': _convert_returned_to_karelia(person['migrationHistory']['results']['returnedToKarelia']),
-        'previousMarriages': None,  # FIXME: This is missing from new data set.
+        'returnedKarelia': _convert_boolean_none(person['migrationHistory']['results']['returnedToKarelia']),
+        'previousMarriages': _convert_boolean_none(person['previousMarriagesFlag']['results']),
         'pageNumber': page,
         'originalText': person['personMetadata']['results']['originalText']
     }
