@@ -77,63 +77,7 @@ CREATE VIEW siirtokarjalaisten_tie."PersonAndSpouse" AS
   LEFT JOIN siirtokarjalaisten_tie."PersonExtended" AS man
   ON "manId" = man.id
   RIGHT JOIN siirtokarjalaisten_tie."PersonExtended" AS woman
-  ON "womanId" = woman.id
-
-CREATE VIEW siirtokarjalaisten_tie."ChildWithParents" AS
-  SELECT
-    "Child".id,
-    "Child"."firstName",
-    "Child"."lastName",
-    "Child"."sex",
-    "Child"."birthYear",
-    "Place"."name" as "birthPlace",
-    "Place"."region" as "birthPlaceRegion",
-    "father"."firstName" AS "father.firstName",
-    "father"."lastName" AS "father.lastName",
-    "father"."prevLastName" AS "father.prevLastName",
-    "father"."birthDay" AS "father.birthDay",
-    "father"."birthMonth" AS "father.birthMonth",
-    "father"."birthYear" AS "father.birthYear",
-    "father"."deathDay" AS "father.deathDay",
-    "father"."deathMonth" AS "father.deathMonth",
-    "father"."deathYear" AS "father.deathYear",
-    "father".profession AS "father.profession",
-    "father".sex  AS "father.sex",
-    "father"."ownHouse" AS "father.ownHouse",
-    "father"."returnedKarelia" AS "father.returnedKarelia",
-    "father"."previousMarriages" AS "father.previousMarriages",
-    "father"."pageNumber" AS "father.pageNumber",
-    "father".birthplace AS "father.birthPlace",
-    "father".birthlatitude AS "father.birthLatitude",
-    "father".birthlongitude AS "father.birthLongitude",
-    "father".birthregion AS "father.birthRegion",
-
-    "mother"."firstName" AS "mother.firstName",
-    "mother"."lastName" AS "mother.lastName",
-    "mother"."prevLastName" AS "mother.prevLastName",
-    "mother"."birthDay" AS "mother.birthDay",
-    "mother"."birthMonth" AS "mother.birthMonth",
-    "mother"."birthYear" AS "mother.birthYear",
-    "mother"."deathDay" AS "mother.deathDay",
-    "mother"."deathMonth" AS "mother.deathMonth",
-    "mother"."deathYear" AS "mother.deathYear",
-    "mother".profession AS "mother.profession",
-    "mother".sex  AS "mother.sex",
-    "mother"."ownHouse" AS "mother.ownHouse",
-    "mother"."returnedKarelia" AS "mother.returnedKarelia",
-    "mother"."previousMarriages" AS "mother.previousMarriages",
-    "mother"."pageNumber" AS "mother.pageNumber",
-    "mother".birthplace AS "mother.birthPlace",
-    "mother".birthlatitude AS "mother.birthLatitude",
-    "mother".birthlongitude AS "mother.birthLongitude",
-    "mother".birthregion AS "mother.birthRegion",
-    "father"."originalText" AS "originalText"
-  FROM siirtokarjalaisten_tie."Child"
-  LEFT JOIN siirtokarjalaisten_tie."PersonExtended" AS father
-  ON "fatherId" = father.id
-  RIGHT JOIN siirtokarjalaisten_tie."PersonExtended" AS mother
-  ON "motherId" = mother.id
-  join "Place" on "Child"."birthPlaceId" = "Place".id
+  ON "womanId" = woman.id;
 
 -- Living records with location data
 CREATE VIEW siirtokarjalaisten_tie."LivingPlace" AS
