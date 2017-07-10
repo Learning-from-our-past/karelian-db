@@ -36,9 +36,8 @@ def _figure_gender_of_couple(person1, person2):
 def _populate_place(place):
     """
     When populating new Place to the database, try to figure out if place already exists there either as directly or
-    one with slightly different name. Use Postgres Levenshtein search to find group of similar named places and
-    then try to use one of the existing if there is either coordinate match or region match. Otherwise create a new
-    record.
+    one with slightly different name. Check if there is a place name with same stem as the new place which is going to
+    be added.
     :param place:
     :return:
     """
@@ -60,6 +59,14 @@ def _populate_place(place):
 
         if len(places_with_same_region) > 0:
             existing_place = places_with_same_region[0]
+
+            if existing_place.latitude is None or existing_place.longitude is None and place['latitude'] is not None and place['longitude'] is not None:
+                # Update coordinates if they are missing from existing record
+                existing_place.latitude = place['latitude']
+                existing_place.longitude = place['longitude']
+                existing_place.location = pft(place['longitude'], place['latitude'])
+                existing_place.save()
+
             return existing_place
 
     return Place.get_or_create(**place)[0]
