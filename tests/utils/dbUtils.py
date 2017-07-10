@@ -70,7 +70,7 @@ class DBUtils:
     def _create_db_schema(self):
         self.test_db_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
-        self.test_db_connection.cursor().execute('ALTER DATABASE ' + self.config['test_db_name'] +  ' SET search_path=extensions, public;')
+        self.test_db_connection.cursor().execute('ALTER DATABASE ' + self.config['test_db_name'] + ' SET search_path=extensions, public;')
         for path in self.config['sql_files']:
             sqlfile = open(path, 'r')
             self.test_db_connection.cursor().execute(sqlfile.read())
@@ -87,6 +87,6 @@ class DBUtils:
         tables = cursor.fetchall()
 
         for table in tables:
-            cursor.execute("TRUNCATE TABLE siirtokarjalaisten_tie." + table[0] + " CASCADE;")
+            cursor.execute("TRUNCATE TABLE siirtokarjalaisten_tie." + '"' + table[0] + '"' + " CASCADE;")
 
 DBUtils = DBUtils()
