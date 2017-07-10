@@ -140,3 +140,13 @@ CREATE VIEW siirtokarjalaisten_tie."LivingPlace" AS
   SELECT "Place".name, "Place".latitude, "Place".longitude, "Place".region, "personId", "movedIn", "movedOut"
   FROM siirtokarjalaisten_tie."LivingRecord"
   INNER JOIN siirtokarjalaisten_tie."Place" ON siirtokarjalaisten_tie."Place".id = siirtokarjalaisten_tie."LivingRecord"."placeId";
+
+-- Persons who have married (convenience view)
+CREATE VIEW siirtokarjalaisten_tie."MarriedPerson" AS
+  select *
+  from "siirtokarjalaisten_tie"."Person"
+  where "previousMarriages" = 'true'
+  OR "prevLastName" is NOT NULL
+  OR EXISTS(SELECT 1
+        FROM "siirtokarjalaisten_tie"."Marriage"
+        where "Marriage"."manId" = "Person".id OR "Marriage"."womanId" = "Person".id);
