@@ -54,7 +54,6 @@ def combine_places(csv_file_path):
                 # Choose shorter name from multiple ones
                 shortest = min(matches, key=lambda place: len(place['stemmedName']))
                 names = [n['name'] for n in matches]
-                print(shortest['name'], names)
                 results.append(shortest)
             else:
                 # Add all different region combinations to the results set

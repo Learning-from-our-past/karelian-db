@@ -1,112 +1,267 @@
 [
     {
-        "birthLocation": "Hiitolassa",
-        "maybePreviousMarriages": false,
-        "omakotitalo": false,
-        "birthYear": 1907,
-        "boyCount": 1,
-        "birthDay": 23,
-        "karelianLocationCount": 3,
         "spouse": {
-            "spouseName": "Spouse name",
-            "hasSpouse": true,
-            "deathYear": null,
-            "originalFamily": "Original family",
-            "profession": "emäntä",
-            "weddingYear": 1943,
-            "birthData": {
-                "birthLocation": "Hiitolassa",
-                "birthMonth": 6,
-                "birthYear": 1918,
-                "birthDay": 30
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 124
+            },
+            "results": {
+                "profession": {
+                    "metadata": {
+                        "errors": {},
+                        "cursorLocation": 13
+                    },
+                    "results": "emäntä"
+                },
+                "originalFamily": {
+                    "metadata": {
+                        "errors": {},
+                        "cursorLocation": 15
+                    },
+                    "results": "VAIMONNIMI"
+                },
+                "kairaId": {
+                    "metadata": {
+                        "errors": {},
+                        "cursorLocation": 0
+                    },
+                    "results": "siirtokarjalaiset_1_1"
+                },
+                "birthData": {
+                    "birthLocation": {
+                        "metadata": {
+                            "errors": {},
+                            "cursorLocation": 51
+                        },
+                        "results": {
+                            "locationName": "Hiitola",
+                            "region": "karelia"
+                        }
+                    },
+                    "metadata": {
+                        "errors": {},
+                        "cursorLocation": 29
+                    },
+                    "results": {
+                        "birthDay": 30,
+                        "birthYear": 1919,
+                        "birthMonth": 6
+                    }
+                },
+                "weddingYear": {
+                    "metadata": {
+                        "errors": {},
+                        "cursorLocation": 58
+                    },
+                    "results": 1944
+                },
+                "spouseName": "VAIMONIMI",
+                "deathYear": {
+                    "metadata": {
+                        "errors": {},
+                        "cursorLocation": 51
+                    },
+                    "results": null
+                },
+                "hasSpouse": true
             }
         },
-        "originalText": "redacted",
-        "surname": "LAST NAME",
-        "firstNames": "FIRST NAME",
-        "girlCount": 0,
-        "children": [
-            {
-                "name": "Child1",
-                "coordinates": {
-                    "longitude": "22.45042",
-                    "latitude": "63.44991"
-                },
-                "location": "Munsala",
-                "birthYear": 1947,
-                "gender": "Male"
+        "birthday": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 24
+            },
+            "results": {
+                "birthDay": 28,
+                "birthYear": 1909,
+                "birthMonth": 11
             }
-        ],
-        "otherLocationCount": 3,
-        "returnedToKarelia": true,
-        "approximatePageNumber": "0-2",
-        "originalFamily": "",
-        "childCount": 1,
-        "profession": "maanviljelijä",
-        "birthMonth": 10,
-        "gender": "Male",
-        "locations": [
-            {
-                "movedOut": null,
-                "region": "karelia",
-                "coordinates": {
-                    "longitude": "29.68842",
-                    "latitude": "61.23531"
-                },
+        },
+        "migrationHistory": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 265
+            },
+            "results": {
+                "locations": [
+                    {
+                        "locationName": "Hiitola",
+                        "village": {
+                            "locationName": "Kilpola",
+                            "coordinates": {
+                                "latitude": null,
+                                "longitude": null
+                            }
+                        },
+                        "region": "karelia",
+                        "movedOut": 40,
+                        "movedIn": null,
+                        "coordinates": {
+                            "latitude": "61.23927",
+                            "longitude": "29.69067"
+                        }
+                    },
+                    {
+                        "locationName": "Hiitola",
+                        "village": {
+                            "locationName": "Kilpola",
+                            "coordinates": {
+                                "latitude": null,
+                                "longitude": null
+                            }
+                        },
+                        "region": "karelia",
+                        "movedOut": 44,
+                        "movedIn": 42,
+                        "coordinates": {
+                            "latitude": "61.23927",
+                            "longitude": "29.69067"
+                        }
+                    },
+                    {
+                        "locationName": "Parkano",
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "latitude": null,
+                                "longitude": null
+                            }
+                        },
+                        "region": "other",
+                        "movedOut": 42,
+                        "movedIn": 40,
+                        "coordinates": {
+                            "latitude": "62.01667",
+                            "longitude": "23.01667"
+                        }
+                    },
+                    {
+                        "locationName": "Munsala",
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "latitude": null,
+                                "longitude": null
+                            }
+                        },
+                        "region": "other",
+                        "movedOut": 47,
+                        "movedIn": 44,
+                        "coordinates": {
+                            "latitude": "63.44991",
+                            "longitude": "22.45042"
+                        }
+                    },
+                    {
+                        "locationName": "Ahlainen",
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "latitude": null,
+                                "longitude": null
+                            }
+                        },
+                        "region": "other",
+                        "movedOut": null,
+                        "movedIn": 47,
+                        "coordinates": {
+                            "latitude": "61.67538",
+                            "longitude": "21.62092"
+                        }
+                    }
+                ],
+                "returnedToKarelia": true
+            }
+        },
+        "children": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 166
+            },
+            "results": {
+                "children": [
+                    {
+                        "location": {
+                            "locationName": "Munsala",
+                            "coordinates": {
+                                "latitude": "63.44991",
+                                "longitude": "22.45042"
+                            },
+                            "region": null
+                        },
+                        "gender": "Male",
+                        "name": "Lapsi1",
+                        "birthYear": 1946
+                    }
+                ]
+            }
+        },
+        "profession": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 19
+            },
+            "results": "maanviljelijä"
+        },
+        "originalFamily": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": null
+        },
+        "ownHouse": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": false
+        },
+        "kairaId": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": "siirtokarjalaiset_1_2"
+        },
+        "personMetadata": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": {
+                "approximatePageNumber": "0-2",
+                "imagePath": "",
+                "originalText": "text redacted"
+            }
+        },
+        "birthLocation": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 43
+            },
+            "results": {
                 "locationName": "Hiitola",
-                "movedIn": null
-            },
-            {
-                "movedOut": 40,
-                "region": "karelia",
-                "coordinates": {
-                    "longitude": "29.93952",
-                    "latitude": "61.20312"
-                },
-                "locationName": "Kilpola",
-                "movedIn": null
-            },
-            {
-                "movedOut": 44,
-                "region": "karelia",
-                "coordinates": {
-                    "longitude": "29.93952",
-                    "latitude": "61.20312"
-                },
-                "locationName": "Kilpola",
-                "movedIn": 42
-            },
-            {
-                "movedOut": 42,
-                "region": "other",
-                "coordinates": {
-                    "longitude": "23.01667",
-                    "latitude": "62.01667"
-                },
-                "locationName": "Parkano",
-                "movedIn": 40
-            },
-            {
-                "movedOut": 47,
-                "region": "other",
-                "coordinates": {
-                    "longitude": "22.45042",
-                    "latitude": "63.44991"
-                },
-                "locationName": "Munsala",
-                "movedIn": 44
-            },
-            {
-                "movedOut": 47,
-                "region": "other",
-                "coordinates": {
-                    "longitude": "21.62092",
-                    "latitude": "61.67538"
-                },
-                "locationName": "Ahlainen",
-                "movedIn": null
+                "region": "karelia"
             }
-        ],
-        "imagePath": ""
+        },
+        "name": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": {
+                "gender": "Male",
+                "firstNames": "MIESNIMI",
+                "surname": "MIESSUKUNIMI"
+            }
+        },
+        "previousMarriagesFlag": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": false
+        }
     }
 ]
