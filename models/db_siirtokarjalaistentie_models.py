@@ -1,4 +1,5 @@
 from peewee import *
+from playhouse.postgres_ext import *
 from models.db_connection import db_connection
 
 database = db_connection.get_database()
@@ -65,6 +66,7 @@ class Person(BaseModel):
     professionId = ForeignKeyField(db_column='professionId', null=True, rel_model=Profession, to_field='id')
     returnedKarelia = TextField()
     sex = TextField()
+    editLog = BinaryJSONField()
 
     class Meta:
         db_table = 'Person'

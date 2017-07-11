@@ -9,6 +9,7 @@ and more advanced Kaira db-integration.
 * Pyodbc likely has to be downloaded and installed from [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pyodbc)
 * Postgres 9.6.1
 * PostGIS bundle for Postgres 9.6
+* [PL/Python](https://www.postgresql.org/docs/9.6/static/plpython.html)(Python 3)
 * [Postgres ODBC drivers](https://www.postgresql.org/ftp/odbc/versions/) 
 
 Before use, add following environment variables for database connection:

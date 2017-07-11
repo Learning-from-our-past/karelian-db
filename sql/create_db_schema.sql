@@ -2,6 +2,7 @@
 create schema siirtokarjalaisten_tie;
 create schema extensions;
 CREATE EXTENSION postgis SCHEMA extensions;
+CREATE EXTENSION plpython3u;
 ALTER DATABASE "learning-from-our-past" SET search_path=extensions, public;
 
 CREATE EXTENSION fuzzystrmatch SCHEMA extensions;
@@ -62,7 +63,8 @@ CREATE TABLE siirtokarjalaisten_tie."Person"(
   "pageNumber" TEXT NOT NULL REFERENCES siirtokarjalaisten_tie."Page"("pageNumber")
       ON UPDATE CASCADE
       ON DELETE NO ACTION,
-  "originalText" TEXT NOT NULL
+  "originalText" TEXT NOT NULL,
+  "editLog" JSONB NOT NULL DEFAULT '{}'
 );
 
 CREATE TABLE siirtokarjalaisten_tie."Child"(
