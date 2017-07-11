@@ -29,3 +29,30 @@ CREATE TRIGGER person_log_update_trigger
   BEFORE UPDATE ON "siirtokarjalaisten_tie"."Person"
   FOR EACH ROW
   EXECUTE PROCEDURE log_edits_trigger();
+
+-- Set proper starting values for editLog when row is added first time
+CREATE OR REPLACE FUNCTION initialize_log_on_insert_trigger()
+  RETURNS trigger
+AS $$
+    import datetime
+    import json
+
+    user = plpy.execute('select current_user')[0]['current_user']
+    edit_log = {}
+
+    for column_name, new_value in TD['new'].items():
+        if column_name != 'editLog':
+            edit_log[column_name] = {
+                'oldValue': None,
+                'lastChanged': datetime.datetime.utcnow().isoformat(),
+                'author': user
+            }
+
+    TD['new']['editLog'] = json.dumps(edit_log)
+    return 'MODIFY'
+$$ LANGUAGE plpython3u;
+
+CREATE TRIGGER person_insert_trigger
+  BEFORE INSERT ON "siirtokarjalaisten_tie"."Person"
+  FOR EACH ROW
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger();
