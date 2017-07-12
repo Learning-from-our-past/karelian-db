@@ -20,6 +20,15 @@ DB_USER
 DB_MASTER_NAME (required by unit tests)
 ```
 
+Or add following `settings.py` to material directory with contents:
+```
+import os
+
+os.environ['DB_NAME'] = 'learning-from-our-past'
+os.environ['DB_USER']= 'kaira'
+os.environ['DB_PASSWORD'] = 'yourpassword'
+```
+
 ## Postgres and Access
 To make postgres and Access work better together, at least boolean values require some setup. Refer
 Refer to [this](http://www.postgresonline.com/journal/archives/24-Using-MS-Access-with-PostgreSQL.html) and [this](http://bahut.alma.ch/2006/04/access-odbc-postgresql-boolean-mess.html) for instructions
