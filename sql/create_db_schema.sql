@@ -1,4 +1,3 @@
-create schema siirtokarjalaisten_tie;
 CREATE TABLE siirtokarjalaisten_tie."Place"(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,

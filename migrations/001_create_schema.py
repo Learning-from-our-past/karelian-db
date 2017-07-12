@@ -29,7 +29,6 @@ def migrate(migrator, database, fake=False, **kwargs):
     migrator.sql(
         """
         --create database "learning-from-our-past"
-        create schema siirtokarjalaisten_tie;
         CREATE TABLE siirtokarjalaisten_tie."Place"(
         id SERIAL PRIMARY KEY,
         name TEXT NOT NULL,
