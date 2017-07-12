@@ -1,4 +1,19 @@
-CREATE USER kaira;
+do
+$body$
+declare
+  num_users integer;
+begin
+   SELECT count(*)
+     into num_users
+   FROM pg_user
+   WHERE usename = 'kaira';
+
+   IF num_users = 0 THEN
+      CREATE USER kaira;
+   END IF;
+end
+$body$;
+
 GRANT USAGE ON SCHEMA "siirtokarjalaisten_tie" TO kaira;
 GRANT SELECT, INSERT, UPDATE, REFERENCES ON "siirtokarjalaisten_tie"."Child" TO kaira;
 GRANT SELECT, INSERT, UPDATE, REFERENCES ON "siirtokarjalaisten_tie"."LivingRecord" TO kaira;

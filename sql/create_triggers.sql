@@ -65,7 +65,7 @@ CREATE TRIGGER child_log_update_trigger
 CREATE TRIGGER child_insert_trigger
   BEFORE INSERT ON "siirtokarjalaisten_tie"."Child"
   FOR EACH ROW
-  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger();
 
 CREATE TRIGGER place_log_update_trigger
   BEFORE UPDATE ON "siirtokarjalaisten_tie"."Place"
@@ -75,7 +75,7 @@ CREATE TRIGGER place_log_update_trigger
 CREATE TRIGGER place_insert_trigger
   BEFORE INSERT ON "siirtokarjalaisten_tie"."Place"
   FOR EACH ROW
-  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger();
 
 CREATE TRIGGER living_record_log_update_trigger
   BEFORE UPDATE ON "siirtokarjalaisten_tie"."LivingRecord"
@@ -85,7 +85,7 @@ CREATE TRIGGER living_record_log_update_trigger
 CREATE TRIGGER living_record_insert_trigger
   BEFORE INSERT ON "siirtokarjalaisten_tie"."LivingRecord"
   FOR EACH ROW
-  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger();
 
 CREATE TRIGGER profession_log_update_trigger
   BEFORE UPDATE ON "siirtokarjalaisten_tie"."Profession"
@@ -95,7 +95,7 @@ CREATE TRIGGER profession_log_update_trigger
 CREATE TRIGGER profession_insert_trigger
   BEFORE INSERT ON "siirtokarjalaisten_tie"."Profession"
   FOR EACH ROW
-  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger();
 
 CREATE TRIGGER marriage_log_update_trigger
   BEFORE UPDATE ON "siirtokarjalaisten_tie"."Marriage"
@@ -105,4 +105,4 @@ CREATE TRIGGER marriage_log_update_trigger
 CREATE TRIGGER marriage_insert_trigger
   BEFORE INSERT ON "siirtokarjalaisten_tie"."Marriage"
   FOR EACH ROW
-  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger();
