@@ -25,11 +25,6 @@ AS $$
     return 'MODIFY'
 $$ LANGUAGE plpython3u;
 
-CREATE TRIGGER person_log_update_trigger
-  BEFORE UPDATE ON "siirtokarjalaisten_tie"."Person"
-  FOR EACH ROW
-  EXECUTE PROCEDURE log_edits_trigger();
-
 -- Set proper starting values for editLog when row is added first time
 CREATE OR REPLACE FUNCTION initialize_log_on_insert_trigger()
   RETURNS trigger
@@ -52,7 +47,62 @@ AS $$
     return 'MODIFY'
 $$ LANGUAGE plpython3u;
 
+CREATE TRIGGER person_log_update_trigger
+  BEFORE UPDATE ON "siirtokarjalaisten_tie"."Person"
+  FOR EACH ROW
+  EXECUTE PROCEDURE log_edits_trigger();
+
 CREATE TRIGGER person_insert_trigger
   BEFORE INSERT ON "siirtokarjalaisten_tie"."Person"
   FOR EACH ROW
   EXECUTE PROCEDURE initialize_log_on_insert_trigger();
+
+CREATE TRIGGER child_log_update_trigger
+  BEFORE UPDATE ON "siirtokarjalaisten_tie"."Child"
+  FOR EACH ROW
+  EXECUTE PROCEDURE log_edits_trigger();
+
+CREATE TRIGGER child_insert_trigger
+  BEFORE INSERT ON "siirtokarjalaisten_tie"."Child"
+  FOR EACH ROW
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+
+CREATE TRIGGER place_log_update_trigger
+  BEFORE UPDATE ON "siirtokarjalaisten_tie"."Place"
+  FOR EACH ROW
+  EXECUTE PROCEDURE log_edits_trigger();
+
+CREATE TRIGGER place_insert_trigger
+  BEFORE INSERT ON "siirtokarjalaisten_tie"."Place"
+  FOR EACH ROW
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+
+CREATE TRIGGER living_record_log_update_trigger
+  BEFORE UPDATE ON "siirtokarjalaisten_tie"."LivingRecord"
+  FOR EACH ROW
+  EXECUTE PROCEDURE log_edits_trigger();
+
+CREATE TRIGGER living_record_insert_trigger
+  BEFORE INSERT ON "siirtokarjalaisten_tie"."LivingRecord"
+  FOR EACH ROW
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+
+CREATE TRIGGER profession_log_update_trigger
+  BEFORE UPDATE ON "siirtokarjalaisten_tie"."Profession"
+  FOR EACH ROW
+  EXECUTE PROCEDURE log_edits_trigger();
+
+CREATE TRIGGER profession_insert_trigger
+  BEFORE INSERT ON "siirtokarjalaisten_tie"."Profession"
+  FOR EACH ROW
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger()
+
+CREATE TRIGGER marriage_log_update_trigger
+  BEFORE UPDATE ON "siirtokarjalaisten_tie"."Marriage"
+  FOR EACH ROW
+  EXECUTE PROCEDURE log_edits_trigger();
+
+CREATE TRIGGER marriage_insert_trigger
+  BEFORE INSERT ON "siirtokarjalaisten_tie"."Marriage"
+  FOR EACH ROW
+  EXECUTE PROCEDURE initialize_log_on_insert_trigger()

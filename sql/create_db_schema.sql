@@ -1,12 +1,12 @@
 --create database "learning-from-our-past"
-create schema siirtokarjalaisten_tie;
+
 create schema extensions;
 CREATE EXTENSION postgis SCHEMA extensions;
 CREATE EXTENSION plpython3u;
 ALTER DATABASE "learning-from-our-past" SET search_path=extensions, public;
-
 CREATE EXTENSION fuzzystrmatch SCHEMA extensions;
 
+create schema siirtokarjalaisten_tie;
 CREATE TABLE siirtokarjalaisten_tie."Place"(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
@@ -17,6 +17,7 @@ CREATE TABLE siirtokarjalaisten_tie."Place"(
   latitude TEXT,
   longitude TEXT,
   "ambiguousRegion" BOOLEAN DEFAULT FALSE,
+  "editLog" JSONB NOT NULL DEFAULT '{}',
   unique(name, region, "stemmedName", "extractedName", latitude, longitude)
 );
 
@@ -32,6 +33,7 @@ CREATE TABLE siirtokarjalaisten_tie."Page"(
 CREATE TABLE siirtokarjalaisten_tie."Profession"(
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
+  "editLog" JSONB NOT NULL DEFAULT '{}',
   unique(name)
 );
 
@@ -81,7 +83,8 @@ CREATE TABLE siirtokarjalaisten_tie."Child"(
       ON DELETE CASCADE,
   "motherId" INTEGER REFERENCES siirtokarjalaisten_tie."Person"(id)
       ON UPDATE CASCADE
-      ON DELETE CASCADE
+      ON DELETE CASCADE,
+  "editLog" JSONB NOT NULL DEFAULT '{}'
 );
 
 CREATE TABLE siirtokarjalaisten_tie."Marriage"(
@@ -92,7 +95,8 @@ CREATE TABLE siirtokarjalaisten_tie."Marriage"(
   "womanId" INTEGER NOT NULL REFERENCES siirtokarjalaisten_tie."Person"(id)
       ON UPDATE CASCADE
       ON DELETE CASCADE,
-  "weddingYear" INTEGER
+  "weddingYear" INTEGER,
+  "editLog" JSONB NOT NULL DEFAULT '{}'
 );
 
 CREATE TABLE siirtokarjalaisten_tie."LivingRecord"(
@@ -104,5 +108,6 @@ CREATE TABLE siirtokarjalaisten_tie."LivingRecord"(
       ON UPDATE CASCADE
       ON DELETE NO ACTION,
   "movedIn" INTEGER,
-  "movedOut" INTEGER
+  "movedOut" INTEGER,
+  "editLog" JSONB NOT NULL DEFAULT '{}'
 );
