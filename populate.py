@@ -116,7 +116,7 @@ def _populate_spouse(spouse, personModel, person):
         'originalText': personModel.originalText
     }
 
-    return Person.create_or_get(**spouseData)
+    return Person.create_or_get(spouseData)
 
 def _populate_marriage(person_model, spouse_model, spouse_entry):
     male = None
@@ -181,10 +181,10 @@ def _populate_child(child, personModel, spouseModel, person):
         'motherId': mother_id
     }
 
-    return Child.create_or_get(**childData)
+    return Child.create_or_get(childData)
 
 def _populate_migration_record(record):
-    return Livingrecord.create_or_get(**record)
+    return Livingrecord.create_or_get(record)
 
 def _populate_migration_history(places, personModel):
     for p in places:
@@ -262,16 +262,16 @@ def populate_person(person):
         'originalText': person['personMetadata']['results']['originalText']
     }
 
-    personModel = Person.create_or_get(**personData)[0]
+    personModel = Person.create_or_get(personData)
 
     spouseModel = None
     if person['spouse'] is not None and person['spouse']['results']['hasSpouse'] is True:
-        spouseModel = _populate_spouse(person['spouse']['results'], personModel, person)[0]
+        spouseModel = _populate_spouse(person['spouse']['results'], personModel, person)
         marriage = _populate_marriage(personModel, spouseModel, person['spouse']['results'])
 
 
     for child in person['children']['results']['children']:
-        childModel = _populate_child(child, personModel, spouseModel, person)[0]
+        childModel = _populate_child(child, personModel, spouseModel, person)
 
     _populate_migration_history(person['migrationHistory']['results']['locations'], personModel)
 

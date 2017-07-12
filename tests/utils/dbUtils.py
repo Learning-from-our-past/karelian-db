@@ -2,6 +2,13 @@ import os
 import json
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from peewee_migrate import Router
+from peewee import *
+
+# Do not log useless messages about migrations during test setup
+import logging
+from peewee_migrate import LOGGER
+LOGGER.setLevel(logging.WARN)
 
 """
 Provides basic services to manage database during tests such as functions to create, drop and truncate
@@ -21,6 +28,7 @@ class DBUtils:
         self.master_cursor = self.master_connection.cursor()
 
         self.test_db_connection = None
+        self.peewee_database = PostgresqlDatabase(None)
 
     def _get_test_db_connection(self):
         return psycopg2.connect(dbname=self.config['test_db_name'], user=os.environ['DB_USER'], host='localhost',
@@ -33,6 +41,7 @@ class DBUtils:
         or just truncates the existing db depending on configuration.
         :return:
         """
+
         if self.config['drop_database_on_init']:
             self._drop_and_create()
 
@@ -71,10 +80,20 @@ class DBUtils:
         self.test_db_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
         self.test_db_connection.cursor().execute('ALTER DATABASE ' + self.config['test_db_name'] + ' SET search_path=extensions, public;')
+
+        # Run sql setup file which creates db and schemas
         for path in self.config['sql_files']:
             sqlfile = open(path, 'r')
             self.test_db_connection.cursor().execute(sqlfile.read())
             sqlfile.close()
+
+        self.peewee_database.init(self.config['test_db_name'],
+                                  **{'password': os.environ['DB_PASSWORD'], 'user': os.environ['DB_USER']})
+        self.peewee_database.connect()
+
+        # Run all unapplied migrations
+        router = Router(self.peewee_database)
+        router.run()
 
     def truncate_db(self):
         """

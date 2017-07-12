@@ -1,10 +1,8 @@
 {
-  "drop_database_on_init": false,
+  "drop_database_on_init": true,
   "test_db_name": "karelian_testdb",
   "sql_files": [
-    "./sql/create_db_schema.sql", 
-    "./sql/create_functions.sql",
-    "./sql/create_views.sql"
+    "./sql/initial_db.sql"
   ]
 
 }
