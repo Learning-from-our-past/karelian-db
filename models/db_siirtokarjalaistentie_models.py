@@ -68,6 +68,16 @@ class Person(BaseModel):
     sex = TextField()
     editLog = BinaryJSONField()
 
+    @staticmethod
+    def create_or_get(data):
+        try:
+            with database.atomic():
+                return Person.create(**data)
+        except IntegrityError:
+            # this is a unique column, so this row already exists,
+            # making it safe to call .get().
+            return Person.get(data)
+
     class Meta:
         db_table = 'Person'
 
@@ -80,6 +90,16 @@ class Child(BaseModel):
     motherId = ForeignKeyField(db_column='motherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_motherId_set')
     sex = TextField()
 
+    @staticmethod
+    def create_or_get(data):
+        try:
+            with database.atomic():
+                return Child.create(**data)
+        except IntegrityError:
+            # this is a unique column, so this row already exists,
+            # making it safe to call .get().
+            return Child.get(data)
+
     class Meta:
         db_table = 'Child'
 
@@ -88,6 +108,16 @@ class Livingrecord(BaseModel):
     movedOut = IntegerField(null=True)
     personId = ForeignKeyField(db_column='personId', rel_model=Person, to_field='id')
     placeId = ForeignKeyField(db_column='placeId', rel_model=Place, to_field='id')
+
+    @staticmethod
+    def create_or_get(data):
+        try:
+            with database.atomic():
+                return Livingrecord.create(**data)
+        except IntegrityError:
+            # this is a unique column, so this row already exists,
+            # making it safe to call .get().
+            return Livingrecord.get(data)
 
     class Meta:
         db_table = 'LivingRecord'
