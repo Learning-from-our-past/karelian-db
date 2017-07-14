@@ -144,7 +144,7 @@ END;
 $body$
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = pg_catalog, public;
+SET search_path = pg_catalog, extensions, siirtokarjalaisten_tie, public;
 
 
 COMMENT ON FUNCTION audit.if_modified_func() IS $body$
@@ -182,19 +182,19 @@ $body$;
 
 CREATE OR REPLACE FUNCTION audit.audit_table(target_table regclass, audit_rows boolean, audit_query_text boolean, ignored_cols text[]) RETURNS void AS $body$
 DECLARE
-  stm_targets text = 'INSERT OR UPDATE OR DELETE OR TRUNCATE';
+  stm_targets text = 'UPDATE OR DELETE OR TRUNCATE';    -- INSERT not logged
   _q_txt text;
   _ignored_cols_snip text = '';
 BEGIN
-    EXECUTE 'DROP TRIGGER IF EXISTS audit_trigger_row ON ' || quote_ident(target_table::TEXT);
-    EXECUTE 'DROP TRIGGER IF EXISTS audit_trigger_stm ON ' || quote_ident(target_table::TEXT);
+    EXECUTE 'DROP TRIGGER IF EXISTS audit_trigger_row ON ' || target_table::TEXT;
+    EXECUTE 'DROP TRIGGER IF EXISTS audit_trigger_stm ON ' || target_table::TEXT;
 
     IF audit_rows THEN
         IF array_length(ignored_cols,1) > 0 THEN
             _ignored_cols_snip = ', ' || quote_literal(ignored_cols);
         END IF;
-        _q_txt = 'CREATE TRIGGER audit_trigger_row AFTER INSERT OR UPDATE OR DELETE ON ' ||
-                 quote_ident(target_table::TEXT) ||
+        _q_txt = 'CREATE TRIGGER audit_trigger_row AFTER UPDATE OR DELETE ON ' ||   -- INSERT not logged
+                 target_table::TEXT ||
                  ' FOR EACH ROW EXECUTE PROCEDURE audit.if_modified_func(' ||
                  quote_literal(audit_query_text) || _ignored_cols_snip || ');';
         RAISE NOTICE '%',_q_txt;
