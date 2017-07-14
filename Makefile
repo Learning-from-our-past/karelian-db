@@ -1,8 +1,11 @@
 new-migration:
 	python -m tasks.new-migration
 
-migrate:
+migrate-local:
 	python -m tasks.migrate
+
+migrate-production:
+	python -m tasks.migrate-production
 
 populate-all:
 	sh tasks/populate_everything.sh
