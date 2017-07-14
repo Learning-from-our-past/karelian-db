@@ -8,6 +8,7 @@ and more advanced Kaira db-integration.
 * Microsoft Access 2016
 * Pyodbc likely has to be downloaded and installed from [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pyodbc)
 * Postgres 9.6.1
+* plpython
 * PostGIS bundle for Postgres 9.6
 * [PL/Python](https://www.postgresql.org/docs/9.6/static/plpython.html)(Python 3)
 * [Postgres ODBC drivers](https://www.postgresql.org/ftp/odbc/versions/) 
