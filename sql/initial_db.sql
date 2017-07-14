@@ -5,7 +5,6 @@ DROP SCHEMA IF EXISTS system;
 CREATE SCHEMA system;
 CREATE EXTENSION postgis SCHEMA extensions;
 CREATE EXTENSION plpython3u;
-ALTER DATABASE "learning-from-our-past" SET search_path=extensions, public;
 CREATE EXTENSION hstore SCHEMA extensions;
 CREATE EXTENSION fuzzystrmatch SCHEMA extensions;
 
