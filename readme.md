@@ -16,7 +16,6 @@ and more advanced Kaira db-integration.
 Before use, add following environment variables for database connection:
 ```
 DB_NAME
-DB_PASSWORD
 DB_USER
 DB_MASTER_NAME (required by unit tests)
 ```
@@ -27,10 +26,20 @@ import os
 
 os.environ['DB_NAME'] = 'learning-from-our-past'
 os.environ['DB_USER']= 'kaira'
-os.environ['DB_PASSWORD'] = 'yourpassword'
 ```
+
+You also need to setup `PGPASSFILE`environment variable, which refers to
+.pgpass file containing details for connection and password. Usually this is located
+at `~/.pgpass`. Add to the file following contents:
+
+```
+localhost:5432:learning-from-our-past:postgres:<password>
+```
+
+Add similar entry for production connection with correct host and passwords. Set rights of the file to the
+0600. [https://www.postgresql.org/docs/9.6/static/libpq-pgpass.html](Read more about PGPASSFILE)
 
 ## Postgres and Access
 To make postgres and Access work better together, at least boolean values require some setup. Refer
-Refer to [this](http://www.postgresonline.com/journal/archives/24-Using-MS-Access-with-PostgreSQL.html) and [this](http://bahut.alma.ch/2006/04/access-odbc-postgresql-boolean-mess.html) for instructions
+to [this](http://www.postgresonline.com/journal/archives/24-Using-MS-Access-with-PostgreSQL.html) and [this](http://bahut.alma.ch/2006/04/access-odbc-postgresql-boolean-mess.html) for instructions
 how to setup ODBC driver (booleans as char: false, True is -1 to true) and Access ui-setup to show boolean fields as checkboxes.
