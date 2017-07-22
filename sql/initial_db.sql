@@ -5,7 +5,6 @@ DROP SCHEMA IF EXISTS system;
 CREATE SCHEMA system;
 CREATE EXTENSION postgis SCHEMA extensions;
 CREATE EXTENSION plpython3u;
-CREATE EXTENSION hstore SCHEMA extensions;
 CREATE EXTENSION fuzzystrmatch SCHEMA extensions;
 
 DROP SCHEMA IF EXISTS siirtokarjalaisten_tie CASCADE;
@@ -31,6 +30,9 @@ END$$;
 --
 -- Should really be converted into a relocatable EXTENSION, with control and upgrade files.
 
+-- This can be installed to default template with:
+-- psql template1 -c 'create extension hstore;'
+-- See: http://clarkdave.net/2012/09/postgresql-error-type-hstore-does-not-exist/
 CREATE EXTENSION IF NOT EXISTS hstore SCHEMA extensions;
 CREATE SCHEMA audit;
 REVOKE ALL ON SCHEMA audit FROM public;
