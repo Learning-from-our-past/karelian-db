@@ -11,7 +11,12 @@ CREATE EXTENSION fuzzystrmatch SCHEMA extensions;
 DROP SCHEMA IF EXISTS siirtokarjalaisten_tie CASCADE;
 CREATE SCHEMA siirtokarjalaisten_tie;
 
-SET search_path = pg_catalog, siirtokarjalaisten_tie, public, extensions;
+ALTER DATABASE "karelian_testdb" SET search_path TO pg_catalog, siirtokarjalaisten_tie, public, extensions;
+DO $$
+BEGIN
+    EXECUTE 'ALTER DATABASE ' || quote_ident(current_database()) || ' SET search_path TO pg_catalog, siirtokarjalaisten_tie, public, extensions';
+END$$;
+
 -- An audit history is important on most tables. Provide an audit trigger that logs to
 -- a dedicated audit table for the major relations.
 --
