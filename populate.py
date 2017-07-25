@@ -224,7 +224,7 @@ def _convert_boolean_none(value):
     else:
         return 'false'
 
-def populate_person(person):
+def populate_person(person, csv_record):
     birth_place = _populate_place({
         'name': person['birthLocation']['results']['locationName'],
         'extractedName': person['birthLocation']['results']['locationName'],
@@ -265,16 +265,20 @@ def populate_person(person):
         'originalText': person['personMetadata']['results']['originalText']
     }
 
+    csv_record.add_primary_person(person)
+
     personModel = Person.create_or_get(personData)
 
     spouseModel = None
     if person['spouse'] is not None and person['spouse']['results']['hasSpouse'] is True:
         spouseModel = _populate_spouse(person['spouse']['results'], personModel, person)
+        csv_record.add_spouse(person, person['spouse']['results'])
         marriage = _populate_marriage(personModel, spouseModel, person['spouse']['results'])
 
 
     for child in person['children']['results']['children']:
         childModel = _populate_child(child, personModel, spouseModel, person)
+        csv_record.add_child(person, child)
 
     _populate_migration_history(person['migrationHistory']['results']['locations'], personModel)
 
