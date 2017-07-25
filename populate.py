@@ -95,6 +95,7 @@ def _populate_spouse(spouse, personModel, person):
     })[0]
 
     spouseData = {
+        'kairaId': spouse['kairaId'],
         'firstName': spouse['spouseName'],
         'lastName': person['name']['results']['surname'],
         'prevLastName': spouse['originalFamily']['results'],
@@ -171,6 +172,7 @@ def _populate_child(child, personModel, spouseModel, person):
         mother_id = parents['female'].id
 
     childData = {
+        'kairaId': child['kairaId'],
         'firstName': child['name'],
         'lastName': person['name']['results']['surname'],
         'birthYear': child['birthYear'],
@@ -241,6 +243,7 @@ def populate_person(person):
     })[0]
 
     personData = {
+        'kairaId': person['kairaId']['results'],
         'firstName': person['name']['results']['firstNames'],
         'lastName': person['name']['results']['surname'],
         'prevLastName': person['originalFamily']['results'],
