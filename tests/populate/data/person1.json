@@ -6,6 +6,7 @@
                 "cursorLocation": 124
             },
             "results": {
+                "kairaId": "siirtokarjalaiset_1_1S",
                 "profession": {
                     "metadata": {
                         "errors": {},
@@ -19,13 +20,6 @@
                         "cursorLocation": 15
                     },
                     "results": "VAIMONNIMI"
-                },
-                "kairaId": {
-                    "metadata": {
-                        "errors": {},
-                        "cursorLocation": 0
-                    },
-                    "results": "siirtokarjalaiset_1_1"
                 },
                 "birthData": {
                     "birthLocation": {
@@ -189,6 +183,7 @@
                             },
                             "region": null
                         },
+                        "kairaId": "siirtokarjalaiset_1_3C",
                         "gender": "Male",
                         "name": "Lapsi1",
                         "birthYear": 1946
@@ -222,7 +217,7 @@
                 "errors": {},
                 "cursorLocation": 0
             },
-            "results": "siirtokarjalaiset_1_2"
+            "results": "siirtokarjalaiset_1_2P"
         },
         "personMetadata": {
             "metadata": {

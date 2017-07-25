@@ -47,6 +47,7 @@ class Profession(BaseModel):
         db_table = 'Profession'
 
 class Person(BaseModel):
+    kairaId = TextField()
     birthDay = IntegerField()
     birthMonth = IntegerField()
     birthYear = IntegerField()
@@ -82,6 +83,7 @@ class Person(BaseModel):
         db_table = 'Person'
 
 class Child(BaseModel):
+    kairaId = TextField()
     birthYear = IntegerField()
     birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
     firstName = TextField()
