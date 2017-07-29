@@ -1,11 +1,11 @@
 -- create database "learning-from-our-past";
 
-CREATE SCHEMA extensions;
+CREATE SCHEMA IF NOT EXISTS extensions;
 DROP SCHEMA IF EXISTS system;
 CREATE SCHEMA system;
-CREATE EXTENSION postgis SCHEMA extensions;
-CREATE EXTENSION plpython3u;
-CREATE EXTENSION fuzzystrmatch SCHEMA extensions;
+CREATE EXTENSION IF NOT EXISTS postgis SCHEMA extensions;
+CREATE EXTENSION IF NOT EXISTS plpython3u;
+CREATE EXTENSION IF NOT EXISTS fuzzystrmatch SCHEMA extensions;
 
 DROP SCHEMA IF EXISTS siirtokarjalaisten_tie CASCADE;
 CREATE SCHEMA siirtokarjalaisten_tie;

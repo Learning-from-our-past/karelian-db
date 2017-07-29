@@ -9,3 +9,6 @@ migrate-production:
 
 populate-all:
 	sh tasks/populate_everything.sh
+
+truncate:
+	sh tasks/truncate.sh
