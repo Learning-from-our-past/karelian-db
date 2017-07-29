@@ -10,7 +10,7 @@ class CsvRecordOfPopulation:
         self._person_file = open(file_name + '_persons.csv', 'w', encoding='utf8')
         self._source_text_file = open(file_name + '_source_texts.csv', 'w', encoding='utf8')
 
-        self._person_field_names = ['kairaId', 'firstNames', 'lastNames', 'sourceTextId']
+        self._person_field_names = ['kairaId', 'firstNames', 'lastNames', 'prevLastName', 'sourceTextId']
         self._source_text_field_names = ['sourceTextId', 'sourceText']
 
         self._person_writer = csv.DictWriter(self._person_file, fieldnames=self._person_field_names)
@@ -41,6 +41,7 @@ class CsvRecordOfPopulation:
         self._person_writer.writerow({'kairaId': person['kairaId']['results'],
                                'firstNames': person['name']['results']['firstNames'],
                                'lastNames': person['name']['results']['surname'],
+                               'prevLastName': person['originalFamily']['results'],
                                'sourceTextId': source_text_id})
 
         return source_text_id
@@ -51,6 +52,7 @@ class CsvRecordOfPopulation:
         self._person_writer.writerow({'kairaId': child['kairaId'],
                                'firstNames': child['name'],
                                'lastNames': primary_person['name']['results']['surname'],
+                               'prevLastName': None,
                                'sourceTextId': source_text_id})
 
         return source_text_id
@@ -61,6 +63,7 @@ class CsvRecordOfPopulation:
         self._person_writer.writerow({'kairaId': spouse['kairaId'],
                                'firstNames': spouse['spouseName'],
                                'lastNames':  primary_person['name']['results']['surname'],
+                               'prevLastName': spouse['originalFamily']['results'],
                                'sourceTextId': source_text_id})
 
         return source_text_id
