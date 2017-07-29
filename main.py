@@ -27,7 +27,6 @@ def populate_db(data, csv_record):
     database.close()
 
 
-
 if __name__ == "__main__":
     db_connection.init_database()
     db_connection.connect()
@@ -36,11 +35,11 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         file_name = os.path.splitext(sys.argv[1])[0]
-        csv_record = CsvRecordOfPopulation(file_name + '.csv')
+        csv_record = CsvRecordOfPopulation(file_name)
         data = load_json(sys.argv[1])
     else:
-        data = load_json("./material/siirtokarjalaiset_I.json")
-        csv_record = CsvRecordOfPopulation('./material/siirtokarjalaiset_I.csv')
+        data = load_json("./material/testset.json")
+        csv_record = CsvRecordOfPopulation('./material/testset')
 
     populate_db(data, csv_record)
     csv_record.save_to_file()
