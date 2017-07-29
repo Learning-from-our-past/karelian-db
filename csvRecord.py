@@ -43,6 +43,8 @@ class CsvRecordOfPopulation:
                                'lastNames': person['name']['results']['surname'],
                                'sourceTextId': source_text_id})
 
+        return source_text_id
+
     def add_child(self, primary_person, child):
         source_text_id = self._add_source_text(primary_person['personMetadata']['results']['originalText'])
 
@@ -50,6 +52,8 @@ class CsvRecordOfPopulation:
                                'firstNames': child['name'],
                                'lastNames': primary_person['name']['results']['surname'],
                                'sourceTextId': source_text_id})
+
+        return source_text_id
 
     def add_spouse(self, primary_person, spouse):
         source_text_id = self._add_source_text(primary_person['personMetadata']['results']['originalText'])
@@ -59,10 +63,11 @@ class CsvRecordOfPopulation:
                                'lastNames':  primary_person['name']['results']['surname'],
                                'sourceTextId': source_text_id})
 
+        return source_text_id
+
     def save_to_file(self):
         self._source_texts = [{'sourceTextId': text_id, 'sourceText': text} for text, text_id in self._source_texts.items()]
         self._source_text_writer.writerows(self._source_texts)
 
         self._person_file.close()
         self._person_file.close()
-        
