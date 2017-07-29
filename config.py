@@ -1,3 +1,4 @@
 CONFIG = {
-  "place_snowball_stem": True
+  "place_snowball_stem": True,
+  "anonymize": True
 }

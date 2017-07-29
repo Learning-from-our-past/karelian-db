@@ -60,6 +60,7 @@ class Person(BaseModel):
     firstName = TextField()
     lastName = TextField()
     originalText = TextField()
+    sourceTextId = TextField()
     ownHouse = BooleanField(null=True)
     pageNumber = ForeignKeyField(db_column='pageNumber', rel_model=Page, to_field='pageNumber')
     previousMarriages = TextField(null=True)
@@ -91,6 +92,7 @@ class Child(BaseModel):
     fatherId = ForeignKeyField(db_column='fatherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_fatherId_set')
     motherId = ForeignKeyField(db_column='motherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_motherId_set')
     sex = TextField()
+    sourceTextId = TextField()
 
     @staticmethod
     def create_or_get(data):

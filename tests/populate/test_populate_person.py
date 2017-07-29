@@ -2,10 +2,11 @@ import pytest
 from tests.utils.dbUtils import DBUtils
 import tests.utils.population_utils as population_utils
 from models.db_siirtokarjalaistentie_models import *
-
+import config
 
 @pytest.yield_fixture(autouse=True, scope='module', name='person_data')
 def populate_person_information_to_db():
+    config.CONFIG['anonymize'] = False
     DBUtils.truncate_db()
     # Person data is anonymized and tweaked and only usable for software testing.
     return population_utils.populate_from_json("./tests/populate/data/person1.json")[0]

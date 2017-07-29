@@ -81,7 +81,7 @@ def _populate_profession(profession):
         return Profession.get_or_create(**profession)
 
 
-def _populate_spouse(spouse, personModel, person):
+def _populate_spouse(spouse, personModel, person, csv_record):
     birth_place = _populate_place({
         'name': spouse['birthData']['birthLocation']['results']['locationName'],
         'extractedName': spouse['birthData']['birthLocation']['results']['locationName'],
@@ -94,11 +94,13 @@ def _populate_spouse(spouse, personModel, person):
         'name': spouse['profession']['results']
     })[0]
 
+    source_text_id = csv_record.add_spouse(person, person['spouse']['results'])
+
     spouseData = {
         'kairaId': spouse['kairaId'],
-        'firstName': spouse['spouseName'],
-        'lastName': person['name']['results']['surname'],
-        'prevLastName': spouse['originalFamily']['results'],
+        'firstName': None if CONFIG['anonymize'] else spouse['spouseName'],
+        'lastName': None if CONFIG['anonymize'] else person['name']['results']['surname'],
+        'prevLastName': None if CONFIG['anonymize'] else spouse['originalFamily']['results'],
         'sex': _invert_gender(person['name']['results']['gender']),
         'birthDay': spouse['birthData']['results']['birthDay'],
         'birthMonth': spouse['birthData']['results']['birthMonth'],
@@ -112,9 +114,10 @@ def _populate_spouse(spouse, personModel, person):
         'deathPlaceId': None,
         'ownHouse': None,
         'returnedKarelia': _convert_boolean_none(None), # TODO: Fill in once Spouse data contains information about their personal migration route
-        'previousMarriages': _convert_boolean_none(None),  # FIXME: This is missing from new data set.
+        'previousMarriages': _convert_boolean_none(None),
         'pageNumber': personModel.pageNumber,
-        'originalText': personModel.originalText
+        'originalText': None if CONFIG['anonymize'] else personModel.originalText,
+        'sourceTextId': source_text_id
     }
 
     return Person.create_or_get(spouseData)
@@ -142,7 +145,7 @@ def _populate_marriage(person_model, spouse_model, spouse_entry):
         return None
 
 
-def _populate_child(child, personModel, spouseModel, person):
+def _populate_child(child, personModel, spouseModel, person, csv_record):
     location = None
     if child['location']['coordinates']['latitude'] and child['location']['coordinates']['longitude']:
         location = pft(child['location']['coordinates']['latitude'], child['location']['coordinates']['longitude'])
@@ -171,16 +174,19 @@ def _populate_child(child, personModel, spouseModel, person):
     if parents['female']:
         mother_id = parents['female'].id
 
+    source_text_id = csv_record.add_child(person, child)
+
     childData = {
         'kairaId': child['kairaId'],
-        'firstName': child['name'],
-        'lastName': person['name']['results']['surname'],
+        'firstName': None if CONFIG['anonymize'] else child['name'],
+        'lastName':  None if CONFIG['anonymize'] else person['name']['results']['surname'],
         'birthYear': child['birthYear'],
         'sex': _transform_sex(child['gender']),
         'birthPlaceId': birth_place,
         'parentPersonId': personModel,
         'fatherId': father_id,
-        'motherId': mother_id
+        'motherId': mother_id,
+        'sourceTextId': source_text_id
     }
 
     return Child.create_or_get(childData)
@@ -224,7 +230,7 @@ def _convert_boolean_none(value):
     else:
         return 'false'
 
-def populate_person(person):
+def populate_person(person, csv_record):
     birth_place = _populate_place({
         'name': person['birthLocation']['results']['locationName'],
         'extractedName': person['birthLocation']['results']['locationName'],
@@ -242,11 +248,13 @@ def populate_person(person):
         'name': person['profession']['results']
     })[0]
 
+    source_text_id = csv_record.add_primary_person(person)
+
     personData = {
         'kairaId': person['kairaId']['results'],
-        'firstName': person['name']['results']['firstNames'],
-        'lastName': person['name']['results']['surname'],
-        'prevLastName': person['originalFamily']['results'],
+        'firstName': None if CONFIG['anonymize'] else person['name']['results']['firstNames'],
+        'lastName': None if CONFIG['anonymize'] else person['name']['results']['surname'],
+        'prevLastName': None if CONFIG['anonymize'] else person['originalFamily']['results'],
         'sex': _transform_sex(person['name']['results']['gender']),
         'birthDay': person['birthday']['results']['birthDay'],
         'birthMonth': person['birthday']['results']['birthMonth'],
@@ -262,19 +270,20 @@ def populate_person(person):
         'returnedKarelia': _convert_boolean_none(person['migrationHistory']['results']['returnedToKarelia']),
         'previousMarriages': _convert_boolean_none(person['previousMarriagesFlag']['results']),
         'pageNumber': page,
-        'originalText': person['personMetadata']['results']['originalText']
+        'originalText': None if CONFIG['anonymize'] else person['personMetadata']['results']['originalText'],
+        'sourceTextId': source_text_id
     }
 
     personModel = Person.create_or_get(personData)
 
     spouseModel = None
     if person['spouse'] is not None and person['spouse']['results']['hasSpouse'] is True:
-        spouseModel = _populate_spouse(person['spouse']['results'], personModel, person)
+        spouseModel = _populate_spouse(person['spouse']['results'], personModel, person, csv_record)
         marriage = _populate_marriage(personModel, spouseModel, person['spouse']['results'])
 
 
     for child in person['children']['results']['children']:
-        childModel = _populate_child(child, personModel, spouseModel, person)
+        childModel = _populate_child(child, personModel, spouseModel, person, csv_record)
 
     _populate_migration_history(person['migrationHistory']['results']['locations'], personModel)
 
