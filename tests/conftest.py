@@ -2,6 +2,7 @@ import pytest
 
 from db_management.models.db_connection import db_connection
 from tests.utils.dbUtils import DBUtils
+from tests.test_config import CONFIG
 
 
 def pytest_collection_modifyitems(session, config, items):
@@ -22,6 +23,6 @@ def pytest_collection_modifyitems(session, config, items):
 @pytest.fixture(scope="session", autouse=True)
 def database():
     DBUtils.init_test_db()
-    db_connection.init_database()
+    db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
     db_connection.connect()
     return db_connection.get_database()

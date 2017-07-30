@@ -5,6 +5,7 @@ import sys
 from csvRecord import CsvRecordOfPopulation
 from db_management.models.db_connection import db_connection
 from populate import populate_person
+from config import CONFIG
 
 
 def load_json(path):
@@ -28,7 +29,7 @@ def populate_db(data, csv_record):
 
 
 if __name__ == "__main__":
-    db_connection.init_database()
+    db_connection.init_database(db_name=CONFIG['db_name'], db_user=CONFIG['db_user'])
     db_connection.connect()
     database = db_connection.get_database()
     csv_record = None

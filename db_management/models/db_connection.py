@@ -7,7 +7,7 @@ class DbConnection:
     def __init__(self):
         self.database = PostgresqlDatabase(None)
 
-    def init_database(self, db_name=os.environ['DB_NAME'], db_user=os.environ['DB_USER']):
+    def init_database(self, db_name, db_user):
         self.database.init(db_name, **{'user': db_user})
 
     def connect(self):

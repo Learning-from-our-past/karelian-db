@@ -17,7 +17,7 @@ class TestPersonEditLogging:
         return Person.get()
 
     def should_have_correct_initial_data_in_manual_edits_object(self, person):
-        assert person.editLog['firstName']['author'] == 'postgres'
+        assert person.editLog['firstName']['author'] == 'kaira'
         assert person.editLog['firstName']['oldValue'] is None
         assert person.editLog['firstName']['lastChanged']
 
@@ -29,7 +29,7 @@ class TestPersonEditLogging:
 
         person = Person.select().where(Person.id == person.id).get()
 
-        assert person.editLog['firstName']['author'] == 'postgres'
+        assert person.editLog['firstName']['author'] == 'kaira'
         assert person.editLog['firstName']['oldValue'] == original_name
         assert person.editLog['firstName']['lastChanged'] != original_log['firstName']['lastChanged']
 
