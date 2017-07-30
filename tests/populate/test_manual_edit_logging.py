@@ -15,12 +15,12 @@ class TestPersonEditLogging:
     def person(self):
         return Person.get()
 
-    def test_that_manual_edits_object_has_initial_data(self, person):
+    def should_have_correct_initial_data_in_manual_edits_object(self, person):
         assert person.editLog['firstName']['author'] == 'postgres'
         assert person.editLog['firstName']['oldValue'] is None
         assert person.editLog['firstName']['lastChanged']
 
-    def test_that_manual_edits_object_records_change_to_only_edited_columns(self, person):
+    def should_change_manual_edits_object_records_for_columns_which_were_edited(self, person):
         original_name = person.firstName
         original_log = person.editLog
         person.firstName = 'New name'

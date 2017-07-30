@@ -18,7 +18,7 @@ class TestPersonPopulate:
     def person(self):
         return Person.get()
 
-    def test_person_data_was_populated_correctly(self, person, anon_data):
+    def should_have_populated_anonymous_person_correctly(self, person, anon_data):
         assert person.firstName is None
         assert person.lastName is None
         assert person.prevLastName is None
@@ -35,7 +35,7 @@ class TestPersonPopulate:
         assert person.deathMonth is None
         assert person.deathYear is None
 
-    def test_children_were_populated_correctly(self, person, anon_data):
+    def should_have_populated_anonymous_children_correctly(self, person, anon_data):
         child = (Child.select()
                  .join(Place, on=(Place.id == Child.birthPlaceId))
                  .where(Child.fatherId == person.id))[0]
@@ -51,7 +51,7 @@ class TestPersonPopulate:
         assert child.birthPlaceId.latitude == expected_child['location']['coordinates']['latitude']
         assert child.birthPlaceId.longitude == expected_child['location']['coordinates']['longitude']
 
-    def test_spouse_data_was_populated_correctly(self, person, anon_data):
+    def should_have_populated_anonymous_spouse_correctly(self, person, anon_data):
         marriage = Marriage.select().where(Marriage.manId == person.id).get()
 
         assert marriage.weddingYear == anon_data['spouse']['results']['weddingYear']['results']

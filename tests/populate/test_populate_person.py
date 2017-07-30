@@ -17,7 +17,7 @@ class TestPersonPopulate:
     def person(self):
         return Person.get()
 
-    def test_person_data_was_populated_correctly(self, person, person_data):
+    def should_have_populated_person_correctly(self, person, person_data):
         assert person.firstName == person_data['name']['results']['firstNames']
         assert person.lastName == person_data['name']['results']['surname']
         assert person.prevLastName == person_data['originalFamily']['results']
@@ -34,15 +34,15 @@ class TestPersonPopulate:
         assert person.deathMonth is None
         assert person.deathYear is None
 
-    def test_profession_was_populated_correctly(self, person, person_data):
+    def should_have_populated_profession_correctly(self, person, person_data):
         profession = Profession.get(Profession.id == person.professionId)
         assert profession.name == person_data['profession']['results']
 
-    def test_page_was_populated_correctly(self, person, person_data):
+    def should_have_populated_page_correctly(self, person, person_data):
         page = Page.get(Page.pageNumber == person.pageNumber)
         assert page.pageNumber == person_data['personMetadata']['results']['approximatePageNumber']
 
-    def test_living_records_were_populated_correctly(self, person, person_data):
+    def should_have_populated_living_records_correctly(self, person, person_data):
         records = sorted(Livingrecord.select().join(Place).where(Livingrecord.personId == person.id), key = lambda x: (x.movedIn is None, x.movedIn))
 
         expected_records = sorted(person_data['migrationHistory']['results']['locations'], key=lambda x: (x['movedIn'] is None, x['movedIn']))
@@ -59,7 +59,7 @@ class TestPersonPopulate:
 
             assert r.placeId.region == expected_records[i]['region']
 
-    def test_children_were_populated_correctly(self, person, person_data):
+    def should_have_populated_children_correctly(self, person, person_data):
         child = (Child.select()
                  .join(Place, on=(Place.id == Child.birthPlaceId))
                  .where(Child.fatherId == person.id))[0]
@@ -74,7 +74,7 @@ class TestPersonPopulate:
         assert child.birthPlaceId.latitude == expected_child['location']['coordinates']['latitude']
         assert child.birthPlaceId.longitude == expected_child['location']['coordinates']['longitude']
 
-    def test_spouse_data_was_populated_correctly(self, person, person_data):
+    def should_have_populated_spouse_correctly(self, person, person_data):
         marriage = Marriage.select().where(Marriage.manId == person.id).get()
 
         assert marriage.weddingYear == person_data['spouse']['results']['weddingYear']['results']
