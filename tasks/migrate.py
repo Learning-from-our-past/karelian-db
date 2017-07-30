@@ -1,10 +1,10 @@
-from peewee_migrate import Router
-import material.settings
-from models.db_connection import db_connection
-
 # FIXME: Dirty way to pass the schema for migration history so that peewee_migrate will work properly.
 # More information: https://github.com/klen/peewee_migrate/issues/51
 from peewee_migrate import MigrateHistory
+from peewee_migrate import Router
+
+from db_management.models.db_connection import db_connection
+
 MigrateHistory._meta.schema = 'system'
 
 db_connection.init_database()

@@ -1,10 +1,10 @@
 import json
-import sys
-import material.settings
-from models.db_connection import db_connection
-from populate import populate_person
-from csvRecord import CsvRecordOfPopulation
 import os
+import sys
+
+from csvRecord import CsvRecordOfPopulation
+from db_management.models.db_connection import db_connection
+from populate import populate_person
 
 
 def load_json(path):

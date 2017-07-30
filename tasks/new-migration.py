@@ -1,6 +1,6 @@
 from peewee_migrate import Router
-import material.settings
-from models.db_connection import db_connection
+
+from db_management.models.db_connection import db_connection
 
 db_connection.init_database()
 db_connection.connect()

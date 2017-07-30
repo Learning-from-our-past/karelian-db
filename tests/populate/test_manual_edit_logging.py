@@ -1,7 +1,8 @@
 import pytest
-from tests.utils.dbUtils import DBUtils
+
 import tests.utils.population_utils as population_utils
-from models.db_siirtokarjalaistentie_models import *
+from db_management.models.db_siirtokarjalaistentie_models import *
+from tests.utils.dbUtils import DBUtils
 
 
 @pytest.yield_fixture(autouse=True, scope='module', name='person_data')

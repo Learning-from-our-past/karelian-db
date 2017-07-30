@@ -1,6 +1,8 @@
-from tests.utils.dbUtils import DBUtils
-from models.db_connection import db_connection
 import pytest
+
+from db_management.models.db_connection import db_connection
+from tests.utils.dbUtils import DBUtils
+
 
 def pytest_collection_modifyitems(session, config, items):
     """

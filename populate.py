@@ -1,6 +1,8 @@
-from models.db_siirtokarjalaistentie_models import *
-from config import CONFIG
 import nltk.stem.snowball as snowball
+
+from config import CONFIG
+from db_management.models.db_siirtokarjalaistentie_models import *
+
 stemmer = snowball.SnowballStemmer('finnish')
 
 def _transform_sex(orig):
