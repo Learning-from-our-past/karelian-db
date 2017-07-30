@@ -5,7 +5,7 @@ CONFIG = {
   "admin_user": "postgres",
   "db_user": "kaira",
   "sql_files": [
-    "./sql/initial_db.sql"
+    "./sql/initial_db.sql",
+    "./tests/test_users.sql"
   ]
-
 }

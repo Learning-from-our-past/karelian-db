@@ -1,6 +1,6 @@
 from playhouse.postgres_ext import *
-
 from db_management.models.db_connection import db_connection
+from config import CONFIG
 
 database = db_connection.get_database()
 
@@ -19,6 +19,11 @@ class BaseModel(Model):
     class Meta:
         database = database
         schema = 'siirtokarjalaisten_tie'
+
+    def get_editable_fields(self):
+        edit_log = self.editLog
+        return {key: value for (key, value) in edit_log.items() if value['author'] in CONFIG['users_whose_edits_can_be_overridden']}
+
 
 class Place(BaseModel):
     latitude = TextField()

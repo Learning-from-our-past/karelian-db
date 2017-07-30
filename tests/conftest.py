@@ -1,6 +1,7 @@
 import pytest
 
 from db_management.models.db_connection import db_connection
+from db_management.models.db_connection import DbConnection
 from tests.utils.dbUtils import DBUtils
 from tests.test_config import CONFIG
 
@@ -26,3 +27,18 @@ def database():
     db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
     db_connection.connect()
     return db_connection.get_database()
+
+@pytest.yield_fixture(autouse=True, scope='session', name='researcher_connection')
+def researcher_db_connection():
+    """
+    Use this fixture with Peewee's Using() context manager to make db operations with researcher
+    user instead of kaira user.
+    :return:
+    """
+    db_connection = DbConnection()
+    db_connection.init_database('karelian_testdb', 'john', '1234')
+    db_connection.connect()
+
+    yield db_connection.get_database()
+
+    db_connection.close()
