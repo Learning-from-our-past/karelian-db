@@ -258,5 +258,160 @@
             },
             "results": false
         }
+    },
+    {
+        "spouse": {
+            "results": {
+                "hasSpouse": false,
+                "deathYear": null,
+                "spouseName": null,
+                "profession": null,
+                "birthData": {
+                    "birthYear": null,
+                    "birthLocation": null,
+                    "birthDay": null,
+                    "birthMonth": null
+                },
+                "kairaId": null,
+                "originalFamily": null,
+                "weddingYear": null
+            },
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            }
+        },
+        "birthday": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 24
+            },
+            "results": {
+                "birthDay": 28,
+                "birthYear": 1909,
+                "birthMonth": 11
+            }
+        },
+        "migrationHistory": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 265
+            },
+            "results": {
+                "locations": [
+                    {
+                        "locationName": "Hiitola",
+                        "village": {
+                            "locationName": "Kilpola",
+                            "coordinates": {
+                                "latitude": null,
+                                "longitude": null
+                            }
+                        },
+                        "region": "karelia",
+                        "movedOut": 40,
+                        "movedIn": null,
+                        "coordinates": {
+                            "latitude": "61.23927",
+                            "longitude": "29.69067"
+                        }
+                    },
+                    {
+                        "locationName": "Ahlainen",
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "latitude": null,
+                                "longitude": null
+                            }
+                        },
+                        "region": "other",
+                        "movedOut": null,
+                        "movedIn": 40,
+                        "coordinates": {
+                            "latitude": "61.67538",
+                            "longitude": "21.62092"
+                        }
+                    }
+                ],
+                "returnedToKarelia": true
+            }
+        },
+        "children": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 166
+            },
+            "results": {
+                "children": []
+            }
+        },
+        "profession": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 19
+            },
+            "results": "maanviljelijä"
+        },
+        "originalFamily": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": null
+        },
+        "ownHouse": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": false
+        },
+        "kairaId": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": "siirtokarjalaiset_1_4P"
+        },
+        "personMetadata": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": {
+                "approximatePageNumber": "0-2",
+                "imagePath": "",
+                "originalText": "text redacted"
+            }
+        },
+        "birthLocation": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 43
+            },
+            "results": {
+                "locationName": "Hiitola",
+                "region": "karelia"
+            }
+        },
+        "name": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": {
+                "gender": "Male",
+                "firstNames": "POIKAMIES",
+                "surname": "POIKAMIESSUKUNIMI"
+            }
+        },
+        "previousMarriagesFlag": {
+            "metadata": {
+                "errors": {},
+                "cursorLocation": 0
+            },
+            "results": false
+        }
     }
 ]
