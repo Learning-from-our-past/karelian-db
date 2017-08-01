@@ -2,8 +2,10 @@ import pytest
 
 from db_management.models.db_connection import db_connection
 from db_management.models.db_connection import DbConnection
-from tests.utils.dbUtils import DBUtils
+import tests.utils.population_utils as population_utils
 from tests.test_config import CONFIG
+import config
+from tests.utils.dbUtils import DBUtils
 
 
 def pytest_collection_modifyitems(session, config, items):
@@ -42,3 +44,11 @@ def researcher_db_connection():
     yield db_connection.get_database()
 
     db_connection.close()
+
+
+@pytest.yield_fixture(autouse=True, scope='module', name='person_data')
+def populate_person_information_to_db():
+    config.CONFIG['anonymize'] = False
+    DBUtils.truncate_db()
+    # Person data is anonymized and tweaked and only usable for software testing.
+    return population_utils.populate_from_json("./tests/populate/data/person1.json")[0]
