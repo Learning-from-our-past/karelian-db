@@ -27,7 +27,7 @@ def _map_data_to_model(model, data_entry, mapping_operations):
     for key, field_details in mapping_operations['mappings'].items():
         result_of_operation = get_field_from_json(data_entry, field_details['json_path'])
 
-        if key in model.get_editable_fields():
+        if model.get_editable_fields() is None or key in model.get_editable_fields():
             for op in field_details['operations']:
                 model, result_of_operation = op(key, model, result_of_operation, data_entry)
 
