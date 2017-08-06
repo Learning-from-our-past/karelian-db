@@ -8,13 +8,20 @@ def update_data_in_db(data_entry):
     primary_person = _update_person(existing_data['primary_person'], data_entry)
     primary_person.save()
 
-    # TODO: Spouse
+    if data_entry['spouse']['hasSpouse']:
+        spouse_person = _update_spouse(existing_data['spouse_person'], data_entry)
+        spouse_person.save()
+
     # TODO: Children
     return primary_person
 
 
 def _update_person(primary_person_model, data_entry):
     return _map_data_to_model(primary_person_model, data_entry, json_to_primary_person)
+
+
+def _update_spouse(primary_person_model, data_entry):
+    return _map_data_to_model(primary_person_model, data_entry, json_to_spouse)
 
 
 def _map_data_to_model(model, data_entry, mapping_operations):

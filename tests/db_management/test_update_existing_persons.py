@@ -22,6 +22,7 @@ def should_map_changes_in_json_to_model(person_data_new_format):
     person_data_new_format[0]['primaryPerson']['name']['surname'] = 'JAAKKOLA'
     person_data_new_format[0]['primaryPerson']['birthLocation']['locationName'] = 'Kuolemajärvi'
     person_data_new_format[0]['primaryPerson']['profession'] = 'Kirvesmies'
+    person_data_new_format[0]['spouse']['firstNames'] = 'SAANA'
 
     for data_entry in person_data_new_format:
         person_models.append(update_data_in_db(data_entry))
@@ -30,26 +31,35 @@ def should_map_changes_in_json_to_model(person_data_new_format):
     assert person_models[0].lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
 
     # Make sure the changes were persisted to the db
-    person_in_db = Person.select().where(Person.kairaId == person_models[0].kairaId)[0]
-    assert person_in_db.firstName == person_data_new_format[0]['primaryPerson']['name']['firstNames']
-    assert person_in_db.lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
-    assert person_in_db.birthPlaceId.name == 'Kuolemajärvi'
-    assert person_in_db.professionId.name == 'Kirvesmies'
+    primary_person = Person.select().where(Person.kairaId == person_models[0].kairaId)[0]
+    assert primary_person.firstName == person_data_new_format[0]['primaryPerson']['name']['firstNames']
+    assert primary_person.lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
+    assert primary_person.birthPlaceId.name == 'Kuolemajärvi'
+    assert primary_person.professionId.name == 'Kirvesmies'
+
+    # Spouse's name should have changed too
+    spouse_person = Person.select().where(Person.kairaId == person_data_new_format[0]['spouse']['kairaId'])[0]
+    assert spouse_person.firstName == 'SAANA'
 
 
 def should_not_change_fields_which_were_edited_by_human(person_data_new_format, researcher_connection):
     person = Person.get(Person.kairaId == person_data_new_format[0]['primaryPerson']['kairaId'])
+    spouse = Person.get(Person.kairaId == person_data_new_format[0]['spouse']['kairaId'])
 
     with Using(researcher_connection, [Person]):
         # Save change to user with researcher user's connection
         person.firstName = 'Kalle'
         person.save()
 
+        spouse.firstName = 'Sari'
+        spouse.save()
+
     person_models = []
 
     # Force some changes
     person_data_new_format[0]['primaryPerson']['name']['firstNames'] = 'JAAKKO JAKKE'
     person_data_new_format[0]['primaryPerson']['name']['surname'] = 'JAAKKOLA'
+    person_data_new_format[0]['spouse']['firstNames'] = 'SAANA'
 
     for data_entry in person_data_new_format:
         person_models.append(update_data_in_db(data_entry))
@@ -57,10 +67,13 @@ def should_not_change_fields_which_were_edited_by_human(person_data_new_format, 
     assert person_models[0].firstName == 'Kalle'    # Should have not changed.
     assert person_models[0].lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
 
-    # Make sure the changes were persisted to the db
-    person_in_db = Person.get(Person.kairaId == person_models[0].kairaId)
-    assert person_in_db.firstName == 'Kalle'
-    assert person_in_db.lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
+    # Make sure the changes were persisted to the db but human made changes were not overridden
+    primary_person_in_db = Person.get(Person.kairaId == person_models[0].kairaId)
+    assert primary_person_in_db.firstName == 'Kalle'
+    assert primary_person_in_db.lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
+
+    spouse_in_db = Person.get(Person.kairaId == person_data_new_format[0]['spouse']['kairaId'])
+    assert spouse_in_db.firstName == 'Sari'
 
 
 class TestValueMapping:

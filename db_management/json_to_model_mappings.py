@@ -23,8 +23,26 @@ def transform_sex(key, model, field_value, data_entry):
     return model, format_for_db
 
 
-def set_primary_person(key, model, field_value, data_entry):
-    return model, True
+def invert_sex(key, model, field_value, data_entry):
+    format_for_db = ''
+
+    if field_value == 'Male':
+        format_for_db = 'Female'
+    elif field_value == 'Female':
+        format_for_db = 'Male'
+
+    return model, format_for_db
+
+
+def set_primary_person(state):
+    def _set_status(key, model, field_value, data_entry):
+        return model, state
+
+    return _set_status
+
+
+def set_none(key, model, field_value, data_entry):
+    return model, None
 
 
 def convert_boolean_none(key, model, value, data_entry):
@@ -54,9 +72,6 @@ def add_profession(key, model, profession, data_entry):
 def add_page(key, model, page_number, data_entry):
     return model, Page.get_or_create(pageNumber=page_number)[0].pageNumber
 
-
-def invert_sex(key, model, field_value, data_entry):
-    return model, field_value
 
 json_to_primary_person = {
     'model': Person,
@@ -123,7 +138,7 @@ json_to_primary_person = {
         },
         'primaryPerson': {
             'json_path': [],
-            'operations': [set_primary_person, map_value_to_model]
+            'operations': [set_primary_person(True), map_value_to_model]
         }
     }
 }
@@ -147,6 +162,10 @@ json_to_spouse = {
             'json_path': ['spouse', 'birthData', 'birthYear'],
             'operations': [map_value_to_model]
         },
+        'birthPlaceId': {
+            'json_path': ['spouse', 'birthData', 'birthLocation'],
+            'operations': [loc.add_place, map_value_to_model]
+        },
         'deathYear': {
             'json_path': ['spouse', 'deathYear'],
             'operations': [map_value_to_model]
@@ -169,12 +188,28 @@ json_to_spouse = {
         },
         'prevLastName': {
             'json_path': ['spouse', 'originalFamily'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'sex': {
             'json_path': ['primaryPerson', 'name', 'gender'],
-            'operations': [invert_sex, map_value_to_model]
-        }
+            'operations': [invert_sex, transform_sex, map_value_to_model]
+        },
+        'primaryPerson': {
+            'json_path': [],
+            'operations': [set_primary_person(False), map_value_to_model]
+        },
+        'professionId': {
+            'json_path': ['spouse', 'profession'],
+            'operations': [add_profession, map_value_to_model]
+        },
+        'returnedKarelia': {
+            'json_path': [],
+            'operations': [set_none, convert_boolean_none, map_value_to_model]
+        },
+        'previousMarriages': {
+            'json_path': [],
+            'operations': [set_none, convert_boolean_none, map_value_to_model]
+        },
     }
 }
 

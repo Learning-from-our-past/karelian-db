@@ -5,6 +5,9 @@ stemmer = snowball.SnowballStemmer('finnish')
 
 
 def add_place(key, model, field_value, data_entry):
+    if field_value is None:
+        return model, None
+
     latitude = None if 'latitude' not in field_value else field_value['latitude']
     longitude = None if 'longitude' not in field_value else field_value['longitude']
 
