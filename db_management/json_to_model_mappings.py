@@ -1,5 +1,6 @@
 from db_management.models.db_siirtokarjalaistentie_models import *
 from config import CONFIG
+import db_management.location_operations as loc
 
 def map_value_to_model(key, model, field_value, data_entry):
     # Simply set the value to the model.
@@ -43,6 +44,17 @@ def convert_boolean_none(key, model, value, data_entry):
     return model, result
 
 
+def add_profession(key, model, profession, data_entry):
+    if profession is None:
+        return model, None
+    else:
+        return model, Profession.get_or_create(name=profession)[0].id
+
+
+def add_page(key, model, page_number, data_entry):
+    return model, Page.get_or_create(pageNumber=page_number)[0].pageNumber
+
+
 def invert_sex(key, model, field_value, data_entry):
     return model, field_value
 
@@ -65,6 +77,14 @@ json_to_primary_person = {
             'json_path': ['primaryPerson', 'birthData', 'birthYear'],
             'operations': [map_value_to_model]
         },
+        'birthPlaceId': {
+            'json_path': ['primaryPerson', 'birthLocation'],
+            'operations': [loc.add_place, map_value_to_model]
+        },
+        'professionId': {
+            'json_path': ['primaryPerson', 'profession'],
+            'operations': [add_profession, map_value_to_model]
+        },
         'firstName': {
             'json_path': ['primaryPerson', 'name', 'firstNames'],
             'operations': [anonymize, map_value_to_model]
@@ -83,7 +103,7 @@ json_to_primary_person = {
         },
         'pageNumber': {
             'json_path': ['personMetadata', 'approximatePageNumber'],
-            'operations': [map_value_to_model]
+            'operations': [add_page, map_value_to_model]
         },
         'previousMarriages': {
             'json_path': ['primaryPerson', 'previousMarriagesFlag'],

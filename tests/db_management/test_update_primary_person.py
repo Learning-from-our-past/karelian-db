@@ -1,14 +1,16 @@
 import pytest
 from peewee import Using
-from db_management.models.db_siirtokarjalaistentie_models import Person
+from db_management.models.db_siirtokarjalaistentie_models import Person, Place, Profession
 from tests.utils.population_utils import load_json
 from db_management.update_database import update_data_in_db
+import config
 
 
 # FIXME: Once population from new format is supported, this can be removed and simply use
 # the person_data from main fixture
 @pytest.yield_fixture(autouse=True, scope='module', name='person_data_new_format')
 def new_json_format():
+    config.CONFIG['anonymize'] = False
     return load_json("./tests/populate/data/person2.json")
 
 
@@ -18,6 +20,8 @@ def should_map_changes_in_json_to_model(person_data_new_format):
     # Force some changes
     person_data_new_format[0]['primaryPerson']['name']['firstNames'] = 'JAAKKO JAKKE'
     person_data_new_format[0]['primaryPerson']['name']['surname'] = 'JAAKKOLA'
+    person_data_new_format[0]['primaryPerson']['birthLocation']['locationName'] = 'Kuolemajärvi'
+    person_data_new_format[0]['primaryPerson']['profession'] = 'Kirvesmies'
 
     for data_entry in person_data_new_format:
         person_models.append(update_data_in_db(data_entry))
@@ -26,9 +30,11 @@ def should_map_changes_in_json_to_model(person_data_new_format):
     assert person_models[0].lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
 
     # Make sure the changes were persisted to the db
-    person_in_db = Person.get(Person.kairaId == person_models[0].kairaId)
+    person_in_db = Person.select().where(Person.kairaId == person_models[0].kairaId)[0]
     assert person_in_db.firstName == person_data_new_format[0]['primaryPerson']['name']['firstNames']
     assert person_in_db.lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
+    assert person_in_db.birthPlaceId.name == 'Kuolemajärvi'
+    assert person_in_db.professionId.name == 'Kirvesmies'
 
 
 def should_not_change_fields_which_were_edited_by_human(person_data_new_format, researcher_connection):
