@@ -1,10 +1,42 @@
 from db_management.models.db_siirtokarjalaistentie_models import *
-
+from config import CONFIG
 
 def map_value_to_model(key, model, field_value, data_entry):
     # Simply set the value to the model.
     setattr(model, key, field_value)
     return model, field_value
+
+
+def anonymize(key, model, field_value, _data_entry):
+    return model, None if CONFIG['anonymize'] else field_value
+
+
+def transform_sex(key, model, field_value, data_entry):
+    format_for_db = ''
+
+    if field_value == 'Male':
+        format_for_db = 'm'
+    elif field_value == 'Female':
+        format_for_db = 'f'
+
+    return model, format_for_db
+
+
+def convert_boolean_none(key, model, value, data_entry):
+    """
+    Convert boolean or None value to string of three different values. Reason being that
+    MS Access can't make difference between NULL and False values of boolean field...
+    :param value:
+    :return:
+    """
+    result = 'false'
+
+    if value is None:
+        result = 'unknown'
+    elif value is True:
+        result = 'true'
+
+    return model, result
 
 
 def invert_sex(key, model, field_value, data_entry):
@@ -31,15 +63,15 @@ json_to_primary_person = {
         },
         'firstName': {
             'json_path': ['primaryPerson', 'name', 'firstNames'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'lastName': {
             'json_path': ['primaryPerson', 'name', 'surname'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'originalText': {
-            'json_path': [ 'personMetadata', 'sourceText'],
-            'operations': [map_value_to_model]
+            'json_path': ['personMetadata', 'sourceText'],
+            'operations': [anonymize, map_value_to_model]
         },
         'ownHouse': {
             'json_path': ['primaryPerson', 'ownHouse'],
@@ -51,19 +83,19 @@ json_to_primary_person = {
         },
         'previousMarriages': {
             'json_path': ['primaryPerson', 'previousMarriagesFlag'],
-            'operations': [map_value_to_model]
+            'operations': [convert_boolean_none, map_value_to_model]
         },
         'prevLastName': {
             'json_path': ['primaryPerson', 'originalFamily'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'returnedKarelia': {
             'json_path': ['primaryPerson', 'migrationHistory', 'returnedToKarelia'],
-            'operations': [map_value_to_model]
+            'operations': [convert_boolean_none, map_value_to_model]
         },
         'sex': {
             'json_path': ['primaryPerson', 'name', 'gender'],
-            'operations': [map_value_to_model]
+            'operations': [transform_sex, map_value_to_model]
         }
     }
 }
@@ -93,15 +125,15 @@ json_to_spouse = {
         },
         'firstName': {
             'json_path': ['spouse', 'firstNames'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'lastName': {
             'json_path': ['primaryPerson', 'name', 'surname'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'originalText': {
             'json_path': ['personMetadata', 'sourceText'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'pageNumber': {
             'json_path': ['personMetadata', 'approximatePageNumber'],
