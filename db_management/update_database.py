@@ -4,9 +4,13 @@ from db_management.json_to_model_mappings import *
 
 def update_data_in_db(data_entry):
     existing_data = fetch_existing_data_of_person_entry(data_entry)
-    return _update_person(existing_data['primary_person'], data_entry)
+
+    primary_person = _update_person(existing_data['primary_person'], data_entry)
+    primary_person.save()
+
     # TODO: Spouse
     # TODO: Children
+    return primary_person
 
 
 def _update_person(primary_person_model, data_entry):
