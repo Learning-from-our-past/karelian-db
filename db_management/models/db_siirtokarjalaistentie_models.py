@@ -22,6 +22,10 @@ class BaseModel(Model):
 
     def get_editable_fields(self):
         edit_log = self.editLog
+
+        if edit_log is None:
+            return {}
+
         return {key: value for (key, value) in edit_log.items() if value['author'] in CONFIG['users_whose_edits_can_be_overridden']}
 
 
