@@ -1,32 +1,44 @@
+import pytest
 from db_management.fetch_existing_data import fetch_existing_data_of_person_entry
+from tests.utils.population_utils import load_json
 
 
-def should_fetch_existing_primary_details_of_person_and_children(person_data):
-    result = fetch_existing_data_of_person_entry(person_data[0])
+# FIXME: Once population from new format is supported, this can be removed and simply use
+# the person_data from main fixture
+@pytest.yield_fixture(autouse=True, scope='module', name='person_data_new_format')
+def new_json_format():
+    return load_json("./tests/populate/data/person2.json")
 
-    assert result['primary_person'].kairaId == person_data[0]['kairaId']['results']
-    assert result['spouse_person'].kairaId == person_data[0]['spouse']['results']['kairaId']
+
+def should_fetch_existing_primary_details_of_person_and_children(person_data_new_format):
+    result = fetch_existing_data_of_person_entry(person_data_new_format[0])
+
+    assert result['primary_person'].kairaId == person_data_new_format[0]['primaryPerson']['kairaId']
+    assert result['spouse_person'].kairaId == person_data_new_format[0]['spouse']['kairaId']
     assert len(result['children']) == 1
-    assert result['children'][0].kairaId == person_data[0]['children']['results']['children'][0]['kairaId']
-    assert result['marriage'].weddingYear == 1944
+    assert result['children'][0].kairaId == person_data_new_format[0]['children'][0]['kairaId']
+    # FIXME: add this once marriage tables are populated
+    # assert result['marriage'].weddingYear == 1944
 
 
-def should_return_None_for_person_who_does_not_exist():
+def should_return_empty_model_for_person_who_does_not_exist():
     result = fetch_existing_data_of_person_entry({
-        'kairaId': {'results': 'siirtokarjalaiset_1_102P'},
-        'spouse': {'results': {'kairaId': 'siirtokarjalaiset_1_101S'}},
-        'children': {'results': {'children': [{'kairaId': 'siirtokarjalaiset_1_103C'}]}}
+        'primaryPerson': {'kairaId': 'siirtokarjalaiset_1_102P'},
+        'spouse': {'kairaId': 'siirtokarjalaiset_1_101S'},
+        'children': [{'kairaId': 'siirtokarjalaiset_1_103C'}]
     })
 
-    assert result['primary_person'] is None
-    assert result['spouse_person'] is None
-    assert result['marriage'] is None
+    assert result['primary_person'] is not None
+    assert result['primary_person'].firstName is None
+    assert result['spouse_person'] is not None
+    assert result['spouse_person'].firstName is None
     assert len(result['children']) == 0
 
 
-def should_return_marriage_and_spouse_as_None_if_person_is_unmarried(person_data):
-    result = fetch_existing_data_of_person_entry(person_data[1])
-    assert result['primary_person'].kairaId == person_data[1]['kairaId']['results']
-    assert result['spouse_person'] is None
-    assert result['marriage'] is None
+def should_return_spouse_as_empty_model_if_person_is_unmarried(person_data_new_format):
+    result = fetch_existing_data_of_person_entry(person_data_new_format[1])
+
+    assert result['primary_person'].kairaId == person_data_new_format[1]['primaryPerson']['kairaId']
+    assert result['primary_person'].firstName is not None
+    assert result['spouse_person'].firstName is None
     assert len(result['children']) == 0

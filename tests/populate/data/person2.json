@@ -1,0 +1,288 @@
+[
+    {
+        "primaryPerson": {
+            "name": {
+                "surname": "MIESSUKUNIMI",
+                "gender": "Male",
+                "firstNames": "MIESNIMI"
+            },
+            "birthLocation": {
+                "region": "karelia",
+                "locationName": "Hiitola"
+            },
+            "ownHouse": false,
+            "profession": "maanviljelijä",
+            "migrationHistory": {
+                "returnedToKarelia": true,
+                "locations": [
+                    {
+                        "village": {
+                            "locationName": "Kilpola",
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "karelia",
+                        "coordinates": {
+                            "longitude": "29.69067",
+                            "latitude": "61.23927"
+                        },
+                        "movedIn": null,
+                        "movedOut": 40,
+                        "locationName": "Hiitola"
+                    },
+                    {
+                        "village": {
+                            "locationName": "Kilpola",
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "karelia",
+                        "coordinates": {
+                            "longitude": "29.69067",
+                            "latitude": "61.23927"
+                        },
+                        "movedIn": 42,
+                        "movedOut": 44,
+                        "locationName": "Hiitola"
+                    },
+                    {
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "other",
+                        "coordinates": {
+                            "longitude": "23.01667",
+                            "latitude": "62.01667"
+                        },
+                        "movedIn": 40,
+                        "movedOut": 42,
+                        "locationName": "Parkano"
+                    },
+                    {
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "other",
+                        "coordinates": {
+                            "longitude": "22.45042",
+                            "latitude": "63.44991"
+                        },
+                        "movedIn": 44,
+                        "movedOut": 47,
+                        "locationName": "Munsala"
+                    },
+                    {
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "other",
+                        "coordinates": {
+                            "longitude": "21.62092",
+                            "latitude": "61.67538"
+                        },
+                        "movedIn": 47,
+                        "movedOut": null,
+                        "locationName": "Ahlainen"
+                    }
+                ]
+            },
+            "kairaId": "siirtokarjalaiset_1_2P",
+            "originalFamily": null,
+            "birthData": {
+                "birthYear": 1909,
+                "birthDay": 28,
+                "birthMonth": 11
+            },
+            "previousMarriagesFlag": false
+        },
+        "spouse": {
+            "profession": "emäntä",
+            "hasSpouse": true,
+            "deathYear": null,
+            "kairaId": "siirtokarjalaiset_1_1S",
+            "firstNames": "VAIMONNIMI",
+            "originalFamily": "VAIMONIMI",
+            "weddingYear": 1944,
+            "birthData": {
+                "birthLocation": {
+                    "region": "karelia",
+                    "locationName": "Hiitola"
+                },
+                "birthYear": 1919,
+                "birthDay": 30,
+                "birthMonth": 6
+            }
+        },
+        "personMetadata": {
+            "approximatePageNumber": "0-2",
+            "imagePath": "",
+            "sourceText": "redacted"   
+        },
+        "children": [
+            {
+                "name": "Lapsi1",
+                "gender": "Male",
+                "birthYear": 1946,
+                "location": {
+                    "region": null,
+                    "locationName": "Munsala",
+                    "coordinates": {
+                        "longitude": "22.45042",
+                        "latitude": "63.44991"
+                    }
+                },
+                "kairaId": "siirtokarjalaiset_1_3C"
+            }
+        ]
+    },
+    {
+        "primaryPerson": {
+            "name": {
+                "surname": "MIEHEKÄS",
+                "gender": "Male",
+                "firstNames": "MIES"
+            },
+            "birthLocation": {
+                "region": "karelia",
+                "locationName": "Hiitola"
+            },
+            "ownHouse": false,
+            "profession": "maanviljelijä",
+            "migrationHistory": {
+                "returnedToKarelia": true,
+                "locations": [
+                    {
+                        "village": {
+                            "locationName": "Kilpola",
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "karelia",
+                        "coordinates": {
+                            "longitude": "29.69067",
+                            "latitude": "61.23927"
+                        },
+                        "movedIn": null,
+                        "movedOut": 40,
+                        "locationName": "Hiitola"
+                    },
+                    {
+                        "village": {
+                            "locationName": "Kilpola",
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "karelia",
+                        "coordinates": {
+                            "longitude": "29.69067",
+                            "latitude": "61.23927"
+                        },
+                        "movedIn": 42,
+                        "movedOut": 44,
+                        "locationName": "Hiitola"
+                    },
+                    {
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "other",
+                        "coordinates": {
+                            "longitude": "23.01667",
+                            "latitude": "62.01667"
+                        },
+                        "movedIn": null,
+                        "movedOut": 42,
+                        "locationName": "Parkano"
+                    },
+                    {
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "other",
+                        "coordinates": {
+                            "longitude": "28.83333",
+                            "latitude": "61.86667"
+                        },
+                        "movedIn": 44,
+                        "movedOut": 47,
+                        "locationName": "Sääminki"
+                    },
+                    {
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "other",
+                        "coordinates": {
+                            "longitude": "21.62092",
+                            "latitude": "61.67538"
+                        },
+                        "movedIn": 47,
+                        "movedOut": null,
+                        "locationName": "Ahlainen"
+                    }
+                ]
+            },
+            "kairaId": "siirtokarjalaiset_1_4P",
+            "originalFamily": null,
+            "birthData": {
+                "birthYear": 1894,
+                "birthDay": 1,
+                "birthMonth": 5
+            },
+            "previousMarriagesFlag": false
+        },
+        "spouse": {
+            "profession": null,
+            "hasSpouse": false,
+            "deathYear": null,
+            "kairaId": null,
+            "firstNames": null,
+            "originalFamily": null,
+            "weddingYear": null,
+            "birthData": {
+                "birthLocation": null,
+                "birthYear": null,
+                "birthDay": null,
+                "birthMonth": null
+            }
+        },
+        "personMetadata": {
+            "approximatePageNumber": "0-2",
+            "imagePath": "",
+            "sourceText": "redacted"
+        },
+        "children": []
+    }
+]
