@@ -73,6 +73,34 @@ def add_page(key, model, page_number, data_entry):
     return model, Page.get_or_create(pageNumber=page_number)[0].pageNumber
 
 
+def add_marriage(key, models, wedding_year_input, data_entry):
+    primary = models['primary']
+    spouse = models['main']
+
+    male = None
+    female = None
+
+    if primary.sex == 'm':
+        male = primary
+        female = spouse
+    elif primary.sex == 'f':
+        male = spouse
+        female = primary
+
+    if male and female:
+        try:
+            marriage = Marriage.get(Marriage.manId == male.id, Marriage.womanId == female.id)
+        except DoesNotExist:
+            marriage = Marriage()
+
+        if 'weddingYear' in marriage.get_editable_fields():
+            marriage.weddingYear = wedding_year_input or None
+
+        marriage.save()
+
+    return models, wedding_year_input
+
+
 json_to_primary_person = {
     'model': Person,
     'mappings': {
@@ -210,6 +238,12 @@ json_to_spouse = {
             'json_path': [],
             'operations': [set_none, convert_boolean_none, map_value_to_model]
         },
+    },
+    'one_to_many': {
+        'marriage': {
+            'json_path': ['spouse', 'weddingYear'],
+            'operations': [add_marriage]
+        }
     }
 }
 

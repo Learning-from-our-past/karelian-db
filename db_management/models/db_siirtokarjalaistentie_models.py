@@ -38,6 +38,7 @@ class Place(BaseModel):
     region = TextField()
     location = PointField()
     ambiguousRegion = BooleanField(default=False)
+    editLog = BinaryJSONField()
 
     class Meta:
         db_table = 'Place'
@@ -102,6 +103,7 @@ class Child(BaseModel):
     motherId = ForeignKeyField(db_column='motherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_motherId_set')
     sex = TextField()
     sourceTextId = TextField()
+    editLog = BinaryJSONField()
 
     @staticmethod
     def create_or_get(data):
@@ -121,6 +123,7 @@ class Livingrecord(BaseModel):
     movedOut = IntegerField(null=True)
     personId = ForeignKeyField(db_column='personId', rel_model=Person, to_field='id')
     placeId = ForeignKeyField(db_column='placeId', rel_model=Place, to_field='id')
+    editLog = BinaryJSONField()
 
     @staticmethod
     def create_or_get(data):
@@ -139,6 +142,7 @@ class Marriage(BaseModel):
     manId = ForeignKeyField(db_column='manId', rel_model=Person, to_field='id', related_name='marriage_Person_manId_set')
     womanId = ForeignKeyField(db_column='womanId', rel_model=Person, to_field='id', related_name='marriage_Person_womanId_set')
     weddingYear = IntegerField(null=True)
+    editLog = BinaryJSONField()
 
     class Meta:
         db_table = 'Marriage'

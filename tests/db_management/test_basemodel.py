@@ -29,8 +29,8 @@ class TestGetEditableFields:
         assert 'lastName' in fields
 
     def should_throw_error_for_model_with_no_edit_logs(self):
-        marriage = Marriage.get()
+        page = Page.get()
 
         with pytest.raises(AttributeError):
-            marriage.get_editable_fields()
+            page.get_editable_fields()
 
