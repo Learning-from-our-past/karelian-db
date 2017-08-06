@@ -22,6 +22,10 @@ def transform_sex(key, model, field_value, data_entry):
     return model, format_for_db
 
 
+def set_primary_person(key, model, field_value, data_entry):
+    return model, True
+
+
 def convert_boolean_none(key, model, value, data_entry):
     """
     Convert boolean or None value to string of three different values. Reason being that
@@ -96,6 +100,10 @@ json_to_primary_person = {
         'sex': {
             'json_path': ['primaryPerson', 'name', 'gender'],
             'operations': [transform_sex, map_value_to_model]
+        },
+        'primaryPerson': {
+            'json_path': [],
+            'operations': [set_primary_person, map_value_to_model]
         }
     }
 }

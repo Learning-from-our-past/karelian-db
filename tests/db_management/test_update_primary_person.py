@@ -75,3 +75,6 @@ class TestValueMapping:
     def should_transform_certain_boolean_fields_to_strings(self, person_models):
         assert person_models[0].returnedKarelia == 'true'
         assert person_models[1].returnedKarelia == 'true'
+
+    def should_set_person_as_primary(self, person_models):
+        assert person_models[0].primaryPerson == True
