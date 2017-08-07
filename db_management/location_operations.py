@@ -8,8 +8,10 @@ def add_place(key, model, field_value, data_entry, extra_data):
     if field_value is None:
         return model, None
 
-    latitude = None if 'latitude' not in field_value else field_value['latitude']
-    longitude = None if 'longitude' not in field_value else field_value['longitude']
+    if 'coordinates' not in field_value:
+        latitude, longitude = _get_lat_lon(field_value)
+    else:
+        latitude, longitude = _get_lat_lon(field_value['coordinates'])
 
     place_model = _populate_place({
         'name': field_value['locationName'],
@@ -22,6 +24,11 @@ def add_place(key, model, field_value, data_entry, extra_data):
 
     return model, place_model.id
 
+def _get_lat_lon(collection):
+    latitude = None if 'latitude' not in collection else collection['latitude']
+    longitude = None if 'longitude' not in collection else collection['longitude']
+
+    return latitude, longitude
 
 def _get_postgis_location(coordinates):
     if coordinates['longitude'] and coordinates['latitude']:
