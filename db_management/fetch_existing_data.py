@@ -16,7 +16,19 @@ def _fetch_spouse_person(kaira_id):
 
 
 def _fetch_children(children_kaira_ids):
-    return Child.select().where(Child.kairaId << children_kaira_ids)
+    children = list(Child.select().where(Child.kairaId << children_kaira_ids))
+
+    # Add missing children by creating empty models for them
+    if len(children) < len(children_kaira_ids):
+        existing_children_ids = {child.kairaId for child in children}
+
+        for kaira_id in children_kaira_ids:
+            if kaira_id not in existing_children_ids:
+                new_child = Child()
+                new_child.kairaId = kaira_id
+                children.append(new_child)
+
+    return children
 
 
 def fetch_existing_data_of_person_entry(person_entry):

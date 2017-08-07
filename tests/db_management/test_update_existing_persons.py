@@ -1,6 +1,6 @@
 import pytest
 from peewee import Using
-from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage
+from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child
 from tests.utils.population_utils import load_json
 from db_management.update_database import update_data_in_db
 import config
@@ -24,6 +24,7 @@ def should_map_changes_in_json_to_model(person_data_new_format):
     person_data_new_format[0]['primaryPerson']['profession'] = 'Kirvesmies'
     person_data_new_format[0]['spouse']['firstNames'] = 'SAANA'
     person_data_new_format[0]['spouse']['weddingYear'] = '1969'
+    person_data_new_format[0]['children'][0]['birthYear'] = '1955'
 
     for data_entry in person_data_new_format:
         person_models.append(update_data_in_db(data_entry))
@@ -45,13 +46,18 @@ def should_map_changes_in_json_to_model(person_data_new_format):
     marriage = Marriage.get(Marriage.manId == primary_person.id)
     assert marriage.weddingYear == 1969
 
+    child = Child.get(Child.fatherId == primary_person.id)
+    assert child.motherId.id == spouse_person.id
+    assert child.birthYear == 1955
+
 
 def should_not_change_fields_which_were_edited_by_human(person_data_new_format, researcher_connection):
     person = Person.get(Person.kairaId == person_data_new_format[0]['primaryPerson']['kairaId'])
     spouse = Person.get(Person.kairaId == person_data_new_format[0]['spouse']['kairaId'])
     marriage = Marriage.get(Marriage.manId == person.id)
+    child = Child.get(Child.fatherId == person.id)
 
-    with Using(researcher_connection, [Person, Marriage]):
+    with Using(researcher_connection, [Person, Marriage, Child]):
         # Save change to user with researcher user's connection
         person.firstName = 'Kalle'
         person.save()
@@ -62,6 +68,9 @@ def should_not_change_fields_which_were_edited_by_human(person_data_new_format, 
         marriage.weddingYear = 1999
         marriage.save()
 
+        child.firstName = 'Kaarlo'
+        child.save()
+
     person_models = []
 
     # Force some changes
@@ -69,6 +78,7 @@ def should_not_change_fields_which_were_edited_by_human(person_data_new_format, 
     person_data_new_format[0]['primaryPerson']['name']['surname'] = 'JAAKKOLA'
     person_data_new_format[0]['spouse']['firstNames'] = 'SAANA'
     person_data_new_format[0]['spouse']['weddingYear'] = '1911'
+    person_data_new_format[0]['children'][0]['name'] = 'Jooseppi'
 
     for data_entry in person_data_new_format:
         person_models.append(update_data_in_db(data_entry))
@@ -86,6 +96,9 @@ def should_not_change_fields_which_were_edited_by_human(person_data_new_format, 
 
     marriage_in_db = Marriage.get(Marriage.manId == primary_person_in_db.id)
     assert marriage_in_db.weddingYear == 1999
+
+    child_in_db = Child.get(Child.fatherId == person.id)
+    assert child_in_db.firstName == 'Kaarlo'
 
 
 class TestValueMapping:

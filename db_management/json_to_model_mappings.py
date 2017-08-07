@@ -2,17 +2,17 @@ from db_management.models.db_siirtokarjalaistentie_models import *
 from config import CONFIG
 import db_management.location_operations as loc
 
-def map_value_to_model(key, model, field_value, data_entry):
+def map_value_to_model(key, model, field_value, data_entry, extra_data):
     # Simply set the value to the model.
     setattr(model, key, field_value)
     return model, field_value
 
 
-def anonymize(key, model, field_value, _data_entry):
+def anonymize(key, model, field_value, data_entry, extra_data):
     return model, None if CONFIG['anonymize'] else field_value
 
 
-def transform_sex(key, model, field_value, data_entry):
+def transform_sex(key, model, field_value, data_entry, extra_data):
     format_for_db = ''
 
     if field_value == 'Male':
@@ -23,7 +23,7 @@ def transform_sex(key, model, field_value, data_entry):
     return model, format_for_db
 
 
-def invert_sex(key, model, field_value, data_entry):
+def invert_sex(key, model, field_value, data_entry, extra_data):
     format_for_db = ''
 
     if field_value == 'Male':
@@ -35,17 +35,17 @@ def invert_sex(key, model, field_value, data_entry):
 
 
 def set_primary_person(state):
-    def _set_status(key, model, field_value, data_entry):
+    def _set_status(key, model, field_value, data_entry, extra_data):
         return model, state
 
     return _set_status
 
 
-def set_none(key, model, field_value, data_entry):
+def set_none(key, model, field_value, data_entry, extra_data):
     return model, None
 
 
-def convert_boolean_none(key, model, value, data_entry):
+def convert_boolean_none(key, model, value, data_entry, extra_data):
     """
     Convert boolean or None value to string of three different values. Reason being that
     MS Access can't make difference between NULL and False values of boolean field...
@@ -62,18 +62,18 @@ def convert_boolean_none(key, model, value, data_entry):
     return model, result
 
 
-def add_profession(key, model, profession, data_entry):
+def add_profession(key, model, profession, data_entry, extra_data):
     if profession is None:
         return model, None
     else:
         return model, Profession.get_or_create(name=profession)[0].id
 
 
-def add_page(key, model, page_number, data_entry):
+def add_page(key, model, page_number, data_entry, extra_data):
     return model, Page.get_or_create(pageNumber=page_number)[0].pageNumber
 
 
-def add_marriage(key, models, wedding_year_input, data_entry):
+def add_marriage(key, models, wedding_year_input, data_entry, extra_data):
     primary = models['primary']
     spouse = models['main']
 
@@ -99,6 +99,52 @@ def add_marriage(key, models, wedding_year_input, data_entry):
         marriage.save()
 
     return models, wedding_year_input
+
+
+def get_parent_id(parent_to_get):
+    """
+       Set Child model's parent id by inspecting Person models passed
+       to the extra_data field.
+    """
+
+    def _figure_gender_of_couple(person1, person2):
+        if person1.sex == 'm':
+            male = person1
+            female = person2
+        elif person1.sex == 'f':
+            male = person2
+            female = person1
+        else:
+            raise SexMissingException
+
+        return {'male': male, 'female': female}
+
+    def _get_id(key, model, input, data_entry, extra_data):
+        try:
+            parents = _figure_gender_of_couple(extra_data['primary_person'], extra_data['spouse'])
+        except SexMissingException:
+            # If parent gender could not be assigned, assume that Person is male.
+            parents = {'male': extra_data['primary_person'], 'female': None}
+
+        father_id = None
+        mother_id = None
+
+        if parents['male']:
+            father_id = parents['male'].id
+
+        if parents['female']:
+            mother_id = parents['female'].id
+
+        if parent_to_get == 'father':
+            return model, father_id
+        else:
+            return model, mother_id
+
+    return _get_id
+
+
+def get_last_name_from_primary_person(key, model, wedding_year_input, data_entry, extra_data):
+    return model, extra_data['primary_person']
 
 
 json_to_primary_person = {
@@ -251,15 +297,19 @@ json_to_child = {
     'model': Child,
     'mappings': {
         'kairaId': {
-            'json_path': ['kairaId'],
+            'json_path': ['children', '*', 'kairaId'],
             'operations': [map_value_to_model]
         },
         'birthYear': {
-            'json_path': ['birthYear'],
+            'json_path': ['children', '*', 'birthYear'],
             'operations': [map_value_to_model]
         },
+        'birthPlaceId': {
+            'json_path': ['children', '*', 'location'],
+            'operations': [loc.add_place, map_value_to_model]
+        },
         'firstName': {
-            'json_path': ['name'],
+            'json_path': ['children', '*', 'name'],
             'operations': [map_value_to_model]
         },
         'lastName': {
@@ -271,8 +321,19 @@ json_to_child = {
             'operations': [map_value_to_model]
         },
         'sex': {
-            'json_path': ['gender'],
-            'operations': [map_value_to_model]
+            'json_path': ['children', '*', 'gender'],
+            'operations': [transform_sex, map_value_to_model]
+        },
+        'fatherId': {
+            'json_path': [],
+            'operations': [get_parent_id('father')]
+        },
+        'motherId': {
+            'json_path': [],
+            'operations': [get_parent_id('mother')]
         }
     }
 }
+
+class SexMissingException(Exception):
+    pass

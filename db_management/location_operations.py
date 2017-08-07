@@ -4,7 +4,7 @@ import nltk.stem.snowball as snowball
 stemmer = snowball.SnowballStemmer('finnish')
 
 
-def add_place(key, model, field_value, data_entry):
+def add_place(key, model, field_value, data_entry, extra_data):
     if field_value is None:
         return model, None
 
