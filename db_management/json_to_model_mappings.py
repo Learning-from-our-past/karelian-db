@@ -214,6 +214,12 @@ json_to_primary_person = {
             'json_path': [],
             'operations': [set_primary_person(True), map_value_to_model]
         }
+    },
+    'one_to_many': {
+        'migrationHistory': {
+            'json_path': ['primaryPerson', 'migrationHistory', 'locations'],
+            'operations': [loc.create_migration_history]
+        }
     }
 }
 

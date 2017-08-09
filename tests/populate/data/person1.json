@@ -300,38 +300,89 @@
             "results": {
                 "locations": [
                     {
-                        "locationName": "Hiitola",
                         "village": {
                             "locationName": "Kilpola",
                             "coordinates": {
-                                "latitude": null,
-                                "longitude": null
+                                "longitude": null,
+                                "latitude": null
                             }
                         },
                         "region": "karelia",
-                        "movedOut": 40,
-                        "movedIn": null,
                         "coordinates": {
-                            "latitude": "61.23927",
-                            "longitude": "29.69067"
-                        }
+                            "longitude": "29.69067",
+                            "latitude": "61.23927"
+                        },
+                        "movedIn": null,
+                        "movedOut": 40,
+                        "locationName": "Hiitola"
                     },
                     {
-                        "locationName": "Ahlainen",
+                        "village": {
+                            "locationName": "Kilpola",
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "karelia",
+                        "coordinates": {
+                            "longitude": "29.69067",
+                            "latitude": "61.23927"
+                        },
+                        "movedIn": 42,
+                        "movedOut": 44,
+                        "locationName": "Hiitola"
+                    },
+                    {
                         "village": {
                             "locationName": null,
                             "coordinates": {
-                                "latitude": null,
-                                "longitude": null
+                                "longitude": null,
+                                "latitude": null
                             }
                         },
                         "region": "other",
-                        "movedOut": null,
-                        "movedIn": 40,
                         "coordinates": {
-                            "latitude": "61.67538",
-                            "longitude": "21.62092"
-                        }
+                            "longitude": "23.01667",
+                            "latitude": "62.01667"
+                        },
+                        "movedIn": null,
+                        "movedOut": 42,
+                        "locationName": "Parkano"
+                    },
+                    {
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "other",
+                        "coordinates": {
+                            "longitude": "28.83333",
+                            "latitude": "61.86667"
+                        },
+                        "movedIn": 44,
+                        "movedOut": 47,
+                        "locationName": "Sääminki"
+                    },
+                    {
+                        "village": {
+                            "locationName": null,
+                            "coordinates": {
+                                "longitude": null,
+                                "latitude": null
+                            }
+                        },
+                        "region": "other",
+                        "coordinates": {
+                            "longitude": "21.62092",
+                            "latitude": "61.67538"
+                        },
+                        "movedIn": 47,
+                        "movedOut": null,
+                        "locationName": "Ahlainen"
                     }
                 ],
                 "returnedToKarelia": true

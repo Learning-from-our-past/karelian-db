@@ -6,7 +6,6 @@ def update_data_in_db(data_entry):
     existing_data = fetch_existing_data_of_person_entry(data_entry)
 
     primary_person = _update_person(existing_data['primary_person'], data_entry)
-    primary_person.save()
 
     spouse_person = None
     if data_entry['spouse']['hasSpouse']:
@@ -18,7 +17,12 @@ def update_data_in_db(data_entry):
 
 
 def _update_person(primary_person_model, data_entry):
-    return _map_data_to_model(primary_person_model, data_entry, json_to_primary_person)
+    person = _map_data_to_model(primary_person_model, data_entry, json_to_primary_person)
+    person.save()
+
+    _map_data_to_one_to_many_models(person, data_entry, json_to_primary_person)
+
+    return person
 
 
 def _update_spouse(spouse_person_model, primary_person_model, data_entry):

@@ -1,24 +1,74 @@
-from peewee import *
-from db_management.models.db_siirtokarjalaistentie_models import *
 import nltk.stem.snowball as snowball
+from db_management.models.db_siirtokarjalaistentie_models import *
 stemmer = snowball.SnowballStemmer('finnish')
 
 
-def add_place(key, model, field_value, data_entry, extra_data):
-    if field_value is None:
+def create_migration_history(key, primary_person, migration_history, data_entry, extra_data):
+    """
+    Update/create the migration history of the person. This process is naive at the moment and will simply update the
+    LivingRecords in the db to correspond the records in json. Basically existing records will be deleted if any
+    difference is found between existing and new records. THIS PROCESS WILL NOT TAKE IN ACCOUNT MANUAL CHANGES IN THE DB!
+
+    Preserving manual changes would be tricky since it is difficult to reliably compare which records are in the db
+    and which are not when there might be manual changes in them. This might be worthwhile later but for now simply
+    prevent manual changes to LivingRecords table with db rules and let only Kaira to modify the table.
+
+    """
+    def _none(value):
+        if value is None:
+            return 'none'
+        return str(value)
+
+    change_detected = False
+    existing_living_records = list(Livingrecord.select().where(Livingrecord.personId == primary_person.id))
+
+    if len(existing_living_records) != len(migration_history):
+        change_detected = True
+    else:
+        existing_living_records_by_key = {stemmer.stem(record.placeId.name) + '_' + _none(record.placeId.region) + '_' + _none(record.movedIn) + '_' + _none(record.movedOut): True for record in existing_living_records}
+        new_living_records_keys = [stemmer.stem(location['locationName']) + '_' + _none(location['region']) + '_' + _none(location['movedIn']) + '_' + _none(location['movedOut']) for location in migration_history]
+
+        for key in new_living_records_keys:
+            if key not in existing_living_records_by_key:
+                change_detected = True
+                break
+
+    if change_detected:
+        _delete_migration_history(primary_person)
+
+        # Repopulate the migration history back to the db
+        for record in migration_history:
+            place_model_id = add_place(None, None, record, data_entry, None)[1]
+
+            Livingrecord.create_or_get({
+                'personId': primary_person,
+                'placeId': place_model_id,
+                'movedIn': record['movedIn'],
+                'movedOut': record['movedOut']
+            })
+
+    return primary_person, None
+
+
+def _delete_migration_history(primary_person):
+    Livingrecord.delete().where(Livingrecord.personId == primary_person.id).execute()
+
+
+def add_place(key, model, place_data, data_entry, extra_data):
+    if place_data is None:
         return model, None
 
-    if 'coordinates' not in field_value:
-        latitude, longitude = _get_lat_lon(field_value)
+    if 'coordinates' not in place_data:
+        latitude, longitude = _get_lat_lon(place_data)
     else:
-        latitude, longitude = _get_lat_lon(field_value['coordinates'])
+        latitude, longitude = _get_lat_lon(place_data['coordinates'])
 
     place_model = _populate_place({
-        'name': field_value['locationName'],
-        'extractedName': field_value['locationName'],
+        'name': place_data['locationName'],
+        'extractedName': place_data['locationName'],
         'latitude': latitude,
         'longitude': longitude,
-        'region': field_value['region'],
+        'region': place_data['region'],
         'location': _get_postgis_location({'latitude': latitude, 'longitude': longitude})
     })
 

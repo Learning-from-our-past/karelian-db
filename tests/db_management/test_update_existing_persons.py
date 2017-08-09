@@ -1,6 +1,7 @@
 import pytest
+import db_management.location_operations as loc_op
 from peewee import Using
-from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child
+from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, Livingrecord
 from tests.utils.population_utils import load_json
 from db_management.update_database import update_data_in_db
 import config
@@ -99,6 +100,66 @@ def should_not_change_fields_which_were_edited_by_human(person_data_new_format, 
 
     child_in_db = Child.get(Child.fatherId == person.id)
     assert child_in_db.firstName == 'Kaarlo'
+
+
+def should_not_do_anything_for_livingrecords_if_they_have_not_changed(person_data_new_format, mocker):
+    person_models = []
+
+    delete_spy = mocker.patch('db_management.location_operations._delete_migration_history', autospec=True)
+
+    for data_entry in person_data_new_format:
+        person_models.append(update_data_in_db(data_entry))
+
+    assert delete_spy.call_count == 0
+
+
+def should_repopulate_livingrecords_if_there_is_different_amount_of_them_in_db(person_data_new_format, mocker):
+    person = Person.get(Person.kairaId == person_data_new_format[0]['primaryPerson']['kairaId'])
+
+    # There should already be all records
+    old_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+    assert len(old_records) == len(person_data_new_format[0]['primaryPerson']['migrationHistory']['locations'])
+
+    # Remove one location from json
+    person_data_new_format[0]['primaryPerson']['migrationHistory']['locations'] = \
+        person_data_new_format[0]['primaryPerson']['migrationHistory']['locations'][1:]
+
+    delete_spy = mocker.patch.object(loc_op, '_delete_migration_history', wraps=loc_op._delete_migration_history)
+
+    for data_entry in person_data_new_format:
+        update_data_in_db(data_entry)
+
+    # Old records should have been deleted and new ones populated
+    assert delete_spy.call_count == 1
+
+    new_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+    assert len(new_records) == len(person_data_new_format[0]['primaryPerson']['migrationHistory']['locations'])
+
+
+def should_repopulate_livingrecords_if_they_do_not_contain_same_records_as_json(person_data_new_format, mocker):
+    person = Person.get(Person.kairaId == person_data_new_format[0]['primaryPerson']['kairaId'])
+
+    # Make a minor change to a single record
+    person_data_new_format[0]['primaryPerson']['migrationHistory']['locations'][1]['movedIn'] = 12
+
+    delete_spy = mocker.patch.object(loc_op, '_delete_migration_history', wraps=loc_op._delete_migration_history)
+
+    for data_entry in person_data_new_format:
+        update_data_in_db(data_entry)
+
+    # Old records should have been deleted and new ones populated
+    assert delete_spy.call_count == 1
+
+    new_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+    assert len(new_records) == len(person_data_new_format[0]['primaryPerson']['migrationHistory']['locations'])
+
+    found_updated_record = False
+    for record in new_records:
+        if record.movedIn == 12:
+            found_updated_record = True
+            break
+
+    assert found_updated_record is True
 
 
 class TestValueMapping:
