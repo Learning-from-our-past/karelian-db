@@ -6,7 +6,7 @@
                 "cursorLocation": 124
             },
             "results": {
-                "kairaId": "siirtokarjalaiset_1_1S",
+                "kairaId": "siirtokarjalaiset_1_1S_1",
                 "profession": {
                     "metadata": {
                         "errors": {},
@@ -183,7 +183,7 @@
                             },
                             "region": null
                         },
-                        "kairaId": "siirtokarjalaiset_1_3C",
+                        "kairaId": "siirtokarjalaiset_1_1C_1",
                         "gender": "Male",
                         "name": "Lapsi1",
                         "birthYear": 1946
@@ -217,7 +217,7 @@
                 "errors": {},
                 "cursorLocation": 0
             },
-            "results": "siirtokarjalaiset_1_2P"
+            "results": "siirtokarjalaiset_1_1P"
         },
         "personMetadata": {
             "metadata": {
@@ -372,7 +372,7 @@
                 "errors": {},
                 "cursorLocation": 0
             },
-            "results": "siirtokarjalaiset_1_4P"
+            "results": "siirtokarjalaiset_1_2P"
         },
         "personMetadata": {
             "metadata": {

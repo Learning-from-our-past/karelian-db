@@ -102,7 +102,7 @@
                     }
                 ]
             },
-            "kairaId": "siirtokarjalaiset_1_2P",
+            "kairaId": "siirtokarjalaiset_1_1P",
             "originalFamily": null,
             "birthData": {
                 "birthYear": 1909,
@@ -115,7 +115,7 @@
             "profession": "emäntä",
             "hasSpouse": true,
             "deathYear": null,
-            "kairaId": "siirtokarjalaiset_1_1S",
+            "kairaId": "siirtokarjalaiset_1_1S_1",
             "firstNames": "VAIMONNIMI",
             "originalFamily": "VAIMONIMI",
             "weddingYear": 1944,
@@ -147,7 +147,7 @@
                         "latitude": "63.44991"
                     }
                 },
-                "kairaId": "siirtokarjalaiset_1_3C"
+                "kairaId": "siirtokarjalaiset_1_1C_1"
             }
         ]
     },
@@ -254,7 +254,7 @@
                     }
                 ]
             },
-            "kairaId": "siirtokarjalaiset_1_4P",
+            "kairaId": "siirtokarjalaiset_1_2P",
             "originalFamily": null,
             "birthData": {
                 "birthYear": 1894,
