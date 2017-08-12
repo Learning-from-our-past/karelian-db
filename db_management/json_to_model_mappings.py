@@ -93,9 +93,14 @@ def add_marriage(key, models, wedding_year_input, data_entry, extra_data):
         except DoesNotExist:
             marriage = Marriage()
 
-        if 'weddingYear' in marriage.get_editable_fields():
+        if marriage.get_editable_fields() is not None:
+            if 'weddingYear' in marriage.get_editable_fields():
+                marriage.weddingYear = wedding_year_input or None
+        else:
             marriage.weddingYear = wedding_year_input or None
 
+        marriage.manId = male.id
+        marriage.womanId = female.id
         marriage.save()
 
     return models, wedding_year_input
@@ -332,11 +337,11 @@ json_to_child = {
         },
         'fatherId': {
             'json_path': [],
-            'operations': [get_parent_id('father')]
+            'operations': [get_parent_id('father'), map_value_to_model]
         },
         'motherId': {
             'json_path': [],
-            'operations': [get_parent_id('mother')]
+            'operations': [get_parent_id('mother'), map_value_to_model]
         }
     }
 }

@@ -34,3 +34,8 @@ class TestGetEditableFields:
         with pytest.raises(AttributeError):
             page.get_editable_fields()
 
+    def should_return_none_for_empty_editlog(self):
+        person = Person()
+        person.editLog = {}
+        assert person.get_editable_fields() is None
+

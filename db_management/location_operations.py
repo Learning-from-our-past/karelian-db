@@ -72,7 +72,10 @@ def add_place(key, model, place_data, data_entry, extra_data):
         'location': _get_postgis_location({'latitude': latitude, 'longitude': longitude})
     })
 
-    return model, place_model.id
+    if place_model is None:
+        return model, None
+    else:
+        return model, place_model.id
 
 def _get_lat_lon(collection):
     latitude = None if 'latitude' not in collection else collection['latitude']
