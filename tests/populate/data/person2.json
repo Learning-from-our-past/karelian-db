@@ -148,6 +148,20 @@
                     }
                 },
                 "kairaId": "siirtokarjalaiset_1_1C_1"
+            },
+            {
+                "name": "Lapsi2",
+                "gender": "Female",
+                "birthYear": 1952,
+                "location": {
+                    "region": null,
+                    "locationName": "Munsala",
+                    "coordinates": {
+                        "longitude": "22.45042",
+                        "latitude": "63.44991"
+                    }
+                },
+                "kairaId": "siirtokarjalaiset_1_1C_2"
             }
         ]
     },

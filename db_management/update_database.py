@@ -1,5 +1,6 @@
 from db_management.fetch_existing_data import fetch_existing_data_of_person_entry
 from db_management.json_to_model_mappings import *
+from db_management.exceptions import *
 
 
 def update_data_in_db(data_entry):
@@ -11,7 +12,7 @@ def update_data_in_db(data_entry):
     if data_entry['spouse']['hasSpouse']:
         spouse_person = _update_spouse(existing_data['spouse_person'], primary_person, data_entry)
 
-    _update_children(existing_data['children'], primary_person, spouse_person, data_entry)
+    _update_children(primary_person, spouse_person, data_entry)
 
     return primary_person
 
@@ -34,15 +35,22 @@ def _update_spouse(spouse_person_model, primary_person_model, data_entry):
     return spouse_person
 
 
-def _update_children(children_models, primary_person_model, spouse_person_model, data_entry):
-    for idx, child in enumerate(children_models):
-        _map_data_to_model(child, data_entry, json_to_child, {'primary_person': primary_person_model, 'spouse': spouse_person_model}, index=idx)
-        child.save()
+def _update_children(primary_person_model, spouse_person_model, data_entry):
+    try:
+        # Preprocess will update data entries and it will return a set of models to be used in population
+        children_models, data_entry = _preprocess_data(data_entry, mapping_operations=json_to_child, extra_data={'primary_person': primary_person_model, 'spouse': spouse_person_model})
+
+        for idx, child in enumerate(children_models):
+            _map_data_to_model(child, data_entry, json_to_child, extra_data={'primary_person': primary_person_model, 'spouse': spouse_person_model}, index=idx)
+            child.save()
+    except DataEntryValidationException:
+        # Children was not updated. Either there were no changes or some of the children were edited manually
+        children_models = []
 
     return children_models
 
 
-def _get_field_from_json(collection, path, index):
+def _get_field_from_json(collection, path, index=0):
     if len(path) > 0:
         # Allow to iterate over list based on given index. Note that this works now only on
         # one level since same index is passed forward but that is fine for now since this is used to
@@ -55,7 +63,17 @@ def _get_field_from_json(collection, path, index):
         return collection
 
 
-def _map_data_to_model(model, other_models, mapping_operations, extra_data=None, index=None):
+def _preprocess_data(data_entry, mapping_operations, extra_data):
+    # Mutate data and run other operations for the datastructure before it is handed to the field operations
+    preprocess_target = _get_field_from_json(data_entry, mapping_operations['preprocess_operations']['json_path'])
+    models = []
+
+    if mapping_operations['preprocess_operations']['operation'] is not None:
+        models, preprocess_target = mapping_operations['preprocess_operations']['operation'](preprocess_target, data_entry, extra_data)
+    return models, data_entry
+
+
+def _map_data_to_model(model, data_entry, mapping_operations, extra_data=None, index=None):
 
     for key, field_details in mapping_operations['mappings'].items():
         result_of_operation = _get_field_from_json(data_entry, field_details['json_path'], index)

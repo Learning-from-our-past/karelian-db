@@ -1,5 +1,6 @@
 import pytest
 import db_management.location_operations as loc_op
+import db_management.preprocess_operations as preproc
 from peewee import Using
 from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, Livingrecord
 from tests.utils.dbUtils import DBUtils
@@ -10,7 +11,7 @@ import config
 
 # FIXME: Once population from new format is supported, this can be removed and simply use
 # the person_data from main fixture
-@pytest.yield_fixture(autouse=True, scope='module', name='person_data_new_format')
+@pytest.yield_fixture(autouse=True, scope='function', name='person_data_new_format')
 def new_json_format():
     config.CONFIG['anonymize'] = False
     return load_json("./tests/populate/data/person2.json")
@@ -74,6 +75,19 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
         records_for_person = Livingrecord.select().where(Livingrecord.personId == person_models[0].id)
         assert len(records_for_person) == 5
 
+    class TestChildren:
+
+        def should_not_try_to_delete_anything_when_populating(self, person_data_new_format, mocker):
+            person_models = []
+
+            delete_spy = mocker.patch.object(preproc, '_delete_children_of_person',
+                                             wraps=preproc._delete_children_of_person)
+
+            for data_entry in person_data_new_format:
+                person_models.append(update_data_in_db(data_entry))
+
+            assert delete_spy.call_count == 0
+
 
 class TestOnlyForExistingDataInDb:
 
@@ -81,7 +95,7 @@ class TestOnlyForExistingDataInDb:
         person = Person.get(Person.kairaId == person_data_new_format[0]['primaryPerson']['kairaId'])
         spouse = Person.get(Person.kairaId == person_data_new_format[0]['spouse']['kairaId'])
         marriage = Marriage.get(Marriage.manId == person.id)
-        child = Child.get(Child.fatherId == person.id)
+        child_with_manual_edit = Child.get(Child.fatherId == person.id)
 
         with Using(researcher_connection, [Person, Marriage, Child]):
             # Save change to user with researcher user's connection
@@ -94,9 +108,6 @@ class TestOnlyForExistingDataInDb:
             marriage.weddingYear = 1999
             marriage.save()
 
-            child.firstName = 'Kaarlo'
-            child.save()
-
         person_models = []
 
         # Force some changes
@@ -104,7 +115,6 @@ class TestOnlyForExistingDataInDb:
         person_data_new_format[0]['primaryPerson']['name']['surname'] = 'JAAKKOLA'
         person_data_new_format[0]['spouse']['firstNames'] = 'SAANA'
         person_data_new_format[0]['spouse']['weddingYear'] = '1911'
-        person_data_new_format[0]['children'][0]['name'] = 'Jooseppi'
 
         for data_entry in person_data_new_format:
             person_models.append(update_data_in_db(data_entry))
@@ -122,9 +132,6 @@ class TestOnlyForExistingDataInDb:
 
         marriage_in_db = Marriage.get(Marriage.manId == primary_person_in_db.id)
         assert marriage_in_db.weddingYear == 1999
-
-        child_in_db = Child.get(Child.fatherId == person.id)
-        assert child_in_db.firstName == 'Kaarlo'
 
     def should_not_do_anything_for_livingrecords_if_they_have_not_changed(self, person_data_new_format, mocker):
         person_models = []
@@ -182,6 +189,94 @@ class TestOnlyForExistingDataInDb:
                 break
 
         assert found_updated_record is True
+
+    class TestChildren:
+
+        def should_skip_changes_to_all_children_if_one_has_been_manually_edited(self, person_data_new_format, researcher_connection):
+            person = Person.get(Person.kairaId == person_data_new_format[0]['primaryPerson']['kairaId'])
+            child_with_manual_edit = Child.get(Child.fatherId == person.id)
+
+            with Using(researcher_connection, [Person, Marriage, Child]):
+                # Save change to user with researcher user's connection
+                child_with_manual_edit.firstName = 'Kaarlo'
+                child_with_manual_edit.save()
+
+            person_models = []
+
+            # Force some changes
+            person_data_new_format[0]['primaryPerson']['name']['firstNames'] = 'JAAKKO JAKKE'
+            person_data_new_format[0]['children'][0]['name'] = 'Jooseppi'
+            person_data_new_format[0]['children'][1]['name'] = 'Lissu'
+
+            for data_entry in person_data_new_format:
+                person_models.append(update_data_in_db(data_entry))
+
+            # Primary person should have changed
+            assert person_models[0].firstName == 'JAAKKO JAKKE'
+
+            children_models = Child.select().where((Child.fatherId == person_models[0].id) | (Child.motherId == person_models[0].id)).order_by(Child.firstName)
+
+            # Children shouldn't since Kaarlo was edited manually before
+            assert children_models[0].firstName == 'Kaarlo'
+            assert children_models[1].firstName == 'Lapsi2'
+
+        def should_not_do_anything_for_children_if_they_have_not_changed(self, person_data_new_format, mocker):
+            person_models = []
+
+            delete_spy = mocker.patch.object(preproc, '_delete_children_of_person', wraps=preproc._delete_children_of_person)
+
+            for data_entry in person_data_new_format:
+                person_models.append(update_data_in_db(data_entry))
+
+            assert delete_spy.call_count == 0
+
+        def should_repopulate_children_if_there_is_different_amount_of_them_in_db_than_in_json(self, person_data_new_format, mocker):
+            person = Person.get(Person.kairaId == person_data_new_format[0]['primaryPerson']['kairaId'])
+
+            # There should already be all children
+            old_children = Child.select().where((Child.fatherId == person.id) | (Child.motherId == person.id)).order_by(Child.kairaId)
+            assert len(old_children) == len(person_data_new_format[0]['children'])
+
+            # Remove one child from json
+            person_data_new_format[0]['children'] = person_data_new_format[0]['children'][1:]
+
+            delete_spy = mocker.patch.object(preproc, '_delete_children_of_person',
+                                             wraps=preproc._delete_children_of_person)
+
+            for data_entry in person_data_new_format:
+                update_data_in_db(data_entry)
+
+            # Old records should have been deleted and new ones populated
+            assert delete_spy.call_count == 1
+
+            new_children = Child.select().where((Child.fatherId == person.id) | (Child.motherId == person.id)).order_by(Child.kairaId)
+            assert len(new_children) == len(person_data_new_format[0]['children'])
+
+        def should_repopulate_children_if_they_do_not_contain_same_records_as_json(self, person_data_new_format, mocker):
+            person = Person.get(Person.kairaId == person_data_new_format[0]['primaryPerson']['kairaId'])
+
+            # There should already be all children
+            old_children = Child.select().where((Child.fatherId == person.id) | (Child.motherId == person.id)).order_by(
+                Child.kairaId)
+            assert len(old_children) == len(person_data_new_format[0]['children'])
+
+            # Make a minor change to a single record
+            person_data_new_format[0]['children'][0]['name'] = 'Repe'
+
+            delete_spy = mocker.patch.object(preproc, '_delete_children_of_person',
+                                             wraps=preproc._delete_children_of_person)
+
+            for data_entry in person_data_new_format:
+                update_data_in_db(data_entry)
+
+            # Old records should have been deleted and new ones populated
+            assert delete_spy.call_count == 1
+
+            new_children = Child.select().where((Child.fatherId == person.id) | (Child.motherId == person.id)).order_by(
+                Child.kairaId)
+            assert len(new_children) == len(person_data_new_format[0]['children'])
+            assert new_children[0].firstName == 'Repe'
+            assert new_children[0].lastName == 'MIESSUKUNIMI'
 
 
 class TestValueMapping:

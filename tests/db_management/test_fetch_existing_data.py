@@ -15,8 +15,6 @@ def should_fetch_existing_primary_details_of_person_and_children(person_data_new
 
     assert result['primary_person'].kairaId == person_data_new_format[0]['primaryPerson']['kairaId']
     assert result['spouse_person'].kairaId == person_data_new_format[0]['spouse']['kairaId']
-    assert len(result['children']) == 1
-    assert result['children'][0].kairaId == person_data_new_format[0]['children'][0]['kairaId']
 
 
 def should_return_empty_model_for_person_who_does_not_exist():
@@ -30,8 +28,6 @@ def should_return_empty_model_for_person_who_does_not_exist():
     assert result['primary_person'].firstName is None
     assert result['spouse_person'] is not None
     assert result['spouse_person'].firstName is None
-    assert len(result['children']) == 1
-    assert result['children'][0].kairaId == 'siirtokarjalaiset_1_103C'
 
 
 def should_return_spouse_as_empty_model_if_person_is_unmarried(person_data_new_format):
@@ -40,4 +36,3 @@ def should_return_spouse_as_empty_model_if_person_is_unmarried(person_data_new_f
     assert result['primary_person'].kairaId == person_data_new_format[1]['primaryPerson']['kairaId']
     assert result['primary_person'].firstName is not None
     assert result['spouse_person'].firstName is None
-    assert len(result['children']) == 0

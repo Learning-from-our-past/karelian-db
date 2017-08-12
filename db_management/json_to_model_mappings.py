@@ -1,6 +1,8 @@
 from db_management.models.db_siirtokarjalaistentie_models import *
+from db_management.exceptions import *
 from config import CONFIG
 import db_management.location_operations as loc
+import db_management.preprocess_operations as preproc
 
 def map_value_to_model(key, model, field_value, data_entry, extra_data):
     # Simply set the value to the model.
@@ -154,6 +156,10 @@ def get_last_name_from_primary_person(key, model, wedding_year_input, data_entry
 
 json_to_primary_person = {
     'model': Person,
+    'preprocess_operations': {
+        'json_path': ['primaryPerson'],
+        'operation': None
+    },
     'mappings': {
         'kairaId': {
             'json_path': ['primaryPerson', 'kairaId'],
@@ -230,6 +236,10 @@ json_to_primary_person = {
 
 json_to_spouse = {
     'model': Person,
+    'preprocess_operations': {
+        'json_path': ['spouse'],
+        'operation': None
+    },
     'mappings': {
         'kairaId': {
             'json_path': ['spouse', 'kairaId'],
@@ -306,6 +316,10 @@ json_to_spouse = {
 
 json_to_child = {
     'model': Child,
+    'preprocess_operations': {
+        'json_path': ['children'],
+        'operation': preproc.validate_children_list
+    },
     'mappings': {
         'kairaId': {
             'json_path': ['children', '*', 'kairaId'],
@@ -345,6 +359,3 @@ json_to_child = {
         }
     }
 }
-
-class SexMissingException(Exception):
-    pass

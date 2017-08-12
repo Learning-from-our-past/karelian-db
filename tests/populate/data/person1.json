@@ -187,6 +187,20 @@
                         "gender": "Male",
                         "name": "Lapsi1",
                         "birthYear": 1946
+                    },
+                    {
+                        "location": {
+                            "locationName": "Munsala",
+                            "coordinates": {
+                                "latitude": "63.44991",
+                                "longitude": "22.45042"
+                            },
+                            "region": null
+                        },
+                        "kairaId": "siirtokarjalaiset_1_1C_2",
+                        "gender": "Female",
+                        "name": "Lapsi2",
+                        "birthYear": 1952
                     }
                 ]
             }
