@@ -46,9 +46,11 @@ def researcher_db_connection():
     db_connection.close()
 
 
-@pytest.yield_fixture(autouse=True, scope='module', name='person_data')
+@pytest.yield_fixture(autouse=True, scope='function', name='person_data')
 def populate_person_information_to_db():
     config.CONFIG['anonymize'] = False
     DBUtils.truncate_db()
     # Person data is anonymized and tweaked and only usable for software testing.
     return population_utils.populate_from_json("./tests/populate/data/person1.json")
+
+# TODO: Add a good way to easily initialize test db either empty or filled one still defaulting to prefilled db
