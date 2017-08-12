@@ -15,8 +15,12 @@ def _fetch_spouse_person(kaira_id):
         return Person()
 
 
-def _fetch_children(children_kaira_ids):
-    children = list(Child.select().where(Child.kairaId << children_kaira_ids))
+def _fetch_children(primary_person, children_kaira_ids):
+    if primary_person.id is not None:
+        children = list(Child.select().where(
+            (Child.fatherId == primary_person.id) | (Child.motherId == primary_person.id)).order_by(Child.kairaId))
+    else:
+        children = []
 
     # Add missing children by creating empty models for them
     if len(children) < len(children_kaira_ids):
@@ -37,5 +41,5 @@ def fetch_existing_data_of_person_entry(person_entry):
     return {
         'primary_person': primary_person,
         'spouse_person': _fetch_primary_person(person_entry['spouse']['kairaId']),
-        'children': _fetch_children([child['kairaId'] for child in person_entry['children']])
+        'children': _fetch_children(primary_person, [child['kairaId'] for child in person_entry['children']])
     }
