@@ -39,3 +39,32 @@ class TestGetEditableFields:
         person.editLog = {}
         assert person.get_editable_fields() is None
 
+
+class TestGetNonEditableFields:
+
+    @pytest.yield_fixture(autouse=True, scope='class')
+    def person(self):
+        return Person.get()
+
+    def should_return_fields_edited_by_human(self, person, researcher_connection):
+        with Using(researcher_connection, [Person]):
+            # Save change to user with researcher user's connection
+            person.firstName = 'Kalle'
+            person.save()
+
+        person = Person.get(Person.id == person.id)
+        fields = person.get_non_editable_fields()
+
+        assert 'firstName' in fields
+        assert 'lastName' not in fields
+
+    def should_throw_error_for_model_with_no_edit_logs(self):
+        page = Page.get()
+
+        with pytest.raises(AttributeError):
+            page.get_non_editable_fields()
+
+    def should_return_none_for_empty_editlog(self):
+        person = Person()
+        person.editLog = {}
+        assert person.get_non_editable_fields() is None
