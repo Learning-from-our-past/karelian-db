@@ -85,7 +85,6 @@ class TestOnlyForExistingDataInDb:
         person = Person.get(Person.kairaId == person_data[0]['primaryPerson']['kairaId'])
         spouse = Person.get(Person.kairaId == person_data[0]['spouse']['kairaId'])
         marriage = Marriage.get(Marriage.manId == person.id)
-        child_with_manual_edit = Child.get(Child.fatherId == person.id)
 
         with Using(researcher_connection, [Person, Marriage, Child]):
             # Save change to user with researcher user's connection

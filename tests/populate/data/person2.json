@@ -155,10 +155,10 @@
                 "birthYear": 1952,
                 "location": {
                     "region": null,
-                    "locationName": "Munsala",
+                    "locationName": "",
                     "coordinates": {
-                        "longitude": "22.45042",
-                        "latitude": "63.44991"
+                        "latitude": null,
+                        "longitude": null
                     }
                 },
                 "kairaId": "siirtokarjalaiset_1_1C_2"

@@ -39,6 +39,18 @@ def validate_children_list(children_list, data_entry, extra_data):
                 return 'none'
             return str(value)
 
+        def _get_existing_stemmed(child):
+            if child is not None and child.birthPlaceId is not None:
+                return child.birthPlaceId.stemmedName
+            else:
+                return 'none'
+
+        def _get_place_name(place):
+            if place is not None and place != '':
+                return stemmer.stem(place)
+            else:
+                return 'none'
+
         def _sex(field_value):
             format_for_db = ''
             if field_value == 'Male':
@@ -59,14 +71,14 @@ def validate_children_list(children_list, data_entry, extra_data):
             existing_children_by_key = {child.kairaId + '_' +
                                         _anon(child.firstName) + '_' +
                                         _anon(child.lastName) + '_' +
-                                        _none(child.birthPlaceId.stemmedName) + '_' +
+                                        _get_existing_stemmed(child) + '_' +
                                         _none(child.birthYear) + '_' + _none(child.sex): True
                                         for child in existing_children}
 
             new_children_keys = [child['kairaId'] + '_' +
                                  _anon(child['name']) + '_' +
                                  _anon(extra_data['primary_person'].lastName) + '_' +
-                                 stemmer.stem(child['location']['locationName']) + '_' +
+                                 _get_place_name(child['location']['locationName']) + '_' +
                                  _none(child['birthYear']) + '_' +
                                  _sex(child['gender'])
                                  for child in children_list]
