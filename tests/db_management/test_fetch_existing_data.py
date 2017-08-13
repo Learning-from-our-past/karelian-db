@@ -1,12 +1,14 @@
 import pytest
 from db_management.fetch_existing_data import fetch_existing_data_of_person_entry
 from tests.utils.population_utils import load_json
+import config
 
 
 # FIXME: Once population from new format is supported, this can be removed and simply use
 # the person_data from main fixture
 @pytest.yield_fixture(autouse=True, scope='module', name='person_data_new_format')
 def new_json_format():
+    config.CONFIG['anonymize'] = False
     return load_json("./tests/populate/data/person2.json")
 
 

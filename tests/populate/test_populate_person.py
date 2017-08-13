@@ -51,19 +51,25 @@ class TestPersonPopulate:
             assert r.placeId.region == expected_records[i]['region']
 
     def should_have_populated_children_correctly(self, person, person_data):
-        child = (Child.select()
+        child_models = (Child.select()
                  .join(Place, on=(Place.id == Child.birthPlaceId))
-                 .where(Child.fatherId == person.id))[0]
+                 .where(Child.fatherId == person.id)).order_by(Child.kairaId)
 
-        # Only one child
-        expected_child = person_data[0]['children']['results']['children'][0]
-        assert child.firstName == expected_child['name']
-        assert child.sex == 'm'
-        assert child.birthYear == population_utils.int_or_none(expected_child['birthYear'])
+        def _transform_sex(sex):
+            if sex == 'Female':
+                return 'f'
+            else:
+                return 'm'
 
-        assert child.birthPlaceId.name == expected_child['location']['locationName']
-        assert child.birthPlaceId.latitude == expected_child['location']['coordinates']['latitude']
-        assert child.birthPlaceId.longitude == expected_child['location']['coordinates']['longitude']
+        # Two children
+        for expected_child, child in zip(person_data[0]['children']['results']['children'], child_models):
+            assert child.firstName == expected_child['name']
+            assert child.sex == _transform_sex(expected_child['gender'])
+            assert child.birthYear == population_utils.int_or_none(expected_child['birthYear'])
+
+            assert child.birthPlaceId.name == expected_child['location']['locationName']
+            assert child.birthPlaceId.latitude == expected_child['location']['coordinates']['latitude']
+            assert child.birthPlaceId.longitude == expected_child['location']['coordinates']['longitude']
 
     def should_have_populated_spouse_correctly(self, person, person_data):
         marriage = Marriage.select().where(Marriage.manId == person.id).get()
