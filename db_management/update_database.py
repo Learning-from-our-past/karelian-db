@@ -49,6 +49,11 @@ def _update_children(primary_person_model, spouse_person_model, data_entry, csv_
             child.save()
     except DataEntryValidationException:
         # Children was not updated. Either there were no changes or some of the children were edited manually
+
+        # Children should still be in csv
+        for child in data_entry['children']:
+            csv_record.add_child(data_entry, child)
+
         children_models = []
 
     return children_models

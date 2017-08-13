@@ -69,8 +69,8 @@ class CsvRecordOfPopulation:
         return source_text_id
 
     def save_to_file(self):
-        self._source_texts = [{'sourceTextId': text_id, 'sourceText': text} for text, text_id in self._source_texts.items()]
+        self._source_texts = sorted([{'sourceTextId': text_id, 'sourceText': text} for text, text_id in self._source_texts.items()], key=lambda x: x['sourceTextId'])
         self._source_text_writer.writerows(self._source_texts)
 
         self._person_file.close()
-        self._person_file.close()
+        self._source_text_file.close()

@@ -50,7 +50,6 @@ class TestUpdateOnExistingDb:
 class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
     @pytest.yield_fixture(autouse=True, scope='function', name='truncate_db')
     def truncate(self):
-        print('truncate')
         DBUtils.truncate_db()
 
     def should_add_living_records(self, person_data, mocker):
