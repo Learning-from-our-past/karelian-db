@@ -8,7 +8,7 @@ from tests.utils.dbUtils import DBUtils
 def populate_person_information_to_db():
     DBUtils.truncate_db()
     # Person data is anonymized and tweaked and only usable for software testing.
-    return population_utils.populate_from_json("./tests/populate/data/person1.json")[0]
+    return population_utils.populate_from_json("./tests/populate/data/person2.json")[0]
 
 class TestGetEditableFields:
 

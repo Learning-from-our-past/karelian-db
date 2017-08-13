@@ -335,11 +335,11 @@ json_to_child = {
         },
         'firstName': {
             'json_path': ['children', '*', 'name'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'lastName': {
             'json_path': ['primaryPerson', 'name', 'surname'],
-            'operations': [map_value_to_model]
+            'operations': [anonymize, map_value_to_model]
         },
         'sourceTextId': {
             'json_path': ['personMetadata', 'sourceText'],

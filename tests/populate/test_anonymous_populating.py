@@ -13,7 +13,7 @@ class TestPersonPopulate:
         config.CONFIG['anonymize'] = True
         DBUtils.truncate_db()
         # Person data is anonymized and tweaked and only usable for software testing.
-        return population_utils.populate_from_json("./tests/populate/data/person1.json")[0]
+        return population_utils.populate_from_json("./tests/populate/data/person2.json")[0]
 
     @pytest.yield_fixture(autouse=True, scope='class')
     def person(self):
@@ -23,15 +23,15 @@ class TestPersonPopulate:
         assert person.firstName is None
         assert person.lastName is None
         assert person.prevLastName is None
-        assert person.ownHouse == person_data['ownHouse']['results']
+        assert person.ownHouse == person_data['primaryPerson']['ownHouse']
         assert person.sex == 'm'
         assert person.returnedKarelia == 'true'
         assert person.previousMarriages == 'false'
         assert person.originalText is None
 
-        assert person.birthDay == person_data['birthday']['results']['birthDay']
-        assert person.birthMonth == person_data['birthday']['results']['birthMonth']
-        assert person.birthYear == person_data['birthday']['results']['birthYear']
+        assert person.birthDay == person_data['primaryPerson']['birthData']['birthDay']
+        assert person.birthMonth == person_data['primaryPerson']['birthData']['birthMonth']
+        assert person.birthYear == person_data['primaryPerson']['birthData']['birthYear']
         assert person.deathDay is None
         assert person.deathMonth is None
         assert person.deathYear is None
@@ -48,7 +48,7 @@ class TestPersonPopulate:
                 return 'm'
 
         # Two children
-        for expected_child, child in zip(person_data['children']['results']['children'], child_models):
+        for expected_child, child in zip(person_data['children'], child_models):
             assert child.firstName is None
             assert child.lastName is None
             assert child.sex == _transform_sex(expected_child['gender'])
@@ -61,7 +61,7 @@ class TestPersonPopulate:
     def should_have_populated_anonymous_spouse_correctly(self, person, person_data):
         marriage = Marriage.select().where(Marriage.manId == person.id).get()
 
-        assert marriage.weddingYear == person_data['spouse']['results']['weddingYear']['results']
+        assert marriage.weddingYear == person_data['spouse']['weddingYear']
 
         spouse = (Person.select()
                   .join(Place, on=(Place.id == Person.birthPlaceId))
@@ -73,12 +73,12 @@ class TestPersonPopulate:
         assert spouse.prevLastName is None
         assert spouse.originalText is None
         assert spouse.sex == 'f'
-        assert spouse.professionId.name == person_data['spouse']['results']['profession']['results']
+        assert spouse.professionId.name == person_data['spouse']['profession']
 
-        assert spouse.birthPlaceId.name == person_data['spouse']['results']['birthData']['birthLocation']['results']['locationName']
-        assert spouse.birthDay == population_utils.int_or_none(person_data['spouse']['results']['birthData']['results']['birthDay'])
-        assert spouse.birthMonth == population_utils.int_or_none(person_data['spouse']['results']['birthData']['results']['birthMonth'])
-        assert spouse.birthYear == population_utils.int_or_none(person_data['spouse']['results']['birthData']['results']['birthYear'])
+        assert spouse.birthPlaceId.name == person_data['spouse']['birthData']['birthLocation']['locationName']
+        assert spouse.birthDay == population_utils.int_or_none(person_data['spouse']['birthData']['birthDay'])
+        assert spouse.birthMonth == population_utils.int_or_none(person_data['spouse']['birthData']['birthMonth'])
+        assert spouse.birthYear == population_utils.int_or_none(person_data['spouse']['birthData']['birthYear'])
 
         assert spouse.deathDay is None
         assert spouse.deathMonth is None
