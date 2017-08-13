@@ -9,6 +9,7 @@ all children before trying to insert any of them. This is a task suitable to be 
 """
 from db_management.models.db_siirtokarjalaistentie_models import *
 from db_management.exceptions import *
+from config import CONFIG
 import nltk.stem.snowball as snowball
 stemmer = snowball.SnowballStemmer('finnish')
 
@@ -50,18 +51,21 @@ def validate_children_list(children_list, data_entry, extra_data):
         if len(existing_children) != len(children_list):
             change_detected = True
         else:
+            def _anon(name):
+                return 'none' if CONFIG['anonymize'] else _none(name)
+
             # Compare existing children and json children by using keys from their fields.
             # This won't take in account details of Places. Only their stemmed names.
             existing_children_by_key = {child.kairaId + '_' +
-                                        child.firstName + '_' +
-                                        child.lastName + '_' +
+                                        _anon(child.firstName) + '_' +
+                                        _anon(child.lastName) + '_' +
                                         _none(child.birthPlaceId.stemmedName) + '_' +
                                         _none(child.birthYear) + '_' + _none(child.sex): True
                                         for child in existing_children}
 
             new_children_keys = [child['kairaId'] + '_' +
-                                 child['name'] + '_' +
-                                 extra_data['primary_person'].lastName + '_' +
+                                 _anon(child['name']) + '_' +
+                                 _anon(extra_data['primary_person'].lastName) + '_' +
                                  stemmer.stem(child['location']['locationName']) + '_' +
                                  _none(child['birthYear']) + '_' +
                                  _sex(child['gender'])

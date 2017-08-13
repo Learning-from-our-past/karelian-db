@@ -1,8 +1,9 @@
 import pytest
-
+import db_management.preprocess_operations as preproc
 import config
 import tests.utils.population_utils as population_utils
 from db_management.models.db_siirtokarjalaistentie_models import *
+from db_management.update_database import update_data_in_db
 from tests.utils.dbUtils import DBUtils
 
 
@@ -57,6 +58,17 @@ class TestPersonPopulate:
             assert child.birthPlaceId.name == expected_child['location']['locationName']
             assert child.birthPlaceId.latitude == expected_child['location']['coordinates']['latitude']
             assert child.birthPlaceId.longitude == expected_child['location']['coordinates']['longitude']
+
+    def should_not_delete_anonymous_children_if_there_is_no_changes(self, person, person_data, mocker):
+        person_models = []
+
+        delete_spy = mocker.patch.object(preproc, '_delete_children_of_person',
+                                         wraps=preproc._delete_children_of_person)
+
+        for data_entry in [person_data]:
+            person_models.append(update_data_in_db(data_entry, population_utils.MockRecord()))
+
+        assert delete_spy.call_count == 0
 
     def should_have_populated_anonymous_spouse_correctly(self, person, person_data):
         marriage = Marriage.select().where(Marriage.manId == person.id).get()
