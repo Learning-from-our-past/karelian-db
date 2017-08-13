@@ -34,22 +34,17 @@ def validate_children_list(children_list, data_entry, extra_data):
     if len(existing_children) > 0:
         change_detected = False
 
-        def _none(value):
-            if value is None:
-                return 'none'
-            return str(value)
-
         def _get_existing_stemmed(child):
             if child is not None and child.birthPlaceId is not None:
                 return child.birthPlaceId.stemmedName
             else:
-                return 'none'
+                return 'None'
 
         def _get_place_name(place):
             if place is not None and place != '':
                 return stemmer.stem(place)
             else:
-                return 'none'
+                return 'None'
 
         def _sex(field_value):
             format_for_db = ''
@@ -64,24 +59,26 @@ def validate_children_list(children_list, data_entry, extra_data):
             change_detected = True
         else:
             def _anon(name):
-                return 'none' if CONFIG['anonymize'] else _none(name)
+                return 'none' if CONFIG['anonymize'] else str(name)
 
             # Compare existing children and json children by using keys from their fields.
             # This won't take in account details of Places. Only their stemmed names.
-            existing_children_by_key = {child.kairaId + '_' +
-                                        _anon(child.firstName) + '_' +
-                                        _anon(child.lastName) + '_' +
-                                        _get_existing_stemmed(child) + '_' +
-                                        _none(child.birthYear) + '_' + _none(child.sex): True
-                                        for child in existing_children}
+            existing_children_by_key = {'{}_{}_{}_{}_{}_{}'.format(
+                child.kairaId,
+                _anon(child.firstName),
+                _anon(child.lastName),
+                _get_existing_stemmed(child),
+                child.birthYear,
+                child.sex): True
+                for child in existing_children}
 
-            new_children_keys = [child['kairaId'] + '_' +
-                                 _anon(child['name']) + '_' +
-                                 _anon(extra_data['primary_person'].lastName) + '_' +
-                                 _get_place_name(child['location']['locationName']) + '_' +
-                                 _none(child['birthYear']) + '_' +
-                                 _sex(child['gender'])
-                                 for child in children_list]
+            new_children_keys = ['{}_{}_{}_{}_{}_{}'.format(
+                child['kairaId'],
+                _anon(child['name']),
+                _anon(extra_data['primary_person'].lastName),
+                _get_place_name(child['location']['locationName']),
+                child['birthYear'],
+                _sex(child['gender'])) for child in children_list]
 
             for key in new_children_keys:
                 if key not in existing_children_by_key:
