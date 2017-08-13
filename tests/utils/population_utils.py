@@ -26,7 +26,7 @@ def populate_from_json(path):
     data = load_json(path)
 
     for idx, person in enumerate(data):
-        update_data_in_db(person)
+        update_data_in_db(person, MockRecord())
 
     return data
 

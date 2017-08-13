@@ -4,7 +4,7 @@ import db_management.preprocess_operations as preproc
 from peewee import Using
 from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, Livingrecord
 from tests.utils.dbUtils import DBUtils
-from tests.utils.population_utils import load_json
+from tests.utils.population_utils import load_json, MockRecord
 from db_management.update_database import update_data_in_db
 import config
 
@@ -32,7 +32,7 @@ class TestUpdateOnExistingDb:
         person_data_new_format[0]['children'][0]['birthYear'] = '1955'
 
         for data_entry in person_data_new_format:
-            person_models.append(update_data_in_db(data_entry))
+            person_models.append(update_data_in_db(data_entry, MockRecord()))
 
         assert person_models[0].firstName == person_data_new_format[0]['primaryPerson']['name']['firstNames']
         assert person_models[0].lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
@@ -68,7 +68,7 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
         delete_spy = mocker.patch('db_management.location_operations._delete_migration_history', autospec=True)
 
         for data_entry in person_data_new_format:
-            person_models.append(update_data_in_db(data_entry))
+            person_models.append(update_data_in_db(data_entry, MockRecord()))
 
         assert delete_spy.call_count == 2   # "Delete" should be called for both persons since they are not in the db
 
@@ -84,7 +84,7 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
                                              wraps=preproc._delete_children_of_person)
 
             for data_entry in person_data_new_format:
-                person_models.append(update_data_in_db(data_entry))
+                person_models.append(update_data_in_db(data_entry, MockRecord()))
 
             assert delete_spy.call_count == 0
 
@@ -117,7 +117,7 @@ class TestOnlyForExistingDataInDb:
         person_data_new_format[0]['spouse']['weddingYear'] = '1911'
 
         for data_entry in person_data_new_format:
-            person_models.append(update_data_in_db(data_entry))
+            person_models.append(update_data_in_db(data_entry, MockRecord()))
 
         assert person_models[0].firstName == 'Kalle'    # Should have not changed.
         assert person_models[0].lastName == person_data_new_format[0]['primaryPerson']['name']['surname']
@@ -139,7 +139,7 @@ class TestOnlyForExistingDataInDb:
         delete_spy = mocker.patch('db_management.location_operations._delete_migration_history', autospec=True)
 
         for data_entry in person_data_new_format:
-            person_models.append(update_data_in_db(data_entry))
+            person_models.append(update_data_in_db(data_entry, MockRecord()))
 
         assert delete_spy.call_count == 0
 
@@ -157,7 +157,7 @@ class TestOnlyForExistingDataInDb:
         delete_spy = mocker.patch.object(loc_op, '_delete_migration_history', wraps=loc_op._delete_migration_history)
 
         for data_entry in person_data_new_format:
-            update_data_in_db(data_entry)
+            update_data_in_db(data_entry, MockRecord())
 
         # Old records should have been deleted and new ones populated
         assert delete_spy.call_count == 1
@@ -174,7 +174,7 @@ class TestOnlyForExistingDataInDb:
         delete_spy = mocker.patch.object(loc_op, '_delete_migration_history', wraps=loc_op._delete_migration_history)
 
         for data_entry in person_data_new_format:
-            update_data_in_db(data_entry)
+            update_data_in_db(data_entry, MockRecord())
 
         # Old records should have been deleted and new ones populated
         assert delete_spy.call_count == 1
@@ -209,7 +209,7 @@ class TestOnlyForExistingDataInDb:
             person_data_new_format[0]['children'][1]['name'] = 'Lissu'
 
             for data_entry in person_data_new_format:
-                person_models.append(update_data_in_db(data_entry))
+                person_models.append(update_data_in_db(data_entry, MockRecord()))
 
             # Primary person should have changed
             assert person_models[0].firstName == 'JAAKKO JAKKE'
@@ -226,7 +226,7 @@ class TestOnlyForExistingDataInDb:
             delete_spy = mocker.patch.object(preproc, '_delete_children_of_person', wraps=preproc._delete_children_of_person)
 
             for data_entry in person_data_new_format:
-                person_models.append(update_data_in_db(data_entry))
+                person_models.append(update_data_in_db(data_entry, MockRecord()))
 
             assert delete_spy.call_count == 0
 
@@ -244,7 +244,7 @@ class TestOnlyForExistingDataInDb:
                                              wraps=preproc._delete_children_of_person)
 
             for data_entry in person_data_new_format:
-                update_data_in_db(data_entry)
+                update_data_in_db(data_entry, MockRecord())
 
             # Old records should have been deleted and new ones populated
             assert delete_spy.call_count == 1
@@ -267,7 +267,7 @@ class TestOnlyForExistingDataInDb:
                                              wraps=preproc._delete_children_of_person)
 
             for data_entry in person_data_new_format:
-                update_data_in_db(data_entry)
+                update_data_in_db(data_entry, MockRecord())
 
             # Old records should have been deleted and new ones populated
             assert delete_spy.call_count == 1
@@ -286,7 +286,7 @@ class TestValueMapping:
         person_models = []
 
         for data_entry in person_data_new_format:
-            person_models.append(update_data_in_db(data_entry))
+            person_models.append(update_data_in_db(data_entry, MockRecord()))
 
         return person_models
 

@@ -3,22 +3,23 @@ from db_management.json_to_model_mappings import *
 from db_management.exceptions import *
 
 
-def update_data_in_db(data_entry):
+def update_data_in_db(data_entry, csv_record):
     existing_data = fetch_existing_data_of_person_entry(data_entry)
 
-    primary_person = _update_person(existing_data['primary_person'], data_entry)
+    primary_person = _update_person(existing_data['primary_person'], data_entry, csv_record)
 
     spouse_person = None
     if data_entry['spouse']['hasSpouse']:
-        spouse_person = _update_spouse(existing_data['spouse_person'], primary_person, data_entry)
+        spouse_person = _update_spouse(existing_data['spouse_person'], primary_person, data_entry, csv_record)
 
-    _update_children(primary_person, spouse_person, data_entry)
+    _update_children(primary_person, spouse_person, data_entry, csv_record)
 
     return primary_person
 
 
-def _update_person(primary_person_model, data_entry):
+def _update_person(primary_person_model, data_entry, csv_record):
     person = _map_data_to_model(primary_person_model, data_entry, json_to_primary_person)
+    person.sourceTextId = csv_record.add_primary_person(data_entry)
     person.save()
 
     _map_data_to_one_to_many_models(person, data_entry, json_to_primary_person)
@@ -26,8 +27,9 @@ def _update_person(primary_person_model, data_entry):
     return person
 
 
-def _update_spouse(spouse_person_model, primary_person_model, data_entry):
+def _update_spouse(spouse_person_model, primary_person_model, data_entry, csv_record):
     spouse_person = _map_data_to_model(spouse_person_model, data_entry, json_to_spouse)
+    spouse_person.sourceTextId = csv_record.add_spouse(data_entry, data_entry['spouse'])
     spouse_person.save()
 
     _map_data_to_one_to_many_models({'main': spouse_person_model, 'primary': primary_person_model}, data_entry, json_to_spouse)
@@ -35,13 +37,15 @@ def _update_spouse(spouse_person_model, primary_person_model, data_entry):
     return spouse_person
 
 
-def _update_children(primary_person_model, spouse_person_model, data_entry):
+def _update_children(primary_person_model, spouse_person_model, data_entry, csv_record):
     try:
         # Preprocess will update data entries and it will return a set of models to be used in population
         children_models, data_entry = _preprocess_data(data_entry, mapping_operations=json_to_child, extra_data={'primary_person': primary_person_model, 'spouse': spouse_person_model})
 
         for idx, child in enumerate(children_models):
             _map_data_to_model(child, data_entry, json_to_child, extra_data={'primary_person': primary_person_model, 'spouse': spouse_person_model}, index=idx)
+            child.sourceTextId = csv_record.add_child(data_entry, data_entry['children'][idx])
+
             child.save()
     except DataEntryValidationException:
         # Children was not updated. Either there were no changes or some of the children were edited manually
