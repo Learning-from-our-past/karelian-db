@@ -16,6 +16,17 @@ def load_json(path):
 def populate_db(data, csv_record):
     database.set_autocommit(False)
     database.begin()
+
+    database.execute_sql("""
+    LOCK TABLE siirtokarjalaisten_tie."Person" IN SHARE ROW EXCLUSIVE MODE;
+    LOCK TABLE siirtokarjalaisten_tie."Child" IN SHARE ROW EXCLUSIVE MODE;
+    LOCK TABLE siirtokarjalaisten_tie."LivingRecord" IN SHARE ROW EXCLUSIVE MODE;
+    LOCK TABLE siirtokarjalaisten_tie."Marriage" IN SHARE ROW EXCLUSIVE MODE;
+    LOCK TABLE siirtokarjalaisten_tie."Page" IN SHARE ROW EXCLUSIVE MODE;
+    LOCK TABLE siirtokarjalaisten_tie."Place" IN SHARE ROW EXCLUSIVE MODE;
+    LOCK TABLE siirtokarjalaisten_tie."Profession" IN SHARE ROW EXCLUSIVE MODE;
+    """)
+
     with database.atomic():
         for idx, person in enumerate(data):
             update_data_in_db(person, csv_record)
