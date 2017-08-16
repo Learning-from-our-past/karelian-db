@@ -42,7 +42,7 @@ class TestUpdateOnExistingDb:
         marriage = Marriage.get(Marriage.manId == primary_person.id)
         assert marriage.weddingYear == 1969
 
-        child = Child.get(Child.fatherId == primary_person.id)
+        child = Child.get(Child.firstName == person_data[0]['children'][0]['name'])
         assert child.motherId.id == spouse_person.id
         assert child.birthYear == 1955
 
@@ -182,8 +182,7 @@ class TestOnlyForExistingDataInDb:
     class TestChildren:
 
         def should_skip_changes_to_all_children_if_one_has_been_manually_edited(self, person_data, researcher_connection):
-            person = Person.get(Person.kairaId == person_data[0]['primaryPerson']['kairaId'])
-            child_with_manual_edit = Child.get(Child.fatherId == person.id)
+            child_with_manual_edit = Child.get(Child.kairaId == person_data[0]['children'][0]['kairaId'])
 
             with Using(researcher_connection, [Person, Marriage, Child]):
                 # Save change to user with researcher user's connection
@@ -203,7 +202,7 @@ class TestOnlyForExistingDataInDb:
             # Primary person should have changed
             assert person_models[0].firstName == 'JAAKKO JAKKE'
 
-            children_models = Child.select().where((Child.fatherId == person_models[0].id) | (Child.motherId == person_models[0].id)).order_by(Child.firstName)
+            children_models = list(Child.select().where((Child.fatherId == person_models[0].id) | (Child.motherId == person_models[0].id)).order_by(Child.kairaId))
 
             # Children shouldn't since Kaarlo was edited manually before
             assert children_models[0].firstName == 'Kaarlo'
