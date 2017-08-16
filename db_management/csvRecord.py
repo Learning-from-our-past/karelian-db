@@ -20,7 +20,7 @@ class CsvRecordOfPopulation:
         self._source_text_writer.writeheader()
         self._source_texts = {}
 
-        self._source_text_id_counter = 1
+        self._source_text_id_counter = 0
 
     def _get_source_text_id(self):
         self._source_text_id_counter += 1
@@ -35,42 +35,42 @@ class CsvRecordOfPopulation:
 
             return text_id
 
-    def add_primary_person(self, person):
-        source_text_id = self._add_source_text(person['personMetadata']['results']['originalText'])
+    def add_primary_person(self, data_entry):
+        source_text_id = self._add_source_text(data_entry['personMetadata']['sourceText'])
 
-        self._person_writer.writerow({'kairaId': person['kairaId']['results'],
-                               'firstNames': person['name']['results']['firstNames'],
-                               'lastNames': person['name']['results']['surname'],
-                               'prevLastName': person['originalFamily']['results'],
+        self._person_writer.writerow({'kairaId': data_entry['primaryPerson']['kairaId'],
+                               'firstNames': data_entry['primaryPerson']['name']['firstNames'],
+                               'lastNames': data_entry['primaryPerson']['name']['surname'],
+                               'prevLastName': data_entry['primaryPerson']['originalFamily'],
                                'sourceTextId': source_text_id})
 
         return source_text_id
 
-    def add_child(self, primary_person, child):
-        source_text_id = self._add_source_text(primary_person['personMetadata']['results']['originalText'])
+    def add_child(self, data_entry, child):
+        source_text_id = self._add_source_text(data_entry['personMetadata']['sourceText'])
 
         self._person_writer.writerow({'kairaId': child['kairaId'],
                                'firstNames': child['name'],
-                               'lastNames': primary_person['name']['results']['surname'],
+                               'lastNames': data_entry['primaryPerson']['name']['surname'],
                                'prevLastName': None,
                                'sourceTextId': source_text_id})
 
         return source_text_id
 
-    def add_spouse(self, primary_person, spouse):
-        source_text_id = self._add_source_text(primary_person['personMetadata']['results']['originalText'])
+    def add_spouse(self, data_entry, spouse):
+        source_text_id = self._add_source_text(data_entry['personMetadata']['sourceText'])
 
         self._person_writer.writerow({'kairaId': spouse['kairaId'],
-                               'firstNames': spouse['spouseName'],
-                               'lastNames':  primary_person['name']['results']['surname'],
-                               'prevLastName': spouse['originalFamily']['results'],
+                               'firstNames': spouse['firstNames'],
+                               'lastNames':  data_entry['primaryPerson']['name']['surname'],
+                               'prevLastName': spouse['originalFamily'],
                                'sourceTextId': source_text_id})
 
         return source_text_id
 
     def save_to_file(self):
-        self._source_texts = [{'sourceTextId': text_id, 'sourceText': text} for text, text_id in self._source_texts.items()]
+        self._source_texts = sorted([{'sourceTextId': text_id, 'sourceText': text} for text, text_id in self._source_texts.items()], key=lambda x: x['sourceTextId'])
         self._source_text_writer.writerows(self._source_texts)
 
         self._person_file.close()
-        self._person_file.close()
+        self._source_text_file.close()

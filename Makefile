@@ -1,3 +1,6 @@
+test:
+	python -m pytest
+
 new-migration:
 	python -m tasks.new-migration
 

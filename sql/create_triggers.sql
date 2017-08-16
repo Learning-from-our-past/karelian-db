@@ -10,14 +10,15 @@ AS $$
 
     user = plpy.execute('select current_user')[0]['current_user']
     edit_log = json.loads(TD['old']['editLog'])
+    last_changed = datetime.datetime.utcnow().isoformat()
 
     for column_name, new_value in TD['new'].items():
         if column_name != 'editLog':
-            # Only mark false values to true. If value is missing, it can be safely set.
+            # Only modify changed values. If value is missing, it can be safely set.
             if column_name not in edit_log or new_value != TD['old'][column_name]:
                 edit_log[column_name] = {
                     'oldValue': TD['old'].get(column_name),
-                    'lastChanged': datetime.datetime.utcnow().isoformat(),
+                    'lastChanged': last_changed,
                     'author': user
                 }
 
@@ -33,13 +34,14 @@ AS $$
     import json
 
     user = plpy.execute('select current_user')[0]['current_user']
+    last_changed = datetime.datetime.utcnow().isoformat()
     edit_log = {}
 
     for column_name, new_value in TD['new'].items():
         if column_name != 'editLog':
             edit_log[column_name] = {
                 'oldValue': None,
-                'lastChanged': datetime.datetime.utcnow().isoformat(),
+                'lastChanged': last_changed,
                 'author': user
             }
 

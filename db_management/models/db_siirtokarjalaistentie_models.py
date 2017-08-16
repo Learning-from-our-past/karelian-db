@@ -1,6 +1,6 @@
-from peewee import *
 from playhouse.postgres_ext import *
-from models.db_connection import db_connection
+from db_management.models.db_connection import db_connection
+from config import CONFIG
 
 database = db_connection.get_database()
 
@@ -20,6 +20,24 @@ class BaseModel(Model):
         database = database
         schema = 'siirtokarjalaisten_tie'
 
+    def get_editable_fields(self):
+        edit_log = self.editLog
+
+        if edit_log is None or bool(edit_log) is False:
+            return None
+
+        return {key: value for (key, value) in edit_log.items() if value['author'] in CONFIG['users_whose_edits_can_be_overridden']}
+
+    def get_non_editable_fields(self):
+        edit_log = self.editLog
+
+        if edit_log is None or bool(edit_log) is False:
+            return None
+
+        return {key: value for (key, value) in edit_log.items() if
+                value['author'] not in CONFIG['users_whose_edits_can_be_overridden']}
+
+
 class Place(BaseModel):
     latitude = TextField()
     longitude = TextField()
@@ -29,6 +47,7 @@ class Place(BaseModel):
     region = TextField()
     location = PointField()
     ambiguousRegion = BooleanField(default=False)
+    editLog = BinaryJSONField()
 
     class Meta:
         db_table = 'Place'
@@ -93,6 +112,7 @@ class Child(BaseModel):
     motherId = ForeignKeyField(db_column='motherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_motherId_set')
     sex = TextField()
     sourceTextId = TextField()
+    editLog = BinaryJSONField()
 
     @staticmethod
     def create_or_get(data):
@@ -112,6 +132,7 @@ class Livingrecord(BaseModel):
     movedOut = IntegerField(null=True)
     personId = ForeignKeyField(db_column='personId', rel_model=Person, to_field='id')
     placeId = ForeignKeyField(db_column='placeId', rel_model=Place, to_field='id')
+    editLog = BinaryJSONField()
 
     @staticmethod
     def create_or_get(data):
@@ -130,6 +151,7 @@ class Marriage(BaseModel):
     manId = ForeignKeyField(db_column='manId', rel_model=Person, to_field='id', related_name='marriage_Person_manId_set')
     womanId = ForeignKeyField(db_column='womanId', rel_model=Person, to_field='id', related_name='marriage_Person_womanId_set')
     weddingYear = IntegerField(null=True)
+    editLog = BinaryJSONField()
 
     class Meta:
         db_table = 'Marriage'

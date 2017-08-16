@@ -1,8 +1,0 @@
-{
-  "drop_database_on_init": true,
-  "test_db_name": "karelian_testdb",
-  "sql_files": [
-    "./sql/initial_db.sql"
-  ]
-
-}

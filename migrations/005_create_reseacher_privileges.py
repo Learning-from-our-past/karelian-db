@@ -44,14 +44,22 @@ def migrate(migrator, database, fake=False, **kwargs):
     end
     $body$;
     
+    REVOKE ALL PRIVILEGES ON "siirtokarjalaisten_tie"."Child" FROM researcher;
+    REVOKE ALL PRIVILEGES ON "siirtokarjalaisten_tie"."LivingRecord" FROM researcher;
+    REVOKE ALL PRIVILEGES ON "siirtokarjalaisten_tie"."Marriage" FROM researcher;
+    REVOKE ALL PRIVILEGES ON "siirtokarjalaisten_tie"."Page" FROM researcher;
+    REVOKE ALL PRIVILEGES ON "siirtokarjalaisten_tie"."Person" FROM researcher;
+    REVOKE ALL PRIVILEGES ON "siirtokarjalaisten_tie"."Place" FROM researcher;
+    REVOKE ALL PRIVILEGES ON "siirtokarjalaisten_tie"."Profession" FROM researcher;
+    
     GRANT USAGE ON SCHEMA "siirtokarjalaisten_tie" TO researcher;
-    GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "siirtokarjalaisten_tie"."Child" TO researcher;
-    GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "siirtokarjalaisten_tie"."LivingRecord" TO researcher;
-    GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "siirtokarjalaisten_tie"."Marriage" TO researcher;
-    GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "siirtokarjalaisten_tie"."Page" TO researcher;
-    GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "siirtokarjalaisten_tie"."Person" TO researcher;
-    GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "siirtokarjalaisten_tie"."Place" TO researcher;
-    GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "siirtokarjalaisten_tie"."Profession" TO researcher;
+    GRANT SELECT, UPDATE, REFERENCES ON "siirtokarjalaisten_tie"."Child" TO researcher;
+    GRANT SELECT, REFERENCES ON "siirtokarjalaisten_tie"."LivingRecord" TO researcher;
+    GRANT SELECT, UPDATE, REFERENCES ON "siirtokarjalaisten_tie"."Marriage" TO researcher;
+    GRANT SELECT, UPDATE, REFERENCES ON "siirtokarjalaisten_tie"."Page" TO researcher;
+    GRANT SELECT, UPDATE, REFERENCES ON "siirtokarjalaisten_tie"."Person" TO researcher;
+    GRANT SELECT, UPDATE, REFERENCES ON "siirtokarjalaisten_tie"."Place" TO researcher;
+    GRANT SELECT, UPDATE, REFERENCES ON "siirtokarjalaisten_tie"."Profession" TO researcher;
     
     GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA "siirtokarjalaisten_tie" TO researcher;
     
