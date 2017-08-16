@@ -1,3 +1,19 @@
+do
+$body$
+declare
+  num_users integer;
+begin
+   SELECT count(*)
+     into num_users
+   FROM pg_roles
+   WHERE rolname = 'researcher';
+
+   IF num_users = 0 THEN
+      CREATE USER researcher;
+   END IF;
+end
+$body$;
+
 DO
 $body$
 BEGIN
