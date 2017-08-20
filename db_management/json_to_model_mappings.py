@@ -3,10 +3,16 @@ from db_management.exceptions import *
 from config import CONFIG
 import db_management.location_operations as loc
 import db_management.preprocess_operations as preproc
+from playhouse.shortcuts import model_to_dict
+
 
 def map_value_to_model(key, model, field_value, data_entry, extra_data):
     # Simply set the value to the model.
-    setattr(model, key, field_value)
+    existing_values = model_to_dict(model, recurse=False)
+
+    if existing_values[key] != field_value:
+        setattr(model, key, field_value)
+
     return model, field_value
 
 

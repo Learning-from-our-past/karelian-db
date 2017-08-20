@@ -1,5 +1,6 @@
 import json
 from db_management.update_database import update_data_in_db
+from db_management.update_report import update_report
 
 
 class MockRecord:
@@ -24,6 +25,7 @@ def load_json(path):
 
 def populate_from_json(path):
     data = load_json(path)
+    update_report.setup('population')
 
     for idx, person in enumerate(data):
         update_data_in_db(person, MockRecord())

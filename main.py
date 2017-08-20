@@ -6,6 +6,7 @@ from config import CONFIG
 from db_management.csvRecord import CsvRecordOfPopulation
 from db_management.models.db_connection import db_connection
 from db_management.update_database import update_data_in_db
+from db_management.update_report import update_report
 
 
 def load_json(path):
@@ -32,6 +33,7 @@ def populate_db(data, csv_record):
             update_data_in_db(person, csv_record)
             print("Added ", person['primaryPerson']['name']['firstNames'], person['primaryPerson']['name']['surname'], idx+1, '/', len(data))
 
+    update_report.save_report()
     database.commit()
 
     database.set_autocommit(True)
@@ -46,6 +48,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         file_name = os.path.splitext(sys.argv[1])[0]
+        update_report.setup(file_name)
         csv_record = CsvRecordOfPopulation(file_name)
         data = load_json(sys.argv[1])
     else:

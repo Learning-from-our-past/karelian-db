@@ -15,6 +15,21 @@ def pft(latitude, longitude):
 class UnknownField(object):
     def __init__(self, *_, **__): pass
 
+
+class KairaUpdateReportModel(Model):
+    class Meta:
+        database = database
+        schema = 'system'
+        db_table = 'KairaUpdateReport'
+
+    time = DateTimeField()
+    kairaFileName = TextField()
+    changedRecordsCount = JSONField()
+    recordCountChange = JSONField()
+    ignoredRecordsCount = JSONField()
+    comment = TextField(null=True)
+
+
 class BaseModel(Model):
     class Meta:
         database = database

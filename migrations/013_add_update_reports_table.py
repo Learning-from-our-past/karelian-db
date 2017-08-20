@@ -42,6 +42,9 @@ def migrate(migrator, database, fake=False, **kwargs):
     COMMENT ON COLUMN system."KairaUpdateReport"."ignoredRecordsCount" is 'Json holding count of ignored rows in each table which were skipped due manual changes';
     COMMENT ON COLUMN system."KairaUpdateReport"."comment" is 'Optional comment about the update';
 
+    GRANT USAGE ON SCHEMA "system" TO kaira;
+    GRANT SELECT, INSERT ON "system"."KairaUpdateReport" TO kaira;
+    GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA system TO kaira;
     """)
 
 
