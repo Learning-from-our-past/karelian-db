@@ -158,3 +158,4 @@ kareliandb_venv/
 db/
 material/
 temp/
+.powa-web.conf
