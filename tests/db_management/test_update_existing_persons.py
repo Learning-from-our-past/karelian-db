@@ -2,7 +2,7 @@ import pytest
 import db_management.location_operations as loc_op
 import db_management.preprocess_operations as preproc
 from peewee import Using
-from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, Livingrecord
+from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord
 from tests.utils.dbUtils import DBUtils
 from tests.utils.population_utils import MockRecord
 from db_management.update_database import update_data_in_db
@@ -62,7 +62,7 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
 
         assert delete_spy.call_count == 2   # "Delete" should be called for both persons since they are not in the db
 
-        records_for_person = Livingrecord.select().where(Livingrecord.personId == person_models[0].id)
+        records_for_person = LivingRecord.select().where(LivingRecord.personId == person_models[0].id)
         assert len(records_for_person) == 5
 
     class TestChildren:
@@ -136,7 +136,7 @@ class TestOnlyForExistingDataInDb:
         person = Person.get(Person.kairaId == person_data[0]['primaryPerson']['kairaId'])
 
         # There should already be all records
-        old_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+        old_records = LivingRecord.select().where(LivingRecord.personId == person.id)
         assert len(old_records) == len(person_data[0]['primaryPerson']['migrationHistory']['locations'])
 
         # Remove one location from json
@@ -151,7 +151,7 @@ class TestOnlyForExistingDataInDb:
         # Old records should have been deleted and new ones populated
         assert delete_spy.call_count == 1
 
-        new_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+        new_records = LivingRecord.select().where(LivingRecord.personId == person.id)
         assert len(new_records) == len(person_data[0]['primaryPerson']['migrationHistory']['locations'])
 
     def should_repopulate_livingrecords_if_they_do_not_contain_same_records_as_json(self, person_data, mocker):
@@ -168,7 +168,7 @@ class TestOnlyForExistingDataInDb:
         # Old records should have been deleted and new ones populated
         assert delete_spy.call_count == 1
 
-        new_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+        new_records = LivingRecord.select().where(LivingRecord.personId == person.id)
         assert len(new_records) == len(person_data[0]['primaryPerson']['migrationHistory']['locations'])
 
         found_updated_record = False

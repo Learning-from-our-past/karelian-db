@@ -127,7 +127,7 @@ class Child(BaseModel):
     class Meta:
         db_table = 'Child'
 
-class Livingrecord(BaseModel):
+class LivingRecord(BaseModel):
     movedIn = IntegerField(null=True)
     movedOut = IntegerField(null=True)
     personId = ForeignKeyField(db_column='personId', rel_model=Person, to_field='id')
@@ -138,11 +138,11 @@ class Livingrecord(BaseModel):
     def create_or_get(data):
         try:
             with database.atomic():
-                return Livingrecord.create(**data)
+                return LivingRecord.create(**data)
         except IntegrityError:
             # this is a unique column, so this row already exists,
             # making it safe to call .get().
-            return Livingrecord.get(data)
+            return LivingRecord.get(data)
 
     class Meta:
         db_table = 'LivingRecord'
