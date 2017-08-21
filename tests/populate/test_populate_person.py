@@ -34,7 +34,7 @@ class TestPersonPopulate:
         assert page.pageNumber == person_data[0]['personMetadata']['approximatePageNumber']
 
     def should_have_populated_living_records_correctly(self, person, person_data):
-        records = sorted(Livingrecord.select().join(Place).where(Livingrecord.personId == person.id), key = lambda x: (x.movedIn is None, x.movedIn))
+        records = sorted(LivingRecord.select().join(Place).where(LivingRecord.personId == person.id), key = lambda x: (x.movedIn is None, x.movedIn))
 
         expected_records = sorted(person_data[0]['primaryPerson']['migrationHistory']['locations'], key=lambda x: (x['movedIn'] is None, x['movedIn']))
         assert len(records) == len(expected_records)

@@ -1,11 +1,10 @@
 from db_management.fetch_existing_data import fetch_existing_data_of_person_entry
 from db_management.json_to_model_mappings import *
 from db_management.exceptions import *
-
+from db_management.update_report import update_report
 
 def update_data_in_db(data_entry, csv_record):
     existing_data = fetch_existing_data_of_person_entry(data_entry)
-
     primary_person = _update_person(existing_data['primary_person'], data_entry, csv_record)
 
     spouse_person = None
@@ -19,7 +18,14 @@ def update_data_in_db(data_entry, csv_record):
 
 def _update_person(primary_person_model, data_entry, csv_record):
     person = _map_data_to_model(primary_person_model, data_entry, json_to_primary_person)
-    person.sourceTextId = csv_record.add_primary_person(data_entry)
+
+    st_idx = csv_record.add_primary_person(data_entry)
+    if person.sourceTextId != st_idx:
+        person.sourceTextId = st_idx
+
+    if person.is_dirty():
+        update_report.changed_record_in('Person')
+
     person.save()
 
     _map_data_to_one_to_many_models(person, data_entry, json_to_primary_person)
@@ -29,7 +35,14 @@ def _update_person(primary_person_model, data_entry, csv_record):
 
 def _update_spouse(spouse_person_model, primary_person_model, data_entry, csv_record):
     spouse_person = _map_data_to_model(spouse_person_model, data_entry, json_to_spouse)
-    spouse_person.sourceTextId = csv_record.add_spouse(data_entry, data_entry['spouse'])
+
+    st_idx = csv_record.add_spouse(data_entry, data_entry['spouse'])
+    if spouse_person.sourceTextId != st_idx:
+        spouse_person.sourceTextId = st_idx
+
+    if spouse_person.is_dirty():
+        update_report.changed_record_in('Person')
+
     spouse_person.save()
 
     _map_data_to_one_to_many_models({'main': spouse_person_model, 'primary': primary_person_model}, data_entry, json_to_spouse)

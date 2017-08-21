@@ -111,6 +111,8 @@ class DBUtils:
         for table in tables:
             cursor.execute("TRUNCATE TABLE siirtokarjalaisten_tie." + '"' + table[0] + '"' + " CASCADE;")
 
+        cursor.execute('TRUNCATE TABLE system."KairaUpdateReport"')
+
         # Reset sequences so that they stay mostly the same in between the tests
         self.test_db_connection.cursor().execute(self._reset_sequences_sql)
 

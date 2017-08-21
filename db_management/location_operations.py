@@ -20,7 +20,7 @@ def create_migration_history(key, primary_person, migration_history, data_entry,
         return str(value)
 
     change_detected = False
-    existing_living_records = list(Livingrecord.select().where(Livingrecord.personId == primary_person.id))
+    existing_living_records = list(LivingRecord.select().where(LivingRecord.personId == primary_person.id))
 
     if len(existing_living_records) != len(migration_history):
         change_detected = True
@@ -40,7 +40,7 @@ def create_migration_history(key, primary_person, migration_history, data_entry,
         for record in migration_history:
             place_model_id = add_place(None, None, record, data_entry, None)[1]
 
-            Livingrecord.create_or_get({
+            LivingRecord.create_or_get({
                 'personId': primary_person,
                 'placeId': place_model_id,
                 'movedIn': record['movedIn'],
@@ -51,7 +51,7 @@ def create_migration_history(key, primary_person, migration_history, data_entry,
 
 
 def _delete_migration_history(primary_person):
-    Livingrecord.delete().where(Livingrecord.personId == primary_person.id).execute()
+    LivingRecord.delete().where(LivingRecord.personId == primary_person.id).execute()
 
 
 def add_place(key, model, place_data, data_entry, extra_data):

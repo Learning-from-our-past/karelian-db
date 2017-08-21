@@ -2,13 +2,15 @@ import pytest
 import db_management.location_operations as loc_op
 import db_management.preprocess_operations as preproc
 from peewee import Using
-from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, Livingrecord
+from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel
 from tests.utils.dbUtils import DBUtils
 from tests.utils.population_utils import MockRecord
 from db_management.update_database import update_data_in_db
-
+from db_management.update_report import update_report
+from playhouse.shortcuts import model_to_dict
 
 class TestUpdateOnExistingDb:
+
 
     def should_map_changes_in_json_to_model(self, person_data):
         person_models = []
@@ -52,18 +54,27 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
     def truncate(self):
         DBUtils.truncate_db()
 
+
     def should_add_living_records(self, person_data, mocker):
         person_models = []
+
+        update_report.setup('should_add_living_records')
 
         delete_spy = mocker.patch('db_management.location_operations._delete_migration_history', autospec=True)
 
         for data_entry in person_data:
             person_models.append(update_data_in_db(data_entry, MockRecord()))
 
+        update_report.save_report()
+
         assert delete_spy.call_count == 2   # "Delete" should be called for both persons since they are not in the db
 
-        records_for_person = Livingrecord.select().where(Livingrecord.personId == person_models[0].id)
+        records_for_person = LivingRecord.select().where(LivingRecord.personId == person_models[0].id)
         assert len(records_for_person) == 5
+
+        check_update_report({
+            'recordCountChange': {'Marriage': 1, 'Profession': 2, 'Child': 2, 'Place': 6, 'Person': 3, 'Page': 1, 'LivingRecord': 10}
+        })
 
     class TestChildren:
 
@@ -78,6 +89,11 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
 
             assert delete_spy.call_count == 0
 
+def check_update_report(expected):
+    report = model_to_dict(KairaUpdateReportModel.get())
+
+    for key, value in expected.items():
+        assert report[key] == value
 
 class TestOnlyForExistingDataInDb:
 
@@ -85,6 +101,8 @@ class TestOnlyForExistingDataInDb:
         person = Person.get(Person.kairaId == person_data[0]['primaryPerson']['kairaId'])
         spouse = Person.get(Person.kairaId == person_data[0]['spouse']['kairaId'])
         marriage = Marriage.get(Marriage.manId == person.id)
+
+        update_report.setup('should_not_change_fields_which_were_edited_by_human')
 
         with Using(researcher_connection, [Person, Marriage, Child]):
             # Save change to user with researcher user's connection
@@ -108,6 +126,8 @@ class TestOnlyForExistingDataInDb:
         for data_entry in person_data:
             person_models.append(update_data_in_db(data_entry, MockRecord()))
 
+        update_report.save_report()
+
         assert person_models[0].firstName == 'Kalle'    # Should have not changed.
         assert person_models[0].lastName == person_data[0]['primaryPerson']['name']['surname']
 
@@ -121,6 +141,10 @@ class TestOnlyForExistingDataInDb:
 
         marriage_in_db = Marriage.get(Marriage.manId == primary_person_in_db.id)
         assert marriage_in_db.weddingYear == 1999
+
+        check_update_report({
+            'changedRecordsCount': {'Child': 0, 'Marriage': 0, 'LivingRecord': 0, 'Page': 0, 'Place': 0, 'Person': 2, 'Profession': 0}
+        })
 
     def should_not_do_anything_for_livingrecords_if_they_have_not_changed(self, person_data, mocker):
         person_models = []
@@ -136,7 +160,7 @@ class TestOnlyForExistingDataInDb:
         person = Person.get(Person.kairaId == person_data[0]['primaryPerson']['kairaId'])
 
         # There should already be all records
-        old_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+        old_records = LivingRecord.select().where(LivingRecord.personId == person.id)
         assert len(old_records) == len(person_data[0]['primaryPerson']['migrationHistory']['locations'])
 
         # Remove one location from json
@@ -151,7 +175,7 @@ class TestOnlyForExistingDataInDb:
         # Old records should have been deleted and new ones populated
         assert delete_spy.call_count == 1
 
-        new_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+        new_records = LivingRecord.select().where(LivingRecord.personId == person.id)
         assert len(new_records) == len(person_data[0]['primaryPerson']['migrationHistory']['locations'])
 
     def should_repopulate_livingrecords_if_they_do_not_contain_same_records_as_json(self, person_data, mocker):
@@ -168,7 +192,7 @@ class TestOnlyForExistingDataInDb:
         # Old records should have been deleted and new ones populated
         assert delete_spy.call_count == 1
 
-        new_records = Livingrecord.select().where(Livingrecord.personId == person.id)
+        new_records = LivingRecord.select().where(LivingRecord.personId == person.id)
         assert len(new_records) == len(person_data[0]['primaryPerson']['migrationHistory']['locations'])
 
         found_updated_record = False
@@ -183,6 +207,8 @@ class TestOnlyForExistingDataInDb:
 
         def should_skip_changes_to_all_children_if_one_has_been_manually_edited(self, person_data, researcher_connection):
             child_with_manual_edit = Child.get(Child.kairaId == person_data[0]['children'][0]['kairaId'])
+
+            update_report.setup('should_skip_changes_to_all_children_if_one_has_been_manually_edited')
 
             with Using(researcher_connection, [Person, Marriage, Child]):
                 # Save change to user with researcher user's connection
@@ -199,6 +225,8 @@ class TestOnlyForExistingDataInDb:
             for data_entry in person_data:
                 person_models.append(update_data_in_db(data_entry, MockRecord()))
 
+            update_report.save_report()
+
             # Primary person should have changed
             assert person_models[0].firstName == 'JAAKKO JAKKE'
 
@@ -207,6 +235,10 @@ class TestOnlyForExistingDataInDb:
             # Children shouldn't since Kaarlo was edited manually before
             assert children_models[0].firstName == 'Kaarlo'
             assert children_models[1].firstName == 'Lapsi2'
+
+            check_update_report({
+                'ignoredRecordsCount': {'Marriage': 0, 'Person': 0, 'Child': 2, 'Profession': 0, 'Page': 0, 'Place': 0, 'LivingRecord': 0}
+            })
 
         def should_not_do_anything_for_children_if_they_have_not_changed(self, person_data, mocker):
             person_models = []

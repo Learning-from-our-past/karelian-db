@@ -9,6 +9,7 @@ all children before trying to insert any of them. This is a task suitable to be 
 """
 from db_management.models.db_siirtokarjalaistentie_models import *
 from db_management.exceptions import *
+from db_management.update_report import update_report
 from config import CONFIG
 import nltk.stem.snowball as snowball
 stemmer = snowball.SnowballStemmer('finnish')
@@ -28,6 +29,7 @@ def validate_children_list(children_list, data_entry, extra_data):
     for child in existing_children:
         if len(child.get_non_editable_fields()) > 0:
             # The kid has been changed manually, raise an error
+            update_report.ignored_record_in('Child', len(existing_children))
             raise DataEntryValidationException
 
     # If no Child was edited, check if the new json will have any changes to the existing records. If not, no need to anything.
