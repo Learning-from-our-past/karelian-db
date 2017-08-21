@@ -10,7 +10,7 @@ CREATE EXTENSION IF NOT EXISTS fuzzystrmatch SCHEMA extensions;
 DROP SCHEMA IF EXISTS siirtokarjalaisten_tie CASCADE;
 CREATE SCHEMA siirtokarjalaisten_tie;
 
-ALTER DATABASE "karelian_testdb" SET search_path TO pg_catalog, siirtokarjalaisten_tie, public, extensions;
+-- ALTER DATABASE "karelian_testdb" SET search_path TO pg_catalog, siirtokarjalaisten_tie, public, extensions;
 DO $$
 BEGIN
     EXECUTE 'ALTER DATABASE ' || quote_ident(current_database()) || ' SET search_path TO pg_catalog, siirtokarjalaisten_tie, public, extensions';
