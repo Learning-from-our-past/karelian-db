@@ -1,14 +1,12 @@
 from peewee import *
-import os
-
 
 class DbConnection:
 
     def __init__(self):
         self.database = PostgresqlDatabase(None)
 
-    def init_database(self, db_name, db_user, password=None):
-        user_info = {'user': db_user}
+    def init_database(self, db_name, db_user, password=None, host='localhost', port=5432):
+        user_info = {'user': db_user, 'host': host, 'port': port}
 
         if password:
             user_info['password'] = password

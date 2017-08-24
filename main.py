@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import argparse
 
 from config import CONFIG
 from db_management.csvRecord import CsvRecordOfPopulation
@@ -8,6 +9,12 @@ from db_management.models.db_connection import db_connection
 from db_management.update_database import update_data_in_db
 from db_management.update_report import update_report
 
+parser = argparse.ArgumentParser(description='Populate data to the database from json files.')
+parser.add_argument('-a', nargs='?', type=str, help='Host address to the database', default='localhost')
+parser.add_argument('-p', nargs='?', type=int, help='Port of the database', default=5432)
+parser.add_argument('-u', nargs='?', type=str, help='User name. Password should be stored in pgpassfile', default=CONFIG['db_user'])
+parser.add_argument('-d', nargs='?', type=str, help='Database name', default=CONFIG['db_name'])
+parser.add_argument('file', metavar='file', type=str, nargs=1, help='The file to populate data from')
 
 def load_json(path):
     with open(path, encoding='utf8') as data_file:
@@ -21,7 +28,6 @@ def print_progress(current, max):
     sys.stdout.flush()
 
 def populate_db(data, csv_record):
-    print('Populating data...')
     database.set_autocommit(False)
     database.begin()
 
@@ -48,7 +54,10 @@ def populate_db(data, csv_record):
 
 
 if __name__ == "__main__":
-    db_connection.init_database(db_name=CONFIG['db_name'], db_user=CONFIG['db_user'])
+    args = vars(parser.parse_args())
+    print('Target:', args['a'], args['d'])
+
+    db_connection.init_database(db_name=args['d'], db_user=args['u'], host=args['a'], port=args['p'])
     db_connection.connect()
     database = db_connection.get_database()
     csv_record = None

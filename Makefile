@@ -10,8 +10,11 @@ migrate-local:
 migrate-production:
 	python -m tasks.migrate-production
 
-populate-all:
+populate-all-local:
 	sh tasks/populate_everything.sh
+
+update-production:
+	python main.py $(file) -a karelia-17.it.helsinki.fi -p 5432 -d learning-from-our-past
 
 truncate:
 	sh tasks/truncate.sh
