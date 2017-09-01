@@ -8,6 +8,7 @@ from db_management.csvRecord import CsvRecordOfPopulation
 from db_management.models.db_connection import db_connection
 from db_management.update_database import update_data_in_db
 from db_management.update_report import update_report
+from db_management.mark_ambiguous_region_places_in_db import mark_ambiguous_places
 
 parser = argparse.ArgumentParser(description='Populate data to the database from json files.')
 parser.add_argument('-a', nargs='?', type=str, help='Host address to the database', default='localhost')
@@ -48,6 +49,8 @@ def populate_db(database, data, csv_record):
 
     update_report.save_report()
     database.commit()
+
+    mark_ambiguous_places(database)
 
     database.set_autocommit(True)
     database.close()
