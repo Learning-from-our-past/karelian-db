@@ -27,7 +27,7 @@ def print_progress(current, max):
     sys.stdout.write("Progress: %d%% - %d/%d   \r" % (percentage, current, max))
     sys.stdout.flush()
 
-def populate_db(data, csv_record):
+def populate_db(database, data, csv_record):
     database.set_autocommit(False)
     database.begin()
 
@@ -71,7 +71,7 @@ if __name__ == "__main__":
         data = load_json("./material/testset.json")
         csv_record = CsvRecordOfPopulation('./material/testset')
 
-    populate_db(data, csv_record)
+    populate_db(database, data, csv_record)
     csv_record.save_to_file()
 
 

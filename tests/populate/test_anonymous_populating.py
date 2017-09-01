@@ -10,11 +10,11 @@ from tests.utils.dbUtils import DBUtils
 class TestPersonPopulate:
 
     @pytest.yield_fixture(autouse=True, scope='class', name='person_data')
-    def populate_person_information_to_db_anonymized(self): # Override the root populating fixture
+    def populate_person_information_to_db_anonymized(self, database): # Override the root populating fixture
         config.CONFIG['anonymize'] = True
         DBUtils.truncate_db()
         # Person data is anonymized and tweaked and only usable for software testing.
-        return population_utils.populate_from_json("./tests/populate/data/person2.json")[0]
+        return population_utils.populate_from_json(database, "./tests/populate/data/person2.json")[0]
 
     @pytest.yield_fixture(autouse=True, scope='class')
     def person(self):

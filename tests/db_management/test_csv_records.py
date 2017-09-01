@@ -11,10 +11,10 @@ from db_management.csvRecord import CsvRecordOfPopulation
 class TestCsvOnUpdateOnExistingDb:
 
     @pytest.yield_fixture(autouse=True, scope='class', name='person_data')
-    def populate_person_information_to_db_anonymized(self):  # Override the root populating fixture
+    def populate_person_information_to_db_anonymized(self, database):  # Override the root populating fixture
         config.CONFIG['anonymize'] = True
         DBUtils.truncate_db()
-        return population_utils.populate_from_json("./tests/populate/data/person2.json")
+        return population_utils.populate_from_json(database, "./tests/populate/data/person2.json")
 
     @pytest.yield_fixture(autouse=True)
     def csv_test_dir(self):

@@ -72,8 +72,8 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
         records_for_person = LivingRecord.select().where(LivingRecord.personId == person_models[0].id)
         assert len(records_for_person) == 5
 
-        check_update_report({
-            'recordCountChange': {'Marriage': 1, 'Profession': 2, 'Child': 2, 'Place': 6, 'Person': 3, 'Page': 1, 'LivingRecord': 10}
+        check_update_report('should_add_living_records', {
+            'recordCountChange': {'Marriage': 1, 'Profession': 2, 'Child': 2, 'Place': 7, 'Person': 3, 'Page': 1, 'LivingRecord': 10}
         })
 
     class TestChildren:
@@ -89,8 +89,8 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
 
             assert delete_spy.call_count == 0
 
-def check_update_report(expected):
-    report = model_to_dict(KairaUpdateReportModel.get())
+def check_update_report(name, expected):
+    report = model_to_dict(KairaUpdateReportModel.get(KairaUpdateReportModel.kairaFileName == name))
 
     for key, value in expected.items():
         assert report[key] == value
@@ -142,7 +142,7 @@ class TestOnlyForExistingDataInDb:
         marriage_in_db = Marriage.get(Marriage.manId == primary_person_in_db.id)
         assert marriage_in_db.weddingYear == 1999
 
-        check_update_report({
+        check_update_report('should_not_change_fields_which_were_edited_by_human', {
             'changedRecordsCount': {'Child': 0, 'Marriage': 0, 'LivingRecord': 0, 'Page': 0, 'Place': 0, 'Person': 2, 'Profession': 0}
         })
 
@@ -236,7 +236,7 @@ class TestOnlyForExistingDataInDb:
             assert children_models[0].firstName == 'Kaarlo'
             assert children_models[1].firstName == 'Lapsi2'
 
-            check_update_report({
+            check_update_report('should_skip_changes_to_all_children_if_one_has_been_manually_edited', {
                 'ignoredRecordsCount': {'Marriage': 0, 'Person': 0, 'Child': 2, 'Profession': 0, 'Page': 0, 'Place': 0, 'LivingRecord': 0}
             })
 
