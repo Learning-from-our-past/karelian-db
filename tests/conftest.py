@@ -24,7 +24,7 @@ def pytest_collection_modifyitems(session, config, items):
             items.append(item)
 
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope="session", autouse=True, name='database')
 def database():
     DBUtils.init_test_db()
     db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
@@ -48,11 +48,11 @@ def researcher_db_connection():
 
 
 @pytest.yield_fixture(autouse=True, scope='function', name='person_data')
-def populate_person_information_to_db():
+def populate_person_information_to_db(database):
     config.CONFIG['anonymize'] = False
     DBUtils.truncate_db()
     # Person data is anonymized and tweaked and only usable for software testing.
     update_report.setup('testfile.json')
-    return population_utils.populate_from_json("./tests/populate/data/person2.json")
+    return population_utils.populate_from_json(database, "./tests/populate/data/person2.json")
 
 # TODO: Add a good way to easily initialize test db either empty or filled one still defaulting to prefilled db
