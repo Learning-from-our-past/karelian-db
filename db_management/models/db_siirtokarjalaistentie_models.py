@@ -74,8 +74,32 @@ class Page(BaseModel):
     class Meta:
         db_table = 'Page'
 
+
 class Profession(BaseModel):
     name = TextField(unique=True)
+    englishName = TextField(null=True)
+    SESgroup1989 = IntegerField(null=True)
+    socialClassRank = IntegerField(null=True)
+    occupationCategory = IntegerField(null=True)
+    agricultureOrForestryRelated = BooleanField(null=True)
+    education = BooleanField(null=True)
+    manualLabor = BooleanField(null=True)
+
+    def set_missing_properties(self, data_to_insert):
+        """
+        Check if some of the attributes are missing from the model to know if it should be
+        updated.
+        :param data_to_insert:
+        :return:
+        """
+        change = False
+        for key, value in data_to_insert.items():
+            if getattr(self, key, None) is None and value is not None:
+                if not change:
+                    change = True
+                setattr(self, key, value)
+
+        return change
 
     class Meta:
         db_table = 'Profession'
