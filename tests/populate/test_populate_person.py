@@ -27,7 +27,7 @@ class TestPersonPopulate:
 
     def should_have_populated_profession_correctly(self, person, person_data):
         profession = Profession.get(Profession.id == person.professionId)
-        assert profession.name == person_data[0]['primaryPerson']['profession']
+        assert profession.name == person_data[0]['primaryPerson']['profession']['professionName']
 
     def should_have_populated_page_correctly(self, person, person_data):
         page = Page.get(Page.pageNumber == person.pageNumber)
@@ -85,7 +85,7 @@ class TestPersonPopulate:
         assert spouse.lastName == person_data[0]['primaryPerson']['name']['surname']
         assert spouse.prevLastName == person_data[0]['spouse']['originalFamily']
         assert spouse.sex == 'f'
-        assert spouse.professionId.name == person_data[0]['spouse']['profession']
+        assert spouse.professionId.name == person_data[0]['spouse']['profession']['professionName']
 
         assert spouse.birthPlaceId.name == person_data[0]['spouse']['birthData']['birthLocation']['locationName']
         assert spouse.birthDay == population_utils.int_or_none(person_data[0]['spouse']['birthData']['birthDay'])
@@ -96,6 +96,27 @@ class TestPersonPopulate:
         assert spouse.deathMonth is None
         assert spouse.deathYear is None
 
+
+class TestProfessionPopulate:
+
+    def should_have_populated_all_professions_correctly(self):
+        professions = list(Profession.select().order_by(Profession.name))
+
+        assert professions[0].name == 'emäntä'
+        assert professions[0].SESgroup1989 == 1
+        assert professions[0].socialClassRank == 5
+        assert professions[0].occupationCategory == 3
+        assert professions[0].agricultureOrForestryRelated is True
+        assert professions[0].education is False
+
+        assert professions[1].name == 'kirvesmies'
+        assert professions[1].SESgroup1989 is None
+        assert professions[1].socialClassRank is None
+        assert professions[1].occupationCategory is None
+        assert professions[1].agricultureOrForestryRelated is None
+        assert professions[1].education is None
+
+        assert professions[2].name == 'maanviljelijä'
 
 # TODO:
 # should fill in coordinates if they are not set but not modify coordinates if they are set already in existing Place

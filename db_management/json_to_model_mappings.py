@@ -71,10 +71,17 @@ def convert_boolean_none(key, model, value, data_entry, extra_data):
 
 
 def add_profession(key, model, profession, data_entry, extra_data):
-    if profession is None:
+    if profession['professionName'] is None:
         return model, None
     else:
-        return model, Profession.get_or_create(name=profession)[0].id
+        profession_model = Profession.get_or_create(name=profession['professionName'])[0]
+
+        if profession['extraInfo'] is not None:
+            # Extra info is not in the model
+            profession_model.set_missing_properties(profession['extraInfo'])
+            profession_model.save()
+
+        return model, profession_model.id
 
 
 def add_page(key, model, page_number, data_entry, extra_data):

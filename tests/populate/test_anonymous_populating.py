@@ -85,7 +85,7 @@ class TestPersonPopulate:
         assert spouse.prevLastName is None
         assert spouse.originalText is None
         assert spouse.sex == 'f'
-        assert spouse.professionId.name == person_data['spouse']['profession']
+        assert spouse.professionId.name == person_data['spouse']['profession']['professionName']
 
         assert spouse.birthPlaceId.name == person_data['spouse']['birthData']['birthLocation']['locationName']
         assert spouse.birthDay == population_utils.int_or_none(person_data['spouse']['birthData']['birthDay'])

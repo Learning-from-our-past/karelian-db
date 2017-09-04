@@ -19,7 +19,7 @@ class TestUpdateOnExistingDb:
         person_data[0]['primaryPerson']['name']['firstNames'] = 'JAAKKO JAKKE'
         person_data[0]['primaryPerson']['name']['surname'] = 'JAAKKOLA'
         person_data[0]['primaryPerson']['birthLocation']['locationName'] = 'Kuolemajärvi'
-        person_data[0]['primaryPerson']['profession'] = 'Kirvesmies'
+        person_data[0]['primaryPerson']['profession']['professionName'] = 'Kirvesmies'
         person_data[0]['spouse']['firstNames'] = 'SAANA'
         person_data[0]['spouse']['weddingYear'] = '1969'
         person_data[0]['children'][0]['birthYear'] = '1955'
@@ -54,7 +54,6 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
     def truncate(self):
         DBUtils.truncate_db()
 
-
     def should_add_living_records(self, person_data, mocker):
         person_models = []
 
@@ -73,7 +72,7 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
         assert len(records_for_person) == 5
 
         check_update_report('should_add_living_records', {
-            'recordCountChange': {'Marriage': 1, 'Profession': 2, 'Child': 2, 'Place': 7, 'Person': 3, 'Page': 1, 'LivingRecord': 10}
+            'recordCountChange': {'Marriage': 1, 'Profession': 3, 'Child': 2, 'Place': 7, 'Person': 3, 'Page': 1, 'LivingRecord': 10}
         })
 
     class TestChildren:
