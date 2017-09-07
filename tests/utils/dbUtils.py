@@ -10,11 +10,6 @@ import logging
 from peewee_migrate import LOGGER
 LOGGER.setLevel(logging.WARN)
 
-# FIXME: Dirty way to pass the schema for migration history so that peewee_migrate will work properly.
-# More information: https://github.com/klen/peewee_migrate/issues/51
-from peewee_migrate import MigrateHistory
-MigrateHistory._meta.schema = 'system'
-
 """
 Provides basic services to manage database during tests such as functions to create, drop and truncate
 contents of the testdbs. Loads configurations from test-config.json file on start up.
@@ -95,7 +90,7 @@ class DBUtils:
         self.peewee_database.connect()
 
         # Run all unapplied migrations
-        router = Router(self.peewee_database)
+        router = Router(self.peewee_database, schema='system')
         router.run()
 
     def truncate_db(self):
