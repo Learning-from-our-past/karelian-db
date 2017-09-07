@@ -62,6 +62,7 @@ class Place(BaseModel):
     region = TextField()
     location = PointField()
     ambiguousRegion = BooleanField(default=False)
+    invalidData = BooleanField(default=False)
     editLog = BinaryJSONField()
 
     class Meta:
@@ -84,6 +85,7 @@ class Profession(BaseModel):
     agricultureOrForestryRelated = BooleanField(null=True)
     education = BooleanField(null=True)
     manualLabor = BooleanField(null=True)
+    invalidData = BooleanField(default=False)
 
     def set_missing_properties(self, data_to_insert):
         """
@@ -127,6 +129,7 @@ class Person(BaseModel):
     returnedKarelia = TextField()
     sex = TextField()
     editLog = BinaryJSONField()
+    invalidData = BooleanField(default=False)
 
     @staticmethod
     def create_or_get(data):
@@ -152,6 +155,7 @@ class Child(BaseModel):
     sex = TextField()
     sourceTextId = TextField()
     editLog = BinaryJSONField()
+    invalidData = BooleanField(default=False)
 
     @staticmethod
     def create_or_get(data):
@@ -191,6 +195,7 @@ class Marriage(BaseModel):
     womanId = ForeignKeyField(db_column='womanId', rel_model=Person, to_field='id', related_name='marriage_Person_womanId_set')
     weddingYear = IntegerField(null=True)
     editLog = BinaryJSONField()
+    invalidData = BooleanField(default=False)
 
     class Meta:
         db_table = 'Marriage'
