@@ -27,11 +27,11 @@ import peewee as pw
 
 def migrate(migrator, database, fake=False, **kwargs):
     migrator.sql("""
-    ALTER TABLE siirtokarjalaisten_tie."Person" ADD COLUMN "invalidData" BOOLEAN DEFAULT FALSE;
-    ALTER TABLE siirtokarjalaisten_tie."Child" ADD COLUMN "invalidData" BOOLEAN DEFAULT FALSE;
-    ALTER TABLE siirtokarjalaisten_tie."Profession" ADD COLUMN "invalidData" BOOLEAN DEFAULT FALSE;
-    ALTER TABLE siirtokarjalaisten_tie."Marriage" ADD COLUMN "invalidData" BOOLEAN DEFAULT FALSE;
-    ALTER TABLE siirtokarjalaisten_tie."Place" ADD COLUMN "invalidData" BOOLEAN DEFAULT FALSE;
+    ALTER TABLE siirtokarjalaisten_tie."Person" ADD COLUMN "markRowForRemoval" BOOLEAN DEFAULT FALSE;
+    ALTER TABLE siirtokarjalaisten_tie."Child" ADD COLUMN "markRowForRemoval" BOOLEAN DEFAULT FALSE;
+    ALTER TABLE siirtokarjalaisten_tie."Profession" ADD COLUMN "markRowForRemoval" BOOLEAN DEFAULT FALSE;
+    ALTER TABLE siirtokarjalaisten_tie."Marriage" ADD COLUMN "markRowForRemoval" BOOLEAN DEFAULT FALSE;
+    ALTER TABLE siirtokarjalaisten_tie."Place" ADD COLUMN "markRowForRemoval" BOOLEAN DEFAULT FALSE;
     """)
 
 
