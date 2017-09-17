@@ -97,6 +97,26 @@ class TestPersonPopulate:
         assert spouse.deathYear is None
 
 
+class TestFarmDetailsPopulate:
+
+    def should_have_populated_farm_details_correctly(self):
+        farm_details = list(FarmDetails.select())
+
+        # There should be only one farm details which contains some true flags
+        assert len(farm_details) == 1
+        assert farm_details[0].maanhankintalaki is True
+        assert farm_details[0].animalHusbandry is True
+        assert farm_details[0].dairyFarm is False
+
+        # Two of the persons should have id to farm details while one does not have any
+        persons = list(Person.select())
+        assert persons[0].kairaId == 'siirtokarjalaiset_1_1P' and persons[0].farmDetailsId.id is not None
+        assert persons[1].kairaId == 'siirtokarjalaiset_1_1S_1' and persons[1].farmDetailsId.id is not None
+        assert persons[0].farmDetailsId.id == persons[1].farmDetailsId.id
+
+        assert persons[2].kairaId == 'siirtokarjalaiset_1_2P' and persons[2].farmDetailsId is None
+
+
 class TestProfessionPopulate:
 
     def should_have_populated_all_professions_correctly(self):

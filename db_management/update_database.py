@@ -34,7 +34,7 @@ def _update_person(primary_person_model, data_entry, csv_record):
 
 
 def _update_spouse(spouse_person_model, primary_person_model, data_entry, csv_record):
-    spouse_person = _map_data_to_model(spouse_person_model, data_entry, json_to_spouse)
+    spouse_person = _map_data_to_model(spouse_person_model, data_entry, json_to_spouse, extra_data={'primary_person': primary_person_model})
 
     st_idx = csv_record.add_spouse(data_entry, data_entry['spouse'])
     if spouse_person.sourceTextId != st_idx:
