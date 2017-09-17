@@ -121,6 +121,23 @@ def add_marriage(key, models, wedding_year_input, data_entry, extra_data):
     return models, wedding_year_input
 
 
+def add_farm_details(is_primary_person):
+    def _add_farm_details(key, model, farm_details, data_entry, extra_data):
+        if is_primary_person:
+            if farm_details is not None:
+                farm_details = FarmDetails(**farm_details)
+                farm_details.save()
+                return model, farm_details.id
+            else:
+                return model, None
+        else:
+            # For spouse just get the farm details id from primary person model where it was added
+            # earlier.
+            return model, extra_data['primary_person'].farmDetailsId
+
+    return _add_farm_details
+
+
 def get_parent_id(parent_to_get):
     """
        Set Child model's parent id by inspecting Person models passed
@@ -197,6 +214,10 @@ json_to_primary_person = {
         'professionId': {
             'json_path': ['primaryPerson', 'profession'],
             'operations': [add_profession, map_value_to_model]
+        },
+        'farmDetailsId': {
+            'json_path': ['farmDetails'],
+            'operations': [add_farm_details(True), map_value_to_model]
         },
         'firstName': {
             'json_path': ['primaryPerson', 'name', 'firstNames'],
@@ -277,6 +298,10 @@ json_to_spouse = {
         'deathYear': {
             'json_path': ['spouse', 'deathYear'],
             'operations': [map_value_to_model]
+        },
+        'farmDetailsId': {
+            'json_path': [],
+            'operations': [add_farm_details(False), map_value_to_model]
         },
         'firstName': {
             'json_path': ['spouse', 'firstNames'],

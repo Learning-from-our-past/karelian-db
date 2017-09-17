@@ -106,6 +106,19 @@ class Profession(BaseModel):
     class Meta:
         db_table = 'Profession'
 
+
+class FarmDetails(BaseModel):
+    animalHusbandry = BooleanField(default=False)
+    dairyFarm = BooleanField(default=False)
+    coldFarm = BooleanField(default=False)
+    asutustila = BooleanField(default=False)
+    maanhankintalaki = BooleanField(default=False)
+    editLog = BinaryJSONField()
+
+    class Meta:
+        db_table = 'FarmDetails'
+
+
 class Person(BaseModel):
     kairaId = TextField()
     birthDay = IntegerField()
@@ -128,6 +141,7 @@ class Person(BaseModel):
     professionId = ForeignKeyField(db_column='professionId', null=True, rel_model=Profession, to_field='id')
     returnedKarelia = TextField()
     sex = TextField()
+    farmDetailsId = ForeignKeyField(db_column='farmDetailsId', null=True, rel_model=FarmDetails, to_field='id')
     editLog = BinaryJSONField()
     markRowForRemoval = BooleanField(default=False)
 
@@ -143,6 +157,7 @@ class Person(BaseModel):
 
     class Meta:
         db_table = 'Person'
+
 
 class Child(BaseModel):
     kairaId = TextField()

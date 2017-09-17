@@ -185,7 +185,14 @@
                 },
                 "kairaId": "siirtokarjalaiset_1_1C_2"
             }
-        ]
+        ],
+        "farmDetails": {
+            "maanhankintalaki": true,
+            "coldFarm": false,
+            "animalHusbandry": true,
+            "asutustila": false,
+            "dairyFarm": false
+        }
     },
     {
         "primaryPerson": {
@@ -322,6 +329,7 @@
             "imagePath": "",
             "sourceText": "redacted2"
         },
-        "children": []
+        "children": [],
+        "farmDetails": null
     }
 ]
