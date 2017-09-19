@@ -24,3 +24,6 @@ kill-connections-test:
 
 powa-web:
 	powa-web --config=.powa-web.conf
+
+purge-pyc:
+	find . -name "*.pyc" -exec rm -f {} \;
