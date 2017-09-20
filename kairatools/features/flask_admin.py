@@ -1,9 +1,9 @@
 from flask import url_for
 from flask_admin import Admin
-from views.base_view import KairaToolsBaseModelView
-from views.admin_view import KairaToolsAdminIndexView
+from kairatools.views.base_view import KairaToolsBaseModelView
+from kairatools.views.admin_view import KairaToolsAdminIndexView
 from flask_admin import helpers as admin_helpers
-from models.kairatools_models import User, Role
+from kairatools.models.kairatools_models import User, Role
 
 def setup_admin(app, security):
     # Setup admin panel

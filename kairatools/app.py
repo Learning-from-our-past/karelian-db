@@ -1,12 +1,12 @@
 from flask import Flask, Blueprint
 from flask_security import Security, PeeweeUserDatastore
-from instance.config import app_config
+from kairatools.instance.config import app_config
 from flask_restful import Api
-from models.kairatools_models import *
-from routes.usersroute import UsersRoute
+from kairatools.models.kairatools_models import *
+from kairatools.routes.usersroute import UsersRoute
 from flask_mail import Mail
-from features.flask_admin import setup_admin
-from views.index import index_bp
+from kairatools.features.flask_admin import setup_admin
+from kairatools.views.index import index_bp
 import os
 
 
@@ -14,7 +14,6 @@ import os
 config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_object(app_config[config_name])
-app.config.from_pyfile('config.py')
 
 # FIXME: Move these details to proper config file after everything else works ok
 db_connection.init_database('learning-from-our-past', 'postgres')

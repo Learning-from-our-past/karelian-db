@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_restful import Resource, fields, marshal_with
-from models.kairatools_models import User
+from kairatools.models.kairatools_models import User
 
 
 class UsersRoute(Resource):

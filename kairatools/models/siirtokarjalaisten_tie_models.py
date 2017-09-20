@@ -1,5 +1,5 @@
 from playhouse.postgres_ext import *
-from models.db_connection import db_connection
+from kairatools.models.db_connection import db_connection
 database = db_connection.get_database()
 
 

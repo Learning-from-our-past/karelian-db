@@ -1,9 +1,9 @@
 import sys
 from flask_security.utils import hash_password
-import app
+import kairatools.app as app
 import datetime
 import getpass
-from models.kairatools_models import User, Role, UserRole
+from kairatools.models.kairatools_models import User, Role, UserRole
 
 with app.app.app_context():
     super_user = {
