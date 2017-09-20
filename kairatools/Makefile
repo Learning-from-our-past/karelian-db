@@ -1,8 +1,8 @@
 new-migration:
-	python -m tasks.new_migration
+	cd ..; python -m kairatools.tasks.new_migration
 
 migrate:
-	python -m tasks.migrate
+	cd ..; python -m kairatools.tasks.migrate
 
 create-super-user:
-	python -m tasks.create_superuser
+	cd ..; python -m kairatools.tasks.create_superuser
