@@ -12,11 +12,12 @@ addons:
     packages:
       - postgresql-9.6-postgis-2.3 # A workaround of known Travis issue: https://github.com/travis-ci/travis-ci/issues/7048
 install:
-  - pip install -r database/requirements.txt
+  - pip install -r requirements.txt
 before_script:
 - psql template1 -c 'create extension hstore;'
 script: 
   - cd database
-  - python -m pytest
+  - python -m pytest database/tests
+  - python -m pytest kairatools/tests
 notifications:
   email: false
