@@ -1,6 +1,6 @@
 from playhouse.postgres_ext import *
-from db_management.models.db_connection import db_connection
-from config import CONFIG
+from database.db_management.models.db_connection import db_connection
+from database.config import CONFIG
 
 database = db_connection.get_database()
 

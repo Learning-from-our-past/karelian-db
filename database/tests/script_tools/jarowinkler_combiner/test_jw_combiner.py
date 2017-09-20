@@ -1,4 +1,4 @@
-from script_tools.jarowinkler_place_combinator.place_combiner import combine_places
+from database.script_tools.jarowinkler_place_combinator.place_combiner import combine_places
 import pytest
 
 

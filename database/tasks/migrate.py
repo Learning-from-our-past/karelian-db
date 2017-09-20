@@ -1,5 +1,5 @@
 from peewee_migrate import Router
-from config import CONFIG
+from database.config import CONFIG
 
 from db_management.models.db_connection import db_connection
 

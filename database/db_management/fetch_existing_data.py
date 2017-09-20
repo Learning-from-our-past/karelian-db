@@ -1,4 +1,4 @@
-from db_management.models.db_siirtokarjalaistentie_models import *
+from database.db_management.models.db_siirtokarjalaistentie_models import *
 
 
 def _fetch_primary_person(kaira_id):

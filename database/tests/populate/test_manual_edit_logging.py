@@ -1,8 +1,5 @@
 import pytest
-
-import tests.utils.population_utils as population_utils
-from db_management.models.db_siirtokarjalaistentie_models import *
-from tests.utils.dbUtils import DBUtils
+from database.db_management.models.db_siirtokarjalaistentie_models import *
 
 
 class TestPersonEditLogging:

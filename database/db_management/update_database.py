@@ -1,7 +1,7 @@
-from db_management.fetch_existing_data import fetch_existing_data_of_person_entry
-from db_management.json_to_model_mappings import *
-from db_management.exceptions import *
-from db_management.update_report import update_report
+from database.db_management.fetch_existing_data import fetch_existing_data_of_person_entry
+from database.db_management.json_to_model_mappings import *
+from database.db_management.exceptions import *
+from database.db_management.update_report import update_report
 
 def update_data_in_db(data_entry, csv_record):
     existing_data = fetch_existing_data_of_person_entry(data_entry)

@@ -7,10 +7,10 @@ An example of this is a case where children are populated to the db. Before popu
 has manual made change in the db. If they have, we should cancel updating all children. To do this, we need to inspect
 all children before trying to insert any of them. This is a task suitable to be ran before actual population.
 """
-from db_management.models.db_siirtokarjalaistentie_models import *
-from db_management.exceptions import *
-from db_management.update_report import update_report
-from config import CONFIG
+from database.db_management.models.db_siirtokarjalaistentie_models import *
+from database.db_management.exceptions import *
+from database.db_management.update_report import update_report
+from database.config import CONFIG
 import nltk.stem.snowball as snowball
 stemmer = snowball.SnowballStemmer('finnish')
 

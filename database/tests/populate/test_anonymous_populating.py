@@ -1,10 +1,10 @@
 import pytest
-import db_management.preprocess_operations as preproc
-import config
-import tests.utils.population_utils as population_utils
-from db_management.models.db_siirtokarjalaistentie_models import *
-from db_management.update_database import update_data_in_db
-from tests.utils.dbUtils import DBUtils
+import database.db_management.preprocess_operations as preproc
+import database.config as config
+import database.tests.utils.population_utils as population_utils
+from database.db_management.models.db_siirtokarjalaistentie_models import *
+from database.db_management.update_database import update_data_in_db
+from database.tests.utils.dbUtils import DBUtils
 
 
 class TestPersonPopulate:

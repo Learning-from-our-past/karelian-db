@@ -1,10 +1,8 @@
-import os
-import json
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from peewee_migrate import Router
 from peewee import *
-from tests.test_config import CONFIG
+from database.tests.test_config import CONFIG
 # Do not log useless messages about migrations during test setup
 import logging
 from peewee_migrate import LOGGER
@@ -27,7 +25,7 @@ class DBUtils:
         self.test_db_connection = None
         self.peewee_database = PostgresqlDatabase(None)
 
-        self._reset_sequences_sql = open('tests/reset_sequences.sql', 'r').read()
+        self._reset_sequences_sql = open('database/tests/reset_sequences.sql', 'r').read()
 
     def _get_test_db_connection(self):
         return psycopg2.connect(dbname=CONFIG['test_db_name'], user=CONFIG['admin_user'], host='localhost')

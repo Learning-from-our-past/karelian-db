@@ -1,5 +1,5 @@
 import pytest
-from db_management.fetch_existing_data import fetch_existing_data_of_person_entry
+from database.db_management.fetch_existing_data import fetch_existing_data_of_person_entry
 
 
 def should_fetch_existing_primary_details_of_person_and_children(person_data):

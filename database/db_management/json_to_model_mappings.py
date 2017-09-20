@@ -1,8 +1,8 @@
-from db_management.models.db_siirtokarjalaistentie_models import *
-from db_management.exceptions import *
-from config import CONFIG
-import db_management.location_operations as loc
-import db_management.preprocess_operations as preproc
+from database.db_management.models.db_siirtokarjalaistentie_models import *
+from database.db_management.exceptions import *
+from database.config import CONFIG
+import database.db_management.location_operations as loc
+import database.db_management.preprocess_operations as preproc
 from playhouse.shortcuts import model_to_dict
 
 

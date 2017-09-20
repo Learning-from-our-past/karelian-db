@@ -1,12 +1,12 @@
 import pytest
-import db_management.location_operations as loc_op
-import db_management.preprocess_operations as preproc
+import database.db_management.location_operations as loc_op
+import database.db_management.preprocess_operations as preproc
 from peewee import Using
-from db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel
-from tests.utils.dbUtils import DBUtils
-from tests.utils.population_utils import MockRecord
-from db_management.update_database import update_data_in_db
-from db_management.update_report import update_report
+from database.db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel
+from database.tests.utils.dbUtils import DBUtils
+from database.tests.utils.population_utils import MockRecord
+from database.db_management.update_database import update_data_in_db
+from database.db_management.update_report import update_report
 from playhouse.shortcuts import model_to_dict
 
 class TestUpdateOnExistingDb:

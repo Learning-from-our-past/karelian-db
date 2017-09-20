@@ -1,6 +1,6 @@
 import json
-from db_management.update_report import update_report
-from main import populate_db
+from database.db_management.update_report import update_report
+from database.main import populate_db
 
 
 class MockRecord:

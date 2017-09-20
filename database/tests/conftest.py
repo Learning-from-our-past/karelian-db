@@ -1,12 +1,12 @@
 import pytest
 
-from db_management.models.db_connection import db_connection
-from db_management.models.db_connection import DbConnection
-import tests.utils.population_utils as population_utils
-from tests.test_config import CONFIG
-import config
-from tests.utils.dbUtils import DBUtils
-from db_management.update_report import update_report
+from database.db_management.models.db_connection import db_connection
+from database.db_management.models.db_connection import DbConnection
+import database.tests.utils.population_utils as population_utils
+from database.tests.test_config import CONFIG
+import database.config as config
+from database.tests.utils.dbUtils import DBUtils
+from database.db_management.update_report import update_report
 
 
 def pytest_collection_modifyitems(session, config, items):

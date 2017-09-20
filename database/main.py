@@ -3,12 +3,12 @@ import os
 import sys
 import argparse
 
-from config import CONFIG
-from db_management.csvRecord import CsvRecordOfPopulation
-from db_management.models.db_connection import db_connection
-from db_management.update_database import update_data_in_db
-from db_management.update_report import update_report
-from db_management.mark_ambiguous_region_places_in_db import mark_ambiguous_places
+from database.config import CONFIG
+from database.db_management.csvRecord import CsvRecordOfPopulation
+from database.db_management.models.db_connection import db_connection
+from database.db_management.update_database import update_data_in_db
+from database.db_management.update_report import update_report
+from database.db_management.mark_ambiguous_region_places_in_db import mark_ambiguous_places
 
 parser = argparse.ArgumentParser(description='Populate data to the database from json files.')
 parser.add_argument('-a', nargs='?', type=str, help='Host address to the database', default='localhost')
