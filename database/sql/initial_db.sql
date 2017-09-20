@@ -1,7 +1,7 @@
 -- create database "learning-from-our-past";
 
 CREATE SCHEMA IF NOT EXISTS extensions;
-DROP SCHEMA IF EXISTS system;
+DROP SCHEMA IF EXISTS system CASCADE;
 CREATE SCHEMA system;
 CREATE EXTENSION IF NOT EXISTS postgis SCHEMA extensions;
 CREATE EXTENSION IF NOT EXISTS plpython3u;
@@ -34,6 +34,7 @@ END$$;
 -- psql template1 -c 'create extension hstore;'
 -- See: http://clarkdave.net/2012/09/postgresql-error-type-hstore-does-not-exist/
 CREATE EXTENSION IF NOT EXISTS hstore SCHEMA extensions;
+DROP SCHEMA IF EXISTS audit CASCADE;
 CREATE SCHEMA audit;
 REVOKE ALL ON SCHEMA audit FROM public;
 

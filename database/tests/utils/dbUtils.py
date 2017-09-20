@@ -25,7 +25,7 @@ class DBUtils:
         self.test_db_connection = None
         self.peewee_database = PostgresqlDatabase(None)
 
-        self._reset_sequences_sql = open('database/tests/reset_sequences.sql', 'r').read()
+        self._reset_sequences_sql = open('./database/tests/reset_sequences.sql', 'r').read()
 
     def _get_test_db_connection(self):
         return psycopg2.connect(dbname=CONFIG['test_db_name'], user=CONFIG['admin_user'], host='localhost')
@@ -75,7 +75,7 @@ class DBUtils:
     def _create_db_schema(self):
         self.test_db_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
-        self.test_db_connection.cursor().execute('ALTER DATABASE ' + CONFIG['test_db_name'] + ' SET search_path=extensions, public;')
+        self.test_db_connection.cursor().execute('ALTER DATABASE ' + CONFIG['test_db_name'] + ' SET search_path=extensions, system, public;')
 
         # Run sql setup file which creates db and schemas
         for path in CONFIG['sql_files']:
@@ -88,7 +88,7 @@ class DBUtils:
         self.peewee_database.connect()
 
         # Run all unapplied migrations
-        router = Router(self.peewee_database, schema='system')
+        router = Router(self.peewee_database, schema='system', migrate_dir='database/migrations')
         router.run()
 
     def truncate_db(self):
@@ -108,5 +108,6 @@ class DBUtils:
 
         # Reset sequences so that they stay mostly the same in between the tests
         self.test_db_connection.cursor().execute(self._reset_sequences_sql)
+
 
 DBUtils = DBUtils()

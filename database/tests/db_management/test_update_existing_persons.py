@@ -59,7 +59,7 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
 
         update_report.setup('should_add_living_records')
 
-        delete_spy = mocker.patch('db_management.location_operations._delete_migration_history', autospec=True)
+        delete_spy = mocker.patch('database.db_management.location_operations._delete_migration_history', autospec=True)
 
         for data_entry in person_data:
             person_models.append(update_data_in_db(data_entry, MockRecord()))
@@ -148,7 +148,7 @@ class TestOnlyForExistingDataInDb:
     def should_not_do_anything_for_livingrecords_if_they_have_not_changed(self, person_data, mocker):
         person_models = []
 
-        delete_spy = mocker.patch('db_management.location_operations._delete_migration_history', autospec=True)
+        delete_spy = mocker.patch('database.db_management.location_operations._delete_migration_history', autospec=True)
 
         for data_entry in person_data:
             person_models.append(update_data_in_db(data_entry, MockRecord()))
