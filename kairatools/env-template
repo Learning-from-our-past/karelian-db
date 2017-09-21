@@ -1,8 +1,0 @@
-source venv/bin/activate
-export FLASK_APP="app.py"
-export SECRET=""
-export APP_SETTINGS="development"
-export DATABASE_URL="postgresql://localhost/learning-from-our-past"
-export MAIL_USERNAME=""
-export MAIL_PASSWORD=""
-export PASSWORD_SALT="supersecretsaltforsecurity"

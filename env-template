@@ -1,0 +1,11 @@
+source ../database-venv/bin/activate
+export FLASK_APP=app.py
+export FLASK_DEBUG=1
+export PASSWORD_SALT=supersecretsaltforsecurity
+export PYTHONUNBUFFERED=1
+export DATABASE_URL=postgresql://localhost:5432/learning-from-our-past
+export MAIL_USERNAME=username@example.com
+export APP_SETTINGS=development
+export SECRET_KEY=secretstring
+export SECRET=secretstring
+export MAIL_PASSWORD=mailpassword
