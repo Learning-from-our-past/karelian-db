@@ -2,6 +2,7 @@ import pytest
 
 from database.db_management.models.db_connection import db_connection
 from database.db_management.models.db_connection import DbConnection
+import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 import database.tests.utils.population_utils as population_utils
 from database.tests.test_config import CONFIG
 import database.config as config
@@ -29,6 +30,10 @@ def database():
     DBUtils.init_test_db()
     db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
     db_connection.connect()
+
+    # Set database of the models
+    db_siirtokarjalaistentie_models.set_database_to_models(db_connection.get_database())
+
     return db_connection.get_database()
 
 @pytest.yield_fixture(autouse=True, scope='session', name='researcher_connection')

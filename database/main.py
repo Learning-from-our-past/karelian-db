@@ -6,6 +6,7 @@ import argparse
 from database.config import CONFIG
 from database.db_management.csvRecord import CsvRecordOfPopulation
 from database.db_management.models.db_connection import db_connection
+import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 from database.db_management.update_database import update_data_in_db
 from database.db_management.update_report import update_report
 from database.db_management.mark_ambiguous_region_places_in_db import mark_ambiguous_places
@@ -63,6 +64,10 @@ if __name__ == "__main__":
     db_connection.init_database(db_name=args['d'], db_user=args['u'], host=args['a'], port=args['p'])
     db_connection.connect()
     database = db_connection.get_database()
+
+    # Set database of the models
+    db_siirtokarjalaistentie_models.set_database_to_models(database)
+
     csv_record = None
 
     if len(sys.argv) > 1:

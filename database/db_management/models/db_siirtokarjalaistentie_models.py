@@ -1,38 +1,28 @@
 from playhouse.postgres_ext import *
-from database.db_management.models.db_connection import db_connection
 from database.config import CONFIG
+database_proxy = Proxy()
 
-database = db_connection.get_database()
+
+def set_database_to_models(database):
+    database_proxy.initialize(database)
+    database_proxy.register_fields({'point': 'POINT'})
+
 
 class PointField(Field):
     db_field = 'point'
 
-database.register_fields({'point': 'POINT'})
 
 def pft(latitude, longitude):
     return fn.ST_SetSRID(fn.St_MakePoint(latitude, longitude), 4326)
+
 
 class UnknownField(object):
     def __init__(self, *_, **__): pass
 
 
-class KairaUpdateReportModel(Model):
-    class Meta:
-        database = database
-        schema = 'system'
-        db_table = 'KairaUpdateReport'
-
-    time = DateTimeField()
-    kairaFileName = TextField()
-    changedRecordsCount = JSONField()
-    recordCountChange = JSONField()
-    ignoredRecordsCount = JSONField()
-    comment = TextField(null=True)
-
-
 class BaseModel(Model):
     class Meta:
-        database = database
+        database = database_proxy
         schema = 'siirtokarjalaisten_tie'
 
     def get_editable_fields(self):
@@ -51,6 +41,20 @@ class BaseModel(Model):
 
         return {key: value for (key, value) in edit_log.items() if
                 value['author'] not in CONFIG['users_whose_edits_can_be_overridden']}
+
+
+class KairaUpdateReportModel(Model):
+    class Meta:
+        database = database_proxy
+        schema = 'system'
+        db_table = 'KairaUpdateReport'
+
+    time = DateTimeField()
+    kairaFileName = TextField()
+    changedRecordsCount = JSONField()
+    recordCountChange = JSONField()
+    ignoredRecordsCount = JSONField()
+    comment = TextField(null=True)
 
 
 class Place(BaseModel):
@@ -148,7 +152,7 @@ class Person(BaseModel):
     @staticmethod
     def create_or_get(data):
         try:
-            with database.atomic():
+            with database_proxy.atomic():
                 return Person.create(**data)
         except IntegrityError:
             # this is a unique column, so this row already exists,
@@ -175,7 +179,7 @@ class Child(BaseModel):
     @staticmethod
     def create_or_get(data):
         try:
-            with database.atomic():
+            with database_proxy.atomic():
                 return Child.create(**data)
         except IntegrityError:
             # this is a unique column, so this row already exists,
@@ -195,7 +199,7 @@ class LivingRecord(BaseModel):
     @staticmethod
     def create_or_get(data):
         try:
-            with database.atomic():
+            with database_proxy.atomic():
                 return LivingRecord.create(**data)
         except IntegrityError:
             # this is a unique column, so this row already exists,
