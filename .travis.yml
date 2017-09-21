@@ -16,8 +16,6 @@ install:
 before_script:
 - psql template1 -c 'create extension hstore;'
 script: 
-  - cd database
-  - python -m pytest database/tests
-  - python -m pytest kairatools/tests
+  - make test
 notifications:
   email: false
