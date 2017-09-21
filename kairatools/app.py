@@ -7,6 +7,7 @@ from kairatools.routes.usersroute import UserRoute
 from flask_mail import Mail
 from kairatools.features.flask_admin import setup_admin
 from kairatools.views.index import index_bp
+import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 import os
 
 
@@ -18,6 +19,9 @@ def get_app():
 
     db_connection.init_database(app_config[config_name].DATABASE_NAME, app_config[config_name].DATABASE_USER)
     db_connection.connect()
+
+    # Setup Kaira-db models
+    db_siirtokarjalaistentie_models.set_database_to_models(db_connection.get_database())
 
     # Setup Rest-API
     api_bp = Blueprint('api', __name__)

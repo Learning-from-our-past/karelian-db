@@ -5,6 +5,7 @@ import database.tests.utils.population_utils as population_utils
 from database.tests.test_config import CONFIG
 import database.config as config
 from database.tests.utils.dbUtils import DBUtils
+import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 from kairatools.app import get_app
 from kairatools.models.db_connection import db_connection as kairatools_connection
 
@@ -30,6 +31,9 @@ def _database():
     DBUtils.init_test_db()
     db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
     db_connection.connect()
+
+    # Setup Kaira-db models
+    # db_siirtokarjalaistentie_models.set_database_to_models(db_connection.get_database())
     return db_connection.get_database()
 
 
