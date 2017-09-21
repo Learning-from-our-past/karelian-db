@@ -44,11 +44,12 @@ def populate_person_information_to_db(_database):
 
 @pytest.yield_fixture(autouse=True, scope='function', name='app')
 def app(person_data):  # person_data as param to force it be ran before this one to let person populating to do its job first
-    with get_app().app_context():
+    app = get_app()
+    with app.app_context():
         # Run kaira-tools migrations
         router = Router(kairatools_connection.get_database(), schema='kairatools', migrate_dir='kairatools/migrations')
         router.run()
 
-        yield app
+        yield app.test_client()
 
         kairatools_connection.close()

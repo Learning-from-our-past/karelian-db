@@ -3,7 +3,7 @@ from flask_restful import Resource, fields, marshal_with
 from kairatools.models.kairatools_models import User
 
 
-class UsersRoute(Resource):
+class UserRoute(Resource):
     user_fields = {
         'id': fields.Integer,
         'name': fields.String,

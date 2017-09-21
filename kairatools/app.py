@@ -3,7 +3,7 @@ from flask_security import Security, PeeweeUserDatastore
 from kairatools.instance.config import app_config
 from flask_restful import Api
 from kairatools.models.kairatools_models import *
-from kairatools.routes.usersroute import UsersRoute
+from kairatools.routes.usersroute import UserRoute
 from flask_mail import Mail
 from kairatools.features.flask_admin import setup_admin
 from kairatools.views.index import index_bp
@@ -34,7 +34,7 @@ def get_app():
     setup_admin(_app, security)
 
     # Register route blueprints
-    api.add_resource(UsersRoute, '/users')
+    api.add_resource(UserRoute, '/user')
     _app.register_blueprint(api_bp)
 
     # Register view blueprints
