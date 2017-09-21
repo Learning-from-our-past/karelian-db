@@ -1,4 +1,4 @@
-"""Peewee migrations -- 001_migration_name.py.
+"""Peewee migrations -- 017_migration_name.py.
 
 Some examples (model - class or model name)::
 
@@ -26,40 +26,10 @@ import peewee as pw
 
 
 def migrate(migrator, database, fake=False, **kwargs):
-    migrator.sql(
-        """
-        CREATE TABLE kairatools."User"(
-          id SERIAL PRIMARY KEY,
-          email TEXT NOT NULL UNIQUE,
-          password TEXT NOT NULL,
-          name TEXT,
-          picture TEXT,
-          active BOOLEAN DEFAULT FALSE,
-          confirmed_at TIMESTAMP DEFAULT NULL,
-          last_login_at TIMESTAMP,
-          current_login_at TIMESTAMP,
-          last_login_ip TEXT,
-          current_login_ip TEXT,
-          login_count INTEGER DEFAULT 0
-        );
-        
-        CREATE TABLE kairatools."Role" (
-          "id" SERIAL PRIMARY KEY,
-          "name" TEXT UNIQUE,
-          "description" TEXT
-        );
-        
-        CREATE TABLE kairatools."UserRole" (
-          id SERIAL PRIMARY KEY,
-          "user_id" INTEGER REFERENCES kairatools."User"(id),
-          "role_id" INTEGER REFERENCES kairatools."Role"(id)
-        );
-        
-        INSERT INTO kairatools."Role" (name, description) VALUES ('superuser', 'Admin rights. Able to confirm registrations.');
-        INSERT INTO kairatools."Role" (name, description) VALUES ('researcher', 'Editing and viewing rights for all tools.');
-        
-        """
-    )
+    migrator.sql("""
+    DROP SCHEMA IF EXISTS kairatools CASCADE;
+    CREATE SCHEMA kairatools;
+    """)
 
 
 

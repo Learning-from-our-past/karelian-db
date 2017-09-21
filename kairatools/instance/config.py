@@ -31,11 +31,19 @@ class DevelopmentConfig(Config):
     MAIL_PASSWORD =  os.getenv('MAIL_PASSWORD')
     SECURITY_EMAIL_SENDER = os.getenv('MAIL_USERNAME')
 
+    # Database
+    DATABASE_NAME = 'learning-from-our-past'
+    DATABASE_USER = 'postgres'
+
 
 class TestingConfig(Config):
     """Configurations for Testing, with a separate test database."""
     TESTING = True
     DEBUG = True
+
+    # Database
+    DATABASE_NAME = 'karelian_testdb'
+    DATABASE_USER = 'postgres'
 
 
 class StagingConfig(Config):

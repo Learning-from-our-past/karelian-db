@@ -10,36 +10,39 @@ from kairatools.views.index import index_bp
 import os
 
 
-# Load basic configurations
-config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_object(app_config[config_name])
+def get_app():
+    # Load basic configurations
+    config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
+    _app = Flask(__name__, instance_relative_config=True)
+    _app.config.from_object(app_config[config_name])
 
-# FIXME: Move these details to proper config file after everything else works ok
-db_connection.init_database('learning-from-our-past', 'postgres')
-db_connection.connect()
+    db_connection.init_database(app_config[config_name].DATABASE_NAME, app_config[config_name].DATABASE_USER)
+    db_connection.connect()
 
-# Setup Rest-API
-api_bp = Blueprint('api', __name__)
-api = Api(api_bp)
+    # Setup Rest-API
+    api_bp = Blueprint('api', __name__)
+    api = Api(api_bp)
 
-# Setup Flask-Mail
-mail = Mail(app)
+    # Setup Flask-Mail
+    mail = Mail(_app)
 
-# Setup Flask-Security
-user_datastore = PeeweeUserDatastore(db_connection.get_database(), User, Role, UserRole)
-security = Security(app, user_datastore)
+    # Setup Flask-Security
+    user_datastore = PeeweeUserDatastore(db_connection.get_database(), User, Role, UserRole)
+    security = Security(_app, user_datastore)
 
-# Setup Flask-Admin with Flask-Security
-setup_admin(app, security)
+    # Setup Flask-Admin with Flask-Security
+    setup_admin(_app, security)
 
-# Register route blueprints
-api.add_resource(UsersRoute, '/users')
-app.register_blueprint(api_bp)
+    # Register route blueprints
+    api.add_resource(UsersRoute, '/users')
+    _app.register_blueprint(api_bp)
 
-# Register view blueprints
-app.register_blueprint(index_bp)
+    # Register view blueprints
+    _app.register_blueprint(index_bp)
+
+    return _app
 
 
 if __name__ == '__main__':
+    app = get_app()
     app.run()
