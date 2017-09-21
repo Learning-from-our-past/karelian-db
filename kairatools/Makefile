@@ -1,3 +1,6 @@
+test:
+	cd ..; python -m pytest kairatools
+
 new-migration:
 	cd ..; python -m kairatools.tasks.new_migration
 
