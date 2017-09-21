@@ -27,8 +27,8 @@ class DevelopmentConfig(Config):
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
-    MAIL_USERNAME =  os.getenv('MAIL_USERNAME')
-    MAIL_PASSWORD =  os.getenv('MAIL_PASSWORD')
+    MAIL_USERNAME = os.getenv('MAIL_USERNAME')
+    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
     SECURITY_EMAIL_SENDER = os.getenv('MAIL_USERNAME')
 
     # Database
@@ -46,6 +46,16 @@ class TestingConfig(Config):
     DATABASE_USER = 'postgres'
 
 
+class CIConfig(TestingConfig):
+    # Set these properties here since they are used only in CI tests and it's not needed to pass
+    # them via environment there. Just export APP_SETTINGS=ci in travis config file.
+    SECRET_KEY = 'secret'
+    SECRET = 'secret'
+    SECURITY_PASSWORD_SALT = 'testsalt'
+    MAIL_USERNAME = 'test@example.com'
+    MAIL_PASSWORD = 'password'
+
+
 class StagingConfig(Config):
     """Configurations for Staging."""
     DEBUG = True
@@ -60,6 +70,7 @@ class ProductionConfig(Config):
 app_config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
+    'ci': CIConfig,
     'staging': StagingConfig,
-    'production': ProductionConfig,
+    'production': ProductionConfig
 }
