@@ -1,15 +1,17 @@
-from flask import Flask, Blueprint
-from flask_security import Security, PeeweeUserDatastore
-from kairatools.instance.config import app_config
-from flask_restful import Api
-from kairatools.models.kairatools_models import User, Role, UserRole
-from common.db_connection import db_connection
-from kairatools.routes.usersroute import UserRoute
-from flask_mail import Mail
-from kairatools.features.flask_admin import setup_admin
-from kairatools.views.index import index_bp
-import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 import os
+
+from flask import Flask, Blueprint
+from flask_mail import Mail
+from flask_restful import Api
+from flask_security import Security, PeeweeUserDatastore
+
+import common.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+from common.db_connection import db_connection
+from kairatools.features.flask_admin import setup_admin
+from kairatools.instance.config import app_config
+from kairatools.models.kairatools_models import User, Role, UserRole
+from kairatools.routes.usersroute import UserRoute
+from kairatools.views.index import index_bp
 
 
 def get_app():

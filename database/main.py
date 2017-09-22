@@ -2,7 +2,8 @@ import argparse
 import json
 import os
 import sys
-import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+
+import common.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 from common.db_connection import db_connection
 from database.config import CONFIG
 from database.db_management.csvRecord import CsvRecordOfPopulation

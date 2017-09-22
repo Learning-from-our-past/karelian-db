@@ -1,9 +1,10 @@
-from database.db_management.models.db_siirtokarjalaistentie_models import *
-from database.db_management.exceptions import *
-from database.config import CONFIG
+from playhouse.shortcuts import model_to_dict
+
 import database.db_management.location_operations as loc
 import database.db_management.preprocess_operations as preproc
-from playhouse.shortcuts import model_to_dict
+from common.siirtokarjalaistentie_models import *
+from database.config import CONFIG
+from database.db_management.exceptions import *
 
 
 def map_value_to_model(key, model, field_value, data_entry, extra_data):

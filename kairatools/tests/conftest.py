@@ -1,9 +1,8 @@
-import common.testing.population_utils as population_utils
 import pytest
-from peewee_migrate import Router
-from peewee import Using
+
+import common.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+import common.testing.population_utils as population_utils
 import database.config as config
-import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 from common.db_connection import db_connection
 from common.testing.dbUtils import DBUtils
 from database.tests.test_config import CONFIG

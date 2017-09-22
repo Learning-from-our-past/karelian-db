@@ -1,5 +1,4 @@
-import pytest
-from database.db_management.models.db_siirtokarjalaistentie_models import *
+from common.siirtokarjalaistentie_models import *
 
 class TestMarkRegionsAmbiguous:
 

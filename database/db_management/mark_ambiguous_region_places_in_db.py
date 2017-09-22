@@ -1,4 +1,4 @@
-from database.db_management.models.db_siirtokarjalaistentie_models import *
+from common.siirtokarjalaistentie_models import *
 """
 Minor helper function which tries to find Places which have multiple rows with same name
 but different region entry (other, karelia, NULL) and adds flag for these places so that

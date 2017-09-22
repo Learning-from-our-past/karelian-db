@@ -1,5 +1,6 @@
-from database.db_management.models.db_siirtokarjalaistentie_models import *
 import datetime
+
+from common.siirtokarjalaistentie_models import *
 
 
 class UpdateReportService:
