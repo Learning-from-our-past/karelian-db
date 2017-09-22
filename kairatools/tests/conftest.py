@@ -1,13 +1,13 @@
+import common.testing.population_utils as population_utils
 import pytest
 from peewee_migrate import Router
-from database.db_management.models.db_connection import db_connection
-import database.tests.utils.population_utils as population_utils
-from database.tests.test_config import CONFIG
+from peewee import Using
 import database.config as config
-from database.tests.utils.dbUtils import DBUtils
 import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+from common.db_connection import db_connection
+from common.testing.dbUtils import DBUtils
+from database.tests.test_config import CONFIG
 from kairatools.app import get_app
-from kairatools.models.db_connection import db_connection as kairatools_connection
 
 
 def pytest_collection_modifyitems(session, config, items):
@@ -31,9 +31,14 @@ def _database():
     DBUtils.init_test_db()
     db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
     db_connection.connect()
+    # FIXME: Hypothesis
+    # Likely first time this is ran, the database connection is gotten from database module which
+    # has correct rights and other properties. Next in app fixture, the karelian models' database
+    # is switched to kairatools one. Nex time we then run populate_person_information... fixture
+    # the models have a wrong database connection which then breaks things in an unexpexted way.
 
     # Setup Kaira-db models
-    # db_siirtokarjalaistentie_models.set_database_to_models(db_connection.get_database())
+    db_siirtokarjalaistentie_models.set_database_to_models(db_connection.get_database())
     return db_connection.get_database()
 
 
@@ -49,11 +54,13 @@ def populate_person_information_to_db(_database):
 @pytest.yield_fixture(autouse=True, scope='function', name='app')
 def app(person_data):  # person_data as param to force it be ran before this one to let person populating to do its job first
     app = get_app()
+    print('fukken app')
     with app.app_context():
         # Run kaira-tools migrations
-        router = Router(kairatools_connection.get_database(), schema='kairatools', migrate_dir='kairatools/migrations')
+        router = Router(db_connection.get_database(), schema='kairatools', migrate_dir='kairatools/migrations')
         router.run()
 
         yield app.test_client()
 
-        kairatools_connection.close()
+        db_connection.close()
+

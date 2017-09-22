@@ -1,8 +1,6 @@
 from peewee_migrate import Router
+from common.db_connection import db_connection
 from database.config import CONFIG
-
-from database.db_management.models.db_connection import db_connection
-
 
 db_connection.init_database(db_name=CONFIG['db_name'], db_user=CONFIG['db_admin'])
 db_connection.connect()

@@ -3,7 +3,7 @@ from flask_security import Security, PeeweeUserDatastore
 from kairatools.instance.config import app_config
 from flask_restful import Api
 from kairatools.models.kairatools_models import User, Role, UserRole
-from kairatools.models.db_connection import db_connection
+from common.db_connection import db_connection
 from kairatools.routes.usersroute import UserRoute
 from flask_mail import Mail
 from kairatools.features.flask_admin import setup_admin

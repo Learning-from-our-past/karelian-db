@@ -1,5 +1,5 @@
 import pytest
-import database.tests.utils.population_utils as population_utils
+import common.testing.population_utils as population_utils
 from database.db_management.models.db_siirtokarjalaistentie_models import *
 
 

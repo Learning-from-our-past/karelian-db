@@ -1,13 +1,12 @@
+import common.testing.population_utils as population_utils
 import pytest
-
-from database.db_management.models.db_connection import db_connection
-from database.db_management.models.db_connection import DbConnection
-import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
-import database.tests.utils.population_utils as population_utils
-from database.tests.test_config import CONFIG
 import database.config as config
-from database.tests.utils.dbUtils import DBUtils
+import database.db_management.models.db_siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+from common.db_connection import DbConnection
+from common.db_connection import db_connection
+from common.testing.dbUtils import DBUtils
 from database.db_management.update_report import update_report
+from database.tests.test_config import CONFIG
 
 
 def pytest_collection_modifyitems(session, config, items):

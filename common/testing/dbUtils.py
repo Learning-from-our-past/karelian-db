@@ -14,7 +14,6 @@ contents of the testdbs. Loads configurations from test-config.json file on star
 """
 class DBUtils:
 
-
     def __init__(self):
         self.master_connection = psycopg2.connect(dbname=CONFIG['master_db'], user=CONFIG['admin_user'],
                                                   host='localhost')

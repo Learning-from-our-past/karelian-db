@@ -17,6 +17,7 @@ class MockRecord:
     def save_to_file(self):
         pass
 
+
 def load_json(path):
     with open(path, encoding='utf8') as data_file:
         data = json.load(data_file)
@@ -26,9 +27,9 @@ def load_json(path):
 def populate_from_json(database, path):
     data = load_json(path)
     update_report.setup('population')
-
     populate_db(database, data, MockRecord())
     return data
+
 
 def int_or_none(value):
     try:

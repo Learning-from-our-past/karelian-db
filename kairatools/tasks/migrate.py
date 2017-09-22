@@ -1,5 +1,5 @@
 from peewee_migrate import Router
-from kairatools.models.db_connection import db_connection
+from common.db_connection import db_connection
 
 
 db_connection.init_database('learning-from-our-past', 'postgres')

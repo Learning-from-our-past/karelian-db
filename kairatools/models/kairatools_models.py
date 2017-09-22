@@ -1,5 +1,5 @@
 from playhouse.postgres_ext import *
-from kairatools.models.db_connection import db_connection
+from common.db_connection import db_connection
 from flask_security import RoleMixin, UserMixin
 
 

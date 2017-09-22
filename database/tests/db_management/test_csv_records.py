@@ -1,12 +1,13 @@
-import os
 import csv
+import os
 import shutil
 import pytest
 import database.config as config
-from database.tests.utils import population_utils
-from database.tests.utils.dbUtils import DBUtils
-from database.db_management.update_database import update_data_in_db
+from common.testing.dbUtils import DBUtils
 from database.db_management.csvRecord import CsvRecordOfPopulation
+from database.db_management.update_database import update_data_in_db
+from common.testing import population_utils
+
 
 class TestCsvOnUpdateOnExistingDb:
 

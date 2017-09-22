@@ -1,13 +1,15 @@
 import pytest
+from common.testing.population_utils import MockRecord
+from peewee import Using
+from playhouse.shortcuts import model_to_dict
 import database.db_management.location_operations as loc_op
 import database.db_management.preprocess_operations as preproc
-from peewee import Using
-from database.db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel
-from database.tests.utils.dbUtils import DBUtils
-from database.tests.utils.population_utils import MockRecord
+from common.testing.dbUtils import DBUtils
+from database.db_management.models.db_siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, \
+    KairaUpdateReportModel
 from database.db_management.update_database import update_data_in_db
 from database.db_management.update_report import update_report
-from playhouse.shortcuts import model_to_dict
+
 
 class TestUpdateOnExistingDb:
 

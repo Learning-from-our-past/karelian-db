@@ -218,3 +218,5 @@ class Marriage(BaseModel):
 
     class Meta:
         db_table = 'Marriage'
+
+models = [BaseModel]
