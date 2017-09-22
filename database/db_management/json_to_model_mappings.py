@@ -2,8 +2,8 @@ from playhouse.shortcuts import model_to_dict
 
 import database.db_management.location_operations as loc
 import database.db_management.preprocess_operations as preproc
+from common.database_config import CONFIG
 from common.siirtokarjalaistentie_models import *
-from database.config import CONFIG
 from database.db_management.exceptions import *
 
 

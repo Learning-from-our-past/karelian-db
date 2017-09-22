@@ -1,11 +1,11 @@
 import pytest
 
+import common.database_config as config
 import common.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 import common.testing.population_utils as population_utils
-import database.config as config
 from common.db_connection import db_connection
+from common.testing.database_test_config import CONFIG
 from common.testing.dbUtils import DBUtils
-from database.tests.test_config import CONFIG
 from kairatools.app import get_app
 
 

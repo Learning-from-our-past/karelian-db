@@ -1,11 +1,14 @@
-import psycopg2
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from peewee_migrate import Router
-from peewee import *
-from database.tests.test_config import CONFIG
 # Do not log useless messages about migrations during test setup
 import logging
+
+import psycopg2
+from peewee import *
 from peewee_migrate import LOGGER
+from peewee_migrate import Router
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+
+from common.testing.database_test_config import CONFIG
+
 LOGGER.setLevel(logging.WARN)
 
 """

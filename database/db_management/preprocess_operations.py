@@ -9,8 +9,8 @@ all children before trying to insert any of them. This is a task suitable to be 
 """
 import nltk.stem.snowball as snowball
 
+from common.database_config import CONFIG
 from common.siirtokarjalaistentie_models import *
-from database.config import CONFIG
 from database.db_management.exceptions import *
 from database.db_management.update_report import update_report
 

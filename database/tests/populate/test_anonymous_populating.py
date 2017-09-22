@@ -1,7 +1,7 @@
 import pytest
 
+import common.database_config as config
 import common.testing.population_utils as population_utils
-import database.config as config
 import database.db_management.preprocess_operations as preproc
 from common.siirtokarjalaistentie_models import *
 from common.testing.dbUtils import DBUtils
