@@ -27,15 +27,17 @@ def pytest_collection_modifyitems(session, config, items):
 
 @pytest.fixture(scope="session", autouse=True, name='_database')
 def _database():
-    # Note this uses connection and utils from database/ project
+    # FIXME: There is improvement to be done here. The test data population should probably be done
+    # with init - postgres, populate_person_data - kaira, start up kairatools app - <something else>
+    # Now everything is done with Postgres user since for some reason resetting the db_connection with a different
+    # user takes LOOOOONG time during the tests. Replacing the connection or running data population in a special context
+    # did not seem to help either.
+    # The root problem might be the singleton nature of the db_connection.
+    # Perhaps the solution would be get rid of it and check if Peewee offers the same functionality in form of
+    # thread specific connections...?
     DBUtils.init_test_db()
-    db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
+    db_connection.init_database(CONFIG['test_db_name'], CONFIG['admin_user'])
     db_connection.connect()
-    # FIXME: Hypothesis
-    # Likely first time this is ran, the database connection is gotten from database module which
-    # has correct rights and other properties. Next in app fixture, the karelian models' database
-    # is switched to kairatools one. Nex time we then run populate_person_information... fixture
-    # the models have a wrong database connection which then breaks things in an unexpexted way.
 
     # Setup Kaira-db models
     db_siirtokarjalaistentie_models.set_database_to_models(db_connection.get_database())
@@ -46,7 +48,7 @@ def _database():
 def populate_person_information_to_db(_database):
     config.CONFIG['anonymize'] = False
     DBUtils.truncate_db()
-    data = population_utils.populate_from_json(_database, "./database/tests/populate/data/person2.json")
+    data = population_utils.populate_from_json(db_connection.get_database(), "./database/tests/populate/data/person2.json")
     db_connection.close()
     return data
 
@@ -54,13 +56,7 @@ def populate_person_information_to_db(_database):
 @pytest.yield_fixture(autouse=True, scope='function', name='app')
 def app(person_data):  # person_data as param to force it be ran before this one to let person populating to do its job first
     app = get_app()
-    print('fukken app')
+
     with app.app_context():
-        # Run kaira-tools migrations
-        router = Router(db_connection.get_database(), schema='kairatools', migrate_dir='kairatools/migrations')
-        router.run()
-
         yield app.test_client()
-
         db_connection.close()
-
