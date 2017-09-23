@@ -26,11 +26,11 @@ sudo apt-get install -y postgresql-plpython3-9.6
 ```
 
 ### Setup Postgres .pgpass file
-Either run commands as postgres user (`sudo su postgres`) or set up a password for
-postgres user and then add following line to `~/.pgpass`:
+Set up postgres user to have a password access and then add following lines to `~/.pgpass`:
 
 ```
 localhost:5432:learning-from-our-past:postgres:<password>
+localhost:5432:karelian_testdb:postgres:<password>
 ```
 
 Or if you don't want to use postgres user, you can create a new super user to your postgres cluster and
@@ -47,11 +47,21 @@ source database-venv/bin/activate
 make setup
 ```
 
-This should setup a new database called `learning-from-our-past` to your local postgres cluster. Finally run test command
-to check if all tests pass:
+This should setup a new database called `learning-from-our-past` to your local postgres cluster. 
+Finally run test command to check if all tests pass:
 
 ```
 make test
 ```
 
-If tests pass you should be good to go.
+If tests pass everything should be fine.
+
+## Configure .env file for kairatools
+Kairatools gets various configurations through environment variables which should be set for development environment. This can
+be done via `.env` file. Create a new `.env` file to the root of the project with contents of `env-template` file and fill in 
+details suitable for your local environment.
+
+## Autoenv
+Autoenv is a handy utility which automatically loads the `.env` file when you cd to the file. See instructions for installation here: https://github.com/kennethreitz/autoenv
+
+
