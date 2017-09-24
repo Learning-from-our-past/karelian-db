@@ -29,6 +29,7 @@ sudo apt-get install -y postgresql-plpython3-9.6
 Set up postgres user to have a password access and then add following lines to `~/.pgpass`:
 
 ```
+localhost:5432:postgres:postgres:<password>
 localhost:5432:learning-from-our-past:postgres:<password>
 localhost:5432:karelian_testdb:postgres:<password>
 ```
