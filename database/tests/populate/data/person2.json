@@ -191,7 +191,8 @@
             "coldFarm": false,
             "animalHusbandry": true,
             "asutustila": false,
-            "dairyFarm": false
+            "dairyFarm": false,
+            "farmTotalArea": 53.2
         }
     },
     {

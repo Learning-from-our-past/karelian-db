@@ -108,6 +108,7 @@ class TestFarmDetailsPopulate:
         assert farm_details[0].maanhankintalaki is True
         assert farm_details[0].animalHusbandry is True
         assert farm_details[0].dairyFarm is False
+        assert farm_details[0].farmTotalArea == 53.2
 
         # Two of the persons should have id to farm details while one does not have any
         persons = list(Person.select())
