@@ -119,6 +119,7 @@ class FarmDetails(BaseModel):
     coldFarm = BooleanField(default=False)
     asutustila = BooleanField(default=False)
     maanhankintalaki = BooleanField(default=False)
+    farmTotalArea = FloatField(default=None)
     editLog = BinaryJSONField()
 
     class Meta:
