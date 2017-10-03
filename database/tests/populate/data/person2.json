@@ -114,7 +114,7 @@
                 ]
             },
             "kairaId": "siirtokarjalaiset_1_1P",
-            "originalFamily": null,
+            "formerSurname": null,
             "birthData": {
                 "birthYear": 1909,
                 "birthDay": 28,
@@ -139,7 +139,7 @@
             "deathYear": null,
             "kairaId": "siirtokarjalaiset_1_1S_1",
             "firstNames": "VAIMONNIMI",
-            "originalFamily": "VAIMONIMI",
+            "formerSurname": "VAIMONIMI",
             "weddingYear": 1944,
             "birthData": {
                 "birthLocation": {
@@ -302,7 +302,7 @@
                 ]
             },
             "kairaId": "siirtokarjalaiset_1_2P",
-            "originalFamily": null,
+            "formerSurname": null,
             "birthData": {
                 "birthYear": 1894,
                 "birthDay": 1,
@@ -316,7 +316,7 @@
             "deathYear": null,
             "kairaId": null,
             "firstNames": null,
-            "originalFamily": null,
+            "formerSurname": null,
             "weddingYear": null,
             "birthData": {
                 "birthLocation": null,

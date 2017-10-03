@@ -144,7 +144,7 @@ class Person(BaseModel):
     ownHouse = BooleanField(null=True)
     pageNumber = ForeignKeyField(db_column='pageNumber', rel_model=Page, to_field='pageNumber')
     previousMarriages = TextField(null=True)
-    prevLastName = TextField()
+    formerSurname = TextField()
     professionId = ForeignKeyField(db_column='professionId', null=True, rel_model=Profession, to_field='id')
     returnedKarelia = TextField()
     sex = TextField()

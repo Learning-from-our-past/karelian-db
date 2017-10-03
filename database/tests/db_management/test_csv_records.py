@@ -50,7 +50,7 @@ class TestCsvOnUpdateOnExistingDb:
         assert person_details[1]['kairaId'] == 'siirtokarjalaiset_1_1S_1'
         assert person_details[1]['firstNames'] == 'VAIMONNIMI'
         assert person_details[1]['lastNames'] == 'MIESSUKUNIMI'
-        assert person_details[1]['prevLastName'] == 'VAIMONIMI'
+        assert person_details[1]['formerSurname'] == 'VAIMONIMI'
         assert person_details[1]['sourceTextId'] == 'test_1'
 
         assert person_details[2]['kairaId'] == 'siirtokarjalaiset_1_1C_1'
@@ -102,7 +102,7 @@ class TestCsvOnUpdateOnEmptyDb(TestCsvOnUpdateOnExistingDb):
         assert person_details[1]['kairaId'] == 'siirtokarjalaiset_1_1S_1'
         assert person_details[1]['firstNames'] == 'VAIMONNIMI'
         assert person_details[1]['lastNames'] == 'MIESSUKUNIMI'
-        assert person_details[1]['prevLastName'] == 'VAIMONIMI'
+        assert person_details[1]['formerSurname'] == 'VAIMONIMI'
         assert person_details[1]['sourceTextId'] == 'test_1'
 
         assert person_details[2]['kairaId'] == 'siirtokarjalaiset_1_1C_1'

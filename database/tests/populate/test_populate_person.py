@@ -12,7 +12,7 @@ class TestPersonPopulate:
     def should_have_populated_person_correctly(self, person, person_data):
         assert person.firstName == person_data[0]['primaryPerson']['name']['firstNames']
         assert person.lastName == person_data[0]['primaryPerson']['name']['surname']
-        assert person.prevLastName == person_data[0]['primaryPerson']['originalFamily']
+        assert person.formerSurname == person_data[0]['primaryPerson']['formerSurname']
         assert person.ownHouse == person_data[0]['primaryPerson']['ownHouse']
         assert person.sex == 'm'
         assert person.returnedKarelia == 'true'
@@ -84,7 +84,7 @@ class TestPersonPopulate:
 
         assert spouse.firstName == person_data[0]['spouse']['firstNames']
         assert spouse.lastName == person_data[0]['primaryPerson']['name']['surname']
-        assert spouse.prevLastName == person_data[0]['spouse']['originalFamily']
+        assert spouse.formerSurname == person_data[0]['spouse']['formerSurname']
         assert spouse.sex == 'f'
         assert spouse.professionId.name == person_data[0]['spouse']['profession']['professionName']
 
