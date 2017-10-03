@@ -17,6 +17,10 @@ populate-all-local:
 	python -m database.main database/material/siirtokarjalaiset_III.json;\
 	python -m database.main database/material/siirtokarjalaiset_IV.json;
 
+populate-first-local:
+	cd ..;\
+	python -m database.main database/material/siirtokarjalaiset_I.json;
+
 update-production:
 	cd ..; python database/main.py $(file) -a karelia-17.it.helsinki.fi -p 5432 -d learning-from-our-past
 
