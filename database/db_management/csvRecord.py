@@ -10,7 +10,7 @@ class CsvRecordOfPopulation:
         self._person_file = open(file_name + '_persons.csv', 'w', encoding='utf8')
         self._source_text_file = open(file_name + '_source_texts.csv', 'w', encoding='utf8')
 
-        self._person_field_names = ['kairaId', 'firstNames', 'lastNames', 'prevLastName', 'sourceTextId']
+        self._person_field_names = ['kairaId', 'firstNames', 'lastNames', 'formerSurname', 'sourceTextId']
         self._source_text_field_names = ['sourceTextId', 'sourceText']
 
         self._person_writer = csv.DictWriter(self._person_file, fieldnames=self._person_field_names)
@@ -41,7 +41,7 @@ class CsvRecordOfPopulation:
         self._person_writer.writerow({'kairaId': data_entry['primaryPerson']['kairaId'],
                                'firstNames': data_entry['primaryPerson']['name']['firstNames'],
                                'lastNames': data_entry['primaryPerson']['name']['surname'],
-                               'prevLastName': data_entry['primaryPerson']['originalFamily'],
+                               'formerSurname': data_entry['primaryPerson']['formerSurname'],
                                'sourceTextId': source_text_id})
 
         return source_text_id
@@ -52,7 +52,7 @@ class CsvRecordOfPopulation:
         self._person_writer.writerow({'kairaId': child['kairaId'],
                                'firstNames': child['name'],
                                'lastNames': data_entry['primaryPerson']['name']['surname'],
-                               'prevLastName': None,
+                               'formerSurname': None,
                                'sourceTextId': source_text_id})
 
         return source_text_id
@@ -63,7 +63,7 @@ class CsvRecordOfPopulation:
         self._person_writer.writerow({'kairaId': spouse['kairaId'],
                                'firstNames': spouse['firstNames'],
                                'lastNames':  data_entry['primaryPerson']['name']['surname'],
-                               'prevLastName': spouse['originalFamily'],
+                               'formerSurname': spouse['formerSurname'],
                                'sourceTextId': source_text_id})
 
         return source_text_id
