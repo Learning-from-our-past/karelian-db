@@ -24,7 +24,7 @@ class TestPersonPopulate:
     def should_have_populated_anonymous_person_correctly(self, person, person_data):
         assert person.firstName is None
         assert person.lastName is None
-        assert person.prevLastName is None
+        assert person.formerSurname is None
         assert person.ownHouse == person_data['primaryPerson']['ownHouse']
         assert person.sex == 'm'
         assert person.returnedKarelia == 'true'
@@ -83,7 +83,7 @@ class TestPersonPopulate:
 
         assert spouse.firstName is None
         assert spouse.lastName is None
-        assert spouse.prevLastName is None
+        assert spouse.formerSurname is None
         assert spouse.originalText is None
         assert spouse.sex == 'f'
         assert spouse.professionId.name == person_data['spouse']['profession']['professionName']

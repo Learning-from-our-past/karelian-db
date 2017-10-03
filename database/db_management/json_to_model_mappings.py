@@ -244,8 +244,8 @@ json_to_primary_person = {
             'json_path': ['primaryPerson', 'previousMarriagesFlag'],
             'operations': [convert_boolean_none, map_value_to_model]
         },
-        'prevLastName': {
-            'json_path': ['primaryPerson', 'originalFamily'],
+        'formerSurname': {
+            'json_path': ['primaryPerson', 'formerSurname'],
             'operations': [anonymize, map_value_to_model]
         },
         'returnedKarelia': {
@@ -320,8 +320,8 @@ json_to_spouse = {
             'json_path': ['personMetadata', 'approximatePageNumber'],
             'operations': [map_value_to_model]
         },
-        'prevLastName': {
-            'json_path': ['spouse', 'originalFamily'],
+        'formerSurname': {
+            'json_path': ['spouse', 'formerSurname'],
             'operations': [anonymize, map_value_to_model]
         },
         'sex': {
