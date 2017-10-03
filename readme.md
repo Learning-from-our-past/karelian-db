@@ -65,4 +65,14 @@ details suitable for your local environment.
 ## Autoenv
 Autoenv is a handy utility which automatically loads the `.env` file when you cd to the file. See instructions for installation here: https://github.com/kennethreitz/autoenv
 
+## Database monitoring
+[Powa](http://dalibo.github.io/powa/) is a simple monitoring tool to inspect the database usage and other stats in browser.
+To set up it in your local machine for your local database, follow [Powa docs](http://powa.readthedocs.io/en/latest/powa-web/index.html) about installation.
+In short, you'll need to install *PoWA Archivist* on the machine which has the database.
 
+Once you have installed and configured Powa locally (or you want to use it just for production database), go and rename
+file `.powa_template.conf`to `powa-web.conf` in `/database` directory. Then fill in a new random `cookie_secret` and check
+that the existing server configurations are ok.
+
+To start POWA gui, run `make powa-web` in `/database` directory. Then navigate to [http://localhost:8888](http://localhost:8888)
+and log in.
