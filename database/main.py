@@ -41,6 +41,9 @@ def populate_db(database, data, csv_record):
     LOCK TABLE siirtokarjalaisten_tie."Page" IN SHARE ROW EXCLUSIVE MODE;
     LOCK TABLE siirtokarjalaisten_tie."Place" IN SHARE ROW EXCLUSIVE MODE;
     LOCK TABLE siirtokarjalaisten_tie."Profession" IN SHARE ROW EXCLUSIVE MODE;
+    
+    -- Disable all triggers to speed up the population and prevent needless audit logs
+    SELECT enable_triggers(FALSE);
     """)
 
     with database.atomic():
@@ -49,6 +52,8 @@ def populate_db(database, data, csv_record):
             print_progress(idx, len(data))
 
     update_report.save_report()
+
+    database.execute_sql('SELECT enable_triggers(TRUE);')
     database.commit()
 
     mark_ambiguous_places(database)
