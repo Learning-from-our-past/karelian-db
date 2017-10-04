@@ -7,8 +7,8 @@ setup:
 	createdb -U postgres learning-from-our-past
 	psql -U postgres -d learning-from-our-past -a -f database/sql/initial_db.sql
 	python -m database.tasks.migrate
-	python -m kairatools.tasks.migrate
+	python -m kairatools.backend.tasks.migrate
 
 test:
 	cd database; make test;
-	cd kairatools; make test;
+	cd kairatools/backend; make test;
