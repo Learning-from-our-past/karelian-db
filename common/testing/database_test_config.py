@@ -8,5 +8,7 @@ CONFIG = {
   "sql_files": [
     "./database/sql/initial_db.sql",
     "./database/tests/test_users.sql"
-  ]
+  ],
+  'database_migration_path': 'database/migrations',
+  'kairatools_migration_path': 'kairatools/backend/migrations'
 }
