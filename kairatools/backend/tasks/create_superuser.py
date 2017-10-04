@@ -1,12 +1,11 @@
-import sys
-
-import os
-from flask_security.utils import hash_password
-from kairatools.app import get_app
 import datetime
 import getpass
-from kairatools.models.kairatools_models import User, Role, UserRole
+import sys
 
+from flask_security.utils import hash_password
+from kairatools.backend.app import get_app
+
+from kairatools.backend.models.kairatools_models import User, Role, UserRole
 
 with get_app().app_context():
     super_user = {
