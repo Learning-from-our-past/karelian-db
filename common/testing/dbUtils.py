@@ -90,11 +90,11 @@ class DBUtils:
         self.peewee_database.connect()
 
         # Run all unapplied database migrations
-        router = Router(self.peewee_database, schema='system', migrate_dir='database/migrations')
+        router = Router(self.peewee_database, schema='system', migrate_dir=CONFIG['database_migration_path'])
         router.run()
 
         # Run kaira-tools migrations
-        router = Router(self.peewee_database, schema='kairatools', migrate_dir='kairatools/migrations')
+        router = Router(self.peewee_database, schema='kairatools', migrate_dir=CONFIG['kairatools_migration_path'])
         router.run()
 
     def truncate_db(self):
