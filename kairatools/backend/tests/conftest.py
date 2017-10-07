@@ -6,7 +6,7 @@ import common.testing.population_utils as population_utils
 from common.db_connection import db_connection
 from common.testing.database_test_config import CONFIG
 from common.testing.dbUtils import DBUtils
-from kairatools.app import get_app
+from kairatools.backend.app import get_app
 
 
 def pytest_collection_modifyitems(session, config, items):
