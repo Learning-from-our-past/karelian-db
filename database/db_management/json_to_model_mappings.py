@@ -224,9 +224,17 @@ json_to_primary_person = {
             'json_path': ['primaryPerson', 'name', 'firstNames'],
             'operations': [anonymize, map_value_to_model]
         },
+        'injuredInWar': {
+            'json_path': ['primaryPerson', 'warData', 'injuredInWarFlag'],
+            'operations': [map_value_to_model]
+        },
         'lastName': {
             'json_path': ['primaryPerson', 'name', 'surname'],
             'operations': [anonymize, map_value_to_model]
+        },
+        'lotta': {
+            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlag'],
+            'operations': [map_value_to_model]
         },
         'originalText': {
             'json_path': ['personMetadata', 'sourceText'],
@@ -255,6 +263,10 @@ json_to_primary_person = {
         'sex': {
             'json_path': ['primaryPerson', 'name', 'gender'],
             'operations': [transform_sex, map_value_to_model]
+        },
+        'servedDuringWar': {
+            'json_path': ['primaryPerson', 'warData', 'servedDuringWarFlag'],
+            'operations': [map_value_to_model]
         },
         'primaryPerson': {
             'json_path': [],
@@ -308,9 +320,17 @@ json_to_spouse = {
             'json_path': ['spouse', 'firstNames'],
             'operations': [anonymize, map_value_to_model]
         },
+        'injuredInWar': {
+            'json_path': ['spouse', 'warData', 'injuredInWarFlag'],
+            'operations': [map_value_to_model]
+        },
         'lastName': {
             'json_path': ['primaryPerson', 'name', 'surname'],
             'operations': [anonymize, map_value_to_model]
+        },
+        'lotta': {
+            'json_path': ['spouse', 'warData', 'lottaActivityFlag'],
+            'operations': [map_value_to_model]
         },
         'originalText': {
             'json_path': ['personMetadata', 'sourceText'],
@@ -327,6 +347,10 @@ json_to_spouse = {
         'sex': {
             'json_path': ['primaryPerson', 'name', 'gender'],
             'operations': [invert_sex, transform_sex, map_value_to_model]
+        },
+        'servedDuringWar': {
+            'json_path': ['spouse', 'warData', 'servedDuringWarFlag'],
+            'operations': [map_value_to_model]
         },
         'primaryPerson': {
             'json_path': [],
