@@ -25,6 +25,9 @@ class TestPersonPopulate:
         assert person.deathDay is None
         assert person.deathMonth is None
         assert person.deathYear is None
+        assert person.lotta == person_data[0]['primaryPerson']['warData']['lottaActivityFlag']
+        assert person.servedDuringWar == person_data[0]['primaryPerson']['warData']['servedDuringWarFlag']
+        assert person.injuredInWar == person_data[0]['primaryPerson']['warData']['injuredInWarFlag']
 
     def should_have_populated_profession_correctly(self, person, person_data):
         profession = Profession.get(Profession.id == person.professionId)
@@ -96,6 +99,10 @@ class TestPersonPopulate:
         assert spouse.deathDay is None
         assert spouse.deathMonth is None
         assert spouse.deathYear is None
+
+        assert spouse.lotta == person_data[0]['spouse']['warData']['lottaActivityFlag']
+        assert spouse.servedDuringWar == person_data[0]['spouse']['warData']['servedDuringWarFlag']
+        assert spouse.injuredInWar == person_data[0]['spouse']['warData']['injuredInWarFlag']
 
 
 class TestFarmDetailsPopulate:
