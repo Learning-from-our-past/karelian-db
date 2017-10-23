@@ -120,6 +120,11 @@
                 "birthDay": 28,
                 "birthMonth": 11
             },
+            "warData": {
+                "injuredInWarFlag": false,
+                "servedDuringWarFlag": true,
+                "lottaActivityFlag": null
+            },
             "previousMarriagesFlag": false
         },
         "spouse": {
@@ -141,6 +146,11 @@
             "firstNames": "VAIMONNIMI",
             "formerSurname": "VAIMONIMI",
             "weddingYear": 1944,
+            "warData": {
+                "injuredInWarFlag": null,
+                "servedDuringWarFlag": null,
+                "lottaActivityFlag": false
+            },
             "birthData": {
                 "birthLocation": {
                     "region": "karelia",
@@ -308,6 +318,11 @@
                 "birthDay": 1,
                 "birthMonth": 5
             },
+            "warData": {
+                "injuredInWarFlag": false,
+                "servedDuringWarFlag": false,
+                "lottaActivityFlag": null
+            },
             "previousMarriagesFlag": false
         },
         "spouse": {
@@ -323,6 +338,11 @@
                 "birthYear": null,
                 "birthDay": null,
                 "birthMonth": null
+            },
+            "warData": {
+                "injuredInWarFlag": null,
+                "servedDuringWarFlag": null,
+                "lottaActivityFlag": null
             }
         },
         "personMetadata": {
