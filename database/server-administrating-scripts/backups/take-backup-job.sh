@@ -13,7 +13,7 @@
 # You need the private key associated with the
 # public key defined by the backup_public_key variable.
 #
-#   openssl smime -decrypt -in learning-from-our-past.ssl -binary -inform DEM -inkey backup_key.pem -out learning-from-our-past-dump
+#   openssl smime -decrypt -in learning-from-our-past.ssl -binary -inform SMIME -inkey backup_key.pem -out learning-from-our-past-dump
 #
 # #######################
 
@@ -24,6 +24,9 @@ backup_public_key="/data/backups/backup_key.pem.pub"
 
 # Location to place backups.
 backup_dir="/data/backups/learning-from-our-past/"
+
+# Schemas to backup. Only data tables should be backed up to avoid problems with extensions on restore.
+backup_schemas="-n siirtokarjalaisten_tie -n system"
 
 # Numbers of days you want to keep copies of your databases
 number_of_days=30
@@ -38,8 +41,8 @@ fi
 backup_date=`date +%Y-%m-%d-%H-%M-%S`
 
 # echo "Dumping ${database_name} to ${backup_dir}${database_name}\_${backup_date}.enc"
-pg_dump ${database_name} --format=c | openssl smime -encrypt \
- -aes256 -binary -outform DEM \
+pg_dump -U postgres -d ${database_name} --format=c ${backup_schemas} | openssl smime -encrypt \
+ -aes256 -binary -outform SMIME \
  -out ${backup_dir}${database_name}\_${backup_date}.enc \
  "${backup_public_key}"
 
