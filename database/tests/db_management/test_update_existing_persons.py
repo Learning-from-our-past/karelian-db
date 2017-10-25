@@ -4,8 +4,7 @@ from playhouse.shortcuts import model_to_dict
 
 import database.db_management.location_operations as loc_op
 import database.db_management.preprocess_operations as preproc
-from common.siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, \
-    KairaUpdateReportModel
+from common.siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel
 from common.testing.dbUtils import DBUtils
 from common.testing.population_utils import MockRecord
 from database.db_management.update_database import update_data_in_db
@@ -13,7 +12,6 @@ from database.db_management.update_report import update_report
 
 
 class TestUpdateOnExistingDb:
-
 
     def should_map_changes_in_json_to_model(self, person_data):
         person_models = []
@@ -91,11 +89,13 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
 
             assert delete_spy.call_count == 0
 
+
 def check_update_report(name, expected):
     report = model_to_dict(KairaUpdateReportModel.get(KairaUpdateReportModel.kairaFileName == name))
 
     for key, value in expected.items():
         assert report[key] == value
+
 
 class TestOnlyForExistingDataInDb:
 
