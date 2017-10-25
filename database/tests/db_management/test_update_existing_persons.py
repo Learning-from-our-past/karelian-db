@@ -4,7 +4,8 @@ from playhouse.shortcuts import model_to_dict
 
 import database.db_management.location_operations as loc_op
 import database.db_management.preprocess_operations as preproc
-from common.siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel
+from common.siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel, \
+    FarmDetails
 from common.testing.dbUtils import DBUtils
 from common.testing.population_utils import MockRecord
 from database.db_management.update_database import update_data_in_db
@@ -204,6 +205,27 @@ class TestOnlyForExistingDataInDb:
                 break
 
         assert found_updated_record is True
+
+    def should_not_create_duplicate_farm_details_when_repopulating(self, person_data):
+        person_models = []
+
+        # Check that there is at least one FarmDetail row in the database
+        count_initial = FarmDetails.select().count()
+        assert count_initial > 0
+
+        # Make a small modification to FarmDetails to see that it will be updated.
+        person_data[0]['farmDetails']['farmTotalArea'] = 666
+
+        for data_entry in person_data:
+            person_models.append(update_data_in_db(data_entry, MockRecord()))
+
+        count_after = FarmDetails.select().count()
+        assert count_after == count_initial
+
+        # Check that the FarmDetails were updated. Do this through primaryPerson since later on there might be more
+        # FarmDetails in the test db
+        primary_person = Person.select().where(Person.kairaId == person_models[0].kairaId)[0]
+        assert primary_person.farmDetailsId.farmTotalArea == 666
 
     class TestChildren:
 
