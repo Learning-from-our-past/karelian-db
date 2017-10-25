@@ -1,5 +1,7 @@
-import os.path
+import os
 import sys
+import getpass
+from database.tasks.migrate import migrate as run_db_migrations
 
 """
 This is utility script for restoring encrypted backup files to the database. Script should be called
@@ -71,8 +73,9 @@ print(create_cmd, os.system(create_cmd))
 init_cmd = 'psql -U {} -d learning-from-our-past -a -f database/sql/initial_db.sql'.format(superuser)
 print(init_cmd, os.system(init_cmd))
 
-migrate_db_cmd = 'python -m database.tasks.migrate'
-print(migrate_db_cmd, os.system(migrate_db_cmd))
+print('Ready to run the migrations')
+database_password = getpass.getpass('Please input password for user {}: '.format(superuser))
+run_db_migrations(superuser, database_password)
 
 print('Database reinitialized successfully!')
 
