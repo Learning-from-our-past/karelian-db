@@ -123,18 +123,23 @@ def add_marriage(key, models, wedding_year_input, data_entry, extra_data):
 
 
 def add_farm_details(is_primary_person):
-    def _add_farm_details(key, model, farm_details, data_entry, extra_data):
+    def _add_farm_details(key, person_model, farm_details_to_add, data_entry, extra_data):
         if is_primary_person:
-            if farm_details is not None:
-                farm_details = FarmDetails(**farm_details)
-                farm_details.save()
-                return model, farm_details.id
+            if farm_details_to_add is not None:
+                if person_model.farmDetailsId is not None:
+                    # Person might have farmDetails already. Get the id of the row and add it to the details so that
+                    # we won't create a duplicate FarmDetails row when saving.
+                    farm_details_to_add['id'] = person_model.farmDetailsId.id
+
+                farm_details_model = FarmDetails(**farm_details_to_add)
+                farm_details_model.save()
+                return person_model, farm_details_model.id
             else:
-                return model, None
+                return person_model, None
         else:
             # For spouse just get the farm details id from primary person model where it was added
             # earlier.
-            return model, extra_data['primary_person'].farmDetailsId
+            return person_model, extra_data['primary_person'].farmDetailsId
 
     return _add_farm_details
 
