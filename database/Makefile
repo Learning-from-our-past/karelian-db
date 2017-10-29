@@ -1,6 +1,3 @@
-test:
-	cd ..; python -m pytest database
-
 new-migration:
 	cd ..; python -m database.tasks.new-migration
 
