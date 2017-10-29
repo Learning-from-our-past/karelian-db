@@ -11,7 +11,5 @@ database:
     - psql template1 -c 'create extension hstore;'
 
 test:
-  pre:
-    - export APP_SETTINGS=ci
   override:
-    - make test
+    - invoke test-all
