@@ -48,7 +48,7 @@ class TestingConfig(Config):
 
 class CIConfig(TestingConfig):
     # Set these properties here since they are used only in CI tests and it's not needed to pass
-    # them via environment there. Just export APP_SETTINGS=ci in travis config file.
+    # them via environment there.
     SECRET_KEY = 'secret'
     SECRET = 'secret'
     SECURITY_PASSWORD_SALT = 'testsalt'
