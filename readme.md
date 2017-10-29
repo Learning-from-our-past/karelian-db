@@ -26,7 +26,7 @@ sudo apt-get install -y postgresql-plpython3-9.6
 ```
 
 ### Setup Postgres .pgpass file
-Set up postgres user to have a password access and then add following lines to `~/.pgpass`:
+Set up postgres or other superuser to have a password access and then add following lines to `~/.pgpass`:
 
 ```
 localhost:5432:postgres:postgres:<password>
@@ -34,14 +34,11 @@ localhost:5432:learning-from-our-past:postgres:<password>
 localhost:5432:karelian_testdb:postgres:<password>
 ```
 
-Or if you don't want to use postgres user, you can create a new super user to your postgres cluster and
-edit config files and make files correspondingly.
-
 Add similar entry for production connection with correct host and passwords if you want to access the production database. 
 Set rights of the file to the 0600. [Read more about PGPASSFILE ](https://www.postgresql.org/docs/9.6/static/libpq-pgpass.html)
 
 ### Setup the project
-After database is setup and dependencies installed, run following make commands on the root directory of the project:
+After database is setup and dependencies installed, run following commands on the root directory of the project:
 ```
 virtualenv -p python3 database-venv
 source database-venv/bin/activate
@@ -74,5 +71,5 @@ Once you have installed and configured Powa locally (or you want to use it just 
 file `.powa_template.conf`to `powa-web.conf` in `/database` directory. Then fill in a new random `cookie_secret` and check
 that the existing server configurations are ok.
 
-To start POWA gui, run `make powa-web` in `/database` directory. Then navigate to [http://localhost:8888](http://localhost:8888)
+To start POWA gui, run `invoke powa-web` in `/database` directory. Then navigate to [http://localhost:8888](http://localhost:8888)
 and log in.
