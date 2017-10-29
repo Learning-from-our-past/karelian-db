@@ -9,10 +9,6 @@ setup:
 	python -m database.tasks.migrate
 	python -m kairatools.backend.tasks.migrate
 
-test:
-	cd database; make test;
-	cd kairatools/backend; make test;
-
 recreate-db:
 	dropdb -U postgres learning-from-our-past
 	createdb -U postgres learning-from-our-past

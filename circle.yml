@@ -14,4 +14,4 @@ test:
   pre:
     - export APP_SETTINGS=ci
   override:
-    - make test
+    - invoke test-all
