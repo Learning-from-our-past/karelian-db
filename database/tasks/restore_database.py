@@ -20,20 +20,15 @@ class TerminalColors:
     ENDC = '\033[0m'
 
 
-def restore_encrypted_backup():
+def restore_encrypted_backup(superuser, dump_path, ssl_key_path):
     print('Preparing to restore existing database backup dump. Dump should contain schemas "siirtokarjalaisten_tie", '
           '"kairatools" and "system".')
     print('For reliable results, {} please check that there is no active connections to the database before '
           'continuing.{}'.format(TerminalColors.WARNING, TerminalColors.ENDC))
-    print('Please provide path to the encrypted backup file:')
 
-    dump_path = input('Full path to dump file:')
     if not os.path.isfile(dump_path):
         print('Error, provided path is not a valid file.')
         sys.exit(1)
-
-    print('The database dump is encrypted. Please provide a full path to private SSL-key:')
-    ssl_key_path = input()
 
     if not os.path.isfile(ssl_key_path):
         print('Error, provided path to the SSL-key is not valid.')
@@ -63,8 +58,6 @@ def restore_encrypted_backup():
         sys.exit(0)
 
     # Recreate the database by dropping and reinitializing it.
-    superuser = input('Please input superuser name for Postgres database:')
-
     drop_cmd = 'dropdb -U {} learning-from-our-past'.format(superuser)
     print(drop_cmd, os.system('dropdb -U {} learning-from-our-past'.format(superuser)))
 
@@ -81,6 +74,7 @@ def restore_encrypted_backup():
     print('Database reinitialized successfully!')
 
     # Restore
+    print('Restoring data...')
     restore_cmd = 'pg_restore -U {} -c --if-exists -d learning-from-our-past {}'.format(superuser, decrypted_backup_path)
     print(restore_cmd, os.system(restore_cmd))
 

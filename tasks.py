@@ -2,6 +2,7 @@ from invoke import task
 import getpass
 from database.tasks.migrate import migrate as migrate_backend
 from kairatools.backend.tasks.migrate import migrate as migrate_kairatools
+from database.tasks.restore_database import restore_encrypted_backup
 
 
 @task()
@@ -51,3 +52,14 @@ def recreate_db(ctx, superuser='postgres'):
     ctx.run('dropdb -U {} learning-from-our-past'.format(superuser))
     _setup_database(ctx, superuser)
 
+
+@task(help={
+    'superuser': 'The database super user which can be used to create and modify the database.',
+    'dumpfile': 'Path to the encrypted dump file to be restored.',
+    'sslkey': 'Path to the SSL private key for decrypting the backup file.'
+})
+def restore_backup(ctx, dumpfile, sslkey, superuser='postgres'):
+    """
+    Restore encrypted database backup snapshot.
+    """
+    restore_encrypted_backup(superuser, dumpfile, sslkey)
