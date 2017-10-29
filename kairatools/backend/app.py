@@ -16,7 +16,11 @@ from kairatools.backend.routes.usersroute import UserRoute
 
 def get_app():
     # Load basic configurations
-    config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
+    if os.getenv('CI'):
+        config_name = 'ci'
+    else:
+        config_name = os.getenv('APP_SETTINGS')  # config_name = "development"
+
     _app = Flask(__name__, instance_relative_config=True)
     _app.config.from_object(app_config[config_name])
 

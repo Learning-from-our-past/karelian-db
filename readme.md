@@ -43,16 +43,16 @@ Set rights of the file to the 0600. [Read more about PGPASSFILE ](https://www.po
 ### Setup the project
 After database is setup and dependencies installed, run following make commands on the root directory of the project:
 ```
-make create-venv
+virtualenv -p python3 database-venv
 source database-venv/bin/activate
-make setup
+invoke setup
 ```
 
 This should setup a new database called `learning-from-our-past` to your local postgres cluster. 
 Finally run test command to check if all tests pass:
 
 ```
-make test
+invoke test-all
 ```
 
 If tests pass everything should be fine.
