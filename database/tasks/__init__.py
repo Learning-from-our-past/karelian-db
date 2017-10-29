@@ -61,3 +61,36 @@ def populate(ctx, first=None, all_books=None):
     else:
         print('Should provide either [first], or [all] flag on invocation!')
         sys.exit(1)
+
+
+@task(help={
+    'superuser': 'Database superuser name.',
+    'database': 'Target database to kill connections from. Defaults to karelian_testdb'
+})
+def kill_connections(ctx, superuser='postgres', database='karelian_testdb'):
+    """
+    Kills possible open connections to the target database. Sometimes db tests might leave connections hanging
+    preventing then dropping the database. This task can be used to kill connections forcefully. Should not be used in
+    production environment.
+    """
+    ctx.run(""" psql -U {0} -d {1} -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = '{1}' AND pid <> pg_backend_pid();" """.format(superuser, database))
+
+
+@task(help={
+    'config': 'Powa web config file path. Config file can be defined by inserting a secret cookie to .powa_template.conf and renaming the file to .powa-web.conf'
+})
+def powa_web(ctx, config='.powa-web.conf'):
+    """
+    Start the powa database monitoring web-client.
+    """
+    print('Starting powa-web client to localhost:8888 ...')
+    ctx.run('powa-web --config=.powa-web.conf')
+
+
+@task()
+def purge_pyc(ctx):
+    """
+    Remove all .pyc files from the project. Useful after reorganizing the project when tests refuse
+    to run because of obsolete pyc-files.
+    """
+    ctx.run('find . -name "*.pyc" -exec rm -f {} \;')
