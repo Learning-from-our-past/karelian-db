@@ -1,12 +1,3 @@
-new-migration:
-	cd ..; python -m database.tasks.new-migration
-
-migrate-local:
-	cd ..; python -m database.tasks.migrate
-
-migrate-production:
-	cd ..; python -m database.tasks.migrate-production
-
 populate-all-local:
 	cd ..;\
 	python -m database.main database/material/siirtokarjalaiset_I.json;\
