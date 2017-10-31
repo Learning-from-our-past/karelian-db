@@ -1,8 +1,8 @@
 from invoke import task
 import getpass
-from database.tasks.migrate import migrate as migrate_backend
 from kairatools.backend.tasks.migrate import migrate as migrate_kairatools
 from database.tasks.restore_database import restore_encrypted_backup
+from database.tasks.migrate import migrate_local
 
 
 @task()
@@ -27,10 +27,8 @@ def _setup_database(ctx, superuser):
     ctx.run('psql -U {} -d learning-from-our-past -a -f database/sql/initial_db.sql'.format(superuser))
 
     superuser_password = getpass.getpass('Please input password for superuser {}: '.format(superuser))
-    migrate_backend(superuser, superuser_password)
+    migrate_local(superuser, superuser_password, migration_dir='database/migrations')
     migrate_kairatools(superuser, superuser_password)
-    ctx.run('python -m database.tasks.migrate')
-    ctx.run('python -m kairatools.backend.tasks.migrate')
 
 
 @task(help={'superuser': 'The database super user which can be used to create and modify the database.'})
