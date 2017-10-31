@@ -1,7 +1,7 @@
 import os
 import sys
 import getpass
-from database.tasks.migrate import migrate as run_db_migrations
+from database.tasks.migrate import migrate_local as run_db_migrations
 
 """
 This is utility script for restoring encrypted backup files to the database. Script should be called
@@ -69,7 +69,7 @@ def restore_encrypted_backup(superuser, dump_path, ssl_key_path):
 
     print('Ready to run the migrations')
     database_password = getpass.getpass('Please input password for user {}: '.format(superuser))
-    run_db_migrations(superuser, database_password)
+    run_db_migrations(superuser, database_password, migration_dir='database/migrations')
 
     print('Database reinitialized successfully!')
 
