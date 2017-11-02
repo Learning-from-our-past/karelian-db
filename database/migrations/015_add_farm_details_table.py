@@ -48,8 +48,6 @@ def migrate(migrator, database, fake=False, **kwargs):
           FOR EACH ROW
           EXECUTE PROCEDURE initialize_log_on_insert_trigger();
         
-        select audit.audit_table('siirtokarjalaisten_tie."FarmDetails"');
-        
         ALTER TABLE siirtokarjalaisten_tie."Person" ADD COLUMN "farmDetailsId" INTEGER REFERENCES siirtokarjalaisten_tie."FarmDetails"(id)
           ON UPDATE CASCADE
           ON DELETE SET NULL;

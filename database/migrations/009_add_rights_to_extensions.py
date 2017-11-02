@@ -30,10 +30,6 @@ def migrate(migrator, database, fake=False, **kwargs):
         """
         GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA "extensions" TO public;
         GRANT USAGE ON SCHEMA "extensions" TO public;
-        GRANT USAGE ON SCHEMA "audit" TO researcher, kaira;
-        GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA "audit" TO researcher, kaira;
-        grant usage, select on all sequences in schema "audit" to researcher, kaira;
-        GRANT SELECT, INSERT ON TABLE audit.logged_actions to researcher, kaira;
         """
     )
 
