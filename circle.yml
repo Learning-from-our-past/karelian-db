@@ -7,9 +7,6 @@ database:
     - sudo apt-get update -q
     - sudo apt-get install -y postgresql-plpython3-9.5
 
-  post:
-    - psql template1 -c 'create extension hstore;'
-
 test:
   override:
     - invoke test-all
