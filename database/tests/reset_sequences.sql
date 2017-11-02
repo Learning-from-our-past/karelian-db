@@ -24,5 +24,4 @@ SELECT SETVAL('siirtokarjalaisten_tie."Marriage_id_seq"', COALESCE(MAX(id), 1) )
 SELECT SETVAL('siirtokarjalaisten_tie."Person_id_seq"', COALESCE(MAX(id), 1) ) FROM siirtokarjalaisten_tie."Person";
 SELECT SETVAL('siirtokarjalaisten_tie."Place_id_seq"', COALESCE(MAX(id), 1) ) FROM siirtokarjalaisten_tie."Place";
 SELECT SETVAL('siirtokarjalaisten_tie."Profession_id_seq"', COALESCE(MAX(id), 1) ) FROM siirtokarjalaisten_tie."Profession";
-SELECT SETVAL('audit.logged_actions_event_id_seq', COALESCE(MAX(event_id), 1) ) FROM audit.logged_actions;
 SELECT SETVAL('system.migratehistory_id_seq', COALESCE(MAX(id), 1) ) FROM system.migratehistory;
