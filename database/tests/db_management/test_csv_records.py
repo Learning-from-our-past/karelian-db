@@ -7,7 +7,7 @@ import pytest
 import common.database_config as config
 from common.testing import population_utils
 from common.testing.dbUtils import DBUtils
-from database.db_management.csvRecord import CsvRecordOfPopulation
+from database.db_management.csv_record import CsvRecordOfPopulation
 from database.db_management.update_database import update_data_in_db
 
 
