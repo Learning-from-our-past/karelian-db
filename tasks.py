@@ -38,7 +38,6 @@ def setup(ctx, superuser='postgres'):
     To avoid repetitive password prompts, it is suggested to have a pgpass-entry for superuser
     used in this task.
     """
-    ctx.run("psql -U {} template1 -c 'create extension hstore';".format(superuser))
     _setup_database(ctx, superuser)
 
 
