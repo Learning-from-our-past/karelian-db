@@ -6,7 +6,7 @@ import sys
 import common.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 from common.database_config import CONFIG
 from common.db_connection import db_connection
-from database.db_management.csvRecord import CsvRecordOfPopulation
+from database.db_management.csv_record import CsvRecordOfPopulation
 from database.db_management.mark_ambiguous_region_places_in_db import mark_ambiguous_places
 from database.db_management.update_database import update_data_in_db
 from database.db_management.update_report import update_report
