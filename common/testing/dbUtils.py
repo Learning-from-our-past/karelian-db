@@ -86,7 +86,7 @@ class DBUtils:
             sqlfile.close()
 
         self.peewee_database.init(CONFIG['test_db_name'],
-                                  **{'user': CONFIG['db_admin_user']})
+                                  **{'user': CONFIG['admin_user']})
         self.peewee_database.connect()
 
         # Run all unapplied database migrations
@@ -104,7 +104,7 @@ class DBUtils:
         """
         self.test_db_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = self.test_db_connection.cursor()
-        cursor.execute("SELECT tablename FROM pg_tables WHERE tableowner = %s AND schemaname = 'siirtokarjalaisten_tie';", [CONFIG['db_admin_user']])
+        cursor.execute("SELECT tablename FROM pg_tables WHERE tableowner = %s AND schemaname = 'siirtokarjalaisten_tie';", [CONFIG['admin_user']])
         tables = cursor.fetchall()
 
         for table in tables:
