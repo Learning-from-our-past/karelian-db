@@ -35,7 +35,7 @@ def _database():
     # Perhaps the solution would be get rid of it and check if Peewee offers the same functionality in form of
     # thread specific connections...?
     DBUtils.init_test_db()
-    db_connection.init_database(CONFIG['test_db_name'], CONFIG['admin_user'])
+    db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_admin'])
     db_connection.connect()
 
     # Setup Kaira-db models
