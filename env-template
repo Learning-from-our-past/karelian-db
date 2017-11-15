@@ -1,4 +1,7 @@
 source database-venv/bin/activate
+
+export DB_ADMIN_NAME=your_postgres_admin_name
+
 export FLASK_APP=app.py
 export FLASK_DEBUG=1
 export PASSWORD_SALT=supersecretsaltforsecurity

@@ -18,7 +18,7 @@ contents of the testdbs. Loads configurations from test-config.json file on star
 class DBUtils:
 
     def __init__(self):
-        self.master_connection = psycopg2.connect(dbname=CONFIG['master_db'], user=CONFIG['admin_user'],
+        self.master_connection = psycopg2.connect(dbname=CONFIG['master_db'], user=CONFIG['db_admin'],
                                                   host='localhost')
 
         self.master_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
@@ -30,7 +30,7 @@ class DBUtils:
         self._reset_sequences_sql = open('./database/tests/reset_sequences.sql', 'r').read()
 
     def _get_test_db_connection(self):
-        return psycopg2.connect(dbname=CONFIG['test_db_name'], user=CONFIG['admin_user'], host='localhost')
+        return psycopg2.connect(dbname=CONFIG['test_db_name'], user=CONFIG['db_admin'], host='localhost')
 
 
     def init_test_db(self):
@@ -86,7 +86,7 @@ class DBUtils:
             sqlfile.close()
 
         self.peewee_database.init(CONFIG['test_db_name'],
-                                  **{'user': CONFIG['db_admin_user']})
+                                  **{'user': CONFIG['db_admin']})
         self.peewee_database.connect()
 
         # Run all unapplied database migrations
@@ -104,7 +104,7 @@ class DBUtils:
         """
         self.test_db_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = self.test_db_connection.cursor()
-        cursor.execute("SELECT tablename FROM pg_tables WHERE tableowner = %s AND schemaname = 'siirtokarjalaisten_tie';", [CONFIG['db_admin_user']])
+        cursor.execute("SELECT tablename FROM pg_tables WHERE tableowner = %s AND schemaname = 'siirtokarjalaisten_tie';", [CONFIG['db_admin']])
         tables = cursor.fetchall()
 
         for table in tables:

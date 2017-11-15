@@ -37,6 +37,20 @@ localhost:5432:karelian_testdb:postgres:<password>
 Add similar entry for production connection with correct host and passwords if you want to access the production database. 
 Set rights of the file to the 0600. [Read more about PGPASSFILE ](https://www.postgresql.org/docs/9.6/static/libpq-pgpass.html)
 
+Create user with name `kaira` to your database cluster and add its credentials to the pgpass:
+```
+localhost:5432:learning-from-our-past:kaira:<password>
+localhost:5432:karelian_testdb:kaira:<password>
+```
+
+Finally setup environment variable for your database super user if you want to use separate user from default postgres
+user:
+```
+export DB_ADMIN_NAME=yourname
+```
+ 
+This can be done in `.env` file if you use autoenv (see env configuration for kairatools below) or exported however you like.
+
 ### Setup the project
 After database is setup and dependencies installed, run following commands on the root directory of the project:
 ```
