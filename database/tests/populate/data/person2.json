@@ -325,26 +325,7 @@
             },
             "previousMarriagesFlag": false
         },
-        "spouse": {
-            "profession": null,
-            "hasSpouse": false,
-            "deathYear": null,
-            "kairaId": null,
-            "firstNames": null,
-            "formerSurname": null,
-            "weddingYear": null,
-            "birthData": {
-                "birthLocation": null,
-                "birthYear": null,
-                "birthDay": null,
-                "birthMonth": null
-            },
-            "warData": {
-                "injuredInWarFlag": null,
-                "servedDuringWarFlag": null,
-                "lottaActivityFlag": null
-            }
-        },
+        "spouse": null,
         "personMetadata": {
             "approximatePageNumber": "0-2",
             "imagePath": "",

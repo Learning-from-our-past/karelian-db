@@ -8,7 +8,7 @@ def update_data_in_db(data_entry, csv_record):
     primary_person = _update_person(existing_data['primary_person'], data_entry, csv_record)
 
     spouse_person = None
-    if data_entry['spouse']['hasSpouse']:
+    if data_entry['spouse']:
         spouse_person = _update_spouse(existing_data['spouse_person'], primary_person, data_entry, csv_record)
 
     _update_children(primary_person, spouse_person, data_entry, csv_record)
