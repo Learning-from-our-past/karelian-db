@@ -15,7 +15,7 @@ class TestPersonPopulate:
         config.CONFIG['anonymize'] = True
         DBUtils.truncate_db()
         # Person data is anonymized and tweaked and only usable for software testing.
-        return population_utils.populate_from_json(database, "./database/tests/populate/data/person2.json")[0]
+        return population_utils.populate_from_json(database, "./database/tests/populate/data/person.json")[0]
 
     @pytest.yield_fixture(autouse=True, scope='class')
     def person(self):
