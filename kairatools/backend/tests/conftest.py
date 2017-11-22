@@ -47,7 +47,7 @@ def _database():
 def populate_person_information_to_db(_database):
     config.CONFIG['anonymize'] = False
     DBUtils.truncate_db()
-    data = population_utils.populate_from_json(db_connection.get_database(), "./database/tests/populate/data/person2.json")
+    data = population_utils.populate_from_json(db_connection.get_database(), "./database/tests/populate/data/person.json")
     db_connection.close()
     return data
 
