@@ -74,7 +74,7 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
         assert len(records_for_person) == 5
 
         check_update_report('should_add_living_records', {
-            'recordCountChange': {'Marriage': 1, 'Profession': 3, 'Child': 2, 'Place': 7, 'Person': 3, 'Page': 1, 'LivingRecord': 10}
+            'recordCountChange': {'Marriage': 1, 'Profession': 3, 'Child': 2, 'Place': 6, 'Person': 3, 'Page': 1, 'LivingRecord': 10}
         })
 
     class TestChildren:
