@@ -172,7 +172,7 @@
                 "gender": "Male",
                 "birthYear": 1946,
                 "location": {
-                    "region": null,
+                    "region": "other",
                     "locationName": "Munsala",
                     "coordinates": {
                         "longitude": "22.45042",
