@@ -36,11 +36,12 @@ def migrate(ctx, production=None):
 
 @task(optional=['first', 'all_books'], help={
     'first': 'Populate only first book to the database.',
-    'all_books': 'Populates all siirtokarjalaisten_tie json files form material/ directory'
+    'all_books': 'Populates all siirtokarjalaisten_tie json files from material/ directory',
+    'book': 'Populates book in provided path which is located under database/ directory'
 })
-def populate(ctx, first=None, all_books=None):
+def populate(ctx, first=None, all_books=None, book=None):
     """
-    Populate json files in material directory to the database. Either -f or -a
+    Populate json files in material directory to the database. Either -f, -b or -a
     arguments should be provided.
     """
     # TODO: Maybe support providing a relative path to any file? However, note the slightly strange path, since working
@@ -58,8 +59,10 @@ def populate(ctx, first=None, all_books=None):
     elif all_books:
         for book in karelian_books:
             ctx.run('python -m database.main database/material/{}'.format(book))
+    elif book:
+        ctx.run('python -m database.main database/{}'.format(book))
     else:
-        print('Should provide either [first], or [all] flag on invocation!')
+        print('Should provide either [first], [book] or [all] flag on invocation!')
         sys.exit(1)
 
 
