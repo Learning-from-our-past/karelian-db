@@ -156,6 +156,5 @@ ENV/
 kareliandb_venv/
 *venv/
 db/
-material/
 temp/
 .powa-web.conf
