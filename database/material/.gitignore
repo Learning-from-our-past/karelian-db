@@ -1,0 +1,4 @@
+# Ignore everything in this directory since this is data material which should not be committed to the remote
+*
+# Except of course this .gitignore file
+!.gitignore
