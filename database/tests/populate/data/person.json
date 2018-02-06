@@ -123,8 +123,17 @@
             "warData": {
                 "injuredInWarFlag": false,
                 "servedDuringWarFlag": true,
-                "lottaActivityFlag": null
+                "lottaActivityFlags": {
+                    "lotta": null,
+                    "foodLotta": null,
+                    "organizationLotta": null,
+                    "nurseLotta": null,
+                    "antiairLotta": null,
+                    "pikkulotta": null,
+                    "officeLotta": null
+                }
             },
+            "marttaActivityFlag": null,
             "previousMarriagesFlag": false
         },
         "spouse": {
@@ -149,8 +158,17 @@
             "warData": {
                 "injuredInWarFlag": null,
                 "servedDuringWarFlag": null,
-                "lottaActivityFlag": false
+                "lottaActivityFlags": {
+                    "lotta": false,
+                    "foodLotta": false,
+                    "organizationLotta": false,
+                    "nurseLotta": false,
+                    "antiairLotta": false,
+                    "pikkulotta": false,
+                    "officeLotta": false
+                }
             },
+            "marttaActivityFlag": false,
             "birthData": {
                 "birthLocation": {
                     "region": "karelia",
@@ -321,8 +339,17 @@
             "warData": {
                 "injuredInWarFlag": false,
                 "servedDuringWarFlag": false,
-                "lottaActivityFlag": null
+                "lottaActivityFlags": {
+                    "lotta": null,
+                    "foodLotta": null,
+                    "organizationLotta": null,
+                    "nurseLotta": null,
+                    "antiairLotta": null,
+                    "pikkulotta": null,
+                    "officeLotta": null
+                }
             },
+            "marttaActivityFlag": null,
             "previousMarriagesFlag": false
         },
         "spouse": null,
