@@ -25,9 +25,17 @@ class TestPersonPopulate:
         assert person.deathDay is None
         assert person.deathMonth is None
         assert person.deathYear is None
-        assert person.lotta == person_data[0]['primaryPerson']['warData']['lottaActivityFlag']
+        lotta_flags = person_data[0]['primaryPerson']['warData']['lottaActivityFlags']
+        assert person.lotta == lotta_flags['lotta']
+        assert person.foodLotta == lotta_flags['foodLotta']
+        assert person.organizationLotta == lotta_flags['organizationLotta']
+        assert person.nurseLotta == lotta_flags['nurseLotta']
+        assert person.antiairLotta == lotta_flags['antiairLotta']
+        assert person.pikkulotta == lotta_flags['pikkulotta']
+        assert person.officeLotta == lotta_flags['officeLotta']
         assert person.servedDuringWar == person_data[0]['primaryPerson']['warData']['servedDuringWarFlag']
         assert person.injuredInWar == person_data[0]['primaryPerson']['warData']['injuredInWarFlag']
+        assert person.martta == person_data[0]['primaryPerson']['marttaActivityFlag']
 
     def should_have_populated_profession_correctly(self, person, person_data):
         profession = Profession.get(Profession.id == person.professionId)
@@ -100,9 +108,17 @@ class TestPersonPopulate:
         assert spouse.deathMonth is None
         assert spouse.deathYear is None
 
-        assert spouse.lotta == person_data[0]['spouse']['warData']['lottaActivityFlag']
+        lotta_flags = person_data[0]['spouse']['warData']['lottaActivityFlags']
+        assert spouse.lotta == lotta_flags['lotta']
+        assert spouse.foodLotta == lotta_flags['foodLotta']
+        assert spouse.organizationLotta == lotta_flags['organizationLotta']
+        assert spouse.nurseLotta == lotta_flags['nurseLotta']
+        assert spouse.antiairLotta == lotta_flags['antiairLotta']
+        assert spouse.pikkulotta == lotta_flags['pikkulotta']
+        assert spouse.officeLotta == lotta_flags['officeLotta']
         assert spouse.servedDuringWar == person_data[0]['spouse']['warData']['servedDuringWarFlag']
         assert spouse.injuredInWar == person_data[0]['spouse']['warData']['injuredInWarFlag']
+        assert spouse.martta == person_data[0]['spouse']['marttaActivityFlag']
 
 
 class TestFarmDetailsPopulate:

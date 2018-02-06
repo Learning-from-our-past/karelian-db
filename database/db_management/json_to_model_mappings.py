@@ -238,7 +238,35 @@ json_to_primary_person = {
             'operations': [anonymize, map_value_to_model]
         },
         'lotta': {
-            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlag'],
+            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlags', 'lotta'],
+            'operations': [map_value_to_model]
+        },
+        'foodLotta': {
+            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlags', 'foodLotta'],
+            'operations': [map_value_to_model]
+        },
+        'officeLotta': {
+            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlags', 'officeLotta'],
+            'operations': [map_value_to_model]
+        },
+        'nurseLotta': {
+            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlags', 'nurseLotta'],
+            'operations': [map_value_to_model]
+        },
+        'antiairLotta': {
+            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlags', 'antiairLotta'],
+            'operations': [map_value_to_model]
+        },
+        'pikkulotta': {
+            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlags', 'pikkulotta'],
+            'operations': [map_value_to_model]
+        },
+        'organizationLotta': {
+            'json_path': ['primaryPerson', 'warData', 'lottaActivityFlags', 'organizationLotta'],
+            'operations': [map_value_to_model]
+        },
+        'martta': {
+            'json_path': ['primaryPerson', 'marttaActivityFlag'],
             'operations': [map_value_to_model]
         },
         'originalText': {
@@ -334,7 +362,35 @@ json_to_spouse = {
             'operations': [anonymize, map_value_to_model]
         },
         'lotta': {
-            'json_path': ['spouse', 'warData', 'lottaActivityFlag'],
+            'json_path': ['spouse', 'warData', 'lottaActivityFlags', 'lotta'],
+            'operations': [map_value_to_model]
+        },
+        'foodLotta': {
+            'json_path': ['spouse', 'warData', 'lottaActivityFlags', 'foodLotta'],
+            'operations': [map_value_to_model]
+        },
+        'officeLotta': {
+            'json_path': ['spouse', 'warData', 'lottaActivityFlags', 'officeLotta'],
+            'operations': [map_value_to_model]
+        },
+        'nurseLotta': {
+            'json_path': ['spouse', 'warData', 'lottaActivityFlags', 'nurseLotta'],
+            'operations': [map_value_to_model]
+        },
+        'antiairLotta': {
+            'json_path': ['spouse', 'warData', 'lottaActivityFlags', 'antiairLotta'],
+            'operations': [map_value_to_model]
+        },
+        'pikkulotta': {
+            'json_path': ['spouse', 'warData', 'lottaActivityFlags', 'pikkulotta'],
+            'operations': [map_value_to_model]
+        },
+        'organizationLotta': {
+            'json_path': ['spouse', 'warData', 'lottaActivityFlags', 'organizationLotta'],
+            'operations': [map_value_to_model]
+        },
+        'martta': {
+            'json_path': ['spouse', 'marttaActivityFlag'],
             'operations': [map_value_to_model]
         },
         'originalText': {
