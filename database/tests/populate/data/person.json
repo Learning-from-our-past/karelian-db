@@ -150,7 +150,7 @@
                 "professionName": "emäntä"
             },
             "hasSpouse": true,
-            "deathYear": null,
+            "death": null,
             "kairaId": "siirtokarjalaiset_1_1S_1",
             "firstNames": "VAIMONNIMI",
             "formerSurname": "VAIMONIMI",
@@ -170,13 +170,13 @@
             },
             "marttaActivityFlag": false,
             "birthData": {
-                "birthLocation": {
-                    "region": "karelia",
-                    "locationName": "Hiitola"
-                },
                 "birthYear": 1919,
                 "birthDay": 30,
                 "birthMonth": 6
+            },
+            "birthLocation": {
+                "region": "karelia",
+                "locationName": "Hiitola"
             }
         },
         "personMetadata": {
