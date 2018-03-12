@@ -26,6 +26,9 @@ sudo apt-get install -y postgresql-plpython3-9.6
 ```
 
 ### Setup Postgres .pgpass file
+Instead of .pgpass file, on your development machine you can probably just set local connections as trusted
+in your pg_hba configuration. Of course you should consider possible security implications of this.
+
 Set up postgres or other superuser to have a password access and then add following lines to `~/.pgpass`:
 
 ```
