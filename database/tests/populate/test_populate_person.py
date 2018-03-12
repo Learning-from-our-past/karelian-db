@@ -99,7 +99,7 @@ class TestPersonPopulate:
         assert spouse.sex == 'f'
         assert spouse.professionId.name == person_data[0]['spouse']['profession']['professionName']
 
-        assert spouse.birthPlaceId.name == person_data[0]['spouse']['birthData']['birthLocation']['locationName']
+        assert spouse.birthPlaceId.name == person_data[0]['spouse']['birthLocation']['locationName']
         assert spouse.birthDay == population_utils.int_or_none(person_data[0]['spouse']['birthData']['birthDay'])
         assert spouse.birthMonth == population_utils.int_or_none(person_data[0]['spouse']['birthData']['birthMonth'])
         assert spouse.birthYear == population_utils.int_or_none(person_data[0]['spouse']['birthData']['birthYear'])

@@ -338,11 +338,11 @@ json_to_spouse = {
             'operations': [map_value_to_model]
         },
         'birthPlaceId': {
-            'json_path': ['spouse', 'birthData', 'birthLocation'],
+            'json_path': ['spouse', 'birthLocation'],
             'operations': [loc.add_place, map_value_to_model]
         },
         'deathYear': {
-            'json_path': ['spouse', 'deathYear'],
+            'json_path': ['spouse', 'death'],
             'operations': [map_value_to_model]
         },
         'farmDetailsId': {
