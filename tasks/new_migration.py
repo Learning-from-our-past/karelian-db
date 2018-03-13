@@ -1,5 +1,6 @@
 from peewee_migrate import Router
-
+import sys
+sys.path.append('./')  # Hacky way to fix imports
 from common.database_config import CONFIG
 from common.db_connection import db_connection
 

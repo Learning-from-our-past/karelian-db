@@ -7,8 +7,8 @@ CONFIG = {
   'db_admin': os.getenv('DB_ADMIN_NAME') or 'postgres',
   'db_user': 'kaira',
   'sql_files': [
-    './database/sql/initial_db.sql',
-    './database/tests/test_users.sql'
+    './sql/initial_db.sql',
+    './tests/test_users.sql'
   ],
-  'database_migration_path': 'database/migrations'
+  'database_migration_path': 'migrations'
 }

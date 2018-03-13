@@ -9,4 +9,4 @@ database:
 
 test:
   override:
-    - invoke test-all
+    - invoke test

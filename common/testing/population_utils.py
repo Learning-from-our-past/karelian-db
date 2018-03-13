@@ -1,8 +1,8 @@
 import json
 # FIXME: These dependencies should be injected to this module's functions
 # instead of making this module dependent of database module!
-from database.db_management.update_report import update_report
-from database.main import populate_db
+from db_management.update_report import update_report
+from main import populate_db
 
 
 class MockRecord:

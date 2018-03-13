@@ -2,10 +2,10 @@ import pytest
 
 import common.database_config as config
 import common.testing.population_utils as population_utils
-import database.db_management.preprocess_operations as preproc
+import db_management.preprocess_operations as preproc
 from common.siirtokarjalaistentie_models import *
 from common.testing.dbUtils import DBUtils
-from database.db_management.update_database import update_data_in_db
+from db_management.update_database import update_data_in_db
 
 
 class TestPersonPopulate:
@@ -15,7 +15,7 @@ class TestPersonPopulate:
         config.CONFIG['anonymize'] = True
         DBUtils.truncate_db()
         # Person data is anonymized and tweaked and only usable for software testing.
-        return population_utils.populate_from_json(database, "./database/tests/populate/data/person.json")[0]
+        return population_utils.populate_from_json(database, "./tests/populate/data/person.json")[0]
 
     @pytest.yield_fixture(autouse=True, scope='class')
     def person(self):
