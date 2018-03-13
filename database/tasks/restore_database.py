@@ -21,8 +21,8 @@ class TerminalColors:
 
 
 def restore_encrypted_backup(superuser, dump_path, ssl_key_path):
-    print('Preparing to restore existing database backup dump. Dump should contain schemas "siirtokarjalaisten_tie", '
-          '"kairatools" and "system".')
+    print('Preparing to restore existing database backup dump. Dump should contain schemas "siirtokarjalaisten_tie"'
+          ' and "system".')
     print('For reliable results, {} please check that there is no active connections to the database before '
           'continuing.{}'.format(TerminalColors.WARNING, TerminalColors.ENDC))
 
