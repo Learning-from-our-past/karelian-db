@@ -1,6 +1,5 @@
 from invoke import task
 import getpass
-from kairatools.backend.tasks.migrate import migrate as migrate_kairatools
 from database.tasks.restore_database import restore_encrypted_backup
 from database.tasks.migrate import migrate_local
 
@@ -8,18 +7,9 @@ from database.tasks.migrate import migrate_local
 @task()
 def test(ctx, target):
     """
-    Run tests for specified target
-    """
-    ctx.run('python -m pytest {}'.format(target))
-
-
-@task()
-def test_all(ctx):
-    """
-    Run tests for both database and kairatools
+    Run tests for database
     """
     test(ctx, 'database')
-    test(ctx, 'kairatools/backend')
 
 
 def _setup_database(ctx, superuser):
@@ -28,7 +18,6 @@ def _setup_database(ctx, superuser):
 
     superuser_password = getpass.getpass('Please input password for superuser {}: '.format(superuser))
     migrate_local(superuser, superuser_password, migration_dir='database/migrations')
-    migrate_kairatools(superuser, superuser_password)
 
 
 @task(help={'superuser': 'The database super user which can be used to create and modify the database.'})
