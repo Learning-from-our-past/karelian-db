@@ -7,7 +7,7 @@ from common.db_connection import DbConnection
 from common.db_connection import db_connection
 from common.testing.database_test_config import CONFIG
 from common.testing.dbUtils import DBUtils
-from database.db_management.update_report import update_report
+from db_management.update_report import update_report
 
 
 def pytest_collection_modifyitems(session, config, items):
@@ -58,6 +58,6 @@ def populate_person_information_to_db(database):
     DBUtils.truncate_db()
     # Person data is anonymized and tweaked and only usable for software testing.
     update_report.setup('testfile.json')
-    return population_utils.populate_from_json(database, "./database/tests/populate/data/person.json")
+    return population_utils.populate_from_json(database, "./tests/populate/data/person.json")
 
 # TODO: Add a good way to easily initialize test db either empty or filled one still defaulting to prefilled db

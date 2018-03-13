@@ -2,14 +2,14 @@ import pytest
 from peewee import Using
 from playhouse.shortcuts import model_to_dict
 
-import database.db_management.location_operations as loc_op
-import database.db_management.preprocess_operations as preproc
+import db_management.location_operations as loc_op
+import db_management.preprocess_operations as preproc
 from common.siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel, \
     FarmDetails
 from common.testing.dbUtils import DBUtils
 from common.testing.population_utils import MockRecord
-from database.db_management.update_database import update_data_in_db
-from database.db_management.update_report import update_report
+from db_management.update_database import update_data_in_db
+from db_management.update_report import update_report
 
 
 class TestUpdateOnExistingDb:
@@ -61,7 +61,7 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
 
         update_report.setup('should_add_living_records')
 
-        delete_spy = mocker.patch('database.db_management.location_operations._delete_migration_history', autospec=True)
+        delete_spy = mocker.patch('db_management.location_operations._delete_migration_history', autospec=True)
 
         for data_entry in person_data:
             person_models.append(update_data_in_db(data_entry, MockRecord()))
@@ -152,7 +152,7 @@ class TestOnlyForExistingDataInDb:
     def should_not_do_anything_for_livingrecords_if_they_have_not_changed(self, person_data, mocker):
         person_models = []
 
-        delete_spy = mocker.patch('database.db_management.location_operations._delete_migration_history', autospec=True)
+        delete_spy = mocker.patch('db_management.location_operations._delete_migration_history', autospec=True)
 
         for data_entry in person_data:
             person_models.append(update_data_in_db(data_entry, MockRecord()))

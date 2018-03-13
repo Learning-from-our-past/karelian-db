@@ -1,10 +1,9 @@
 from playhouse.shortcuts import model_to_dict
 
-import database.db_management.location_operations as loc
-import database.db_management.preprocess_operations as preproc
-from common.database_config import CONFIG
+import db_management.location_operations as loc
+import db_management.preprocess_operations as preproc
+from db_management.exceptions import SexMissingException
 from common.siirtokarjalaistentie_models import *
-from database.db_management.exceptions import *
 
 
 def map_value_to_model(key, model, field_value, data_entry, extra_data):

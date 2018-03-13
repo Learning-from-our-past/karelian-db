@@ -1,7 +1,7 @@
 import os
 import sys
 import getpass
-from database.tasks.migrate import migrate_local as run_db_migrations
+from tasks.migrate import migrate_local as run_db_migrations
 
 """
 This is utility script for restoring encrypted backup files to the database. Script should be called

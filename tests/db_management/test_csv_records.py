@@ -7,8 +7,8 @@ import pytest
 import common.database_config as config
 from common.testing import population_utils
 from common.testing.dbUtils import DBUtils
-from database.db_management.csv_record import CsvRecordOfPopulation
-from database.db_management.update_database import update_data_in_db
+from db_management.csv_record import CsvRecordOfPopulation
+from db_management.update_database import update_data_in_db
 
 
 class TestCsvOnUpdateOnExistingDb:
@@ -17,7 +17,7 @@ class TestCsvOnUpdateOnExistingDb:
     def populate_person_information_to_db_anonymized(self, database):  # Override the root populating fixture
         config.CONFIG['anonymize'] = True
         DBUtils.truncate_db()
-        return population_utils.populate_from_json(database, "./database/tests/populate/data/person.json")
+        return population_utils.populate_from_json(database, "./tests/populate/data/person.json")
 
     @pytest.yield_fixture(autouse=True)
     def csv_test_dir(self):

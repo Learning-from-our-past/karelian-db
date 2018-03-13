@@ -27,7 +27,7 @@ class DBUtils:
         self.test_db_connection = None
         self.peewee_database = PostgresqlDatabase(None)
 
-        self._reset_sequences_sql = open('./database/tests/reset_sequences.sql', 'r').read()
+        self._reset_sequences_sql = open('./tests/reset_sequences.sql', 'r').read()
 
     def _get_test_db_connection(self):
         return psycopg2.connect(dbname=CONFIG['test_db_name'], user=CONFIG['db_admin'], host='localhost')
