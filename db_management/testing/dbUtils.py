@@ -7,7 +7,7 @@ from peewee_migrate import LOGGER
 from peewee_migrate import Router
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
-from common.testing.database_test_config import CONFIG
+from db_management.testing.database_test_config import CONFIG
 
 LOGGER.setLevel(logging.WARN)
 

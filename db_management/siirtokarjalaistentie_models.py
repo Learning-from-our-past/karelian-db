@@ -1,6 +1,6 @@
 from playhouse.postgres_ext import *
 
-from common.database_config import CONFIG
+from db_management.database_config import CONFIG
 
 database_proxy = Proxy()    # FIXME: This is likely not needed anymore since the connection is in shared module.
 

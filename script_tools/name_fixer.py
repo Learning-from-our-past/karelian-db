@@ -1,4 +1,4 @@
-from common.siirtokarjalaistentie_models import *
+from db_management.siirtokarjalaistentie_models import *
 """
 Try to fill in region and correct name for Places based on their stemmed names.
 

@@ -4,9 +4,9 @@ import shutil
 
 import pytest
 
-import common.database_config as config
-from common.testing import population_utils
-from common.testing.dbUtils import DBUtils
+import db_management.database_config as config
+from db_management.testing import population_utils
+from db_management.testing.dbUtils import DBUtils
 from db_management.csv_record import CsvRecordOfPopulation
 from db_management.update_database import update_data_in_db
 
