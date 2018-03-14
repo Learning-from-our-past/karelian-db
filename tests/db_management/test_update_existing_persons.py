@@ -4,10 +4,10 @@ from playhouse.shortcuts import model_to_dict
 
 import db_management.location_operations as loc_op
 import db_management.preprocess_operations as preproc
-from common.siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel, \
+from db_management.siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel, \
     FarmDetails
-from common.testing.dbUtils import DBUtils
-from common.testing.population_utils import MockRecord
+from db_management.testing.dbUtils import DBUtils
+from db_management.testing.population_utils import MockRecord
 from db_management.update_database import update_data_in_db
 from db_management.update_report import update_report
 

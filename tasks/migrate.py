@@ -1,7 +1,7 @@
 from peewee_migrate import Router
 
-from common.database_config import CONFIG
-from common.db_connection import db_connection
+from db_management.database_config import CONFIG
+from db_management.db_connection import db_connection
 from playhouse.db_url import connect
 
 

@@ -3,9 +3,9 @@ import json
 import os
 import sys
 
-import common.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
-from common.database_config import CONFIG
-from common.db_connection import db_connection
+import db_management.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+from db_management.database_config import CONFIG
+from db_management.db_connection import db_connection
 from db_management.csv_record import CsvRecordOfPopulation
 from db_management.mark_ambiguous_region_places_in_db import mark_ambiguous_places
 from db_management.update_database import update_data_in_db

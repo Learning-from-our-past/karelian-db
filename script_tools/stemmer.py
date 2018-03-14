@@ -1,6 +1,6 @@
 import nltk.stem.snowball as snowball
 
-from common.siirtokarjalaistentie_models import *
+from db_management.siirtokarjalaistentie_models import *
 
 db_connection.init_database()
 db_connection.connect()

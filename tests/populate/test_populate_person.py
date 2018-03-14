@@ -1,7 +1,7 @@
 import pytest
 
-import common.testing.population_utils as population_utils
-from common.siirtokarjalaistentie_models import *
+import db_management.testing.population_utils as population_utils
+from db_management.siirtokarjalaistentie_models import *
 
 
 class TestPersonPopulate:

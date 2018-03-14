@@ -1,12 +1,12 @@
 import pytest
 
-import common.database_config as config
-import common.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
-import common.testing.population_utils as population_utils
-from common.db_connection import DbConnection
-from common.db_connection import db_connection
-from common.testing.database_test_config import CONFIG
-from common.testing.dbUtils import DBUtils
+import db_management.database_config as config
+import db_management.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+import db_management.testing.population_utils as population_utils
+from db_management.db_connection import DbConnection
+from db_management.db_connection import db_connection
+from db_management.testing.database_test_config import CONFIG
+from db_management.testing.dbUtils import DBUtils
 from db_management.update_report import update_report
 
 

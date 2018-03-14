@@ -1,10 +1,10 @@
 import pytest
 
-import common.database_config as config
-import common.testing.population_utils as population_utils
+import db_management.database_config as config
+import db_management.testing.population_utils as population_utils
 import db_management.preprocess_operations as preproc
-from common.siirtokarjalaistentie_models import *
-from common.testing.dbUtils import DBUtils
+from db_management.siirtokarjalaistentie_models import *
+from db_management.testing.dbUtils import DBUtils
 from db_management.update_database import update_data_in_db
 
 

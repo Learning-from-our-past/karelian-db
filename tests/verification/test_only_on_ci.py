@@ -9,6 +9,6 @@ if on_ci:
             Check that the source code has correct setting of having anonymize true. Can't check the value by importing
             module since the value could have been changed during tests.
             """
-            config_file = open('common/database_config.py')
+            config_file = open('db_management/database_config.py')
             file_contents = config_file.read()
             assert file_contents.find('"anonymize": True,') != -1

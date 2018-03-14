@@ -1,6 +1,6 @@
 import nltk.stem.snowball as snowball
 
-from common.siirtokarjalaistentie_models import *
+from db_management.siirtokarjalaistentie_models import *
 
 stemmer = snowball.SnowballStemmer('finnish')
 
