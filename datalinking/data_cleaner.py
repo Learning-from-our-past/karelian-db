@@ -5,7 +5,7 @@ from functools import lru_cache
 from functools import partial
 from collections import namedtuple
 from datalinking.utils.resolve_birthplace import resolve_birthplace_to_mikarelia_birthplace
-
+from db_management.testing.population_utils import int_or_none
 
 # FIXME: These need to be updated if we want to add more data to fetch from katiha in datalinking
 katiha_person_raw = namedtuple('KatihaPersonRaw',
@@ -13,7 +13,7 @@ katiha_person_raw = namedtuple('KatihaPersonRaw',
                                 'birthDay birthMonth birthYear parishId motherLanguage'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
-                                    'date_of_birth birthplace'))
+                                    'date_of_birth birthplace mother_language'))
 
 
 class DataCleaner(ABC):
@@ -42,6 +42,8 @@ class DataCleaner(ABC):
 class KatihaDataCleaner(DataCleaner):
     def __init__(self):
         super().__init__()
+        self._mother_language_map = {0: 'other', 1: 'finnish', 2: 'swedish',
+                                     3: 'russian', 4: 'german'}
 
     def clean_db_rows(self, row):
         """
@@ -54,12 +56,15 @@ class KatihaDataCleaner(DataCleaner):
         norm_last_name = self._find_last_name_in_string(person_raw.lastName)
         dob = (person_raw.birthDay, person_raw.birthMonth, person_raw.birthYear)
         mk_birthplace = resolve_birthplace_to_mikarelia_birthplace(person_raw)
-        person_cleaned = katiha_person_cleaned(db_id=person_raw.ID,
-                                               normalized_first_names=norm_first_names,
-                                               normalized_last_name=norm_last_name,
-                                               event_ids=(person_raw.eventId,),
-                                               birthplace=mk_birthplace,
-                                               date_of_birth=dob)
+        person_cleaned = katiha_person_cleaned(
+            db_id=person_raw.ID,
+            normalized_first_names=norm_first_names,
+            normalized_last_name=norm_last_name,
+            event_ids=(person_raw.eventId,),
+            date_of_birth=dob,
+            birthplace=mk_birthplace,
+            mother_language=self._resolve_mother_language(person_raw.motherLanguage)
+        )
         return person_cleaned
 
     def _find_first_names_of_person(self, person):
@@ -90,3 +95,9 @@ class KatihaDataCleaner(DataCleaner):
             return self._get_normalized_last_name(name)
         else:
             return None
+
+    def _resolve_mother_language(self, mother_language_identifier):
+        mother_language = int_or_none(mother_language_identifier)
+        if mother_language is not None:
+            mother_language = self._mother_language_map[mother_language]
+        return mother_language
