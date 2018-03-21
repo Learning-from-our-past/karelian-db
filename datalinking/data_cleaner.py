@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 from datalinking.historical_name_normalizer.name_normalizer import NameNormalizer
+from datalinking.support_data.place_names import GENERALIZE_MIKARELIA_BIRTHPLACE
+from datalinking.utils.name_utils import find_former_lastnames
 from itertools import chain
 from functools import lru_cache
 from functools import partial
@@ -101,3 +103,72 @@ class KatihaDataCleaner(DataCleaner):
         if mother_language is not None:
             mother_language = self._mother_language_map[mother_language]
         return mother_language
+
+
+mikarelia_person_raw = namedtuple('MikareliaPersonRaw',
+                                  ('kairaId firstName lastName formerSurname sex birthPlace '
+                                   'birthDay birthMonth birthYear'))
+mikarelia_person_cleaned = namedtuple('MikareliaPersonCleaned',
+                                      ('db_id normalized_first_names normalized_last_name '
+                                       'date_of_birth birthplace'))
+
+
+class MiKARELIADataCleaner(DataCleaner):
+    def __init__(self):
+        super().__init__()
+
+    def clean_db_rows(self, row):
+        """
+        Cleans the person data (row from database) into a format ready for data linking.
+        :param row: A tuple containing the rows returned by the DB query
+        :return: namedtuple('MiKARELIAPersonCleaned')
+        """
+        person_raw = mikarelia_person_raw(*row)
+        norm_first_names = self._find_normalized_first_names_from_string(person_raw.firstName)
+        norm_last_name = self._find_normalized_last_name(person_raw)
+        dob = (person_raw.birthDay, person_raw.birthMonth, person_raw.birthYear)
+        person_cleaned = mikarelia_person_cleaned(
+            db_id=person_raw.kairaId,
+            normalized_first_names=norm_first_names,
+            normalized_last_name=norm_last_name,
+            date_of_birth=dob,
+            birthplace=self._clean_birthplace(person_raw.birthPlace),
+        )
+        return person_cleaned
+
+    def _find_normalized_first_names_from_string(self, first_name):
+        """
+        Normalizes a MiKARELIA person's first names using normalized name maps generated with
+        one of the invoke tasks.
+        :param first_name: A first name string from MiKARELIA
+        :return: A tuple of the person's normalized names
+        """
+        names = (name for name in first_name.split(' ') if name)
+        return tuple(self._get_normalized_first_name(name) for name in names if len(name) >= 2)
+
+    def _find_normalized_last_name(self, person):
+        """
+        Normalizes a MiKARELIA person's last name using normalized name maps generated with
+        one of the invoke tasks.
+        :param person: A namedtuple('MiKARELIAPersonRaw')
+        :return: A tuple of the person's normalized names
+        """
+
+        # If the person is female, we use their first former surname (which, in MiKARELIA, is
+        # their maiden name. Women are recorded in the Katiha data with their maiden names.
+        last_names = None
+        if person.sex == 'f' and person.formerSurname:
+            last_names = find_former_lastnames(person.formerSurname)
+        elif (person.sex == 'm' or not person.formerSurname) and person.lastName:
+            last_names = [name for name in person.lastName.strip().split(' ') if len(name) >= 2]
+
+        if not last_names:
+            return None
+
+        return self._get_normalized_last_name(last_names[0])
+
+    def _clean_birthplace(self, birthplace):
+        birthplace = birthplace.casefold().replace('-', '').replace(' ', '')
+        if birthplace in GENERALIZE_MIKARELIA_BIRTHPLACE:
+            birthplace = GENERALIZE_MIKARELIA_BIRTHPLACE[birthplace]
+        return birthplace
