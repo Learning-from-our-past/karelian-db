@@ -4,6 +4,8 @@ from datalinking.data_cleaner import KatihaDataCleaner
 from datalinking.data_cleaner import katiha_person_cleaned
 from datalinking.utils.resolve_birthplace import resolve_birthplace_to_mikarelia_birthplace
 from datalinking.data_cleaner import katiha_person_raw
+from datalinking.data_cleaner import MiKARELIADataCleaner
+from datalinking.data_cleaner import mikarelia_person_cleaned
 
 
 class TestKatihaDataCleaner:
@@ -69,3 +71,35 @@ class TestKatihaDataCleaner:
             p = katiha_person_raw(**data)
             cleaned_birthplace = resolve_birthplace_to_mikarelia_birthplace(p)
             assert cleaned_birthplace == 'viipuri'
+
+
+class TestMiKARELIADataCleaner:
+    @pytest.fixture(autouse=True, scope='class')
+    def cleaner(self):
+        return MiKARELIADataCleaner()
+
+    @pytest.fixture(autouse=True, scope='function')
+    def data(self):
+        # This data is completely made up, but it has to look real (i.e. names and parish id)
+        # so that the table lookups work
+        d = OrderedDict()
+        d['kairaId'] = 'siirtokarjalaiset_1_42S_1'
+        d['firstName'] = 'Tuomas Juuso'
+        d['lastName'] = 'Salmi'
+        d['formerSurname'] = 'Rallikuski'
+        d['sex'] = 'm'
+        d['birthPlace'] = 'Käkisalmenmlk'
+        d['birthDay'] = 11
+        d['birthMonth'] = 6
+        d['birthYear'] = 1921
+        return d
+
+    def should_correctly_return_cleaned_person_object(self, cleaner, data):
+        expected_data = mikarelia_person_cleaned(
+            db_id=data['kairaId'],
+            date_of_birth=(data['birthDay'], data['birthMonth'], data['birthYear']),
+            birthplace='käkisalmi',
+            normalized_first_names=('thomas', 'joseph'),
+            normalized_last_name='salmen'
+        )
+        assert expected_data == cleaner.clean_db_rows(data.values())

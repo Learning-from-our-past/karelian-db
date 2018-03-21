@@ -100,3 +100,14 @@ KATIHA_BIRTHPARISH_TO_MIKARELIA_BIRTHPLACE = {
     '0285': 'lavansaari',           # this is clearly a parishId but it's in the birthParish
     'valkjärvellä': 'valkjärvi'     # column for some reason
 }
+
+
+"""
+This is a dict for generalizing some MiKARELIA place names
+"""
+GENERALIZE_MIKARELIA_BIRTHPLACE = {
+    'sortavalanmlk': 'sortavala',
+    'viipurinmlk': 'viipuri',
+    'käkisalmenmlk': 'käkisalmi',
+    'viipu': 'viipuri'
+}
