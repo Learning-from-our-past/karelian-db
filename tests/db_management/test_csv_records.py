@@ -6,7 +6,7 @@ import pytest
 
 import db_management.database_config as config
 from db_management.testing import population_utils
-from db_management.testing.dbUtils import DBUtils
+from db_management.testing.mikarelia_test_db_utils import MiKARELIADBUtils
 from db_management.csv_record import CsvRecordOfPopulation
 from db_management.update_database import update_data_in_db
 
@@ -16,7 +16,7 @@ class TestCsvOnUpdateOnExistingDb:
     @pytest.yield_fixture(autouse=True, scope='class', name='person_data')
     def populate_person_information_to_db_anonymized(self, database):  # Override the root populating fixture
         config.CONFIG['anonymize'] = True
-        DBUtils.truncate_db()
+        MiKARELIADBUtils.truncate_db()
         return population_utils.populate_from_json(database, "./tests/populate/data/person.json")
 
     @pytest.yield_fixture(autouse=True)
@@ -79,7 +79,7 @@ class TestCsvOnUpdateOnEmptyDb(TestCsvOnUpdateOnExistingDb):
 
     @pytest.yield_fixture(autouse=True, scope='function', name='truncate_db')
     def truncate(self):
-        DBUtils.truncate_db()
+        MiKARELIADBUtils.truncate_db()
 
     def should_create_csv_records_about_sensitive_person_data(self, person_data, csv_test_dir):
         person_models = []

@@ -6,7 +6,7 @@ import db_management.testing.population_utils as population_utils
 from db_management.db_connection import DbConnection
 from db_management.db_connection import db_connection
 from db_management.testing.database_test_config import CONFIG
-from db_management.testing.dbUtils import DBUtils
+from db_management.testing.mikarelia_test_db_utils import MiKARELIADBUtils
 from db_management.update_report import update_report
 
 
@@ -27,7 +27,7 @@ def pytest_collection_modifyitems(session, config, items):
 
 @pytest.fixture(scope="session", autouse=True, name='database')
 def database():
-    DBUtils.init_test_db()
+    MiKARELIADBUtils.init_test_db()
     db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
     db_connection.connect()
 
@@ -55,7 +55,7 @@ def researcher_db_connection():
 @pytest.yield_fixture(autouse=True, scope='function', name='person_data')
 def populate_person_information_to_db(database):
     config.CONFIG['anonymize'] = False
-    DBUtils.truncate_db()
+    MiKARELIADBUtils.truncate_db()
     # Person data is anonymized and tweaked and only usable for software testing.
     update_report.setup('testfile.json')
     return population_utils.populate_from_json(database, "./tests/populate/data/person.json")
