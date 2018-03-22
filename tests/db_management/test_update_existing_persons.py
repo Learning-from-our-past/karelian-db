@@ -6,7 +6,7 @@ import db_management.location_operations as loc_op
 import db_management.preprocess_operations as preproc
 from db_management.siirtokarjalaistentie_models import Person, Marriage, Child, LivingRecord, KairaUpdateReportModel, \
     FarmDetails
-from db_management.testing.dbUtils import DBUtils
+from db_management.testing.mikarelia_test_db_utils import MiKARELIADBUtils
 from db_management.testing.population_utils import MockRecord
 from db_management.update_database import update_data_in_db
 from db_management.update_report import update_report
@@ -54,7 +54,7 @@ class TestUpdateOnExistingDb:
 class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
     @pytest.yield_fixture(autouse=True, scope='function', name='truncate_db')
     def truncate(self):
-        DBUtils.truncate_db()
+        MiKARELIADBUtils.truncate_db()
 
     def should_add_living_records(self, person_data, mocker):
         person_models = []

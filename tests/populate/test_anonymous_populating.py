@@ -4,7 +4,7 @@ import db_management.database_config as config
 import db_management.testing.population_utils as population_utils
 import db_management.preprocess_operations as preproc
 from db_management.siirtokarjalaistentie_models import *
-from db_management.testing.dbUtils import DBUtils
+from db_management.testing.mikarelia_test_db_utils import MiKARELIADBUtils
 from db_management.update_database import update_data_in_db
 
 
@@ -13,7 +13,7 @@ class TestPersonPopulate:
     @pytest.yield_fixture(autouse=True, scope='class', name='person_data')
     def populate_person_information_to_db_anonymized(self, database): # Override the root populating fixture
         config.CONFIG['anonymize'] = True
-        DBUtils.truncate_db()
+        MiKARELIADBUtils.truncate_db()
         # Person data is anonymized and tweaked and only usable for software testing.
         return population_utils.populate_from_json(database, "./tests/populate/data/person.json")[0]
 
