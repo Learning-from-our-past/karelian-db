@@ -62,7 +62,7 @@ class KatihaDataCleaner(DataCleaner):
             db_id=person_raw.ID,
             normalized_first_names=norm_first_names,
             normalized_last_name=norm_last_name,
-            event_ids=(person_raw.eventId,),
+            event_ids={person_raw.eventId},
             date_of_birth=dob,
             birthplace=mk_birthplace,
             mother_language=self._resolve_mother_language(person_raw.motherLanguage)

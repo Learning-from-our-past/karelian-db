@@ -33,7 +33,7 @@ class TestKatihaDataCleaner:
 
     def should_correctly_return_cleaned_person_object(self, cleaner, data):
         expected_data = katiha_person_cleaned(db_id=data['ID'],
-                                              event_ids=(data['eventId'],),
+                                              event_ids={data['eventId']},
                                               normalized_first_names=('thomas', 'joseph'),
                                               normalized_last_name='salmen',
                                               birthplace='sortavala',
