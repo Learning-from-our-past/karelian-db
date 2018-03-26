@@ -111,3 +111,34 @@ GENERALIZE_MIKARELIA_BIRTHPLACE = {
     'käkisalmenmlk': 'käkisalmi',
     'viipu': 'viipuri'
 }
+
+
+"""
+This is a dict that contains alternative MiKARELIA place names for Katiha places. Because
+Katiha birthplaces are actually birth parishes, their information is less accurate. Maybe
+some places didn't have their own parish or the parish was named after the general region
+it was in rather than the small more specific region MiKARELIA has for a birthplace. E.g.
+when Katiha's birth parish says "Viipuri", in MiKARELIA data it can be "johannes", "vah-
+viala", "nuijamaa", "antrea" which are all in very close vicinity to the city of Viipuri or
+possibly in the same province.
+
+There are also cases where it seems people registered their children in a neighboring parish
+instead of the parish of the area they lived in.
+
+And finally there are cases where a new parish or province was formed, splitting away from
+a bigger one as it was born. For example, Terijoki belonged to Kivennapa before becoming its
+own province. Vuoksela was a part of Sakkola before 1914. Lumivaara was part of Jaakkima 
+before 1923. 
+"""
+ALTERNATIVE_MIKARELIA_NAMES_FOR_KATIHA_PLACE = {
+    'viipuri': ('johannes', 'vahviala', 'nuijamaa', 'antrea'),
+    'uusikirkko': ('kanneljärvi', 'terijoki'),
+    'kivennapa': ('terijoki'),
+    'sortavala': ('harlu', 'impilahti'),
+    'muolaa': ('muola', 'äyräpää', 'vuoksela'),
+    'muola': ('muolaa', 'äyräpää', 'vuoksela'),
+    'soanlahti': ('suistamo',),
+    'johannes': ('viipuri',),
+    'jaakkima': ('lumivaara',),
+    'sakkola': ('vuoksela',)
+}
