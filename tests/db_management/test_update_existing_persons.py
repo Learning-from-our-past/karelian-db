@@ -74,7 +74,9 @@ class TestInsertingToEmptyDb(TestUpdateOnExistingDb):
         assert len(records_for_person) == 5
 
         check_update_report('should_add_living_records', {
-            'recordCountChange': {'Marriage': 1, 'Profession': 3, 'Child': 2, 'Place': 6, 'Person': 3, 'Page': 1, 'LivingRecord': 10}
+            'recordCountChange': {'Marriage': 1, 'Profession': 3, 'Child': 2, 'Place': 6,
+                                  'Person': 3, 'Page': 1, 'LivingRecord': 10, 'KatihaPerson': 0,
+                                  'Family': 0, 'Language': 0}
         })
 
     class TestChildren:
@@ -146,7 +148,9 @@ class TestOnlyForExistingDataInDb:
         assert marriage_in_db.weddingYear == 1999
 
         check_update_report('should_not_change_fields_which_were_edited_by_human', {
-            'changedRecordsCount': {'Child': 0, 'Marriage': 0, 'LivingRecord': 0, 'Page': 0, 'Place': 0, 'Person': 2, 'Profession': 0}
+            'changedRecordsCount': {'Child': 0, 'Marriage': 0, 'LivingRecord': 0, 'Page': 0,
+                                    'Place': 0, 'Person': 2, 'Profession': 0, 'KatihaPerson': 0,
+                                    'Family': 0, 'Language': 0}
         })
 
     def should_not_do_anything_for_livingrecords_if_they_have_not_changed(self, person_data, mocker):
@@ -261,7 +265,9 @@ class TestOnlyForExistingDataInDb:
             assert children_models[1].firstName == 'Lapsi2'
 
             check_update_report('should_skip_changes_to_all_children_if_one_has_been_manually_edited', {
-                'ignoredRecordsCount': {'Marriage': 0, 'Person': 0, 'Child': 2, 'Profession': 0, 'Page': 0, 'Place': 0, 'LivingRecord': 0}
+                'ignoredRecordsCount': {'Marriage': 0, 'Person': 0, 'Child': 2, 'Profession': 0,
+                                        'Page': 0, 'Place': 0, 'LivingRecord': 0, 'KatihaPerson': 0,
+                                        'Family': 0, 'Language': 0}
             })
 
         def should_not_do_anything_for_children_if_they_have_not_changed(self, person_data, mocker):

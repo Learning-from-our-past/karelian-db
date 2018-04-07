@@ -2,6 +2,7 @@ import pytest
 
 import db_management.database_config as config
 import db_management.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+from db_management import katiha_models
 import db_management.testing.population_utils as population_utils
 from db_management.db_connection import DbConnection
 from db_management.db_connection import db_connection
@@ -33,6 +34,7 @@ def database():
 
     # Set database of the models
     db_siirtokarjalaistentie_models.set_database_to_models(db_connection.get_database())
+    katiha_models.set_database_to_models(db_connection.get_database())
 
     return db_connection.get_database()
 

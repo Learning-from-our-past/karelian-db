@@ -1,6 +1,7 @@
 import datetime
 
 from db_management.siirtokarjalaistentie_models import *
+from db_management.katiha_models import *
 
 
 class UpdateReportService:
@@ -17,12 +18,15 @@ class UpdateReportService:
         counts = {'Person': Person.select(Person.id).count(), 'Child': Child.select(Child.id).count(),
                   'LivingRecord': LivingRecord.select(LivingRecord.id).count(),
                   'Marriage': Marriage.select(Marriage.id).count(), 'Page': Page.select(Page.id).count(),
-                  'Place': Place.select(Place.id).count(), 'Profession': Profession.select(Profession.id).count()}
+                  'Place': Place.select(Place.id).count(), 'Profession': Profession.select(Profession.id).count(),
+                  'Language': Language.select(Language.id).count(), 'Family': Family.select(Family.id).count(),
+                  'KatihaPerson': KatihaPerson.select(KatihaPerson.id).count()}
 
         return counts
 
     def _initialize_counts_to_zero(self):
-        counts = {'Person': 0, 'Child': 0, 'LivingRecord': 0, 'Marriage': 0, 'Page': 0, 'Place': 0, 'Profession': 0}
+        counts = {'Person': 0, 'Child': 0, 'LivingRecord': 0, 'Marriage': 0, 'Page': 0, 'Place': 0, 'Profession': 0,
+                  'Language': 0, 'Family': 0, 'KatihaPerson': 0}
 
         return counts
 
@@ -55,7 +59,6 @@ class UpdateReportService:
         )
 
         m.save()
-
 
 
 update_report = UpdateReportService()
