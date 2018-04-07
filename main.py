@@ -4,6 +4,7 @@ import os
 import sys
 
 import db_management.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
+from db_management import katiha_models
 from db_management.database_config import CONFIG
 from db_management.db_connection import db_connection
 from db_management.csv_record import CsvRecordOfPopulation
@@ -67,6 +68,7 @@ if __name__ == "__main__":
 
     # Set database of the models
     db_siirtokarjalaistentie_models.set_database_to_models(database)
+    katiha_models.set_database_to_models(database)
 
     csv_record = None
 

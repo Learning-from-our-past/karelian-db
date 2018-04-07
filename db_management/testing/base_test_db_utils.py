@@ -26,7 +26,7 @@ Finally, truncate_schema. The tables of this schema get truncated when truncate_
 
 
 class BaseDBUtils:
-    def __init__(self, config, sequences_to_reset, truncate_schema):
+    def __init__(self, config, sequences_to_reset, truncate_schemas):
         self.master_connection = psycopg2.connect(dbname=config['master_db'], user=config['db_admin'],
                                                   host='localhost')
 
@@ -37,7 +37,7 @@ class BaseDBUtils:
         self.peewee_database = PostgresqlDatabase(None)
         self._reset_values = sequences_to_reset
         self._config = config
-        self._truncate_schema = truncate_schema
+        self._truncate_schemas = truncate_schemas
 
     def _get_test_db_connection(self):
         return psycopg2.connect(dbname=self._config['test_db_name'], user=self._config['db_admin'], host='localhost')
@@ -109,14 +109,15 @@ class BaseDBUtils:
         """
         self.test_db_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = self.test_db_connection.cursor()
-        cursor.execute("SELECT tablename FROM pg_tables WHERE tableowner = %s AND schemaname = %s;",
-                       [self._config['db_admin'], self._truncate_schema])
-        tables = cursor.fetchall()
+        for schema_to_truncate in self._truncate_schemas:
+            cursor.execute("SELECT tablename FROM pg_tables WHERE tableowner = %s AND schemaname = %s;",
+                           [self._config['db_admin'], schema_to_truncate])
+            tables = cursor.fetchall()
 
-        for table in tables:
-            cursor.execute(
-                PSQL("TRUNCATE TABLE {}.{} CASCADE;").format(Identifier(self._truncate_schema), Identifier(table[0]))
-            )
+            for table in tables:
+                cursor.execute(
+                    PSQL("TRUNCATE TABLE {}.{} CASCADE;").format(Identifier(schema_to_truncate), Identifier(table[0]))
+                )
 
         # This query was generated with:
         # https://wiki.postgresql.org/wiki/Fixing_Sequences
