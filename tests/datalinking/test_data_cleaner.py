@@ -31,6 +31,7 @@ class TestKatihaDataCleaner:
         expected_data = katiha_person_cleaned(db_id=data['ID'],
                                               event_ids=(data['eventId'],),
                                               normalized_first_names=('thomas', 'joseph'),
+                                              normalized_last_name='salmen',
                                               date_of_birth=(data['birthDay'], data['birthMonth'], data['birthYear']))
         cleaned_data = cleaner.clean_db_rows(data.values())
         assert cleaned_data == expected_data
