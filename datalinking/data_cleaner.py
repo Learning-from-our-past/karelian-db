@@ -4,6 +4,8 @@ from itertools import chain
 from functools import lru_cache
 from functools import partial
 from collections import namedtuple
+from datalinking.utils.resolve_birthplace import resolve_birthplace_to_mikarelia_birthplace
+
 
 # FIXME: These need to be updated if we want to add more data to fetch from katiha in datalinking
 katiha_person_raw = namedtuple('KatihaPersonRaw',
@@ -11,7 +13,7 @@ katiha_person_raw = namedtuple('KatihaPersonRaw',
                                 'birthDay birthMonth birthYear parishId motherLanguage'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
-                                    'date_of_birth'))
+                                    'date_of_birth birthplace'))
 
 
 class DataCleaner(ABC):
@@ -51,10 +53,12 @@ class KatihaDataCleaner(DataCleaner):
         norm_first_names = self._find_first_names_of_person(person_raw)
         norm_last_name = self._find_last_name_in_string(person_raw.lastName)
         dob = (person_raw.birthDay, person_raw.birthMonth, person_raw.birthYear)
+        mk_birthplace = resolve_birthplace_to_mikarelia_birthplace(person_raw)
         person_cleaned = katiha_person_cleaned(db_id=person_raw.ID,
                                                normalized_first_names=norm_first_names,
                                                normalized_last_name=norm_last_name,
                                                event_ids=(person_raw.eventId,),
+                                               birthplace=mk_birthplace,
                                                date_of_birth=dob)
         return person_cleaned
 
