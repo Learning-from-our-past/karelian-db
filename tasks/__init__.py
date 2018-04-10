@@ -39,15 +39,17 @@ def new_migration(ctx):
     create_migration_file('migrations')
 
 
-@task(optional=['first', 'all_books'], help={
+@task(help={
     'first': 'Populate only first book to the database.',
     'all_books': 'Populates all siirtokarjalaisten_tie json files from material/ directory',
-    'book': 'Populates book in provided path which is located under the root project directory'
+    'book': 'Populates book in provided path which is located under the root project directory',
+    'data-type': 'Type of data to populate, default "kaira". Specify "link" to populate linked data instead.'
 })
-def populate(ctx, first=None, all_books=None, book=None):
+def populate(ctx, first=False, file=None, all_books=False, data_type='kaira'):
     """
-    Populate json files in material directory to the database. Either -f, -b or -a
-    arguments should be provided.
+    Populate json files in material directory to the database. -d has to be provided to specify
+    data type, then either -f, or -a has to be specified in the case of "-d kaira". If one of them
+    is not specified, -i should be specified. With "-d link", -i should be specified.
     """
     # TODO: Maybe support providing a relative path to any file? However, note the slightly strange path, since working
     # directory is changed to parent directory...
@@ -58,15 +60,25 @@ def populate(ctx, first=None, all_books=None, book=None):
         'siirtokarjalaiset_IV.json',
     ]
 
-    if first:
-        ctx.run('python -m main material/{}'.format(karelian_books[0]))
-    elif all_books:
-        for book in karelian_books:
-            ctx.run('python -m main material/{}'.format(book))
-    elif book:
-        ctx.run('python -m main {}'.format(book))
+    if data_type == 'kaira':
+        if first:
+            ctx.run('python -m main -t kaira material/{}'.format(karelian_books[0]))
+        elif all_books:
+            for book in karelian_books:
+                ctx.run('python -m main -t kaira material/{}'.format(book))
+        elif file:
+            ctx.run('python -m main -t kaira {}'.format(file))
+        else:
+            print('Should provide either [file], or [first] or [all-books] flag on invocation!')
+            sys.exit(1)
+    elif data_type == 'link':
+        if file:
+            ctx.run('python -m main -t link {}'.format(file))
+        else:
+            print('Should provide [file] on invocation!')
+            sys.exit(1)
     else:
-        print('Should provide either [first], [book] or [all] flag on invocation!')
+        print('Should provide [data-type] on invocation!')
         sys.exit(1)
 
 
