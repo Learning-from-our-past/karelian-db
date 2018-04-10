@@ -37,8 +37,8 @@ class UpdateReportService:
         self._record_counts_after_update = self._initialize_counts_to_zero()
         self._ignored_records_counts = self._initialize_counts_to_zero()
 
-    def changed_record_in(self, table_name):
-        self._changed_records_counts[table_name] += 1
+    def changed_record_in(self, table_name, count=1):
+        self._changed_records_counts[table_name] += count
 
     def ignored_record_in(self, table_name, count=1):
         self._ignored_records_counts[table_name] += count

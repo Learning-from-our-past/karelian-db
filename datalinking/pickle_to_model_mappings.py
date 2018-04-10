@@ -2,6 +2,15 @@ from db_management.katiha_models import *
 from db_management.json_to_model_mappings import map_value_to_model
 
 
+def map_data_to_model(model, data_entry, mapping_operations, extra_data=None):
+    for key, field_details in mapping_operations['mappings'].items():
+        result_of_operation = _get_attr_from_namedtuple(data_entry,
+                                                        field_details['namedtuple_attribute'])
+        for operation in field_details['operations']:
+            model, result_of_operation = operation(key, model, result_of_operation, data_entry, extra_data)
+    return model
+
+
 def _get_attr_from_namedtuple(data_entry, attribute):
     if ',' in attribute:
         actual_attribute, index = attribute.split(',')
