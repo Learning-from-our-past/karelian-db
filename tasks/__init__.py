@@ -41,7 +41,7 @@ def new_migration(ctx):
 @task(optional=['first', 'all_books'], help={
     'first': 'Populate only first book to the database.',
     'all_books': 'Populates all siirtokarjalaisten_tie json files from material/ directory',
-    'book': 'Populates book in provided path which is located under database/ directory'
+    'book': 'Populates book in provided path which is located under the root project directory'
 })
 def populate(ctx, first=None, all_books=None, book=None):
     """
@@ -58,12 +58,12 @@ def populate(ctx, first=None, all_books=None, book=None):
     ]
 
     if first:
-        ctx.run('python -m main database/material/{}'.format(karelian_books[0]))
+        ctx.run('python -m main material/{}'.format(karelian_books[0]))
     elif all_books:
         for book in karelian_books:
-            ctx.run('python -m main database/material/{}'.format(book))
+            ctx.run('python -m main material/{}'.format(book))
     elif book:
-        ctx.run('python -m main database/{}'.format(book))
+        ctx.run('python -m main {}'.format(book))
     else:
         print('Should provide either [first], [book] or [all] flag on invocation!')
         sys.exit(1)
