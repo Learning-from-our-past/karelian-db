@@ -64,12 +64,12 @@ def restore_encrypted_backup(superuser, dump_path, ssl_key_path):
     create_cmd = 'createdb -U {} learning-from-our-past'.format(superuser)
     print(create_cmd, os.system(create_cmd))
 
-    init_cmd = 'psql -U {} -d learning-from-our-past -a -f database/sql/initial_db.sql'.format(superuser)
+    init_cmd = 'psql -U {} -d learning-from-our-past -a -f sql/initial_db.sql'.format(superuser)
     print(init_cmd, os.system(init_cmd))
 
     print('Ready to run the migrations')
     database_password = getpass.getpass('Please input password for user {}: '.format(superuser))
-    run_db_migrations(superuser, database_password, migration_dir='database/migrations')
+    run_db_migrations(superuser, database_password, migration_dir='migrations')
 
     print('Database reinitialized successfully!')
 
