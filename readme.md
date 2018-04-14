@@ -68,6 +68,26 @@ invoke test-all
 
 If tests pass everything should be fine.
 
+## Datalinking
+
+If you wish to use the datalinking feature, you must have a MySQL database set up on your computer
+with the Katiha data imported. For development, MySQL Ver 14.14 Distrib 5.7.21 was used. The default
+options expect there to be a user called "kaira" in the MySQL database with access to tables in the
+Katiha database. You can achieve this in the MySQL shell with something like:
+
+```sql
+CREATE USER 'kaira'@'localhost';  -- you can add IDENTIFIED BY 'password' if a password is desired
+GRANT SELECT ON katiha.* TO 'kaira'@'localhost';
+```
+
+Once the above criteria are met, you should simply be able to run the following command:
+
+```
+inv link-data
+```
+
+This will, by default, output the linked data to the material/ directory.
+
 ## Autoenv
 Autoenv is a handy utility which automatically loads the `.env` file when you cd to the file. See instructions for installation here: https://github.com/kennethreitz/autoenv
 

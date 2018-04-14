@@ -4,6 +4,7 @@ import sys
 from tasks.restore_database import restore_encrypted_backup
 from tasks.new_migration import create_migration_file
 from tasks.migrate import migrate_local, migrate_production
+from datalinking.run_data_linking import run_data_linking
 
 
 @task(help={
@@ -134,3 +135,13 @@ def restore_backup(ctx, dumpfile, sslkey, superuser='postgres'):
     Restore encrypted database backup snapshot.
     """
     restore_encrypted_backup(superuser, dumpfile, sslkey)
+
+
+@task(help={
+    'output_path': 'The path under which to store the linked data.'
+})
+def link_data(ctx, output_path='./material/'):
+    """
+    Link MiKARELIA data to Katiha data and dump the results of the data linking to the hard drive.
+    """
+    run_data_linking(output_path)
