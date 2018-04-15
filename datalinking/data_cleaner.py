@@ -12,10 +12,10 @@ from db_management.testing.population_utils import int_or_none
 # FIXME: These need to be updated if we want to add more data to fetch from katiha in datalinking
 katiha_person_raw = namedtuple('KatihaPersonRaw',
                                ('ID eventId firstName secondName lastName birthParish '
-                                'birthDay birthMonth birthYear parishId motherLanguage'))
+                                'birthDay birthMonth birthYear parishId motherLanguage sex'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
-                                    'date_of_birth birthplace mother_language'))
+                                    'date_of_birth birthplace mother_language sex'))
 
 
 class DataCleaner(ABC):
@@ -46,6 +46,7 @@ class KatihaDataCleaner(DataCleaner):
         super().__init__()
         self._mother_language_map = {0: 'other', 1: 'finnish', 2: 'swedish',
                                      3: 'russian', 4: 'german'}
+        self._sex_map = {1: 'm', 2: 'f'}
 
     def clean_db_rows(self, row):
         """
@@ -65,7 +66,8 @@ class KatihaDataCleaner(DataCleaner):
             event_ids={person_raw.eventId},
             date_of_birth=dob,
             birthplace=mk_birthplace,
-            mother_language=self._resolve_mother_language(person_raw.motherLanguage)
+            mother_language=self._resolve_mother_language(person_raw.motherLanguage),
+            sex=self._sex_map.get(int_or_none(person_raw.sex), None)
         )
         return person_cleaned
 
