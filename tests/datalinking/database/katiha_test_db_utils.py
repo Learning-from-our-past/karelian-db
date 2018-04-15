@@ -7,8 +7,8 @@ from datalinking.models import katiha_models
 class KatihaDBUtils(BaseDBUtils):
     def __init__(self):
         sequences_to_reset = [('public', 'LA_ID_seq'), ('public', 'parishes_id_seq')]
-        truncate_schema = 'public'
-        super().__init__(CONFIG, sequences_to_reset, truncate_schema)
+        truncate_schemas = ('public',)
+        super().__init__(CONFIG, sequences_to_reset, truncate_schemas)
 
     def _create_schema(self):
         # Create DB tables from the models

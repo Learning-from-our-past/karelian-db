@@ -16,9 +16,10 @@ class MiKARELIADBUtils(BaseDBUtils):
                               ('siirtokarjalaisten_tie', 'Person_id_seq'),
                               ('siirtokarjalaisten_tie', 'Place_id_seq'),
                               ('siirtokarjalaisten_tie', 'Profession_id_seq'),
+                              ('katiha', 'Language_id_seq'),
                               ('system', 'migratehistory_id_seq')]
-        truncate_schema = 'siirtokarjalaisten_tie'
-        super().__init__(CONFIG, sequences_to_reset, truncate_schema)
+        truncate_schemas = ('siirtokarjalaisten_tie', 'katiha')
+        super().__init__(CONFIG, sequences_to_reset, truncate_schemas)
 
     def _create_schema(self):
         # Run all unapplied database migrations
@@ -28,5 +29,6 @@ class MiKARELIADBUtils(BaseDBUtils):
     def truncate_db(self):
         super().truncate_db()
         self.test_db_connection.cursor().execute('TRUNCATE TABLE system."KairaUpdateReport"')
+
 
 MiKARELIADBUtils = MiKARELIADBUtils()
