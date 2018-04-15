@@ -46,6 +46,12 @@ def migrate(migrator, database, fake=False, **kwargs):
     
     ALTER TABLE katiha."KatihaPerson" ADD COLUMN "multipleBirth" INTEGER NULL;
     COMMENT ON COLUMN katiha."KatihaPerson"."multipleBirth" is 'How many children were born when this person was born (i.e. twins) including this person.';
+    
+    ALTER TABLE katiha."KatihaPerson" ADD COLUMN "vaccinated" BOOLEAN NULL;
+    COMMENT ON COLUMN katiha."KatihaPerson"."vaccinated" is 'Whether this person was vaccinated.';
+    
+    ALTER TABLE katiha."KatihaPerson" ADD COLUMN "rokko" BOOLEAN NULL;
+    COMMENT ON COLUMN katiha."KatihaPerson"."rokko" is 'Whether this person suffered through a rokko disease, probably smallpox.';
     """)
 
 

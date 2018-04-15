@@ -78,6 +78,14 @@ pickle_to_katiha_person = {
         'multipleBirth': {
             'namedtuple_attribute': 'multiple_birth',
             'operations': [map_value_to_model]
+        },
+        'vaccinated': {
+            'namedtuple_attribute': 'vaccinated',
+            'operations': [map_value_to_model]
+        },
+        'rokko': {
+            'namedtuple_attribute': 'rokko',
+            'operations': [map_value_to_model]
         }
     }
 }

@@ -11,7 +11,8 @@ def get_mock_katiha_person_creator():
     def get_mock_katiha_person(db_id=None, event_ids={'e1'}, normalized_first_names=('nyymi',),
                                normalized_last_name='testikäs', date_of_birth=(1, 1, 1900),
                                birthplace='testilä', mother_language='finnish', sex=None,
-                               birth_in_marriage=None, multiple_birth=None):
+                               birth_in_marriage=None, multiple_birth=None, vaccinated=None,
+                               rokko=None):
         if db_id is None:
             nonlocal current_id
             current_id += 1
@@ -22,7 +23,8 @@ def get_mock_katiha_person_creator():
                                      date_of_birth=date_of_birth, birthplace=birthplace,
                                      mother_language=mother_language, sex=sex,
                                      birth_in_marriage=birth_in_marriage,
-                                     multiple_birth=multiple_birth)
+                                     multiple_birth=multiple_birth, vaccinated=vaccinated,
+                                     rokko=rokko)
     return get_mock_katiha_person
 
 

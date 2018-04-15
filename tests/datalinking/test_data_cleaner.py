@@ -32,6 +32,7 @@ class TestKatihaDataCleaner:
         d['sex'] = 1
         d['birthInMarriage'] = '2'
         d['multipleBirth'] = 3
+        d['vaccination'] = '3'
         return d
 
     def should_correctly_return_cleaned_person_object(self, cleaner, data):
@@ -44,7 +45,9 @@ class TestKatihaDataCleaner:
                                               mother_language='finnish',
                                               sex='m',
                                               birth_in_marriage='born out of wedlock',
-                                              multiple_birth=3)
+                                              multiple_birth=3,
+                                              vaccinated=True,
+                                              rokko=True)
         cleaned_data = cleaner.clean_db_rows(data.values())
         assert cleaned_data == expected_data
 
