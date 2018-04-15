@@ -32,6 +32,7 @@ class KatihaPerson(BaseModel):
     birthDay = IntegerField()
     birthMonth = IntegerField()
     birthYear = IntegerField()
+    sex = TextField()
 
     class Meta:
         db_table = 'KatihaPerson'

@@ -58,6 +58,10 @@ pickle_to_katiha_person = {
         'familyId': {
             'namedtuple_attribute': 'family_id',
             'operations': [_add_family, map_value_to_model]
+        },
+        'sex': {
+            'namedtuple_attribute': 'sex',
+            'operations': [map_value_to_model]
         }
     }
 }
