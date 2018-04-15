@@ -28,7 +28,21 @@ import peewee as pw
 def migrate(migrator, database, fake=False, **kwargs):
     migrator.sql("""
     ALTER TABLE katiha."KatihaPerson" ADD COLUMN "sex" TEXT NULL;
-    COMMENT ON COLUMN katiha."KatihaPerson".sex is 'Sex of person. f for female, m for male.'
+    COMMENT ON COLUMN katiha."KatihaPerson".sex is 'Sex of person. f for female, m for male.';
+    
+    CREATE TABLE katiha."BirthInMarriageCode"(
+      code SERIAL PRIMARY KEY,
+      "birthType" TEXT NOT NULL
+    );
+    
+    ALTER TABLE katiha."KatihaPerson" ADD COLUMN "birthInMarriage" INTEGER NULL REFERENCES katiha."BirthInMarriageCode"
+      ON DELETE SET NULL
+      ON UPDATE CASCADE;
+    COMMENT ON COLUMN katiha."KatihaPerson"."birthInMarriage" is 'Whether the person was born in a marriage or not.';
+    
+    GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "katiha"."BirthInMarriageCode" TO kaira;
+    GRANT SELECT, REFERENCES ON "katiha"."BirthInMarriageCode" TO researcher;
+    GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA "katiha" TO researcher, kaira;
     """)
 
 

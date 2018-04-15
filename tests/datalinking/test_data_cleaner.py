@@ -30,6 +30,7 @@ class TestKatihaDataCleaner:
         d['parishId'] = '0504'
         d['motherLanguage'] = '1'
         d['sex'] = 1
+        d['birthInMarriage'] = '2'
         return d
 
     def should_correctly_return_cleaned_person_object(self, cleaner, data):
@@ -40,7 +41,8 @@ class TestKatihaDataCleaner:
                                               birthplace='sortavala',
                                               date_of_birth=(data['birthDay'], data['birthMonth'], data['birthYear']),
                                               mother_language='finnish',
-                                              sex='m')
+                                              sex='m',
+                                              birth_in_marriage='born out of wedlock')
         cleaned_data = cleaner.clean_db_rows(data.values())
         assert cleaned_data == expected_data
 
