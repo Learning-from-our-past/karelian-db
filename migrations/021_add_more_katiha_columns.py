@@ -52,6 +52,16 @@ def migrate(migrator, database, fake=False, **kwargs):
     
     ALTER TABLE katiha."KatihaPerson" ADD COLUMN "rokko" BOOLEAN NULL;
     COMMENT ON COLUMN katiha."KatihaPerson"."rokko" is 'Whether this person suffered through a rokko disease, probably smallpox.';
+    
+    ALTER TABLE katiha."KatihaPerson" ADD COLUMN "literate" BOOLEAN NULL;
+    COMMENT ON COLUMN katiha."KatihaPerson"."literate" is 'Whether this person self-reported as literate.';
+    
+    ALTER TABLE katiha."KatihaPerson" ADD COLUMN "literacyConfirmed" BOOLEAN NULL
+      CHECK(
+        ("literacyConfirmed" IS NOT NULL AND "literate" IS TRUE) OR
+        ("literacyConfirmed" IS NULL)
+      );
+    COMMENT ON COLUMN katiha."KatihaPerson"."literacyConfirmed" is 'Whether the literacy of this person was confirmed.';
     """)
 
 
