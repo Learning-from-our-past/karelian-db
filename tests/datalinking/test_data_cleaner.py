@@ -34,6 +34,10 @@ class TestKatihaDataCleaner:
         d['multipleBirth'] = 3
         d['vaccination'] = '3'
         d['literate'] = 1
+        d['departureType'] = 2
+        d['departureDay'] = 21
+        d['departureMonth'] = 5
+        d['departureYear'] = 1930
         return d
 
     def should_correctly_return_cleaned_person_object(self, cleaner, data):
@@ -50,7 +54,9 @@ class TestKatihaDataCleaner:
                                               vaccinated=True,
                                               rokko=True,
                                               literate=True,
-                                              literacy_confirmed=False)
+                                              literacy_confirmed=False,
+                                              departure_type='died',
+                                              departure_date=(data['departureDay'], data['departureMonth'], data['departureYear']))
         cleaned_data = cleaner.clean_db_rows(data.values())
         assert cleaned_data == expected_data
 
