@@ -30,6 +30,8 @@ class TestDataPopulation:
         assert katiha_person.multipleBirth == link_data[0].multiple_birth
         assert katiha_person.vaccinated == link_data[0].vaccinated
         assert katiha_person.rokko == link_data[0].rokko
+        assert katiha_person.literate == link_data[0].literate
+        assert katiha_person.literacyConfirmed == link_data[0].literacy_confirmed
         mikarelia_person = Person.get(Person.katihaId == katiha_person.id)
         assert mikarelia_person.kairaId == link_data[0].link_kaira_id
 

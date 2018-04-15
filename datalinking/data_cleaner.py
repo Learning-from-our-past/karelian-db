@@ -14,11 +14,11 @@ from db_management.testing.population_utils import int_or_none
 katiha_person_raw = namedtuple('KatihaPersonRaw',
                                ('ID eventId firstName secondName lastName birthParish '
                                 'birthDay birthMonth birthYear parishId motherLanguage sex '
-                                'birthInMarriage multipleBirth vaccination'))
+                                'birthInMarriage multipleBirth vaccination literate'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
                                     'date_of_birth birthplace mother_language sex birth_in_marriage '
-                                    'multiple_birth vaccinated rokko'))
+                                    'multiple_birth vaccinated rokko literate literacy_confirmed'))
 
 
 class DataCleaner(ABC):
@@ -66,6 +66,7 @@ class KatihaDataCleaner(DataCleaner):
         norm_last_name = self._find_last_name_in_string(person_raw.lastName)
         dob = (person_raw.birthDay, person_raw.birthMonth, person_raw.birthYear)
         mk_birthplace = resolve_birthplace_to_mikarelia_birthplace(person_raw)
+        literate, lit_confirmed = self._resolve_literacy(person_raw.literate)
         person_cleaned = katiha_person_cleaned(
             db_id=person_raw.ID,
             normalized_first_names=norm_first_names,
@@ -78,7 +79,9 @@ class KatihaDataCleaner(DataCleaner):
             birth_in_marriage=self._resolve_birth_in_marriage(person_raw.birthInMarriage),
             multiple_birth=int_or_none(person_raw.multipleBirth),
             vaccinated=self._was_person_vaccinated(person_raw.vaccination),
-            rokko=self._did_person_have_rokko_disease(person_raw.vaccination)
+            rokko=self._did_person_have_rokko_disease(person_raw.vaccination),
+            literate=literate,
+            literacy_confirmed=lit_confirmed
         )
         return person_cleaned
 
@@ -140,6 +143,28 @@ class KatihaDataCleaner(DataCleaner):
             if rokko in self._had_rokko:
                 return True
         return None
+
+    @staticmethod
+    def _resolve_literacy(literate):
+        """
+        Interprets the "literate" column of a Katiha DB row.
+        1 means the person self-reported as being literate
+        2 means the person self-reported as being literate and their literacy has been graded
+        3 means the person is not literate
+        :param literate: value of "literate" column from Katiha DB
+        :return: (is_literate, literacy_confirmed) tuple
+        """
+        literate_code = int_or_none(literate)
+        is_literate = None
+        literacy_confirmed = None
+        if literate_code is not None:
+            if literate_code == 1:
+                is_literate, literacy_confirmed = True, False
+            elif literate_code == 2:
+                is_literate, literate_code = True, True
+            elif literate_code == 3:
+                is_literate = False
+        return is_literate, literacy_confirmed
 
 
 mikarelia_person_raw = namedtuple('MikareliaPersonRaw',

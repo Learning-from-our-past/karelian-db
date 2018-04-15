@@ -45,6 +45,8 @@ class KatihaPerson(BaseModel):
     multipleBirth = IntegerField()
     vaccinated = BooleanField()
     rokko = BooleanField()
+    literate = BooleanField()
+    literacyConfirmed = BooleanField()
 
     class Meta:
         db_table = 'KatihaPerson'

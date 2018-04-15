@@ -86,6 +86,14 @@ pickle_to_katiha_person = {
         'rokko': {
             'namedtuple_attribute': 'rokko',
             'operations': [map_value_to_model]
+        },
+        'literate': {
+            'namedtuple_attribute': 'literate',
+            'operations': [map_value_to_model]
+        },
+        'literacyConfirmed': {
+            'namedtuple_attribute': 'literacy_confirmed',
+            'operations': [map_value_to_model]
         }
     }
 }
