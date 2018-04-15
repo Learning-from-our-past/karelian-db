@@ -43,6 +43,8 @@ class KatihaPerson(BaseModel):
     sex = TextField()
     birthInMarriage = ForeignKeyField(db_column='birthInMarriage', null=True, rel_model=BirthInMarriageCode, to_field='code')
     multipleBirth = IntegerField()
+    vaccinated = BooleanField()
+    rokko = BooleanField()
 
     class Meta:
         db_table = 'KatihaPerson'

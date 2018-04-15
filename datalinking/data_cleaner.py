@@ -14,11 +14,11 @@ from db_management.testing.population_utils import int_or_none
 katiha_person_raw = namedtuple('KatihaPersonRaw',
                                ('ID eventId firstName secondName lastName birthParish '
                                 'birthDay birthMonth birthYear parishId motherLanguage sex '
-                                'birthInMarriage multipleBirth'))
+                                'birthInMarriage multipleBirth vaccination'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
                                     'date_of_birth birthplace mother_language sex birth_in_marriage '
-                                    'multiple_birth'))
+                                    'multiple_birth vaccinated rokko'))
 
 
 class DataCleaner(ABC):
@@ -51,6 +51,9 @@ class KatihaDataCleaner(DataCleaner):
                                      3: 'russian', 4: 'german'}
         self._sex_map = {1: 'm', 2: 'f'}
         self._birth_in_marriage_map = get_code_map(BirthInMarriageCodes)
+        self._was_vaccinated = get_code_set(WasVaccinatedCodes)
+        self._was_not_vaccinated = get_code_set(WasNotVaccinatedCodes)
+        self._had_rokko = get_code_set(RokkoDiseaseCodes)
 
     def clean_db_rows(self, row):
         """
@@ -73,7 +76,9 @@ class KatihaDataCleaner(DataCleaner):
             mother_language=self._resolve_mother_language(person_raw.motherLanguage),
             sex=self._sex_map.get(int_or_none(person_raw.sex), None),
             birth_in_marriage=self._resolve_birth_in_marriage(person_raw.birthInMarriage),
-            multiple_birth=int_or_none(person_raw.multipleBirth)
+            multiple_birth=int_or_none(person_raw.multipleBirth),
+            vaccinated=self._was_person_vaccinated(person_raw.vaccination),
+            rokko=self._did_person_have_rokko_disease(person_raw.vaccination)
         )
         return person_cleaned
 
@@ -114,6 +119,27 @@ class KatihaDataCleaner(DataCleaner):
 
     def _resolve_birth_in_marriage(self, birth_in_marriage_code):
         return self._birth_in_marriage_map.get(int_or_none(birth_in_marriage_code), None)
+
+    def _was_person_vaccinated(self, vaccination):
+        vaccinated = vaccination.strip().casefold()
+
+        if vaccinated:
+            vaccinated = vaccinated[0]
+            if vaccinated in self._was_vaccinated:
+                return True
+            if vaccinated in self._was_not_vaccinated:
+                return False
+
+        return None
+
+    def _did_person_have_rokko_disease(self, vaccination):
+        rokko = vaccination.strip().casefold()
+
+        if rokko:
+            rokko = rokko[0]
+            if rokko in self._had_rokko:
+                return True
+        return None
 
 
 mikarelia_person_raw = namedtuple('MikareliaPersonRaw',
