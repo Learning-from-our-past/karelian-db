@@ -74,6 +74,10 @@ pickle_to_katiha_person = {
         'birthInMarriage': {
             'namedtuple_attribute': 'birth_in_marriage',
             'operations': [_add_birth_in_marriage_code, map_value_to_model]
+        },
+        'multipleBirth': {
+            'namedtuple_attribute': 'multiple_birth',
+            'operations': [map_value_to_model]
         }
     }
 }

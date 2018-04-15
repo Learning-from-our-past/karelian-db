@@ -43,6 +43,9 @@ def migrate(migrator, database, fake=False, **kwargs):
     GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "katiha"."BirthInMarriageCode" TO kaira;
     GRANT SELECT, REFERENCES ON "katiha"."BirthInMarriageCode" TO researcher;
     GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA "katiha" TO researcher, kaira;
+    
+    ALTER TABLE katiha."KatihaPerson" ADD COLUMN "multipleBirth" INTEGER NULL;
+    COMMENT ON COLUMN katiha."KatihaPerson"."multipleBirth" is 'How many children were born when this person was born (i.e. twins) including this person.';
     """)
 
 

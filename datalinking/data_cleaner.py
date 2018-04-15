@@ -14,10 +14,11 @@ from db_management.testing.population_utils import int_or_none
 katiha_person_raw = namedtuple('KatihaPersonRaw',
                                ('ID eventId firstName secondName lastName birthParish '
                                 'birthDay birthMonth birthYear parishId motherLanguage sex '
-                                'birthInMarriage'))
+                                'birthInMarriage multipleBirth'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
-                                    'date_of_birth birthplace mother_language sex birth_in_marriage'))
+                                    'date_of_birth birthplace mother_language sex birth_in_marriage '
+                                    'multiple_birth'))
 
 
 class DataCleaner(ABC):
@@ -71,7 +72,8 @@ class KatihaDataCleaner(DataCleaner):
             birthplace=mk_birthplace,
             mother_language=self._resolve_mother_language(person_raw.motherLanguage),
             sex=self._sex_map.get(int_or_none(person_raw.sex), None),
-            birth_in_marriage=self._resolve_birth_in_marriage(person_raw.birthInMarriage)
+            birth_in_marriage=self._resolve_birth_in_marriage(person_raw.birthInMarriage),
+            multiple_birth=int_or_none(person_raw.multipleBirth)
         )
         return person_cleaned
 
