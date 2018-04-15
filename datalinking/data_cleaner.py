@@ -14,11 +14,13 @@ from db_management.testing.population_utils import int_or_none
 katiha_person_raw = namedtuple('KatihaPersonRaw',
                                ('ID eventId firstName secondName lastName birthParish '
                                 'birthDay birthMonth birthYear parishId motherLanguage sex '
-                                'birthInMarriage multipleBirth vaccination literate'))
+                                'birthInMarriage multipleBirth vaccination literate departureType '
+                                'departureDay departureMonth departureYear'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
                                     'date_of_birth birthplace mother_language sex birth_in_marriage '
-                                    'multiple_birth vaccinated rokko literate literacy_confirmed'))
+                                    'multiple_birth vaccinated rokko literate literacy_confirmed '
+                                    'departure_type departure_date'))
 
 
 class DataCleaner(ABC):
@@ -54,6 +56,7 @@ class KatihaDataCleaner(DataCleaner):
         self._was_vaccinated = get_code_set(WasVaccinatedCodes)
         self._was_not_vaccinated = get_code_set(WasNotVaccinatedCodes)
         self._had_rokko = get_code_set(RokkoDiseaseCodes)
+        self._departure_type_map = get_code_map(DepartureTypeCodes)
 
     def clean_db_rows(self, row):
         """
@@ -67,6 +70,7 @@ class KatihaDataCleaner(DataCleaner):
         dob = (person_raw.birthDay, person_raw.birthMonth, person_raw.birthYear)
         mk_birthplace = resolve_birthplace_to_mikarelia_birthplace(person_raw)
         literate, lit_confirmed = self._resolve_literacy(person_raw.literate)
+        departure_type, departure_date = self._resolve_departure(person_raw)
         person_cleaned = katiha_person_cleaned(
             db_id=person_raw.ID,
             normalized_first_names=norm_first_names,
@@ -81,7 +85,9 @@ class KatihaDataCleaner(DataCleaner):
             vaccinated=self._was_person_vaccinated(person_raw.vaccination),
             rokko=self._did_person_have_rokko_disease(person_raw.vaccination),
             literate=literate,
-            literacy_confirmed=lit_confirmed
+            literacy_confirmed=lit_confirmed,
+            departure_type=departure_type,
+            departure_date=departure_date
         )
         return person_cleaned
 
@@ -165,6 +171,16 @@ class KatihaDataCleaner(DataCleaner):
             elif literate_code == 3:
                 is_literate = False
         return is_literate, literacy_confirmed
+
+    def _resolve_departure(self, person):
+        departure_date = None
+        departure_type = self._departure_type_map.get(int_or_none(person.departureType), None)
+
+        if (departure_type and person.departureDay and
+                person.departureMonth and person.departureYear):
+            departure_date = (person.departureDay, person.departureMonth, person.departureYear)
+
+        return departure_type, departure_date
 
 
 mikarelia_person_raw = namedtuple('MikareliaPersonRaw',

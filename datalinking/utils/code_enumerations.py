@@ -52,3 +52,13 @@ class RokkoDiseaseCodes(Enum):
     had_rokko_disease_and_was_vaccinated = '3'
     had_rokko_disease_alternative_one = '2'
     had_rokko_disease_alternative_two = 's'
+
+
+class DepartureTypeCodes(Enum):
+    """
+    These codes were obtained from the Katiha rekisteriseloste.
+    """
+    emigrated = 0
+    died = 2
+    to_other_parish = 5
+    to_other_religion = 6

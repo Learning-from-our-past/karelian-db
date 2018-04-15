@@ -31,7 +31,8 @@ class KatihaDataFetcher(DataFetcher):
             la_person.lastName, la_person.birthParish, la_person.birthDay, la_person.birthMonth,
             la_person.birthYear, la_person.parishId, la_person.motherLanguage, la_person.sex,
             la_person.birthInMarriage, la_person.multipleBirth, la_person.vaccination,
-            la_person.literate
+            la_person.literate, la_person.departureType, la_person.departureDay,
+            la_person.departureMonth, la_person.departureYear
         ).where(
             la_person.birthYear.between(1870, 1970) &
             la_person.firstName.is_null(False) &
@@ -74,7 +75,9 @@ class KatihaDataFetcher(DataFetcher):
                      get_frequency_collater('vaccinated'),
                      get_frequency_collater('rokko'),
                      get_frequency_collater('literate'),
-                     get_frequency_collater('literacy_confirmed')]
+                     get_frequency_collater('literacy_confirmed'),
+                     get_frequency_collater('departure_type'),
+                     get_frequency_collater('departure_date')]
 
         collated_attributes = [{'event_ids': primary.event_ids | duplicate.event_ids}]
         for collater in collaters:

@@ -14,7 +14,9 @@ def map_data_to_model(model, data_entry, mapping_operations, extra_data=None):
 def _get_attr_from_namedtuple(data_entry, attribute):
     if ',' in attribute:
         actual_attribute, index = attribute.split(',')
-        value = getattr(data_entry, actual_attribute)[int(index)]
+        value = getattr(data_entry, actual_attribute)
+        if value is not None:
+            value = value[int(index)]
     else:
         value = getattr(data_entry, attribute)
     return value
@@ -42,6 +44,14 @@ def _add_birth_in_marriage_code(key, model, birth_in_marriage_code, data_entry, 
     else:
         birth_in_marriage_model = BirthInMarriageCode.get_or_create(birthType=birth_in_marriage_code)[0]
         return model, birth_in_marriage_model.code
+
+
+def _add_departure_type(key, model, departure_type, data_entry, extra_data):
+    if departure_type is None:
+        return model, None
+    else:
+        departure_model = DepartureType.get_or_create(type=departure_type)[0]
+        return model, departure_model.id
 
 
 pickle_to_katiha_person = {
@@ -93,6 +103,22 @@ pickle_to_katiha_person = {
         },
         'literacyConfirmed': {
             'namedtuple_attribute': 'literacy_confirmed',
+            'operations': [map_value_to_model]
+        },
+        'departureTypeId': {
+            'namedtuple_attribute': 'departure_type',
+            'operations': [_add_departure_type, map_value_to_model]
+        },
+        'departureDay': {
+            'namedtuple_attribute': 'departure_date,0',
+            'operations': [map_value_to_model]
+        },
+        'departureMonth': {
+            'namedtuple_attribute': 'departure_date,1',
+            'operations': [map_value_to_model]
+        },
+        'departureYear': {
+            'namedtuple_attribute': 'departure_date,2',
             'operations': [map_value_to_model]
         }
     }
