@@ -27,6 +27,7 @@ class TestDataPopulation:
         assert katiha_person.birthMonth == link_data[0].date_of_birth[1]
         assert katiha_person.birthYear == link_data[0].date_of_birth[2]
         assert katiha_person.sex == link_data[0].sex
+        assert katiha_person.multipleBirth == link_data[0].multiple_birth
         mikarelia_person = Person.get(Person.katihaId == katiha_person.id)
         assert mikarelia_person.kairaId == link_data[0].link_kaira_id
 
