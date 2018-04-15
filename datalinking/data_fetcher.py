@@ -29,7 +29,8 @@ class KatihaDataFetcher(DataFetcher):
         people_results = la_person.select(
             la_person.id, la_person.eventId, la_person.firstName, la_person.secondName,
             la_person.lastName, la_person.birthParish, la_person.birthDay, la_person.birthMonth,
-            la_person.birthYear, la_person.parishId, la_person.motherLanguage, la_person.sex
+            la_person.birthYear, la_person.parishId, la_person.motherLanguage, la_person.sex,
+            la_person.birthInMarriage
         ).where(
             la_person.birthYear.between(1870, 1970) &
             la_person.firstName.is_null(False) &
@@ -66,7 +67,8 @@ class KatihaDataFetcher(DataFetcher):
         collated
         """
         collaters = [get_frequency_collater('mother_language'),
-                     get_frequency_collater('sex')]
+                     get_frequency_collater('sex'),
+                     get_frequency_collater('birth_in_marriage')]
 
         collated_attributes = [{'event_ids': primary.event_ids | duplicate.event_ids}]
         for collater in collaters:

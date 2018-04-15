@@ -36,6 +36,14 @@ def _add_family(key, model, family_number, data_entry, extra_data):
         return model, family_model.id
 
 
+def _add_birth_in_marriage_code(key, model, birth_in_marriage_code, data_entry, extra_data):
+    if birth_in_marriage_code is None:
+        return model, None
+    else:
+        birth_in_marriage_model = BirthInMarriageCode.get_or_create(birthType=birth_in_marriage_code)[0]
+        return model, birth_in_marriage_model.code
+
+
 pickle_to_katiha_person = {
     'model': KatihaPerson,
     'mappings': {
@@ -62,6 +70,10 @@ pickle_to_katiha_person = {
         'sex': {
             'namedtuple_attribute': 'sex',
             'operations': [map_value_to_model]
+        },
+        'birthInMarriage': {
+            'namedtuple_attribute': 'birth_in_marriage',
+            'operations': [_add_birth_in_marriage_code, map_value_to_model]
         }
     }
 }

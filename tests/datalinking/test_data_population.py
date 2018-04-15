@@ -39,6 +39,10 @@ class TestDataPopulation:
         language = Language.get(Language.id == katiha_person.motherLanguageId)
         assert language.language == link_data[0].mother_language
 
+    def should_populate_birth_in_marriage_correctly(self, link_data, katiha_person):
+        birth_in_marriage = BirthInMarriageCode.get(BirthInMarriageCode.code == katiha_person.birthInMarriage)
+        assert birth_in_marriage.birthType == link_data[0].birth_in_marriage
+
     def should_set_up_links_correctly(self, link_data):
         links = Person.select(Person.katihaId).tuples()
         links = {link[0] for link in links}

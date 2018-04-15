@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from datalinking.historical_name_normalizer.name_normalizer import NameNormalizer
 from datalinking.support_data.place_names import GENERALIZE_MIKARELIA_BIRTHPLACE
 from datalinking.utils.name_utils import find_former_lastnames
+from datalinking.utils.code_enumerations import *
 from itertools import chain
 from functools import lru_cache
 from functools import partial
@@ -12,10 +13,11 @@ from db_management.testing.population_utils import int_or_none
 # FIXME: These need to be updated if we want to add more data to fetch from katiha in datalinking
 katiha_person_raw = namedtuple('KatihaPersonRaw',
                                ('ID eventId firstName secondName lastName birthParish '
-                                'birthDay birthMonth birthYear parishId motherLanguage sex'))
+                                'birthDay birthMonth birthYear parishId motherLanguage sex '
+                                'birthInMarriage'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
-                                    'date_of_birth birthplace mother_language sex'))
+                                    'date_of_birth birthplace mother_language sex birth_in_marriage'))
 
 
 class DataCleaner(ABC):
@@ -47,6 +49,7 @@ class KatihaDataCleaner(DataCleaner):
         self._mother_language_map = {0: 'other', 1: 'finnish', 2: 'swedish',
                                      3: 'russian', 4: 'german'}
         self._sex_map = {1: 'm', 2: 'f'}
+        self._birth_in_marriage_map = get_code_map(BirthInMarriageCodes)
 
     def clean_db_rows(self, row):
         """
@@ -67,7 +70,8 @@ class KatihaDataCleaner(DataCleaner):
             date_of_birth=dob,
             birthplace=mk_birthplace,
             mother_language=self._resolve_mother_language(person_raw.motherLanguage),
-            sex=self._sex_map.get(int_or_none(person_raw.sex), None)
+            sex=self._sex_map.get(int_or_none(person_raw.sex), None),
+            birth_in_marriage=self._resolve_birth_in_marriage(person_raw.birthInMarriage)
         )
         return person_cleaned
 
@@ -105,6 +109,9 @@ class KatihaDataCleaner(DataCleaner):
         if mother_language is not None:
             mother_language = self._mother_language_map[mother_language]
         return mother_language
+
+    def _resolve_birth_in_marriage(self, birth_in_marriage_code):
+        return self._birth_in_marriage_map.get(int_or_none(birth_in_marriage_code), None)
 
 
 mikarelia_person_raw = namedtuple('MikareliaPersonRaw',
