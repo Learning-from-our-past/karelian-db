@@ -49,8 +49,7 @@ class DataCleaner(ABC):
 class KatihaDataCleaner(DataCleaner):
     def __init__(self):
         super().__init__()
-        self._mother_language_map = {0: 'other', 1: 'finnish', 2: 'swedish',
-                                     3: 'russian', 4: 'german'}
+        self._mother_language_map = get_code_map(MotherLanguageCodes)
         self._sex_map = {1: 'm', 2: 'f'}
         self._birth_in_marriage_map = get_code_map(BirthInMarriageCodes)
         self._was_vaccinated = get_code_set(WasVaccinatedCodes)
