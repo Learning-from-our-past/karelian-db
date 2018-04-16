@@ -62,3 +62,14 @@ class DepartureTypeCodes(Enum):
     died = 2
     to_other_parish = 5
     to_other_religion = 6
+
+
+class MotherLanguageCodes(Enum):
+    """
+    These codes were obtained from the Katiha rekisteriseloste.
+    """
+    other = 0
+    finnish = 1
+    swedish = 2
+    russian = 3
+    german = 4
