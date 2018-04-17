@@ -224,8 +224,10 @@ class LivingRecord(BaseModel):
         db_table = 'LivingRecord'
 
 class Marriage(BaseModel):
-    manId = ForeignKeyField(db_column='manId', rel_model=Person, to_field='id', related_name='marriage_Person_manId_set')
-    womanId = ForeignKeyField(db_column='womanId', rel_model=Person, to_field='id', related_name='marriage_Person_womanId_set')
+    primaryId = ForeignKeyField(db_column='primaryId', rel_model=Person,
+                                to_field='id', related_name='marriage_Person_primaryId_set')
+    spouseId = ForeignKeyField(db_column='spouseId', rel_model=Person,
+                               to_field='id', related_name='marriage_Person_spouseId_set')
     weddingYear = IntegerField(null=True)
     editLog = BinaryJSONField()
     markRowForRemoval = BooleanField(default=False)
