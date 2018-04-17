@@ -26,6 +26,15 @@ class TestDataPopulation:
         assert katiha_person.birthDay == link_data[0].date_of_birth[0]
         assert katiha_person.birthMonth == link_data[0].date_of_birth[1]
         assert katiha_person.birthYear == link_data[0].date_of_birth[2]
+        assert katiha_person.sex == link_data[0].sex
+        assert katiha_person.multipleBirth == link_data[0].multiple_birth
+        assert katiha_person.vaccinated == link_data[0].vaccinated
+        assert katiha_person.rokko == link_data[0].rokko
+        assert katiha_person.literate == link_data[0].literate
+        assert katiha_person.literacyConfirmed == link_data[0].literacy_confirmed
+        assert katiha_person.departureDay == link_data[0].departure_date[0]
+        assert katiha_person.departureMonth == link_data[0].departure_date[1]
+        assert katiha_person.departureYear == link_data[0].departure_date[2]
         mikarelia_person = Person.get(Person.katihaId == katiha_person.id)
         assert mikarelia_person.kairaId == link_data[0].link_kaira_id
 
@@ -37,6 +46,14 @@ class TestDataPopulation:
     def should_populate_language_correctly(self, link_data, katiha_person):
         language = Language.get(Language.id == katiha_person.motherLanguageId)
         assert language.language == link_data[0].mother_language
+
+    def should_populate_birth_in_marriage_correctly(self, link_data, katiha_person):
+        birth_in_marriage = BirthInMarriageCode.get(BirthInMarriageCode.code == katiha_person.birthInMarriage)
+        assert birth_in_marriage.birthType == link_data[0].birth_in_marriage
+
+    def should_populate_departure_type_correctly(self, link_data, katiha_person):
+        departure_type = DepartureType.get(DepartureType.id == katiha_person.departureTypeId)
+        assert departure_type.type == link_data[0].departure_type
 
     def should_set_up_links_correctly(self, link_data):
         links = Person.select(Person.katihaId).tuples()

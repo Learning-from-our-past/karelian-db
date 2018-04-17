@@ -4,6 +4,7 @@ from datalinking.data_cleaner import mikarelia_person_cleaned
 from datalinking.utils.datalinking_dict import DatalinkingDictMaker
 from datalinking.utils.datalinking_dict import NoGroupingKeysException
 from datalinking.data_linker import MiKARELIA2KatihaLinker
+from tests.datalinking.test_data_formatter import get_mock_katiha_person_creator
 from collections import OrderedDict
 from collections import namedtuple
 
@@ -16,14 +17,7 @@ def mock_mikarelia_person(db_id='kaira1', date_of_birth=(1, 1, 1900), normalized
                                     birthplace=birthplace)
 
 
-def mock_katiha_person(db_id=1, date_of_birth=(1, 1, 1900), normalized_last_name='testinen',
-                       normalized_first_names=('testikäs',), birthplace='testilä',
-                       mother_language='testikieli', event_ids={'mock_id'}):
-    return katiha_person_cleaned(db_id=db_id, date_of_birth=date_of_birth,
-                                 normalized_last_name=normalized_last_name,
-                                 normalized_first_names=normalized_first_names,
-                                 birthplace=birthplace, mother_language=mother_language,
-                                 event_ids=event_ids)
+mock_katiha_person = get_mock_katiha_person_creator()
 
 
 def check_link_data(from_data, to_data, expected_length=None):
@@ -137,7 +131,7 @@ class TestDatalinkDictCreation:
 
         m = DatalinkingDictMaker(['date_of_birth', 'normalized_last_name'], 'db_id')
         datalinking_dict = m.make_datalinking_dict({person.db_id: person for person in test_data})
-        assert datalinking_dict[(1, 1, 1900)]['testinen'] == [person.db_id for person in test_data]
+        assert datalinking_dict[(1, 1, 1900)]['testikäs'] == [person.db_id for person in test_data]
 
     def should_raise_exception_if_there_are_zero_grouping_keys(self):
         with pytest.raises(NoGroupingKeysException):
