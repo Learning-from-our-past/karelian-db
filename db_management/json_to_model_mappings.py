@@ -21,7 +21,7 @@ def anonymize(key, model, field_value, data_entry, extra_data):
 
 
 def transform_sex(key, model, field_value, data_entry, extra_data):
-    format_for_db = ''
+    format_for_db = None
 
     if field_value == 'Male':
         format_for_db = 'm'
