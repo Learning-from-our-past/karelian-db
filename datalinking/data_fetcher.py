@@ -29,7 +29,10 @@ class KatihaDataFetcher(DataFetcher):
         people_results = la_person.select(
             la_person.id, la_person.eventId, la_person.firstName, la_person.secondName,
             la_person.lastName, la_person.birthParish, la_person.birthDay, la_person.birthMonth,
-            la_person.birthYear, la_person.parishId, la_person.motherLanguage
+            la_person.birthYear, la_person.parishId, la_person.motherLanguage, la_person.sex,
+            la_person.birthInMarriage, la_person.multipleBirth, la_person.vaccination,
+            la_person.literate, la_person.departureType, la_person.departureDay,
+            la_person.departureMonth, la_person.departureYear
         ).where(
             la_person.birthYear.between(1870, 1970) &
             la_person.firstName.is_null(False) &
@@ -65,10 +68,21 @@ class KatihaDataFetcher(DataFetcher):
         :return: katiha_person_cleaned namedtuple - new entry with primary and duplicate data
         collated
         """
-        collate_language = get_frequency_collater('mother_language')
-        collated_attributes = []
-        collated_attributes.append({'event_ids': primary.event_ids | duplicate.event_ids})
-        collated_attributes.append(collate_language(primary.db_id, duplicate))
+        collaters = [get_frequency_collater('mother_language'),
+                     get_frequency_collater('sex'),
+                     get_frequency_collater('birth_in_marriage'),
+                     get_frequency_collater('multiple_birth'),
+                     get_frequency_collater('vaccinated'),
+                     get_frequency_collater('rokko'),
+                     get_frequency_collater('literate'),
+                     get_frequency_collater('literacy_confirmed'),
+                     get_frequency_collater('departure_type'),
+                     get_frequency_collater('departure_date')]
+
+        collated_attributes = [{'event_ids': primary.event_ids | duplicate.event_ids}]
+        for collater in collaters:
+            collated_attributes.append(collater(primary.db_id, duplicate))
+
         collated_dict = primary._asdict()
         for attribute in collated_attributes:
             collated_dict.update(attribute)

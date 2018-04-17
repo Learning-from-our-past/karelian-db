@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from datalinking.historical_name_normalizer.name_normalizer import NameNormalizer
 from datalinking.support_data.place_names import GENERALIZE_MIKARELIA_BIRTHPLACE
 from datalinking.utils.name_utils import find_former_lastnames
+from datalinking.utils.code_enumerations import *
 from itertools import chain
 from functools import lru_cache
 from functools import partial
@@ -12,10 +13,14 @@ from db_management.testing.population_utils import int_or_none
 # FIXME: These need to be updated if we want to add more data to fetch from katiha in datalinking
 katiha_person_raw = namedtuple('KatihaPersonRaw',
                                ('ID eventId firstName secondName lastName birthParish '
-                                'birthDay birthMonth birthYear parishId motherLanguage'))
+                                'birthDay birthMonth birthYear parishId motherLanguage sex '
+                                'birthInMarriage multipleBirth vaccination literate departureType '
+                                'departureDay departureMonth departureYear'))
 katiha_person_cleaned = namedtuple('KatihaPersonCleaned',
                                    ('db_id event_ids normalized_first_names normalized_last_name '
-                                    'date_of_birth birthplace mother_language'))
+                                    'date_of_birth birthplace mother_language sex birth_in_marriage '
+                                    'multiple_birth vaccinated rokko literate literacy_confirmed '
+                                    'departure_type departure_date'))
 
 
 class DataCleaner(ABC):
@@ -44,8 +49,13 @@ class DataCleaner(ABC):
 class KatihaDataCleaner(DataCleaner):
     def __init__(self):
         super().__init__()
-        self._mother_language_map = {0: 'other', 1: 'finnish', 2: 'swedish',
-                                     3: 'russian', 4: 'german'}
+        self._mother_language_map = get_code_map(MotherLanguageCodes)
+        self._sex_map = {1: 'm', 2: 'f'}
+        self._birth_in_marriage_map = get_code_map(BirthInMarriageCodes)
+        self._was_vaccinated = get_code_set(WasVaccinatedCodes)
+        self._was_not_vaccinated = get_code_set(WasNotVaccinatedCodes)
+        self._had_rokko = get_code_set(RokkoDiseaseCodes)
+        self._departure_type_map = get_code_map(DepartureTypeCodes)
 
     def clean_db_rows(self, row):
         """
@@ -58,6 +68,8 @@ class KatihaDataCleaner(DataCleaner):
         norm_last_name = self._find_last_name_in_string(person_raw.lastName)
         dob = (person_raw.birthDay, person_raw.birthMonth, person_raw.birthYear)
         mk_birthplace = resolve_birthplace_to_mikarelia_birthplace(person_raw)
+        literate, lit_confirmed = self._resolve_literacy(person_raw.literate)
+        departure_type, departure_date = self._resolve_departure(person_raw)
         person_cleaned = katiha_person_cleaned(
             db_id=person_raw.ID,
             normalized_first_names=norm_first_names,
@@ -65,7 +77,16 @@ class KatihaDataCleaner(DataCleaner):
             event_ids={person_raw.eventId},
             date_of_birth=dob,
             birthplace=mk_birthplace,
-            mother_language=self._resolve_mother_language(person_raw.motherLanguage)
+            mother_language=self._resolve_mother_language(person_raw.motherLanguage),
+            sex=self._sex_map.get(int_or_none(person_raw.sex), None),
+            birth_in_marriage=self._resolve_birth_in_marriage(person_raw.birthInMarriage),
+            multiple_birth=int_or_none(person_raw.multipleBirth),
+            vaccinated=self._was_person_vaccinated(person_raw.vaccination),
+            rokko=self._did_person_have_rokko_disease(person_raw.vaccination),
+            literate=literate,
+            literacy_confirmed=lit_confirmed,
+            departure_type=departure_type,
+            departure_date=departure_date
         )
         return person_cleaned
 
@@ -103,6 +124,62 @@ class KatihaDataCleaner(DataCleaner):
         if mother_language is not None:
             mother_language = self._mother_language_map[mother_language]
         return mother_language
+
+    def _resolve_birth_in_marriage(self, birth_in_marriage_code):
+        return self._birth_in_marriage_map.get(int_or_none(birth_in_marriage_code), None)
+
+    def _was_person_vaccinated(self, vaccination):
+        vaccinated = vaccination.strip().casefold()
+
+        if vaccinated:
+            vaccinated = vaccinated[0]
+            if vaccinated in self._was_vaccinated:
+                return True
+            if vaccinated in self._was_not_vaccinated:
+                return False
+
+        return None
+
+    def _did_person_have_rokko_disease(self, vaccination):
+        rokko = vaccination.strip().casefold()
+
+        if rokko:
+            rokko = rokko[0]
+            if rokko in self._had_rokko:
+                return True
+        return None
+
+    @staticmethod
+    def _resolve_literacy(literate):
+        """
+        Interprets the "literate" column of a Katiha DB row.
+        1 means the person self-reported as being literate
+        2 means the person self-reported as being literate and their literacy has been graded
+        3 means the person is not literate
+        :param literate: value of "literate" column from Katiha DB
+        :return: (is_literate, literacy_confirmed) tuple
+        """
+        literate_code = int_or_none(literate)
+        is_literate = None
+        literacy_confirmed = None
+        if literate_code is not None:
+            if literate_code == 1:
+                is_literate, literacy_confirmed = True, False
+            elif literate_code == 2:
+                is_literate, literate_code = True, True
+            elif literate_code == 3:
+                is_literate = False
+        return is_literate, literacy_confirmed
+
+    def _resolve_departure(self, person):
+        departure_date = None
+        departure_type = self._departure_type_map.get(int_or_none(person.departureType), None)
+
+        if (departure_type and person.departureDay and
+                person.departureMonth and person.departureYear):
+            departure_date = (person.departureDay, person.departureMonth, person.departureYear)
+
+        return departure_type, departure_date
 
 
 mikarelia_person_raw = namedtuple('MikareliaPersonRaw',
