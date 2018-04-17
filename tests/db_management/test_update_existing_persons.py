@@ -43,7 +43,7 @@ class TestUpdateOnExistingDb:
         spouse_person = Person.select().where(Person.kairaId == person_data[0]['spouse']['kairaId'])[0]
         assert spouse_person.firstName == 'SAANA'
 
-        marriage = Marriage.get(Marriage.manId == primary_person.id)
+        marriage = Marriage.get(Marriage.primaryId == primary_person.id)
         assert marriage.weddingYear == 1969
 
         child = Child.get(Child.firstName == person_data[0]['children'][0]['name'])
@@ -105,7 +105,7 @@ class TestOnlyForExistingDataInDb:
     def should_not_change_fields_which_were_edited_by_human(self, person_data, researcher_connection):
         person = Person.get(Person.kairaId == person_data[0]['primaryPerson']['kairaId'])
         spouse = Person.get(Person.kairaId == person_data[0]['spouse']['kairaId'])
-        marriage = Marriage.get(Marriage.manId == person.id)
+        marriage = Marriage.get(Marriage.primaryId == person.id)
 
         update_report.setup('should_not_change_fields_which_were_edited_by_human')
 
@@ -144,7 +144,7 @@ class TestOnlyForExistingDataInDb:
         spouse_in_db = Person.get(Person.kairaId == person_data[0]['spouse']['kairaId'])
         assert spouse_in_db.firstName == 'Sari'
 
-        marriage_in_db = Marriage.get(Marriage.manId == primary_person_in_db.id)
+        marriage_in_db = Marriage.get(Marriage.primaryId == primary_person_in_db.id)
         assert marriage_in_db.weddingYear == 1999
 
         check_update_report('should_not_change_fields_which_were_edited_by_human', {

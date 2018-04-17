@@ -92,31 +92,20 @@ def add_marriage(key, models, wedding_year_input, data_entry, extra_data):
     primary = models['primary']
     spouse = models['main']
 
-    male = None
-    female = None
+    try:
+        marriage = Marriage.get(Marriage.primaryId == primary.id, Marriage.spouseId == spouse.id)
+    except DoesNotExist:
+        marriage = Marriage()
 
-    if primary.sex == 'm':
-        male = primary
-        female = spouse
-    elif primary.sex == 'f':
-        male = spouse
-        female = primary
-
-    if male and female:
-        try:
-            marriage = Marriage.get(Marriage.manId == male.id, Marriage.womanId == female.id)
-        except DoesNotExist:
-            marriage = Marriage()
-
-        if marriage.get_editable_fields() is not None:
-            if 'weddingYear' in marriage.get_editable_fields():
-                marriage.weddingYear = wedding_year_input or None
-        else:
+    if marriage.get_editable_fields() is not None:
+        if 'weddingYear' in marriage.get_editable_fields():
             marriage.weddingYear = wedding_year_input or None
+    else:
+        marriage.weddingYear = wedding_year_input or None
 
-        marriage.manId = male.id
-        marriage.womanId = female.id
-        marriage.save()
+    marriage.primaryId = primary.id
+    marriage.spouseId = spouse.id
+    marriage.save()
 
     return models, wedding_year_input
 

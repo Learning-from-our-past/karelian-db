@@ -72,14 +72,14 @@ class TestPersonPopulate:
         assert delete_spy.call_count == 0
 
     def should_have_populated_anonymous_spouse_correctly(self, person, person_data):
-        marriage = Marriage.select().where(Marriage.manId == person.id).get()
+        marriage = Marriage.select().where(Marriage.primaryId == person.id).get()
 
         assert marriage.weddingYear == person_data['spouse']['weddingYear']
 
         spouse = (Person.select()
                   .join(Place, on=(Place.id == Person.birthPlaceId))
                   .join(Profession, on=(Profession.id == Person.professionId))
-                  .where(Person.id == marriage.womanId))[0]
+                  .where(Person.id == marriage.spouseId))[0]
 
         assert spouse.firstName is None
         assert spouse.lastName is None
