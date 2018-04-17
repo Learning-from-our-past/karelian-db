@@ -203,6 +203,7 @@ class Child(BaseModel):
     class Meta:
         db_table = 'Child'
 
+
 class LivingRecord(BaseModel):
     movedIn = IntegerField(null=True)
     movedOut = IntegerField(null=True)
@@ -223,6 +224,7 @@ class LivingRecord(BaseModel):
     class Meta:
         db_table = 'LivingRecord'
 
+
 class Marriage(BaseModel):
     primaryId = ForeignKeyField(db_column='primaryId', rel_model=Person,
                                 to_field='id', related_name='marriage_Person_primaryId_set')
@@ -234,5 +236,6 @@ class Marriage(BaseModel):
 
     class Meta:
         db_table = 'Marriage'
+
 
 models = [BaseModel]
