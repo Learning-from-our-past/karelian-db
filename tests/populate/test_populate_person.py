@@ -65,7 +65,7 @@ class TestPersonPopulate:
     def should_have_populated_children_correctly(self, person, person_data):
         child_models = (Child.select()
                  .join(Place, on=(Place.id == Child.birthPlaceId))
-                 .where(Child.fatherId == person.id)).order_by(Child.kairaId)
+                 .where(Child.primaryParentId == person.id)).order_by(Child.kairaId)
 
         def _transform_sex(sex):
             if sex == 'Female':

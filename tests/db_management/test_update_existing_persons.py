@@ -47,7 +47,7 @@ class TestUpdateOnExistingDb:
         assert marriage.weddingYear == 1969
 
         child = Child.get(Child.firstName == person_data[0]['children'][0]['name'])
-        assert child.motherId.id == spouse_person.id
+        assert child.spouseParentId.id == spouse_person.id
         assert child.birthYear == 1955
 
 
@@ -258,7 +258,7 @@ class TestOnlyForExistingDataInDb:
             # Primary person should have changed
             assert person_models[0].firstName == 'JAAKKO JAKKE'
 
-            children_models = list(Child.select().where((Child.fatherId == person_models[0].id) | (Child.motherId == person_models[0].id)).order_by(Child.kairaId))
+            children_models = list(Child.select().where((Child.primaryParentId == person_models[0].id)).order_by(Child.kairaId))
 
             # Children shouldn't since Kaarlo was edited manually before
             assert children_models[0].firstName == 'Kaarlo'
@@ -284,7 +284,7 @@ class TestOnlyForExistingDataInDb:
             person = Person.get(Person.kairaId == person_data[0]['primaryPerson']['kairaId'])
 
             # There should already be all children
-            old_children = Child.select().where((Child.fatherId == person.id) | (Child.motherId == person.id)).order_by(Child.kairaId)
+            old_children = Child.select().where((Child.primaryParentId == person.id)).order_by(Child.kairaId)
             assert len(old_children) == len(person_data[0]['children'])
 
             # Remove one child from json
@@ -299,15 +299,14 @@ class TestOnlyForExistingDataInDb:
             # Old records should have been deleted and new ones populated
             assert delete_spy.call_count == 1
 
-            new_children = Child.select().where((Child.fatherId == person.id) | (Child.motherId == person.id)).order_by(Child.kairaId)
+            new_children = Child.select().where((Child.primaryParentId == person.id)).order_by(Child.kairaId)
             assert len(new_children) == len(person_data[0]['children'])
 
         def should_repopulate_children_if_they_do_not_contain_same_records_as_json(self, person_data, mocker):
             person = Person.get(Person.kairaId == person_data[0]['primaryPerson']['kairaId'])
 
             # There should already be all children
-            old_children = Child.select().where((Child.fatherId == person.id) | (Child.motherId == person.id)).order_by(
-                Child.kairaId)
+            old_children = Child.select().where((Child.primaryParentId == person.id)).order_by(Child.kairaId)
             assert len(old_children) == len(person_data[0]['children'])
 
             # Make a minor change to a single record
@@ -322,8 +321,7 @@ class TestOnlyForExistingDataInDb:
             # Old records should have been deleted and new ones populated
             assert delete_spy.call_count == 1
 
-            new_children = Child.select().where((Child.fatherId == person.id) | (Child.motherId == person.id)).order_by(
-                Child.kairaId)
+            new_children = Child.select().where((Child.primaryParentId == person.id)).order_by(Child.kairaId)
             assert len(new_children) == len(person_data[0]['children'])
             assert new_children[0].firstName == 'Repe'
             assert new_children[0].lastName == 'MIESSUKUNIMI'
