@@ -65,7 +65,7 @@ class TestPersonPopulate:
     def should_have_populated_children_correctly(self, person, person_data):
         child_models = (Child.select()
                  .join(Place, on=(Place.id == Child.birthPlaceId))
-                 .where(Child.fatherId == person.id)).order_by(Child.kairaId)
+                 .where(Child.primaryParentId == person.id)).order_by(Child.kairaId)
 
         def _transform_sex(sex):
             if sex == 'Female':
@@ -84,14 +84,14 @@ class TestPersonPopulate:
             assert child.birthPlaceId.longitude == expected_child['location']['coordinates']['longitude']
 
     def should_have_populated_spouse_correctly(self, person, person_data):
-        marriage = Marriage.select().where(Marriage.manId == person.id).get()
+        marriage = Marriage.select().where(Marriage.primaryId == person.id).get()
 
         assert marriage.weddingYear == person_data[0]['spouse']['weddingYear']
 
         spouse = (Person.select()
                   .join(Place, on=(Place.id == Person.birthPlaceId))
                   .join(Profession, on=(Profession.id == Person.professionId))
-                  .where(Person.id == marriage.womanId))[0]
+                  .where(Person.id == marriage.spouseId))[0]
 
         assert spouse.firstName == person_data[0]['spouse']['firstNames']
         assert spouse.lastName == person_data[0]['primaryPerson']['name']['surname']

@@ -183,8 +183,8 @@ class Child(BaseModel):
     birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
     firstName = TextField()
     lastName = TextField()
-    fatherId = ForeignKeyField(db_column='fatherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_fatherId_set')
-    motherId = ForeignKeyField(db_column='motherId', null=True, rel_model=Person, to_field='id', related_name='child_Person_motherId_set')
+    primaryParentId = ForeignKeyField(db_column='primaryParentId', null=True, rel_model=Person, to_field='id', related_name='child_Person_primaryParentId_set')
+    spouseParentId = ForeignKeyField(db_column='spouseParentId', null=True, rel_model=Person, to_field='id', related_name='child_Person_spouseParentId_set')
     sex = TextField()
     sourceTextId = TextField()
     editLog = BinaryJSONField()
@@ -202,6 +202,7 @@ class Child(BaseModel):
 
     class Meta:
         db_table = 'Child'
+
 
 class LivingRecord(BaseModel):
     movedIn = IntegerField(null=True)
@@ -223,14 +224,18 @@ class LivingRecord(BaseModel):
     class Meta:
         db_table = 'LivingRecord'
 
+
 class Marriage(BaseModel):
-    manId = ForeignKeyField(db_column='manId', rel_model=Person, to_field='id', related_name='marriage_Person_manId_set')
-    womanId = ForeignKeyField(db_column='womanId', rel_model=Person, to_field='id', related_name='marriage_Person_womanId_set')
+    primaryId = ForeignKeyField(db_column='primaryId', rel_model=Person,
+                                to_field='id', related_name='marriage_Person_primaryId_set')
+    spouseId = ForeignKeyField(db_column='spouseId', rel_model=Person,
+                               to_field='id', related_name='marriage_Person_spouseId_set')
     weddingYear = IntegerField(null=True)
     editLog = BinaryJSONField()
     markRowForRemoval = BooleanField(default=False)
 
     class Meta:
         db_table = 'Marriage'
+
 
 models = [BaseModel]
