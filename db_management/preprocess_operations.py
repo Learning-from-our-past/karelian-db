@@ -24,7 +24,7 @@ def validate_children_list(children_list, data_entry, extra_data):
     """
 
     existing_children = Child.select().where(
-        (Child.fatherId == extra_data['primary_person'].id) | (Child.motherId == extra_data['primary_person'].id)).order_by(Child.kairaId)
+        (Child.primaryParentId == extra_data['primary_person'].id)).order_by(Child.kairaId)
 
     # We do not want to delete or edit children who were manually edited
     for child in existing_children:
@@ -101,4 +101,4 @@ def validate_children_list(children_list, data_entry, extra_data):
 
 
 def _delete_children_of_person(primary_person):
-    Child.delete().where((Child.fatherId == primary_person.id) | (Child.motherId == primary_person.id)).execute()
+    Child.delete().where((Child.primaryParentId == primary_person.id)).execute()

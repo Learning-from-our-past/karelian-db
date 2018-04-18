@@ -92,31 +92,20 @@ def add_marriage(key, models, wedding_year_input, data_entry, extra_data):
     primary = models['primary']
     spouse = models['main']
 
-    male = None
-    female = None
+    try:
+        marriage = Marriage.get(Marriage.primaryId == primary.id, Marriage.spouseId == spouse.id)
+    except DoesNotExist:
+        marriage = Marriage()
 
-    if primary.sex == 'm':
-        male = primary
-        female = spouse
-    elif primary.sex == 'f':
-        male = spouse
-        female = primary
-
-    if male and female:
-        try:
-            marriage = Marriage.get(Marriage.manId == male.id, Marriage.womanId == female.id)
-        except DoesNotExist:
-            marriage = Marriage()
-
-        if marriage.get_editable_fields() is not None:
-            if 'weddingYear' in marriage.get_editable_fields():
-                marriage.weddingYear = wedding_year_input or None
-        else:
+    if marriage.get_editable_fields() is not None:
+        if 'weddingYear' in marriage.get_editable_fields():
             marriage.weddingYear = wedding_year_input or None
+    else:
+        marriage.weddingYear = wedding_year_input or None
 
-        marriage.manId = male.id
-        marriage.womanId = female.id
-        marriage.save()
+    marriage.primaryId = primary.id
+    marriage.spouseId = spouse.id
+    marriage.save()
 
     return models, wedding_year_input
 
@@ -145,42 +134,17 @@ def add_farm_details(is_primary_person):
 
 def get_parent_id(parent_to_get):
     """
-       Set Child model's parent id by inspecting Person models passed
-       to the extra_data field.
+    Set Child model's parent id by inspecting Person models passed
+    to the extra_data field.
     """
 
-    def _figure_gender_of_couple(person1, person2):
-        if person1.sex == 'm':
-            male = person1
-            female = person2
-        elif person1.sex == 'f':
-            male = person2
-            female = person1
-        else:
-            raise SexMissingException
-
-        return {'male': male, 'female': female}
-
     def _get_id(key, model, input, data_entry, extra_data):
-        try:
-            parents = _figure_gender_of_couple(extra_data['primary_person'], extra_data['spouse'])
-        except SexMissingException:
-            # If parent gender could not be assigned, assume that Person is male.
-            parents = {'male': extra_data['primary_person'], 'female': None}
-
-        father_id = None
-        mother_id = None
-
-        if parents['male']:
-            father_id = parents['male'].id
-
-        if parents['female']:
-            mother_id = parents['female'].id
-
-        if parent_to_get == 'father':
-            return model, father_id
-        else:
-            return model, mother_id
+        parent = None
+        if parent_to_get == 'primary':
+            parent = extra_data['primary_person'].id
+        elif parent_to_get == 'spouse' and extra_data['spouse'] is not None:
+            parent = extra_data['spouse'].id
+        return model, parent
 
     return _get_id
 
@@ -472,13 +436,13 @@ json_to_child = {
             'json_path': ['children', '*', 'gender'],
             'operations': [transform_sex, map_value_to_model]
         },
-        'fatherId': {
+        'primaryParentId': {
             'json_path': [],
-            'operations': [get_parent_id('father'), map_value_to_model]
+            'operations': [get_parent_id('primary'), map_value_to_model]
         },
-        'motherId': {
+        'spouseParentId': {
             'json_path': [],
-            'operations': [get_parent_id('mother'), map_value_to_model]
+            'operations': [get_parent_id('spouse'), map_value_to_model]
         }
     }
 }
