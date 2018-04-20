@@ -132,6 +132,15 @@ def add_farm_details(is_primary_person):
     return _add_farm_details
 
 
+def add_military_rank(key, person_model, military_rank, data_entry, extra_data):
+    if military_rank is None:
+        return person_model, None
+    else:
+        military_rank_model = MilitaryRank.get_or_create(name=military_rank)[0]
+
+        return person_model, military_rank_model.id
+
+
 def get_parent_id(parent_to_get):
     """
     Set Child model's parent id by inspecting Person models passed
@@ -264,6 +273,10 @@ json_to_primary_person = {
             'json_path': ['primaryPerson', 'warData', 'servedDuringWarFlag'],
             'operations': [map_value_to_model]
         },
+        'militaryRankId': {
+            'json_path': ['primaryPerson', 'warData', 'militaryRank'],
+            'operations': [add_military_rank, map_value_to_model]
+        },
         'primaryPerson': {
             'json_path': [],
             'operations': [set_primary_person(True), map_value_to_model]
@@ -375,6 +388,10 @@ json_to_spouse = {
         'servedDuringWar': {
             'json_path': ['spouse', 'warData', 'servedDuringWarFlag'],
             'operations': [map_value_to_model]
+        },
+        'militaryRankId': {
+            'json_path': ['spouse', 'warData', 'militaryRank'],
+            'operations': [add_military_rank, map_value_to_model]
         },
         'primaryPerson': {
             'json_path': [],

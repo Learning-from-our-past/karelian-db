@@ -16,6 +16,7 @@ class MiKARELIADBUtils(BaseDBUtils):
                               ('siirtokarjalaisten_tie', 'Person_id_seq'),
                               ('siirtokarjalaisten_tie', 'Place_id_seq'),
                               ('siirtokarjalaisten_tie', 'Profession_id_seq'),
+                              ('siirtokarjalaisten_tie', 'MilitaryRank_id_seq'),
                               ('katiha', 'Language_id_seq'),
                               ('system', 'migratehistory_id_seq')]
         truncate_schemas = ('siirtokarjalaisten_tie', 'katiha')
