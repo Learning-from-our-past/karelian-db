@@ -41,6 +41,10 @@ class TestPersonPopulate:
         profession = Profession.get(Profession.id == person.professionId)
         assert profession.name == person_data[0]['primaryPerson']['profession']['professionName']
 
+    def should_have_populated_military_rank_correctly(self, person, person_data):
+        military_rank = MilitaryRank.get(MilitaryRank.id == person.militaryRankId)
+        assert military_rank.name == person_data[0]['primaryPerson']['warData']['militaryRank']
+
     def should_have_populated_page_correctly(self, person, person_data):
         page = Page.get(Page.pageNumber == person.pageNumber)
         assert page.pageNumber == person_data[0]['personMetadata']['approximatePageNumber']
