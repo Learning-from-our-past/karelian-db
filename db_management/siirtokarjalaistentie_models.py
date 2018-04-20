@@ -126,6 +126,13 @@ class FarmDetails(BaseModel):
         db_table = 'FarmDetails'
 
 
+class MilitaryRank(BaseModel):
+    name = TextField(unique=True)
+
+    class Meta:
+        db_table = 'MilitaryRank'
+
+
 class Person(BaseModel):
     kairaId = TextField()
     birthDay = IntegerField()
@@ -150,6 +157,7 @@ class Person(BaseModel):
     sex = TextField()
     servedDuringWar = BooleanField(null=True)
     injuredInWar = BooleanField(null=True)
+    militaryRankId = ForeignKeyField(db_column='militaryRankId', null=True, rel_model=MilitaryRank, to_field='id')
     lotta = BooleanField(null=True)
     foodLotta = BooleanField(null=True)
     officeLotta = BooleanField(null=True)
