@@ -6,6 +6,7 @@ CONFIG = {
   'test_db_name': 'karelian_testdb',
   'db_admin': os.getenv('DB_ADMIN_NAME') or 'postgres',
   'db_user': 'kaira',
+  'db_port': os.getenv('DB_PORT') or 5432,
   'sql_files': [
     './sql/initial_db.sql',
     './tests/test_users.sql'

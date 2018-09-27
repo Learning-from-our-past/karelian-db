@@ -20,7 +20,7 @@ class TerminalColors:
     ENDC = '\033[0m'
 
 
-def restore_encrypted_backup(superuser, dump_path, ssl_key_path):
+def restore_encrypted_backup(superuser, dump_path, ssl_key_path, port):
     print('Preparing to restore existing database backup dump. Dump should contain schemas "siirtokarjalaisten_tie"'
           ' and "system".')
     print('For reliable results, {} please check that there is no active connections to the database before '
@@ -58,24 +58,24 @@ def restore_encrypted_backup(superuser, dump_path, ssl_key_path):
         sys.exit(0)
 
     # Recreate the database by dropping and reinitializing it.
-    drop_cmd = 'dropdb -U {} learning-from-our-past'.format(superuser)
-    print(drop_cmd, os.system('dropdb -U {} learning-from-our-past'.format(superuser)))
+    drop_cmd = 'dropdb -U {} -h localhost -p {} learning-from-our-past'.format(superuser, port)
+    print(drop_cmd, os.system(drop_cmd))
 
-    create_cmd = 'createdb -U {} learning-from-our-past'.format(superuser)
+    create_cmd = 'createdb -U {} -h localhost -p {} learning-from-our-past'.format(superuser, port)
     print(create_cmd, os.system(create_cmd))
 
-    init_cmd = 'psql -U {} -d learning-from-our-past -a -f sql/initial_db.sql'.format(superuser)
+    init_cmd = 'psql -U {} -h localhost -p {} -d learning-from-our-past -a -f sql/initial_db.sql'.format(superuser, port)
     print(init_cmd, os.system(init_cmd))
 
     print('Ready to run the migrations')
     database_password = getpass.getpass('Please input password for user {}: '.format(superuser))
-    run_db_migrations(superuser, database_password, migration_dir='migrations')
+    run_db_migrations(superuser, database_password, migration_dir='migrations', port=port)
 
     print('Database reinitialized successfully!')
 
     # Restore
     print('Restoring data...')
-    restore_cmd = 'pg_restore -U {} -c --if-exists -d learning-from-our-past {}'.format(superuser, decrypted_backup_path)
+    restore_cmd = 'pg_restore -U {} -h localhost -p {} -c --if-exists -d learning-from-our-past {}'.format(superuser, port, decrypted_backup_path)
     print(restore_cmd, os.system(restore_cmd))
 
     print('Database restoring finished. {} Please check the printed logs and '

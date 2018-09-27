@@ -1,6 +1,9 @@
+import os
+from time import sleep
 from invoke import task
 import getpass
 import sys
+import psycopg2
 from tasks.restore_database import restore_encrypted_backup
 from tasks.new_migration import create_migration_file
 from tasks.migrate import migrate_local, migrate_production
@@ -43,9 +46,10 @@ def new_migration(ctx):
     'first': 'Populate only first book to the database.',
     'all_books': 'Populates all siirtokarjalaisten_tie json files from material/ directory',
     'book': 'Populates book in provided path which is located under the root project directory',
-    'data-type': 'Type of data to populate, default "kaira". Specify "link" to populate linked data instead.'
+    'data-type': 'Type of data to populate, default "kaira". Specify "link" to populate linked data instead.',
+    'port': 'Port to use for the database connection.'
 })
-def populate(ctx, first=False, file=None, all_books=False, data_type='kaira'):
+def populate(ctx, first=False, file=None, all_books=False, data_type='kaira', port=5432):
     """
     Populate json files in material directory to the database. -d has to be provided to specify
     data type, then either -f, or -a has to be specified in the case of "-d kaira". If one of them
@@ -110,12 +114,12 @@ def test(ctx):
     ctx.run('python -m pytest tests')
 
 
-def _setup_database(ctx, superuser):
-    ctx.run('createdb -U {} learning-from-our-past'.format(superuser))
-    ctx.run('psql -U {} -d learning-from-our-past -a -f sql/initial_db.sql'.format(superuser))
+def _setup_database(ctx, superuser, port=5432):
+    ctx.run('createdb -h localhost -U {} learning-from-our-past -p {}'.format(superuser, port))
+    ctx.run('psql -h localhost -U {} -d learning-from-our-past -p {} -a -f sql/initial_db.sql'.format(superuser, port))
 
     superuser_password = getpass.getpass('Please input password for superuser {}: '.format(superuser))
-    migrate_local(superuser, superuser_password, migration_dir='migrations')
+    migrate_local(superuser, superuser_password, migration_dir='migrations', port=port)
 
 
 @task(help={'superuser': 'The database super user which can be used to create and modify the database.'})
@@ -128,25 +132,27 @@ def setup(ctx, superuser='postgres'):
     _setup_database(ctx, superuser)
 
 
-@task(help={'superuser': 'The database super user which can be used to create and modify the database.'})
-def recreate_db(ctx, superuser='postgres'):
+@task(help={'superuser': 'The database super user which can be used to create and modify the database.',
+            'port': 'The port to connect to the database on.'})
+def recreate_db(ctx, superuser='postgres', port=5432):
     """
     Drops the existing database and recreates it from scratch.
     """
-    ctx.run('dropdb -U {} learning-from-our-past'.format(superuser))
-    _setup_database(ctx, superuser)
+    ctx.run('dropdb -U {} -p {} -h localhost learning-from-our-past'.format(superuser, port))
+    _setup_database(ctx, superuser, port)
 
 
 @task(help={
     'superuser': 'The database super user which can be used to create and modify the database.',
     'dumpfile': 'Path to the encrypted dump file to be restored.',
-    'sslkey': 'Path to the SSL private key for decrypting the backup file.'
+    'sslkey': 'Path to the SSL private key for decrypting the backup file.',
+    'port': 'Port to use for DB connection.'
 })
-def restore_backup(ctx, dumpfile, sslkey, superuser='postgres'):
+def restore_backup(ctx, dumpfile, sslkey, superuser='postgres', port=5432):
     """
     Restore encrypted database backup snapshot.
     """
-    restore_encrypted_backup(superuser, dumpfile, sslkey)
+    restore_encrypted_backup(superuser, dumpfile, sslkey, port)
 
 
 @task(help={
@@ -157,3 +163,55 @@ def link_data(ctx, output_path='./material/'):
     Link MiKARELIA data to Katiha data and dump the results of the data linking to the hard drive.
     """
     run_data_linking(output_path)
+
+
+@task(help={'port': 'The localhost port which is used to connect to the database. Defaults to 5432'})
+def docker_db_setup(ctx, port=os.getenv('DB_PORT') or 5432):
+    """
+    Setup the database using Docker with all the required Postgres extensions preinstalled.
+    """
+    print('Installing the development database using Docker...')
+    ctx.run('sudo docker build -t lfop-db docker')
+    ctx.run('sudo docker run -p {}:5432 -d --name=lfop-db-container lfop-db'.format(port))
+
+    # A silly wait for Postgres to finish startup in the Docker container before running migrations.
+    print('Waiting for Postgres to finish startup operations...')
+    while True:
+        try:
+            conn = psycopg2.connect(user='postgres', host='localhost', connect_timeout=1, port=port)
+            conn.close()
+            break
+        except:
+            sleep(0.1)
+
+    print('Creating the database and running migrations...')
+    _setup_database(ctx, 'postgres', port)
+
+    print('Finished. The database is ready for development and running on localhost:{}'.format(port))
+    print('Please add the following value to your .env file: export DB_PORT={}'.format(port))
+
+@task()
+def docker_db_start(ctx):
+    """
+    Start the Docker container with the Postgres database. The container should first be installed with
+    the docker-db-setup command.
+    """
+    ctx.run('sudo docker start lfop-db-container')
+
+
+@task()
+def docker_db_stop(ctx):
+    """
+    Stop the Docker container with the Postgres database.
+    """
+    ctx.run('sudo docker stop lfop-db-container')
+
+
+@task()
+def docker_db_destroy(ctx):
+    """
+    Destroy the Docker container. After this you can install it again with docker-db-setup command.
+    """
+    ctx.run('sudo docker stop lfop-db-container')
+    ctx.run('sudo docker rm lfop-db-container')
+    ctx.run('sudo docker rmi lfop-db')

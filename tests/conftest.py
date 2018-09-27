@@ -29,7 +29,7 @@ def pytest_collection_modifyitems(session, config, items):
 @pytest.fixture(scope="session", autouse=True, name='database')
 def database():
     MiKARELIADBUtils.init_test_db()
-    db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
+    db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'], port=CONFIG['db_port'])
     db_connection.connect()
 
     # Set database of the models
@@ -46,7 +46,7 @@ def researcher_db_connection():
     :return:
     """
     db_connection = DbConnection()
-    db_connection.init_database('karelian_testdb', 'john', '1234')
+    db_connection.init_database('karelian_testdb', 'john', '1234', port=CONFIG['db_port'])
     db_connection.connect()
 
     yield db_connection.get_database()

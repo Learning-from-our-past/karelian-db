@@ -5,8 +5,9 @@ from db_management.db_connection import db_connection
 from playhouse.db_url import connect
 
 
-def migrate_local(superuser=None, password=None, migration_dir='migrations'):
-    db_connection.init_database(db_name=CONFIG['db_name'], db_user=superuser or CONFIG['db_admin'], password=password)
+def migrate_local(superuser=None, password=None, migration_dir='migrations', port=CONFIG['db_port']):
+    db_connection.init_database(db_name=CONFIG['db_name'], db_user=superuser or CONFIG['db_admin'],
+                                password=password, port=port)
     db_connection.connect()
     database = db_connection.get_database()
 

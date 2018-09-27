@@ -16,7 +16,7 @@ from datalinking.data_populater import populate_linked_data
 
 parser = argparse.ArgumentParser(description='Populate data to the database from json files.')
 parser.add_argument('-a', nargs='?', type=str, help='Host address to the database', default='localhost')
-parser.add_argument('-p', nargs='?', type=int, help='Port of the database', default=5432)
+parser.add_argument('-p', nargs='?', type=int, help='Port of the database', default=CONFIG['db_port'])
 parser.add_argument('-u', nargs='?', type=str, help='User name. Password should be stored in pgpassfile', default=CONFIG['db_user'])
 parser.add_argument('-d', nargs='?', type=str, help='Database name', default=CONFIG['db_name'])
 parser.add_argument('-t', nargs=1, type=str, help='Data type to populate')
@@ -67,7 +67,7 @@ def populate_db(database, data, csv_record):
 
 if __name__ == "__main__":
     args = vars(parser.parse_args())
-    print('Target:', args['a'], args['d'])
+    print('Target:', args['a'], args['d'], args['p'])
 
     db_connection.init_database(db_name=args['d'], db_user=args['u'], host=args['a'], port=args['p'])
     db_connection.connect()

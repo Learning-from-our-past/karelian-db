@@ -20,7 +20,7 @@ class TestDataFetcher:
         def katiha_database(self):
             KatihaDBUtils.init_test_db()
             db_connection = DbConnection(db_type='postgres')
-            db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'])
+            db_connection.init_database(CONFIG['test_db_name'], CONFIG['db_user'], port=CONFIG['db_port'])
             db_connection.connect()
             # Set database of the models
             katiha_models.set_database_to_models(db_connection.get_database())

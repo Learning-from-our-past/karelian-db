@@ -7,10 +7,33 @@ For Windows and MS Access user, check the wiki for configuration guide. Basicall
 and some configuration to connect to the database.
 
 ## Development environment
-Following instructions are for Ubuntu but should be exactly same for Mac OSX with exception of how the general dependencies
+Following instructions are for Ubuntu but should be exactly same for macOS with exception of how the general dependencies
 are installed.
 
+### Postgres in Docker
+**NOTE: This should only be used for development, not in production! The `conf.sql` file that is used to tweak the
+PostgreSQL configuration contains options intended for use in a development environment.** 
+1. Install [Docker Community Edition](https://www.docker.com/get-docker)
+2. Install Python requirements:
+    ```
+    virtualenv -p python3 database-venv
+    source database-venv/bin/activate
+    pip install -r requirements.txt
+    ```
+3. Setup the project with invoke command:
+    ``` 
+    invoke docker-db-setup
+    ```
+    Note that the port used by the Docker DB can be specified with `-p <port>`
+4. The end of the setup will prompt you to set your `DB_PORT` environment variable correctly, don't skip this!
+5. Operate the DB with `docker-db-start` and `docker-db-stop`
+
+If you completed this step, you may skip down to [Datalinking](#datalinking).
 ### General dependencies
+**NOTE: If you have done the [Postgres in Docker](#postgres-in-docker) step, you may skip all the following setup stuff
+and go straight down to [Datalinking](#datalinking). It is advisable to use Docker for development since the
+ installation process is likely significantly easier.**
+
 * Python >=3.5
 * Postgres 9.6.1
 * PostGIS bundle for Postgres 9.6
@@ -23,7 +46,7 @@ sudo apt-get install -y postgresql-plpython3-9.6
 ```
 
 ### Setup Postgres .pgpass file
-Instead of .pgpass file, on your development machine you can probably just set local connections as trusted
+Instead of .pgpass file, on your [development] machine you can probably just set local connections as trusted
 in your pg_hba configuration. Of course you should consider possible security implications of this.
 
 Set up postgres or other superuser to have a password access and then add following lines to `~/.pgpass`:

@@ -28,7 +28,7 @@ Finally, truncate_schema. The tables of this schema get truncated when truncate_
 class BaseDBUtils:
     def __init__(self, config, sequences_to_reset, truncate_schemas):
         self.master_connection = psycopg2.connect(dbname=config['master_db'], user=config['db_admin'],
-                                                  host='localhost')
+                                                  host='localhost', port=config['db_port'])
 
         self.master_connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         self.master_cursor = self.master_connection.cursor()
@@ -40,7 +40,8 @@ class BaseDBUtils:
         self._truncate_schemas = truncate_schemas
 
     def _get_test_db_connection(self):
-        return psycopg2.connect(dbname=self._config['test_db_name'], user=self._config['db_admin'], host='localhost')
+        return psycopg2.connect(dbname=self._config['test_db_name'], user=self._config['db_admin'],
+                                host='localhost', port=self._config['db_port'])
 
     def init_test_db(self):
         """
@@ -96,7 +97,8 @@ class BaseDBUtils:
             sqlfile.close()
 
         self.peewee_database.init(self._config['test_db_name'],
-                                  **{'user': self._config['db_admin']})
+                                  **{'user': self._config['db_admin'], 'host': 'localhost',
+                                     'port': self._config['db_port']})
         self.peewee_database.connect()
 
     @abstractmethod

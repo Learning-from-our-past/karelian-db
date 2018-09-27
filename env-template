@@ -1,5 +1,6 @@
 source database-venv/bin/activate
 
+export DB_PORT=5432
 export DB_ADMIN_NAME=your_postgres_admin_name
 
 export FLASK_APP=app.py
