@@ -66,18 +66,18 @@ def populate(ctx, first=False, file=None, all_books=False, data_type='kaira', po
 
     if data_type == 'kaira':
         if first:
-            ctx.run('python -m main -t kaira material/{}'.format(karelian_books[0]))
+            ctx.run('python -m main -t kaira material/{} -p {}'.format(karelian_books[0], port))
         elif all_books:
             for book in karelian_books:
-                ctx.run('python -m main -t kaira material/{}'.format(book))
+                ctx.run('python -m main -t kaira material/{} -p {}'.format(book, port))
         elif file:
-            ctx.run('python -m main -t kaira {}'.format(file))
+            ctx.run('python -m main -t kaira {} -p {}'.format(file, port))
         else:
             print('Should provide either [file], or [first] or [all-books] flag on invocation!')
             sys.exit(1)
     elif data_type == 'link':
         if file:
-            ctx.run('python -m main -t link {}'.format(file))
+            ctx.run('python -m main -t link {} -p {}'.format(file, port))
         else:
             print('Should provide [file] on invocation!')
             sys.exit(1)
