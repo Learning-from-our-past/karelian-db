@@ -31,7 +31,7 @@ def migrate(ctx, production=None):
     if production:
         migrate_production()
     else:
-        migrate_local()
+        migrate_local(password=os.getenv('LFOP_DB_PASSWORD') or None)
 
 
 @task()
@@ -66,14 +66,17 @@ def populate(ctx, first=False, file=None, all_books=False, data_type='kaira', po
 
     if data_type == 'kaira':
         if first:
-            ctx.run('python -m main -t kaira material/{} -p {}'.format(karelian_books[0], port))
+            ctx.run(
+                'python -m main -t kaira material/{} -p {}'.format(karelian_books[0], port))
         elif all_books:
             for book in karelian_books:
-                ctx.run('python -m main -t kaira material/{} -p {}'.format(book, port))
+                ctx.run(
+                    'python -m main -t kaira material/{} -p {}'.format(book, port))
         elif file:
             ctx.run('python -m main -t kaira {} -p {}'.format(file, port))
         else:
-            print('Should provide either [file], or [first] or [all-books] flag on invocation!')
+            print(
+                'Should provide either [file], or [first] or [all-books] flag on invocation!')
             sys.exit(1)
     elif data_type == 'link':
         if file:
@@ -115,11 +118,14 @@ def test(ctx):
 
 
 def _setup_database(ctx, superuser, port=5432):
-    ctx.run('createdb -h localhost -U {} learning-from-our-past -p {}'.format(superuser, port))
+    ctx.run(
+        'createdb -h localhost -U {} learning-from-our-past -p {}'.format(superuser, port))
     ctx.run('psql -h localhost -U {} -d learning-from-our-past -p {} -a -f sql/initial_db.sql'.format(superuser, port))
 
-    superuser_password = getpass.getpass('Please input password for superuser {}: '.format(superuser))
-    migrate_local(superuser, superuser_password, migration_dir='migrations', port=port)
+    superuser_password = getpass.getpass(
+        'Please input password for superuser {}: '.format(superuser))
+    migrate_local(superuser, superuser_password,
+                  migration_dir='migrations', port=port)
 
 
 @task(help={'superuser': 'The database super user which can be used to create and modify the database.'})
@@ -138,7 +144,8 @@ def recreate_db(ctx, superuser='postgres', port=5432):
     """
     Drops the existing database and recreates it from scratch.
     """
-    ctx.run('dropdb -U {} -p {} -h localhost learning-from-our-past'.format(superuser, port))
+    ctx.run(
+        'dropdb -U {} -p {} -h localhost learning-from-our-past'.format(superuser, port))
     _setup_database(ctx, superuser, port)
 
 
@@ -165,20 +172,27 @@ def link_data(ctx, output_path='./material/'):
     run_data_linking(output_path)
 
 
-@task(help={'port': 'The localhost port which is used to connect to the database. Defaults to 5432'})
-def docker_db_setup(ctx, port=os.getenv('DB_PORT') or 5432):
+@task(help={
+    'port': 'The localhost port which is used to connect to the database. Defaults to 5432',
+    'db-password': 'Password for db superuser'
+})
+def docker_db_setup(ctx, port=os.getenv('DB_PORT') or 5432, db_password=os.getenv('LFOP_DB_PASSWORD') or None):
     """
     Setup the database using Docker with all the required Postgres extensions preinstalled.
     """
+    if db_password is None:
+        print('Set env var LFOP_DB_PASSWORD')
+        return -1
     print('Installing the development database using Docker...')
     ctx.run('sudo docker build -t lfop-db docker')
-    ctx.run('sudo docker run -p {}:5432 -d --name=lfop-db-container lfop-db'.format(port))
+    ctx.run('sudo docker -e POSTGRES_PASSWORD={} run -p {}:5432 -d --name=lfop-db-container lfop-db'.format(db_password, port))
 
     # A silly wait for Postgres to finish startup in the Docker container before running migrations.
     print('Waiting for Postgres to finish startup operations...')
     while True:
         try:
-            conn = psycopg2.connect(user='postgres', host='localhost', connect_timeout=1, port=port)
+            conn = psycopg2.connect(
+                user='postgres', host='localhost', connect_timeout=1, port=port)
             conn.close()
             break
         except:
@@ -189,6 +203,7 @@ def docker_db_setup(ctx, port=os.getenv('DB_PORT') or 5432):
 
     print('Finished. The database is ready for development and running on localhost:{}'.format(port))
     print('Please add the following value to your .env file: export DB_PORT={}'.format(port))
+
 
 @task()
 def docker_db_start(ctx):
