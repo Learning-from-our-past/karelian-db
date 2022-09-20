@@ -184,7 +184,7 @@ def docker_db_setup(ctx, port=os.getenv('DB_PORT') or 5432, db_password=os.geten
         return -1
     print('Installing the development database using Docker...')
     ctx.run('docker build -t lfop-db docker')
-    ctx.run('docker run -e POSTGRES_PASSWORD={} -p {}:5432 -d --name=lfop-db-container lfop-db'.format(db_password, port))
+    ctx.run('docker -e POSTGRES_PASSWORD={} run -p {}:5432 -d --name=lfop-db-container lfop-db'.format(db_password, port))
 
     # A silly wait for Postgres to finish startup in the Docker container before running migrations.
     print('Waiting for Postgres to finish startup operations...')
@@ -210,7 +210,7 @@ def docker_db_start(ctx):
     Start the Docker container with the Postgres database. The container should first be installed with
     the docker-db-setup command.
     """
-    ctx.run('sudo docker start lfop-db-container')
+    ctx.run('docker start lfop-db-container')
 
 
 @task()
@@ -218,7 +218,7 @@ def docker_db_stop(ctx):
     """
     Stop the Docker container with the Postgres database.
     """
-    ctx.run('sudo docker stop lfop-db-container')
+    ctx.run('docker stop lfop-db-container')
 
 
 @task()
@@ -226,6 +226,6 @@ def docker_db_destroy(ctx):
     """
     Destroy the Docker container. After this you can install it again with docker-db-setup command.
     """
-    ctx.run('sudo docker stop lfop-db-container')
-    ctx.run('sudo docker rm lfop-db-container')
-    ctx.run('sudo docker rmi lfop-db')
+    ctx.run('docker stop lfop-db-container')
+    ctx.run('docker rm lfop-db-container')
+    ctx.run('docker rmi lfop-db')
