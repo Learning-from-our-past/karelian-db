@@ -45,7 +45,6 @@ def new_migration(ctx):
 @task(help={
     'first': 'Populate only first book to the database.',
     'all_books': 'Populates all siirtokarjalaisten_tie json files from material/ directory',
-    'book': 'Populates book in provided path which is located under the root project directory',
     'data-type': 'Type of data to populate, default "kaira". Specify "link" to populate linked data instead.',
     'port': 'Port to use for the database connection.'
 })
