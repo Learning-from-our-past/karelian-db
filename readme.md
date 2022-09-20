@@ -69,7 +69,15 @@ localhost:5432:karelian_testdb:postgres:<password>
 Add similar entry for production connection with correct host and passwords if you want to access the production database.
 Set rights of the file to the 0600. [Read more about PGPASSFILE ](https://www.postgresql.org/docs/9.6/static/libpq-pgpass.html)
 
-Create user with name `kaira` to your database cluster and add its credentials to the pgpass:
+Create user with name `kaira` to your database cluster. There's a `./sql/roles.sql` file that you can use to set `kaira` (and others) up easily, like so:
+
+```
+cat sql/roles.sql | docker exec -i lfop-db-container bash -c 'psql -U postgres -d learning-from-our-past'
+docker exec -it lfop-db-container bash -c "psql -U postgres -d learning-from-our-past"
+ALTER USER kaira WITH PASSWORD 'your-very-secret-password-here';
+```
+
+Then add its credentials to the pgpass:
 
 ```
 localhost:5432:learning-from-our-past:kaira:<password>
