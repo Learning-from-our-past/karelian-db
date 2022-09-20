@@ -114,7 +114,7 @@ def test(ctx):
     """
     Run tests for database
     """
-    ctx.run('python -m pytest tests')
+    ctx.run('python -m pytest tests --ignore .direnv')
 
 
 def _setup_database(ctx, superuser, port=5432):
