@@ -121,7 +121,7 @@ def _setup_database(ctx, superuser, port=5432):
         'createdb -h localhost -U {} learning-from-our-past -p {}'.format(superuser, port))
     ctx.run('psql -h localhost -U {} -d learning-from-our-past -p {} -a -f sql/initial_db.sql'.format(superuser, port))
 
-    superuser_password = getpass.getpass(
+    superuser_password = os.getenv('LFOP_DB_PASSWORD') or getpass.getpass(
         'Please input password for superuser {}: '.format(superuser))
     migrate_local(superuser, superuser_password,
                   migration_dir='migrations', port=port)
@@ -184,7 +184,7 @@ def docker_db_setup(ctx, port=os.getenv('DB_PORT') or 5432, db_password=os.geten
         return -1
     print('Installing the development database using Docker...')
     ctx.run('docker build -t lfop-db docker')
-    ctx.run('docker -e POSTGRES_PASSWORD={} run -p {}:5432 -d --name=lfop-db-container lfop-db'.format(db_password, port))
+    ctx.run('docker run -e POSTGRES_PASSWORD={} -p {}:5432 -d --name=lfop-db-container lfop-db'.format(db_password, port))
 
     # A silly wait for Postgres to finish startup in the Docker container before running migrations.
     print('Waiting for Postgres to finish startup operations...')
