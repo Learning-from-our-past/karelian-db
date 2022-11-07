@@ -1,6 +1,7 @@
 from playhouse.postgres_ext import *
 from db_management.database_config import CONFIG
 from db_management.katiha_models import KatihaPerson
+from db_management.divaevi_models import DivaeviPerson
 
 database_proxy = Proxy()    # FIXME: This is likely not needed anymore since the connection is in shared module.
 
@@ -167,6 +168,7 @@ class Person(BaseModel):
     organizationLotta = BooleanField(null=True)
     martta = BooleanField(null=True)
     katihaId = ForeignKeyField(db_column='katihaId', null=True, rel_model=KatihaPerson, to_field='id')
+    divaeviId = ForeignKeyField(db_column='divaeviId', null=True, rel_model=DivaeviPerson, to_field='id')
     farmDetailsId = ForeignKeyField(db_column='farmDetailsId', null=True, rel_model=FarmDetails, to_field='id')
     editLog = BinaryJSONField()
     markRowForRemoval = BooleanField(default=False)

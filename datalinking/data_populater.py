@@ -64,6 +64,9 @@ def _fetch_existing_katiha_person(person_entry):
 def _fetch_katiha_person(db_id):
     return KatihaPerson.get_or_create(id=db_id)[0]
 
+def _fetch_divaevi_person(db_id):
+    return DivaeviPerson.get_or_create()
+
 
 def _remove_katiha_people_not_in_pickle_from_db(data):
     """

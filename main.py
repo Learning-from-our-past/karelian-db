@@ -6,6 +6,7 @@ import pickle
 
 import db_management.siirtokarjalaistentie_models as db_siirtokarjalaistentie_models
 from db_management import katiha_models
+from db_management import divaevi_models
 from db_management.database_config import CONFIG
 from db_management.db_connection import db_connection
 from db_management.csv_record import CsvRecordOfPopulation
@@ -13,6 +14,7 @@ from db_management.mark_ambiguous_region_places_in_db import mark_ambiguous_plac
 from db_management.update_database import update_data_in_db
 from db_management.update_report import update_report
 from datalinking.data_populater import populate_linked_data
+from datalinking.divaevi_populater import populate_linked_data as divaevi_populate
 
 parser = argparse.ArgumentParser(description='Populate data to the database from json files.')
 parser.add_argument('-a', nargs='?', type=str, help='Host address to the database', default='localhost')
@@ -76,6 +78,7 @@ if __name__ == "__main__":
     # Set database of the models
     db_siirtokarjalaistentie_models.set_database_to_models(database)
     katiha_models.set_database_to_models(database)
+    divaevi_models.set_database_to_models(database)
 
     data_type = args['t'][0].casefold()
     file_name = os.path.splitext(args['file'][0])[0]
@@ -86,6 +89,9 @@ if __name__ == "__main__":
         data = load_json(args['file'][0])
         populate_db(database, data, csv_record)
         csv_record.save_to_file()
-    elif data_type == 'link':
+    elif data_type == 'katiha':
         data = load_pickle(args['file'][0])
         populate_linked_data(database, data)
+    elif data_type == 'divaevi':
+        data = load_pickle(args['file'][0])
+        divaevi_populate(database,data)
