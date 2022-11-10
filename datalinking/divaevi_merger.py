@@ -6,20 +6,18 @@ import pprint
 
 
 def get_divaevi_data():
-    """ 1. get_divaevi_data()  
-    #kaikki operaatiot dvv raaálle datalle 
-    #return valmis yhdistää muotoo
+    """
+    Loads all of the excel files from local repository
+    named ./Divaevi/data/ and creates the local repository if it doesn´t exist.
 
-    * lukee kaikki dvv tiedostot muistiin
-    * siivousoperaatiot (splittaa syntymapaiva,kuolinpaiva  AAAABBCC -> AAAA BB CC)
-    * yhdistä hetun pohjalta kaikki tarvittavat (esim SUKU ja LAPSEN_ASUIN_B) erilliset .csv tiedostot yhdeksi (MUISTIIN) 
-    *  SUKU_LAPSIB merge  """
+    return: list of dataframes
+
+    """
 
     if os.path.exists("./Divaevi/data/") == False:
         os.makedirs("./Divaevi/data/")
 
-    # path = "./Divaevi/real_data/"   #testing for real data
-    path = "./Divaevi/data/"  # testing for pseudo data
+    path = "./Divaevi/data/"
     excel_files = glob.glob(os.path.join(path, "*.xlsx"))
 
     if len(excel_files) == 0:
@@ -27,18 +25,36 @@ def get_divaevi_data():
 
     df_list = [pd.read_excel(sheet) for sheet in excel_files]
 
-    for df in df_list:
-        df["link_kaira_id"] = df["ID-tunnus"].str.replace("1_", "siirtokarjalaiset_1_")
-        df["link_kaira_id"] = df["link_kaira_id"].str.replace("P_0", "P")
     return df_list
 
 
+def preprocess_divaevi_data(df_list):
+    """ 
+    Preprocesses divaevi data so it can be merged with mikarelia data
 
+    param df_list: list of the dvv, acquired from get_divaevi_data()
+
+    return: list of dataframes
+    """
+    for df in df_list:
+        df["link_kaira_id"] = df["ID-tunnus"].str.replace(
+            "1_", "siirtokarjalaiset_1_")
+        df["link_kaira_id"] = df["link_kaira_id"].str.replace("P_0", "P")
     
+    return df_list
+
+preprocess_divaevi_data(get_divaevi_data())
 
 
 def rename_divaevi(df_list):
-    """ Renaming columns to match Mikarelia """
+    """ 
+    renames all of the available columns from dvv data
+
+    param df_list: list of the dvv data, acquired from preprocess_divaevi_data()
+
+    return: list of dataframes
+    """
+
     for i in range(len(df_list)):
         df_list[i] = df_list[i].rename(
             columns={
@@ -60,7 +76,14 @@ def rename_divaevi(df_list):
 
 
 def split_by_column(df_list):
-    "Split year, month and day to separate columns"
+    """
+    Split year, month and day to separate columns
+    
+    param df_list: list of the dvv data, acquired from rename_divaevi()
+    
+    return: list of dataframes
+    
+    """
 
     list_of_splittable_columns = ["deathYear", "birth", "maritalStatusStart",
                                   "maritalStatusExpiry", "relativeBirth", "residencyEnd",
@@ -81,19 +104,24 @@ def split_by_column(df_list):
                     df_list[i][j+"Month"] = df_list[i]['col'].str[4:6]
                 df_list[i][j+"Year"] = df_list[i]['col'].str[0:4]
                 df_list[i][j+"Day"] = df_list[i][j+"Day"].apply(pd.to_numeric)
-                df_list[i][j+"Month"] = df_list[i][j+"Month"].apply(pd.to_numeric)
-                df_list[i][j+"Year"] = df_list[i][j+"Year"].apply(pd.to_numeric)
+                df_list[i][j+"Month"] = df_list[i][j +
+                                                   "Month"].apply(pd.to_numeric)
+                df_list[i][j+"Year"] = df_list[i][j +
+                                                  "Year"].apply(pd.to_numeric)
                 df_list[i].drop('col', axis=1, inplace=True)
-    
-
 
     return df_list
 
 
-def merge_asuin_by_hetu_from_suku(df_list):
-    "Merges all of the available hetu columns together"
-    "IN THE FIRST BATCH ALL OF THE INFORMATION OF THE ASUINB AND ASUINA WERE CORRELATED WITH CHILDlink_kaira_id"
-    "BUT NOT GRANDCHILD KAIRA ID"
+def merge_residency_with_relatives(df_list):
+    """
+    Merges residency history dataframe with relative history dataframe by SSN
+    
+    param df_list: list of the dvv data
+    
+    return: list of dataframes
+    
+    """
     combined_df_list = list()
     combined_df = pd.DataFrame()
     for i in range(len(df_list)):
@@ -106,13 +134,18 @@ def merge_asuin_by_hetu_from_suku(df_list):
                             combined_df = pd.merge(
                                 df_list[i], df_list[h], on="link_kaira_id", how="inner")
                             combined_df_list.append(combined_df)
-                            # combined_df.to_excel("hetumergetesti_asuin_suku_v3.xlsx")
 
     return combined_df_list
-# merge_asuin_by_hetu_from_suku(split_by_column(rename_divaevi(get_divaevi_data())))
 
-
-def generateGrandChild_link_kaira_id_hetu(df_list):
+def generateGrandChildKairaId(df_list):
+    """
+    Generates kairaIds for grandchildren
+    
+    param df_list: list of the dvv data
+    
+    return: list of dataframes
+    
+    """
     combined_df_list = list()
     combined_df = pd.DataFrame()
     for i in range(len(df_list)):
@@ -128,13 +161,17 @@ def generateGrandChild_link_kaira_id_hetu(df_list):
                         df_list[i]["Sukulaisen\nhenkilötunnus"][h] = "dbeaver_lapsilink_kaira_id+=1"
 
     return df_list
-# generateGrandChild_link_kaira_id_hetu(merge_asuin_by_hetu_from_suku(split_by_column(rename_divaevi(get_divaevi_data()))))
 
 
 def combine_all_files(df_list):
-    """Merges by Hetu and Birthyear"""
-    "Denote: All of the following information in the relation sheet"
-    "is for Sukulaisen henkilötunnus, and not for välihenkilö 1"
+    """
+    Combines list of dataframes to one single file
+    
+    param df_list: list of the dvv data
+    
+    return: list of dataframes
+    
+    """
     combined_df_list = list()
     combined_df = pd.DataFrame()
     for i in range(len(df_list)):
@@ -144,24 +181,33 @@ def combine_all_files(df_list):
 
 
 
-"following code is to combine mikarelia data with DVV data "
-" this is done in the following way:"
-"firstly we merge dbeavers child.csv:s childlink_kaira_id with SSN from DVV"
-
-
 def preprocess_mikarelia_link_kaira_id(path_df_csv):
+    """
+    Turns csv file into dataframe
+    
+    param path_df_csv: path of the mikarelia .csv data location
+    
+    return: list of dictionaries
+    """
     df = pd.read_csv(path_df_csv)
     df["link_kaira_id"] = df["kairaId"]
     return df
 
-    
+
 preprocess_mikarelia_link_kaira_id(
     r"C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\Divaevi\data\_Person__whole.csv")
 
 
 def combine_mikarelia_kaira(df_list_dvv, df_list_mikarelia):
+    """
+    Merges list of dataframes from dvv with mikarelia dataframe to one single file
+    
+    param df_list_dvv: list of the dvv data
+    param df_list_mikarelia: list of the mikarelia data
+    
+    return: list of dictionaries
+    """
     combined_df_list = []
-    f = 0
     for i in range(len(df_list_dvv)):
         for j in df_list_dvv[i].columns:
             for k in df_list_mikarelia.columns:
@@ -169,29 +215,42 @@ def combine_mikarelia_kaira(df_list_dvv, df_list_mikarelia):
                     combined_df = pd.merge(
                         df_list_mikarelia[j], df_list_dvv[i], on="link_kaira_id", how="inner")
                     combined_df = combined_df.filter(
-                        ['birthDay', 'birthMonth', 'birthYear', 'link_kaira_id',"residencyEndDay","residencyEndMonth","residencyEndYear"])
+                        ['birthDay', 'birthMonth', 'birthYear', 'link_kaira_id', "residencyEndDay", "residencyEndMonth", "residencyEndYear"])
                     combined_df = combined_df.to_dict("records")
                     combined_df_list.append(combined_df)
-
     return combined_df_list
 
 
 def divaevi_to_pickle(combined_df_list):
-    filename = 'yhdistetty'
+    """
+    Serializes list of dictionaries to pickle file
+    
+    param combined_df_list: list of the dictionaries, acquired from combine_mikarelia_kaira()
+    
+    return: pickled object
+    """
+    filename = "merged"
     outfile = open(filename, 'wb')
     pickle.dump(combined_df_list, outfile)
     outfile.close()
 
 
-divaevi_to_pickle(combine_mikarelia_kaira(split_by_column(rename_divaevi(get_divaevi_data())),
+divaevi_to_pickle(combine_mikarelia_kaira(split_by_column(rename_divaevi(preprocess_divaevi_data(get_divaevi_data()))),
                                           preprocess_mikarelia_link_kaira_id(r"C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\Divaevi\data\_Person__whole.csv")))
 
 
 def divaevi_from_pickle(filename):
+    """
+    Reads the pickled representation of the object
+    
+    param filename: pickled representation of the object 
+    
+    return: list of dictionaries
+    """
     infile = open(filename, 'rb')
     new_dict = pickle.load(infile)
     infile.close()
     pprint.pprint(new_dict)
 
 
-divaevi_from_pickle("yhdistetty")
+divaevi_from_pickle("merged")
