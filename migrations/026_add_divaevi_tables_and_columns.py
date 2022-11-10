@@ -36,7 +36,7 @@ def migrate(migrator, database, fake=False, **kwargs):
     ALTER TABLE siirtokarjalaisten_tie."Person" ADD COLUMN "divaeviId" INTEGER REFERENCES divaevi."DivaeviPerson"(id)
       ON UPDATE CASCADE
       ON DELETE SET NULL;
-    COMMENT ON COLUMN siirtokarjalaisten_tie."Person"."divaeviId" is 'A reference to a person in the DivaeviPerson table, used to fetch the data for the person acquired from linking the person to the divaevi database.';
+    COMMENT ON COLUMN siirtokarjalaisten_tie."Person"."divaeviId" is 'A reference to a person in the DivaeviPerson table, used to fetch the data for the person acquired from linking the person to the dvv data.';
     
     GRANT USAGE ON SCHEMA divaevi to researcher, kaira;
     GRANT SELECT, INSERT, UPDATE, DELETE, REFERENCES ON "divaevi"."DivaeviPerson" TO kaira;
