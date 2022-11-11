@@ -4,6 +4,7 @@ from db_management.update_report import update_report
 from datalinking.divaevi_pickle_to_model_mappings import map_data_to_model, pickle_to_divaevi_person
 from db_management.exceptions import NoKairaIdException
 
+
 def populate_linked_data(database, data):
     database.set_autocommit(False)
     database.begin()
@@ -23,9 +24,9 @@ def populate_linked_data(database, data):
 
 
 def _update_data_in_db(person_entry):
-    if person_entry.link_kaira_id is None and person_entry.family_id is None:
+    if person_entry.link_kaira_id is None:
         raise NoKairaIdException('All DVV people populated into the DB must have '
-                                            'a kairaId.')
+                                 'a kairaId.')
     existing_data = _fetch_existing_divaevi_person(person_entry)
     _update_divaevi_person_in_db(existing_data, person_entry)
 
@@ -56,11 +57,6 @@ def _fetch_existing_divaevi_person(person_entry):
 
 def _fetch_divaevi_person(db_id):
     return DivaeviPerson.get_or_create(id=db_id)[0]
-
-
-def _set_divaevi_id_for_mikarelian_in_db(person_entry):
-    mikarelian = Person.get(Person.kairaId == person_entry.link_kaira_id)
-    mikarelian.divaeviId = person_entry.db_id
 
 
 def _fetch_primary_person(kaira_id):
