@@ -39,7 +39,8 @@ def _update_data_in_db(person_entry):
 
 
 def _update_katiha_person_in_db(person_model, person_entry):
-    katiha_person = map_data_to_model(person_model, person_entry, pickle_to_katiha_person)
+    katiha_person = map_data_to_model(
+        person_model, person_entry, pickle_to_katiha_person)
 
     if katiha_person.is_dirty():
         update_report.changed_record_in('KatihaPerson')
@@ -64,9 +65,6 @@ def _fetch_existing_katiha_person(person_entry):
 def _fetch_katiha_person(db_id):
     return KatihaPerson.get_or_create(id=db_id)[0]
 
-def _fetch_divaevi_person(db_id):
-    return DivaeviPerson.get_or_create()
-
 
 def _remove_katiha_people_not_in_pickle_from_db(data):
     """
@@ -75,8 +73,10 @@ def _remove_katiha_people_not_in_pickle_from_db(data):
     """
     katiha_ids_in_link_data = {person.db_id for person in data}
     katiha_ids_in_db = get_set_of_katiha_ids_in_db()
-    katiha_ids_not_in_link_data = tuple(katiha_ids_in_db - katiha_ids_in_link_data)
-    family_ids_of_people_not_in_link_data = get_family_ids_by_katiha_ids(katiha_ids_not_in_link_data)
+    katiha_ids_not_in_link_data = tuple(
+        katiha_ids_in_db - katiha_ids_in_link_data)
+    family_ids_of_people_not_in_link_data = get_family_ids_by_katiha_ids(
+        katiha_ids_not_in_link_data)
     remove_linkless_family = get_family_remover()
 
     for katiha_id, family_id in zip(katiha_ids_not_in_link_data, family_ids_of_people_not_in_link_data):
