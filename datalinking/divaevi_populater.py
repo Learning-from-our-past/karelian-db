@@ -2,7 +2,7 @@ from tqdm import tqdm
 from db_management.siirtokarjalaistentie_models import *
 from db_management.update_report import update_report
 from datalinking.divaevi_pickle_to_model_mappings import map_data_to_model, pickle_to_divaevi_person
-
+from db_management.exceptions import NoKairaIdException
 
 def populate_linked_data(database, data):
     database.set_autocommit(False)
@@ -23,6 +23,9 @@ def populate_linked_data(database, data):
 
 
 def _update_data_in_db(person_entry):
+    if person_entry.link_kaira_id is None and person_entry.family_id is None:
+        raise NoKairaIdException('All DVV people populated into the DB must have '
+                                            'a kairaId.')
     existing_data = _fetch_existing_divaevi_person(person_entry)
     _update_divaevi_person_in_db(existing_data, person_entry)
 
