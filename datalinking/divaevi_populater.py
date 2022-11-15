@@ -26,7 +26,7 @@ def populate_linked_data(database, data):
 def _update_data_in_db(person_entry):
     if person_entry.link_kaira_id is None:
         raise NoKairaIdException('All DVV people populated into the database must have '
-                                 'a matching kairaId from Mikarelia database.')                     
+                                 'a matching kairaId from Mikarelia database.')
     existing_data = _fetch_existing_divaevi_person(person_entry)
     _update_divaevi_person_in_db(existing_data, person_entry)
 
@@ -62,3 +62,22 @@ def _fetch_existing_divaevi_person(person_entry):
 def _fetch_divaevi_person(db_id):
     return DivaeviPerson.get_or_create(id=db_id)[0]
 
+
+def _fetch_primary_person(kaira_id):
+    try:
+        return Person.get(Person.kairaId == link_kaira_id)
+    except Person.DoesNotExist:
+        return Person()
+
+def fetch_existing_data_of_person_entry(person_entry):
+    primary_person = _fetch_primary_person(
+        person_entry['primaryPerson']['kairaId'])
+    spouse_person = None
+    if person_entry['spouse']:
+        spouse_person = _fetch_primary_person(
+            person_entry['spouse']['kairaId'])
+
+    return {
+        'primary_person': primary_person,
+        'spouse_person': spouse_person
+    }
