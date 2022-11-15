@@ -36,7 +36,7 @@ def _update_divaevi_person_in_db(person_model, person_entry):
         person_model, person_entry, pickle_to_divaevi_person)
 
     if divaevi_person.is_dirty():
-        update_report.changed_record_in('divaeviPerson')
+        update_report.changed_record_in('DivaeviPerson')
 
     divaevi_person.save()
     if person_entry.link_kaira_id is not None:
