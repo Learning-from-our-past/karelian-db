@@ -172,6 +172,26 @@ def link_data(ctx, output_path='./material/'):
 
 
 @task(help={
+    'output_path': 'The path under which to store the linked data.'
+})
+def link_divaevi_data(ctx, output_path='./material/'):
+    """
+    Link MiKARELIA data to DVV data and dump the results of the data linking to the hard drive.
+    """
+    run_data_linking(output_path)
+
+
+@task(help={
+    'output_path': 'The path under which to store the linked data.'
+})
+def link_data(ctx, output_path='./material/'):
+    """
+    Link MiKARELIA data to Katiha data and dump the results of the data linking to the hard drive.
+    """
+    run_data_linking(output_path)
+
+
+@task(help={
     'port': 'The localhost port which is used to connect to the database. Defaults to 5432',
     'db-password': 'Password for db superuser'
 })
