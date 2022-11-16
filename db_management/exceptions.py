@@ -9,3 +9,7 @@ class SexMissingException(Exception):
 
 class NoFamilyIdAndKairaIdException(Exception):
     pass
+
+
+class NoKairaIdException(Exception):
+    pass
