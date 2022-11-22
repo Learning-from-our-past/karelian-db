@@ -28,7 +28,7 @@ def _update_data_in_db(person_entry):
         raise NoKairaIdException('All DVV people populated into the database must have '
                                  'a matching kairaId from Mikarelia database.')
     divaevi_person = None
-    mikarelia_person = Person.get(Person.kairaId == link_kaira_id)
+    mikarelia_person = Person.get(Person.kairaId == person_entry.link_kaira_id)
     if mikarelia_person.divaeviId is not None:
         divaevi_person = DivaeviPerson.get(
             DivaeviPerson.id == mikarelia_person.divaeviId)
