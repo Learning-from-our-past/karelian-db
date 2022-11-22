@@ -61,11 +61,11 @@ def rename_divaevi(df_list):
         df_list[i] = df_list[i].rename(
             columns={
                 "Syntymä-päivä": "birth", "Suku-\npuoli": "sex",
-                "Kuolinpäivä": "death", "Äidin-\nkieli": "primaryLanguage",
+                "Kuolinpäivä": "death", "Äidin-\nkieli": "primaryLanguage", 
                 "Kotikunnan\nnimi": "birthResidence", "Koti-\nkunta": "birthResidenceId",
                 "Tutkhenk nykyinen siviilisääty": "maritalStatus",
-                "Päättymis-päivä": "maritalStatusExpiry",
-                "Päätt-tapa": "maritalStatusExpiryType",
+                "Päättymis-päivä": "maritalStatusEnd",
+                "Päätt-tapa": "maritalStatusEndType",
                 "Puoliso ulkohenkilö": "spouseExternalPerson",
                 "Puolison-ID": "spouseId",
                 "Alkupäivä": "maritalStatusStart",
@@ -87,7 +87,7 @@ def split_by_column(df_list):
     """
 
     list_of_splittable_columns = ["death", "birth", "maritalStatusStart",
-                                  "maritalStatusExpiry", "relativeBirth", "residencyEnd",
+                                  "maritalStatusEnd", "relativeBirth", "residencyEnd",
                                   "residencyStart", "relativeDeath"]
 
     for i in range(len(df_list)):
@@ -220,7 +220,11 @@ def combine_mikarelia_kaira(df_list_dvv, df_list_mikarelia):
                     combined_df.to_excel(
                         r"C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\dvv_data_testi_0.xlsx")
                     combined_df = combined_df.filter(
-                        ['birthDay', 'birthMonth', 'birthYear', 'link_kaira_id', "residencyEndDay", "residencyEndMonth", "residencyEndYear", "deathDay", "deathMonth", "deathYear"])
+                        ['birthDay', 'birthMonth', 'birthYear', 
+                        'link_kaira_id', 
+                        "residencyEndDay", "residencyEndMonth", "residencyEndYear", 
+                        "deathDay", "deathMonth", "deathYear", 
+                        "birthResidence", "sex", "primaryLanguage",])
                     combined_df.to_excel(
                         r"C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\dvv_data_testi_1.xlsx")
                     combined_df = combined_df.to_dict("records")
