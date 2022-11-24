@@ -15,14 +15,14 @@ def get_divaevi_data():
 
     """
 
-    if os.path.exists("./Divaevi/kopiot") == False:
-        os.makedirs("./Divaevi/kopiot")
+    if os.path.exists('./Divaevi/kopiot') == False:
+        os.makedirs('./Divaevi/kopiot')
 
-    path = "./Divaevi/kopiot"
-    excel_files = glob.glob(os.path.join(path, "*.xlsx"))
+    path = './Divaevi/kopiot'
+    excel_files = glob.glob(os.path.join(path, '*.xlsx'))
 
     if len(excel_files) == 0:
-        raise Exception("No excel files available in this directory")
+        raise Exception('No excel files available in this directory')
 
     df_list = [pd.read_excel(sheet) for sheet in excel_files]
 
@@ -30,7 +30,7 @@ def get_divaevi_data():
 
 
 def preprocess_divaevi_data(df_list):
-    """ 
+    """
     Preprocesses divaevi data so it can be merged with mikarelia data
 
     param df_list: list of the dvv, acquired from get_divaevi_data()
@@ -38,9 +38,9 @@ def preprocess_divaevi_data(df_list):
     return: list of dataframes
     """
     for df in df_list:
-        df["link_kaira_id"] = df["ID-tunnus"].str.replace(
-            "1_", "siirtokarjalaiset_1_")
-        df["link_kaira_id"] = df["link_kaira_id"].str.replace("P_0", "P")
+        df['link_kaira_id'] = df['ID-tunnus'].str.replace(
+            '1_', 'siirtokarjalaiset_1_')
+        df['link_kaira_id'] = df['link_kaira_id'].str.replace('P_0', 'P')
 
     return df_list
 
@@ -49,7 +49,7 @@ preprocess_divaevi_data(get_divaevi_data())
 
 
 def rename_divaevi(df_list):
-    """ 
+    """
     renames all of the available columns from dvv data
 
     param df_list: list of the dvv data, acquired from preprocess_divaevi_data()
@@ -60,20 +60,22 @@ def rename_divaevi(df_list):
     for i in range(len(df_list)):
         df_list[i] = df_list[i].rename(
             columns={
-                "Syntymä-päivä": "birth", "Suku-\npuoli": "sex",
-                "Kuolinpäivä": "death", "Äidin-\nkieli": "primaryLanguage", 
-                "Kotikunnan\nnimi": "birthResidence", "Koti-\nkunta": "birthResidenceId",
-                "Tutkhenk nykyinen siviilisääty": "maritalStatus",
-                "Päättymis-päivä": "maritalStatusEnd",
-                "Päätt-tapa": "maritalStatusEndType",
-                "Puoliso ulkohenkilö": "spouseExternalPerson",
-                "Puolison-ID": "spouseId",
-                "Alkupäivä": "maritalStatusStart",
-                "Sukul-\nsuhde": "familyRelation", "Asumisen\nalkupv": "residencyStart",
-                "Asumisen\nloppupv": "residencyEnd", "Sukulaisen\nsyntymäpv": "relativeBirth",
-                "Sukulaisen\nkuolinpv": "relativeDeath", "Asuminen": "residency"
+                'Syntymä-päivä': 'birth', 'Suku-\npuoli': 'sex',
+                'Kuolinpäivä': 'death', 'Äidin-\nkieli': 'primaryLanguage',
+                'Kotikunnan\nnimi': 'domicile', 'Koti-\nkunta': 'domicileId',
+                'Syntymäkotikunnan nimi': 'birthResidence',
+                'Tutkhenk nykyinen siviilisääty': 'maritalStatus',
+                'Päättymis-päivä': 'maritalStatusEnd',
+                'Päätt-tapa': 'maritalStatusEndType',
+                'Puoliso ulkohenkilö': 'spouseExternalPerson',
+                'Puolison-ID': 'spouseId',
+                'Alkupäivä': 'maritalStatusStart',
+                'Sukul-\nsuhde': 'familyRelation', 'Asumisen\nalkupv': 'residencyStart',
+                'Asumisen\nloppupv': 'residencyEnd', 'Sukulaisen\nsyntymäpv': 'relativeBirth',
+                'Sukulaisen\nkuolinpv': 'relativeDeath', 'Asuminen': 'residency'
             })
     return df_list
+
 
 
 def split_by_column(df_list):
@@ -86,30 +88,30 @@ def split_by_column(df_list):
 
     """
 
-    list_of_splittable_columns = ["death", "birth", "maritalStatusStart",
-                                  "maritalStatusEnd", "relativeBirth", "residencyEnd",
-                                  "residencyStart", "relativeDeath"]
+    list_of_splittable_columns = ['death', 'birth', 'maritalStatusStart',
+                                  'maritalStatusEnd', 'relativeBirth', 'residencyEnd',
+                                  'residencyStart', 'relativeDeath']
 
     for i in range(len(df_list)):
         for j in df_list[i].columns:
 
             if j in list_of_splittable_columns:
                 df_list[i][j] = df_list[i][j].fillna(0)
-                df_list[i]["col"] = df_list[i][j].astype(str)
-                if 0 or "0" in df_list[i]['col'].str[6]:
-                    df_list[i][j+"Day"] = df_list[i]['col'].str[7]
+                df_list[i]['col'] = df_list[i][j].astype(str)
+                if 0 or '0' in df_list[i]['col'].str[6]:
+                    df_list[i][j+'Day'] = df_list[i]['col'].str[7]
                 else:
-                    df_list[i][j+"Day"] = df_list[i]['col'].str[6:8]
-                if 0 or "0" in df_list[i]['col'].str[4]:
-                    df_list[i][j+"Month"] = df_list[i]['col'].str[5]
+                    df_list[i][j+'Day'] = df_list[i]['col'].str[6:8]
+                if 0 or '0' in df_list[i]['col'].str[4]:
+                    df_list[i][j+'Month'] = df_list[i]['col'].str[5]
                 else:
-                    df_list[i][j+"Month"] = df_list[i]['col'].str[4:6]
-                df_list[i][j+"Year"] = df_list[i]['col'].str[0:4]
-                df_list[i][j+"Day"] = df_list[i][j+"Day"].apply(pd.to_numeric)
-                df_list[i][j+"Month"] = df_list[i][j +
-                                                   "Month"].apply(pd.to_numeric)
-                df_list[i][j+"Year"] = df_list[i][j +
-                                                  "Year"].apply(pd.to_numeric)
+                    df_list[i][j+'Month'] = df_list[i]['col'].str[4:6]
+                df_list[i][j+'Year'] = df_list[i]['col'].str[0:4]
+                df_list[i][j+'Day'] = df_list[i][j+'Day'].apply(pd.to_numeric)
+                df_list[i][j+'Month'] = df_list[i][j +
+                                                   'Month'].apply(pd.to_numeric)
+                df_list[i][j+'Year'] = df_list[i][j +
+                                                  'Year'].apply(pd.to_numeric)
                 df_list[i].drop('col', axis=1, inplace=True)
 
     return df_list
@@ -128,13 +130,13 @@ def merge_residency_with_relatives(df_list):
     combined_df = pd.DataFrame()
     for i in range(len(df_list)):
         for j in df_list[i].columns:
-            if j == "Henkilötunnus":
+            if j == 'Henkilötunnus':
                 for h in range(len(df_list)):
                     for k in df_list[h].columns:
-                        if k == "Välihenkilö 1":
+                        if k == 'Välihenkilö 1':
                             df_list[i]
                             combined_df = pd.merge(
-                                df_list[i], df_list[h], on="link_kaira_id", how="inner")
+                                df_list[i], df_list[h], on='link_kaira_id', how='inner')
                             combined_df_list.append(combined_df)
 
     return combined_df_list
@@ -153,15 +155,15 @@ def generateGrandChildKairaId(df_list):
     combined_df = pd.DataFrame()
     for i in range(len(df_list)):
         for j in df_list[i].columns:
-            if j == "familyRelation":
-                for h, k in enumerate(df_list[i]["familyRelation"]):
-                    df_list[i]["Henkilötunnus"][h] = "dbeaver_lapsilink_kaira_id+=1"
+            if j == 'familyRelation':
+                for h, k in enumerate(df_list[i]['familyRelation']):
+                    df_list[i]['Henkilötunnus'][h] = 'dbeaver_lapsilink_kaira_id+=1'
                     if k == 7:
-                        df_list[i]["Sukulaisen\nhenkilötunnus"][h] = "Lapsenlapsi_GC_+=1_link_kaira_id"
-                        df_list[i]["Välihenkilö 1"][h] = "dbeaver_lapsilink_kaira_id+=1"
+                        df_list[i]['Sukulaisen\nhenkilötunnus'][h] = 'Lapsenlapsi_GC_+=1_link_kaira_id'
+                        df_list[i]['Välihenkilö 1'][h] = 'dbeaver_lapsilink_kaira_id+=1'
                     elif k == 2:
 
-                        df_list[i]["Sukulaisen\nhenkilötunnus"][h] = "dbeaver_lapsilink_kaira_id+=1"
+                        df_list[i]['Sukulaisen\nhenkilötunnus'][h] = 'dbeaver_lapsilink_kaira_id+=1'
 
     return df_list
 
@@ -192,12 +194,12 @@ def preprocess_mikarelia_link_kaira_id(path_df_csv):
     return: list of dictionaries
     """
     df = pd.read_csv(path_df_csv)
-    df["link_kaira_id"] = df["kairaId"]
+    df['link_kaira_id'] = df['kairaId']
     return df
 
 
 preprocess_mikarelia_link_kaira_id(
-    r"C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\Divaevi\data\_Person__whole.csv")
+    r'C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\Divaevi\data\_Person__whole.csv')
 
 
 def combine_mikarelia_kaira(df_list_dvv, df_list_mikarelia):
@@ -213,21 +215,28 @@ def combine_mikarelia_kaira(df_list_dvv, df_list_mikarelia):
     for i in range(len(df_list_dvv)):
         for j in df_list_dvv[i].columns:
             for k in df_list_mikarelia.columns:
-                if j == "link_kaira_id" and k == "link_kaira_id":
+                if j == 'link_kaira_id' and k == 'link_kaira_id':
 
                     combined_df = pd.merge(
-                        df_list_mikarelia[j], df_list_dvv[i], on="link_kaira_id", how="inner")
-                    combined_df.to_excel(
-                        r"C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\dvv_data_testi_0.xlsx")
+                        df_list_mikarelia[j], df_list_dvv[i], on='link_kaira_id', how='inner')
                     combined_df = combined_df.filter(
-                        ['birthDay', 'birthMonth', 'birthYear', 
-                        'link_kaira_id', 
-                        "residencyEndDay", "residencyEndMonth", "residencyEndYear", 
-                        "deathDay", "deathMonth", "deathYear", 
-                        "birthResidence", "sex", "primaryLanguage",])
-                    combined_df.to_excel(
-                        r"C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\dvv_data_testi_1.xlsx")
-                    combined_df = combined_df.to_dict("records")
+                        [
+                            'link_kaira_id',
+                            'birthDay', 'birthMonth', 'birthYear',
+                            'deathDay', 'deathMonth', 'deathYear',
+                            'residencyStartDay', 'residencyStartMonth', 'residencyStartYear',
+                            'residencyEndDay', 'residencyEndMonth', 'residencyEndYear', 
+                            'birthResidence', 'domicile',
+                            'sex', 'primaryLanguage',
+                            'maritalStatus', 'maritalStatusEndType', 
+                            'maritalStatusStartDay','maritalStatusStartMonth','maritalStatusStartYear',
+                            'maritalStatusEndDay','maritalStatusEndMonth','maritalStatusEndYear',
+                            'familyRelation',
+                            'relativeBirthDay','relativeBirthMonth','relativeBirthYear',
+                            'relativeDeathDay','relativeDeathMonth','relativeDeathYear'])
+                    combined_df.to_csv(
+                        r'C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\TULOKSET_5_TUTKHENK_ASUINHIST.csv')
+                    combined_df = combined_df.to_dict('records')
                     combined_df_list.append(combined_df)
 
     return combined_df_list
@@ -241,14 +250,14 @@ def divaevi_to_pickle(combined_df_list):
 
     return: pickled object
     """
-    filename = "merged"
+    filename = 'merged'
     outfile = open(filename, 'wb')
     pickle.dump(combined_df_list, outfile)
     outfile.close()
 
 
 divaevi_to_pickle(combine_mikarelia_kaira(split_by_column(rename_divaevi(preprocess_divaevi_data(get_divaevi_data()))),
-                                          preprocess_mikarelia_link_kaira_id(r"C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\Divaevi\data\_Person__whole.csv")))
+                                          preprocess_mikarelia_link_kaira_id(r'C:\Users\bohme\OneDrive\Desktop\Karjalaisprojekti\Divaevi\data\_Person__whole.csv')))
 
 
 def divaevi_from_pickle(filename):
@@ -265,4 +274,4 @@ def divaevi_from_pickle(filename):
     pprint.pprint(new_dict)
 
 
-divaevi_from_pickle("merged")
+divaevi_from_pickle('merged')
