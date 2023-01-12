@@ -42,19 +42,19 @@ class DepartureType(BaseModel):
 
 
 class KatihaPerson(BaseModel):
-    familyId = ForeignKeyField(db_column='familyId', null=True, rel_model=Family, to_field='id')
-    motherLanguageId = ForeignKeyField(db_column='motherLanguageId', null=True, rel_model=Language, to_field='id')
+    familyId = ForeignKeyField(db_column='familyId', null=True, model=Family, to_field='id')
+    motherLanguageId = ForeignKeyField(db_column='motherLanguageId', null=True, model=Language, to_field='id')
     birthDay = IntegerField()
     birthMonth = IntegerField()
     birthYear = IntegerField()
     sex = TextField()
-    birthInMarriage = ForeignKeyField(db_column='birthInMarriage', null=True, rel_model=BirthInMarriageCode, to_field='code')
+    birthInMarriage = ForeignKeyField(db_column='birthInMarriage', null=True, model=BirthInMarriageCode, to_field='code')
     multipleBirth = IntegerField()
     vaccinated = BooleanField()
     rokko = BooleanField()
     literate = BooleanField()
     literacyConfirmed = BooleanField()
-    departureTypeId = ForeignKeyField(db_column='departureTypeId', null=True, rel_model=DepartureType, to_field='id')
+    departureTypeId = ForeignKeyField(db_column='departureTypeId', null=True, model=DepartureType, to_field='id')
     departureDay = IntegerField()
     departureMonth = IntegerField()
     departureYear = IntegerField()

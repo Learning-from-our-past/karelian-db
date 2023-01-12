@@ -138,26 +138,26 @@ class Person(BaseModel):
     birthDay = IntegerField()
     birthMonth = IntegerField()
     birthYear = IntegerField()
-    birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
+    birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, model=Place, to_field='id')
     deathDay = IntegerField()
     primaryPerson = BooleanField()
     deathMonth = IntegerField()
     deathYear = IntegerField()
-    deathPlaceId = ForeignKeyField(db_column='deathPlaceId', null=True, rel_model=Place, related_name='Place_deathPlace_set', to_field='id')
+    deathPlaceId = ForeignKeyField(db_column='deathPlaceId', null=True, model=Place, related_name='Place_deathPlace_set', to_field='id')
     firstName = TextField()
     lastName = TextField()
     originalText = TextField()
     sourceTextId = TextField()
     ownHouse = BooleanField(null=True)
-    pageNumber = ForeignKeyField(db_column='pageNumber', rel_model=Page, to_field='pageNumber')
+    pageNumber = ForeignKeyField(db_column='pageNumber', model=Page, to_field='pageNumber')
     previousMarriages = TextField(null=True)
     formerSurname = TextField()
-    professionId = ForeignKeyField(db_column='professionId', null=True, rel_model=Profession, to_field='id')
+    professionId = ForeignKeyField(db_column='professionId', null=True, model=Profession, to_field='id')
     returnedKarelia = TextField()
     sex = TextField()
     servedDuringWar = BooleanField(null=True)
     injuredInWar = BooleanField(null=True)
-    militaryRankId = ForeignKeyField(db_column='militaryRankId', null=True, rel_model=MilitaryRank, to_field='id')
+    militaryRankId = ForeignKeyField(db_column='militaryRankId', null=True, model=MilitaryRank, to_field='id')
     lotta = BooleanField(null=True)
     foodLotta = BooleanField(null=True)
     officeLotta = BooleanField(null=True)
@@ -166,8 +166,8 @@ class Person(BaseModel):
     pikkulotta = BooleanField(null=True)
     organizationLotta = BooleanField(null=True)
     martta = BooleanField(null=True)
-    katihaId = ForeignKeyField(db_column='katihaId', null=True, rel_model=KatihaPerson, to_field='id')
-    farmDetailsId = ForeignKeyField(db_column='farmDetailsId', null=True, rel_model=FarmDetails, to_field='id')
+    katihaId = ForeignKeyField(db_column='katihaId', null=True, model=KatihaPerson, to_field='id')
+    farmDetailsId = ForeignKeyField(db_column='farmDetailsId', null=True, model=FarmDetails, to_field='id')
     editLog = BinaryJSONField()
     markRowForRemoval = BooleanField(default=False)
 
@@ -188,11 +188,11 @@ class Person(BaseModel):
 class Child(BaseModel):
     kairaId = TextField()
     birthYear = IntegerField()
-    birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, rel_model=Place, to_field='id')
+    birthPlaceId = ForeignKeyField(db_column='birthPlaceId', null=True, model=Place, to_field='id')
     firstName = TextField()
     lastName = TextField()
-    primaryParentId = ForeignKeyField(db_column='primaryParentId', null=True, rel_model=Person, to_field='id', related_name='child_Person_primaryParentId_set')
-    spouseParentId = ForeignKeyField(db_column='spouseParentId', null=True, rel_model=Person, to_field='id', related_name='child_Person_spouseParentId_set')
+    primaryParentId = ForeignKeyField(db_column='primaryParentId', null=True, model=Person, to_field='id', related_name='child_Person_primaryParentId_set')
+    spouseParentId = ForeignKeyField(db_column='spouseParentId', null=True, model=Person, to_field='id', related_name='child_Person_spouseParentId_set')
     sex = TextField()
     sourceTextId = TextField()
     editLog = BinaryJSONField()
@@ -215,8 +215,8 @@ class Child(BaseModel):
 class LivingRecord(BaseModel):
     movedIn = IntegerField(null=True)
     movedOut = IntegerField(null=True)
-    personId = ForeignKeyField(db_column='personId', rel_model=Person, to_field='id')
-    placeId = ForeignKeyField(db_column='placeId', rel_model=Place, to_field='id')
+    personId = ForeignKeyField(db_column='personId', model=Person, to_field='id')
+    placeId = ForeignKeyField(db_column='placeId', model=Place, to_field='id')
     editLog = BinaryJSONField()
 
     @staticmethod
@@ -234,9 +234,9 @@ class LivingRecord(BaseModel):
 
 
 class Marriage(BaseModel):
-    primaryId = ForeignKeyField(db_column='primaryId', rel_model=Person,
+    primaryId = ForeignKeyField(db_column='primaryId', model=Person,
                                 to_field='id', related_name='marriage_Person_primaryId_set')
-    spouseId = ForeignKeyField(db_column='spouseId', rel_model=Person,
+    spouseId = ForeignKeyField(db_column='spouseId', model=Person,
                                to_field='id', related_name='marriage_Person_spouseId_set')
     weddingYear = IntegerField(null=True)
     editLog = BinaryJSONField()
